@@ -24,7 +24,7 @@ WHERE	j.name = N'Joe : DBTRANS_bodb02 : Friday routine';
 
 IF	@@ROWCOUNT = 0
 	GOTO QuitWithRollback;
-
+	
 ---- Step 1 ----
 BEGIN;
 	EXECUTE	@ReturnCode	= msdb.dbo.sp_update_jobstep
@@ -163,10 +163,6 @@ DECLARE @archiveDate TABLE (rid INT PRIMARY KEY IDENTITY(1,1), winlostdate SMALL
 DECLARE @wldate SMALLDATETIME
 , @WaitFor NVARCHAR(MAX);
 
--- Dynamic Delay Time --
-SELECT	@WaitFor = N'''';
-SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
-
 INSERT INTO @archiveDate (winlostdate)
 SELECT winlostdate
 FROM dbo.Task_ArchiveDate WITH (NOLOCK)
@@ -181,6 +177,10 @@ DECLARE @rowcount INT;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''bettrans14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -191,6 +191,10 @@ WAITFOR DELAY ''00:00:03'';
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''sum_winloss'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -198,6 +202,10 @@ END;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''bettransG14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -205,6 +213,10 @@ END;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''translog14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -212,6 +224,10 @@ END;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''bettransLC14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -219,6 +235,10 @@ END;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''bettransRNG14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -256,10 +276,6 @@ DECLARE @archiveDate TABLE (rid INT PRIMARY KEY IDENTITY(1,1), winlostdate SMALL
 DECLARE @wldate SMALLDATETIME
 , @WaitFor NVARCHAR(MAX);
 
--- Dynamic Delay Time --
-SELECT	@WaitFor = N'''';
-SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
-
 INSERT INTO @archiveDate (winlostdate)
 SELECT winlostdate
 FROM dbo.Task_ArchiveDate WITH (NOLOCK)
@@ -274,6 +290,10 @@ DECLARE @rowcount INT;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''bettrans14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -284,6 +304,10 @@ WAITFOR DELAY ''00:00:03'';
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''sum_winloss'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -291,6 +315,10 @@ END;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''bettransG14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -298,6 +326,10 @@ END;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''translog14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -305,6 +337,10 @@ END;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''bettransLC14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -312,6 +348,10 @@ END;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''bettransRNG14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -349,10 +389,6 @@ DECLARE @archiveDate TABLE (rid INT PRIMARY KEY IDENTITY(1,1), winlostdate SMALL
 DECLARE @wldate SMALLDATETIME
 , @WaitFor NVARCHAR(MAX);
 
--- Dynamic Delay Time --
-SELECT	@WaitFor = N'''';
-SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
-
 INSERT INTO @archiveDate (winlostdate)
 SELECT winlostdate
 FROM dbo.Task_ArchiveDate WITH (NOLOCK)
@@ -367,6 +403,10 @@ DECLARE @rowcount INT;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''bettrans14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -377,6 +417,10 @@ WAITFOR DELAY ''00:00:03'';
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''sum_winloss'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -384,6 +428,10 @@ END;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''bettransG14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -391,6 +439,10 @@ END;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''translog14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -398,6 +450,10 @@ END;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''bettransLC14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -405,6 +461,10 @@ END;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''bettransRNG14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -442,10 +502,6 @@ DECLARE @archiveDate TABLE (rid INT PRIMARY KEY IDENTITY(1,1), winlostdate SMALL
 DECLARE @wldate SMALLDATETIME
 , @WaitFor NVARCHAR(MAX);
 
--- Dynamic Delay Time --
-SELECT	@WaitFor = N'''';
-SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
-
 INSERT INTO @archiveDate (winlostdate)
 SELECT winlostdate
 FROM dbo.Task_ArchiveDate WITH (NOLOCK)
@@ -460,6 +516,10 @@ DECLARE @rowcount INT;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''bettrans14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -470,6 +530,10 @@ WAITFOR DELAY ''00:00:03'';
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''sum_winloss'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -477,6 +541,10 @@ END;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''bettransG14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -484,6 +552,10 @@ END;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''translog14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -491,6 +563,10 @@ END;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''bettransLC14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -498,6 +574,10 @@ END;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''bettransRNG14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -535,10 +615,6 @@ DECLARE @archiveDate TABLE (rid INT PRIMARY KEY IDENTITY(1,1), winlostdate SMALL
 DECLARE @wldate SMALLDATETIME
 , @WaitFor NVARCHAR(MAX);
 
--- Dynamic Delay Time --
-SELECT	@WaitFor = N'''';
-SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
-
 INSERT INTO @archiveDate (winlostdate)
 SELECT winlostdate
 FROM dbo.Task_ArchiveDate WITH (NOLOCK)
@@ -553,6 +629,10 @@ DECLARE @rowcount INT;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''bettrans14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -563,6 +643,10 @@ WAITFOR DELAY ''00:00:03'';
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''sum_winloss'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -570,6 +654,10 @@ END;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''bettransG14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -577,6 +665,10 @@ END;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''translog14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -584,6 +676,10 @@ END;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''bettransLC14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -591,6 +687,10 @@ END;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''bettransRNG14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -628,10 +728,6 @@ DECLARE @archiveDate TABLE (rid INT PRIMARY KEY IDENTITY(1,1), winlostdate SMALL
 DECLARE @wldate SMALLDATETIME
 , @WaitFor NVARCHAR(MAX);
 
--- Dynamic Delay Time --
-SELECT	@WaitFor = N'''';
-SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
-
 INSERT INTO @archiveDate (winlostdate)
 SELECT winlostdate
 FROM dbo.Task_ArchiveDate WITH (NOLOCK)
@@ -646,6 +742,10 @@ DECLARE @rowcount INT;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''bettrans14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -656,6 +756,10 @@ WAITFOR DELAY ''00:00:03'';
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''sum_winloss'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -663,6 +767,10 @@ END;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''bettransG14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -670,6 +778,10 @@ END;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''translog14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -677,6 +789,10 @@ END;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''bettransLC14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -684,6 +800,10 @@ END;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''bettransRNG14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -721,10 +841,6 @@ DECLARE @archiveDate TABLE (rid INT PRIMARY KEY IDENTITY(1,1), winlostdate SMALL
 DECLARE @wldate SMALLDATETIME
 , @WaitFor NVARCHAR(MAX);
 
--- Dynamic Delay Time --
-SELECT	@WaitFor = N'''';
-SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
-
 INSERT INTO @archiveDate (winlostdate)
 SELECT winlostdate
 FROM dbo.Task_ArchiveDate WITH (NOLOCK)
@@ -739,6 +855,10 @@ DECLARE @rowcount INT;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''bettrans14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -749,6 +869,10 @@ WAITFOR DELAY ''00:00:03'';
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''sum_winloss'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -756,6 +880,10 @@ END;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''bettransG14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -763,6 +891,10 @@ END;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''translog14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -770,6 +902,10 @@ END;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''bettransLC14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
@@ -777,6 +913,10 @@ END;
 SELECT @rowcount = 1;
 WHILE @rowcount <> 0
 BEGIN;
+	-- Dynamic Delay Time --
+	SELECT	@WaitFor = N'''';
+	SELECT	@WaitFor = @WaitFor + N''WAITFOR DELAY '''''' + dbo.f_BU_GetDelayTime(''FriRoutine'') + N'''''';'';
+
 	EXECUTE dbo.ExecRep_02 @winlostdate = @wldate, @Command = ''ALL_DB'', @deletedTarget = ''bettransRNG14'', @rowcount = @rowcount OUTPUT;
 	EXECUTE sys.sp_executesql @Query = @WaitFor;
 END;
