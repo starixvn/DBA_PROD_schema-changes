@@ -26,7 +26,7 @@ DROP INDEX IX_RefNo ON dbo.bettransRnG --> ok
 
 --//change index IX_winlostdate_statusID to IX_winlostdate
 DROP INDEX IX_WinLostDate_StatusId ON dbo.bettransRnG
-CREATE NONCLUSTERED INDEX [IX_WinLostDate_StatusId] ON [dbo].[bettransRnG]
+CREATE NONCLUSTERED INDEX [IX_WinLostDate] ON [dbo].[bettransRnG]
 (
 	[winlostdate] ASC
 ) ON [bettransRnG_index]
