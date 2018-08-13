@@ -28,17 +28,6 @@ GO
 
 
 --	BEGIN STEP 2:
---		Drop unused triggers - 1 object
-----------------------------------------------------------------------------------------------------
-
-USE	bodb02;
-GO
-
-DROP TRIGGER	dbo.TG_BalanceTrigger_ProcessData_20180630;
-GO
-
-
---	BEGIN STEP 3:
 --		Drop unused tables - 19 objects
 ----------------------------------------------------------------------------------------------------
 
