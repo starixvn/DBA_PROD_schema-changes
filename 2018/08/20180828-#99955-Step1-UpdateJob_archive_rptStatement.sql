@@ -47,53 +47,7 @@ BEGIN;
 						,	@database_name				= N'bodb_Report'
 						,	@flags						= 0
 						,	@command					= N'
-DECLARE	@InputDate	DATETIME;
-DECLARE	@TempDate	DATETIME;
-DECLARE	@Count		INT;
-DECLARE	@DateName	VARCHAR(10);
-
-DECLARE	@MBUDay		AS TABLE (BalanceUpDay SMALLDATETIME, MoveBetsDay SMALLDATETIME);
-
-IF	@InputDate IS NULL
-BEGIN;
-	INSERT INTO @MBUDay(BalanceUpDay, MoveBetsDay)
-	EXECUTE	bodb02.dbo.Age_SelBalanceUpDay;
-
-	SELECT	@InputDate = BalanceUpDay
-	FROM	@MBUDay;
-END;
-
-SELECT	@TempDate = DATEADD(DAY, 1, MAX(WinlostDate))
-FROM	dbo.rptStatement_Old WITH (NOLOCK)
-WHERE	CustID < 1000;
-
-IF	@InputDate = @TempDate
-	RAISERROR(''BalanceUp is not run yet!!!!!'', 16, 1) WITH NOWAIT;
-
-SELECT	@DateName = DATENAME(WEEKDAY, CONVERT(DATE, DATEADD(WEEK, -1, GETDATE())));
-
-IF	@DateName = ''Thursday''
-BEGIN;
-	SELECT	@count = -7;
-	WHILE	@count < 0
-	BEGIN;
-		SELECT	@TempDate = DATEADD(DAY, @Count, @InputDate);
-		EXECUTE	dbo.Task_archive_rptStatement_Insert @TempDate;
-		SELECT	@count = @count + 1;
-	END;
-END;
-ELSE IF	@DateName = ''Friday''
-BEGIN
-	SELECT	@count = -7;
-	WHILE	@count < 0
-	BEGIN;
-		SELECT	@TempDate = DATEADD(DAY, @Count, @InputDate);
-		EXECUTE	dbo.Task_archive_rptStatement_Delete @TempDate;
-		SELECT	@count = @count + 1;
-	END;
-END
-ELSE
-	RAISERROR (''Invalid BalanceUp Date!!!!!'', 16, 1) WITH NOWAIT;
+EXECUTE	dbo.Task_archive_rptStatement;
 ';
 
 	IF	@@ERROR <> 0 OR @ReturnCode <> 0
