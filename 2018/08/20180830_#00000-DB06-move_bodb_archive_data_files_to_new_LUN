@@ -1,0 +1,27 @@
+/*
+ Creator: 20180830@Lukas
+ Task:  move bodb_archive data files from V7300 to MD3820 - [Redmine: #00000]
+ Server:  DB06.bodb_archive
+*/
+
+-- step 1 rename bodb_archive to bodb_archive_deleted
+-- step 2 rename bodb_archive2 to bodb_archive
+
+USE bodb_archive
+GO
+ALTER DATABASE bodb_archive SET SINGLE_USER WITH ROLLBACK IMMEDIATE
+GO
+EXEC master..sp_renamedb 'bodb_archive','bodb_archive_deleted'
+GO
+ALTER DATABASE bodb_archive_deleted SET MULTI_USER 
+GO
+
+GO
+USE bodb_archive2
+GO
+ALTER DATABASE bodb_archive2 SET SINGLE_USER WITH ROLLBACK IMMEDIATE
+GO
+EXEC master..sp_renamedb 'bodb_archive2','bodb_archive'
+GO
+ALTER DATABASE bodb_archive SET MULTI_USER 
+GO
