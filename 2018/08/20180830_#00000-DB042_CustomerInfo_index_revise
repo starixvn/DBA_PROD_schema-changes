@@ -1,0 +1,57 @@
+
+-- run on DB042
+use bodb02 
+GO
+
+-- revise indexes on customer table
+CREATE NONCLUSTERED INDEX [IX_master] ON [dbo].[Customer]
+(
+	[mrecommend] ASC,
+	[roleid] ASC,
+	[creatdate] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = ON, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 100) ON [Customer_index]
+GO
+GO
+CREATE NONCLUSTERED INDEX [IX_agent] ON [dbo].[Customer]
+(
+	[recommend] ASC,
+	[roleid] ASC,
+	[creatdate] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = ON, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 100) ON [Customer_index]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_sma] ON [dbo].[Customer]
+(
+	[srecommend] ASC,
+	[roleid] ASC,
+	[creatdate] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = ON, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 100) ON [Customer_index]
+GO
+
+GO
+-- revise indexes on custinfo table
+GO
+CREATE NONCLUSTERED INDEX [IX_custinfo] ON [dbo].[custInfo]
+(
+	[mrecommend] ASC,
+	[roleid] ASC
+)
+INCLUDE ([closed],[reject]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = ON, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 100) ON [CustInfo_index]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_CI_srecommend] ON [dbo].[custInfo]
+(
+	[srecommend] ASC,
+	[roleid] ASC
+)
+INCLUDE ([closed],[reject]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = ON, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 100) ON [CustInfo_index]
+GO
+
+---------
+-- drop temporary indexes
+DROP INDEX [IX_mrecommend] ON custinfo
+DROP INDEX [IX_srecommend2] ON custinfo
+GO
+DROP INDEX [IX_agent2] ON customer 
+DROP INDEX [IX_master2] ON customer 
+DROP INDEX [IX_super] ON customer 
