@@ -1,3 +1,8 @@
+/*
+ Creator: 20180831@Lukas
+ Task:  add some columns into included list for indexes on customer/custinfo tables - [Redmine: #00000]
+ Server:  DB042.bodb02
+*/
 
 -- run on DB042
 use bodb02 
