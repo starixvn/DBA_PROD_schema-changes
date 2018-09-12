@@ -5,6 +5,7 @@
 --=======================bettransM====================================
 --//drop index
 drop index IX_bettransm_2 on dbo.bettransM
+drop index IX_bettransm_1 on dbo.bettransM
 
 --//create index
 CREATE NONCLUSTERED INDEX [IX_matchid] ON [dbo].[bettransM]
