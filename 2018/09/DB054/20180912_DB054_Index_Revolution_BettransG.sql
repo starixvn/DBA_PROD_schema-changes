@@ -19,7 +19,7 @@ CREATE NONCLUSTERED INDEX [IX_winlostdate] ON [dbo].[bettransG]
 (
 	[winlostdate] ASC
 )
-WITH (DROP_EXISTING = OFF, ONLINE = OFF) ON [BettransG]
+WITH (DROP_EXISTING = ON, ONLINE = OFF) ON [BettransG]
 GO
 --=====================bettransG14======================
 --//drop index

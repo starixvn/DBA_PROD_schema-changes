@@ -22,7 +22,7 @@ CREATE NONCLUSTERED INDEX [IX_refno_bettype] ON [dbo].[bettransM]
 	[bettype] ASC
 )
 INCLUDE (odds, stake, status, apositiontaking, mpositiontaking, spositiontaking,[betcheck])
-WITH (DROP_EXISTING = ON) ON [BettransM_index]
+WITH (DROP_EXISTING = OFF) ON [BettransM_index]
 GO
 
 --=====================bettransM14======================

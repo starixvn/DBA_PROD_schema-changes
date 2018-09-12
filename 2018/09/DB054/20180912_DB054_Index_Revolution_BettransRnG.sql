@@ -37,7 +37,7 @@ CREATE NONCLUSTERED INDEX [IX_recommend] ON [dbo].[bettransRnG]
 	[winlostdate] ASC
 )
 INCLUDE (gameId,productid,refno,statusId,currency,winlost,actual_stake,playercomm,awinlost,comm,custid,stake,apositiontaking,actualrate) 
-WITH (DROP_EXISTING = ON) ON [bettransRnG_index]
+WITH (DROP_EXISTING = OFF) ON [bettransRnG_index]
 GO
 
 CREATE NONCLUSTERED INDEX [IX_custid] ON [dbo].[bettransRnG]
@@ -52,7 +52,7 @@ CREATE NONCLUSTERED INDEX [IX_RefNo] ON [dbo].[bettransRnG]
 (
 	[RefNo] ASC
 ) INCLUDE (statusId,custid,stake, apositiontaking, mpositiontaking, tpositiontaking, spositiontaking, discount, adiscount, sdiscount, actual_stake,winlost, awinlost, mwinlost, swinlost, playercomm, comm, acomm, scomm, ContributionRate, BetStake) 
-WITH (DROP_EXISTING = ON) ON [bettransRnG_index]
+WITH (DROP_EXISTING = OFF) ON [bettransRnG_index]
 GO
 
 
@@ -67,5 +67,5 @@ drop index IX_WinLostDate_StatusId on dbo.bettransRnG14
 CREATE NONCLUSTERED INDEX [IX_winlostdate] ON [dbo].[bettransRnG14]
 (
 	[winlostdate] ASC
-)  WITH (DROP_EXISTING = OFF) ON [bettransRnG14]
+)  WITH (DROP_EXISTING = OFF) ON [bettransRnG14_index]
 GO
