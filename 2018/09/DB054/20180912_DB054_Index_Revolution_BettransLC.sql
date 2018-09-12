@@ -1,0 +1,69 @@
+﻿/*
+	Task: Index revolution @ bettransLC
+	Run on bodb02 @ DB054
+*/
+--=======================bettransLC====================================
+--//drop index
+drop index IX_custid on dbo.bettransLC
+drop index IX_custid_running on dbo.bettransLC
+drop index IX_recommend on dbo.bettransLC
+drop index IX_RefNo on dbo.bettransLC
+drop index IX_WinLostDate_StatusId on dbo.bettransLC
+
+--//create index
+CREATE NONCLUSTERED INDEX [IX_srecommend] ON [dbo].[bettransLC]
+(
+	[srecommend] ASC,
+	[winlostdate] ASC
+)
+INCLUDE (gameid,productid,refno,statusId,currency,winlost,actual_stake,playercomm,awinlost,comm,custid,mwinlost,recommend,acomm,swinlost,scomm,mrecommend,spositiontaking,stake,tpositiontaking,actualrate) 
+WITH (DROP_EXISTING = OFF) ON [bettransLC_index]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_mrecommend] ON [dbo].[bettransLC]
+(
+	[mrecommend] ASC,
+	[winlostdate] ASC
+)
+INCLUDE (gameid, productid,refno,statusId,currency,winlost,actual_stake,playercomm,awinlost,comm,custid,mwinlost,recommend,acomm,stake,apositiontaking,mpositiontaking,actualrate) 
+WITH (DROP_EXISTING = OFF) ON [bettransLC_index]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_recommend] ON [dbo].[bettransLC]
+(
+	[recommend] ASC,
+	[winlostdate] ASC
+)
+INCLUDE (gameId,productid,refno,statusId,currency,winlost,actual_stake,playercomm,awinlost,comm,custid,stake,apositiontaking,actualrate) 
+WITH (DROP_EXISTING = ON) ON [bettransLC_index]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_custid] ON [dbo].[bettransLC]
+(
+	[custid] ASC,
+	[winlostdate] ASC
+) INCLUDE (gameId, productid,refno,statusId,currency,winlost,actual_stake,playercomm,actualrate) 
+WITH (DROP_EXISTING = OFF) ON [bettransLC_index]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_RefNo] ON [dbo].[bettransLC]
+(
+	[RefNo] ASC
+) INCLUDE (statusId,custid,stake,apositiontaking,mpositiontaking,tpositiontaking,spositiontaking,discount, adiscount, sdiscount, actual_stake,winlost, awinlost, mwinlost, swinlost, playercomm, comm, acomm, scomm) 
+WITH (DROP_EXISTING = OFF) ON [bettransLC_index]
+GO
+
+
+--=====================bettransLC14======================
+--//drop index
+drop index IX_custid on dbo.bettransLC14
+drop index IX_recommend on dbo.bettransLC14
+drop index IX_RefNo on dbo.bettransLC14
+drop index IX_WinLostDate_StatusId on dbo.bettransLC14
+
+--//create index
+CREATE NONCLUSTERED INDEX [IX_winlostdate] ON [dbo].[bettransLC14]
+(
+	[winlostdate] ASC
+)  WITH (DROP_EXISTING = OFF) ON [bettransLC14]
+GO
