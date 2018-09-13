@@ -21,3 +21,9 @@ begin
 	set @message = convert(varchar(50), @CreatedDateTime, 121)
 	raiserror (@message, 0, 1) with nowait
 end
+
+go
+go
+---- truncate table instead of deleting
+
+TRUNCATE TABLE TempVariableNumberHistory
