@@ -15,7 +15,7 @@ CREATE CLUSTERED INDEX [CIX_recommend_winlostdate] ON [dbo].[rptCustomerTurnover
 (
 	[recommend] ASC,
 	[winlostdate] ASC
-)WITH (ONLINE = OFF, FILLFACTOR = 90) ON [ps_rptCustomerTurnover_monthly]([winlostdate])
+)WITH (ONLINE = OFF, FILLFACTOR = 90, DATA_COMPRESSION = PAGE) ON [ps_rptCustomerTurnover_monthly]([winlostdate])
 GO
 
 

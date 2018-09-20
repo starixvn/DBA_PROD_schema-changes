@@ -5,46 +5,15 @@ GO
 		+ Remove old data
 	Run on DB054
 */
-CREATE TABLE [dbo].[rptCustomerTurnover_tmp](
-	[custid] [int] NOT NULL,
-	[bettype] [smallint] NULL,
-	[sporttype] [smallint] NULL,
-	[currency] [tinyint] NULL,
-	[stake] [money] NOT NULL,
-	[winlost] [money] NULL,
-	[playercomm] [money] NULL,
-	[odds] [money] NULL,
-	[oddstype] [tinyint] NULL,
-	[statusid] [tinyint] NULL,
-	[recommend] [int] NULL,
-	[leagueid] [int] NULL,
-	[winlostdate] [smalldatetime] NULL,
-	[betcount] [int] NOT NULL,
-	[isBA] [tinyint] NULL,
-	[BetEffective] [money] NULL
-) ON [ps_rptCustomerTurnover_monthly]([winlostdate])
 
-GO
+exec [dbo].[DBA_CloneTableStructure]
+    @SourceSchema  = 'dbo',
+    @SourceTable = 'rptCustomerTurnover',
+    @DestinationSchema = 'dbo',
+    @DestinationTable = 'rptCustomerTurnover_tmp',
+    @RecreateIfExists = 0,
+	@FileGroup = ''
 
-CREATE CLUSTERED INDEX [CIX_winlostdate] ON [dbo].[rptCustomerTurnover_tmp]
-(
-	[winlostdate] ASC,
-	[recommend] ASC,
-	[sporttype] ASC,
-	[bettype] ASC,
-	[custid] ASC,
-	[currency] ASC
-) ON [ps_rptCustomerTurnover_monthly]([winlostdate])
-GO
-
-CREATE NONCLUSTERED INDEX [IX_recommend] ON [dbo].[rptCustomerTurnover_tmp]
-(
-	[recommend] ASC,
-	[leagueid] ASC
-)
-INCLUDE ( 	[odds],
-	[statusid]) ON [ps_rptCustomerTurnover_monthly]([winlostdate])
-GO
 
 ALTER TABLE [rptCustomerTurnover] SWITCH PARTITION 1 TO [rptCustomerTurnover_tmp] PARTITION 1; --Boundary: 2015-09-30 23:59:00
 ALTER TABLE [rptCustomerTurnover] SWITCH PARTITION 2 TO [rptCustomerTurnover_tmp] PARTITION 2; --Boundary: 2015-10-31 23:59:00
