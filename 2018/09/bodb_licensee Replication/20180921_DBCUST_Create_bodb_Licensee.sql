@@ -1,0 +1,195 @@
+/*
+
+	Task: Create new db bodb_Licensee for Replicate from DBCUST
+	Server: DBCUST
+
+*/
+USE [master]
+GO
+
+CREATE DATABASE [bodb_Licensee] ON  PRIMARY 
+( NAME = N'bodb_Licensee', FILENAME = N'H:\USER_DB\bodb_Licensee\bodb_Licensee.mdf' , SIZE = 3072KB , MAXSIZE = UNLIMITED, FILEGROWTH = 32768KB ), 
+ FILEGROUP [BA_DATA] 
+( NAME = N'BA_Data_1', FILENAME = N'H:\USER_DB\bodb_Licensee\BA_Data_01.ndf' , SIZE = 3072KB , MAXSIZE = UNLIMITED, FILEGROWTH = 32768KB ), 
+ FILEGROUP [BA_INDEX] 
+( NAME = N'BA_Index_1', FILENAME = N'H:\USER_DB\bodb_Licensee\BA_Index_01.ndf' , SIZE = 3072KB , MAXSIZE = UNLIMITED, FILEGROWTH = 32768KB ), 
+ FILEGROUP [DATA]  DEFAULT 
+( NAME = N'data01', FILENAME = N'H:\USER_DB\bodb_Licensee\data01.ndf' , SIZE = 3072KB , MAXSIZE = UNLIMITED, FILEGROWTH = 32768KB ), 
+( NAME = N'data02', FILENAME = N'H:\USER_DB\bodb_licensee\data02.ndf' , SIZE = 3072KB , MAXSIZE = UNLIMITED, FILEGROWTH = 32768KB ), 
+ FILEGROUP [licensee_index] 
+( NAME = N'licensee_index_2', FILENAME = N'H:\USER_DB\bodb_licensee\licensee_index_02.ndf' , SIZE = 3072KB , MAXSIZE = UNLIMITED, FILEGROWTH = 32768KB ), 
+ FILEGROUP [licensee_table] 
+( NAME = N'licensee_table_02', FILENAME = N'H:\USER_DB\bodb_Licensee\licensee_table_02.ndf' , SIZE = 3072KB , MAXSIZE = UNLIMITED, FILEGROWTH = 32768KB ), 
+ FILEGROUP [on_user_index] 
+( NAME = N'on_user_index_02', FILENAME = N'H:\USER_DB\bodb_Licensee\on_user_index_02.ndf' , SIZE = 1024KB , MAXSIZE = UNLIMITED, FILEGROWTH = 32768KB ), 
+ FILEGROUP [on_user_table] 
+( NAME = N'on_user_table_02', FILENAME = N'H:\USER_DB\bodb_Licensee\on_user_table_02.ndf' , SIZE = 1024KB , MAXSIZE = UNLIMITED, FILEGROWTH = 32768KB ), 
+ FILEGROUP [user_table] 
+( NAME = N'user_table_02', FILENAME = N'H:\USER_DB\bodb_Licensee\user_table_02.ndf' , SIZE = 3072KB , MAXSIZE = UNLIMITED, FILEGROWTH = 32768KB )
+ LOG ON 
+( NAME = N'bodb_Licensee_log', FILENAME = N'H:\USER_DB\bodb_Licensee\bodb_Licensee_log.ldf' , SIZE = 3072KB , MAXSIZE = 2048GB , FILEGROWTH = 262144KB ) 
+GO
+
+ALTER DATABASE [bodb_Licensee] SET COMPATIBILITY_LEVEL = 100
+GO
+
+ALTER DATABASE [bodb_Licensee] SET RECOVERY SIMPLE WITH NO_WAIT
+GO
+
+
+EXEC [bodb_Licensee].dbo.sp_changedbowner @loginame = N'sa', @map = false
+GO
+
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [bodb_Licensee].[dbo].[sp_fulltext_database] @action = 'disable'
+end
+GO
+
+ALTER DATABASE [bodb_Licensee] SET ANSI_NULL_DEFAULT OFF 
+GO
+
+ALTER DATABASE [bodb_Licensee] SET ANSI_NULLS OFF 
+GO
+
+ALTER DATABASE [bodb_Licensee] SET ANSI_PADDING OFF 
+GO
+
+ALTER DATABASE [bodb_Licensee] SET ANSI_WARNINGS OFF 
+GO
+
+ALTER DATABASE [bodb_Licensee] SET ARITHABORT OFF 
+GO
+
+ALTER DATABASE [bodb_Licensee] SET AUTO_CLOSE OFF 
+GO
+
+ALTER DATABASE [bodb_Licensee] SET AUTO_CREATE_STATISTICS ON 
+GO
+
+ALTER DATABASE [bodb_Licensee] SET AUTO_SHRINK OFF 
+GO
+
+ALTER DATABASE [bodb_Licensee] SET AUTO_UPDATE_STATISTICS ON 
+GO
+
+ALTER DATABASE [bodb_Licensee] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+
+ALTER DATABASE [bodb_Licensee] SET CURSOR_DEFAULT  GLOBAL 
+GO
+
+ALTER DATABASE [bodb_Licensee] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+
+ALTER DATABASE [bodb_Licensee] SET NUMERIC_ROUNDABORT OFF 
+GO
+
+ALTER DATABASE [bodb_Licensee] SET QUOTED_IDENTIFIER OFF 
+GO
+
+ALTER DATABASE [bodb_Licensee] SET RECURSIVE_TRIGGERS OFF 
+GO
+
+ALTER DATABASE [bodb_Licensee] SET  DISABLE_BROKER 
+GO
+
+ALTER DATABASE [bodb_Licensee] SET AUTO_UPDATE_STATISTICS_ASYNC ON 
+GO
+
+ALTER DATABASE [bodb_Licensee] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+
+ALTER DATABASE [bodb_Licensee] SET TRUSTWORTHY OFF 
+GO
+
+ALTER DATABASE [bodb_Licensee] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+
+ALTER DATABASE [bodb_Licensee] SET PARAMETERIZATION SIMPLE 
+GO
+
+ALTER DATABASE [bodb_Licensee] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+
+ALTER DATABASE [bodb_Licensee] SET HONOR_BROKER_PRIORITY OFF 
+GO
+
+ALTER DATABASE [bodb_Licensee] SET RECOVERY FULL 
+GO
+
+ALTER DATABASE [bodb_Licensee] SET  MULTI_USER 
+GO
+
+ALTER DATABASE [bodb_Licensee] SET PAGE_VERIFY CHECKSUM  
+GO
+
+ALTER DATABASE [bodb_Licensee] SET DB_CHAINING OFF 
+GO
+
+USE [bodb_Licensee]
+GO
+
+CREATE USER [bodbAdminNet] FOR LOGIN [bodbAdminNet] WITH DEFAULT_SCHEMA=[dbo]
+GO
+
+CREATE USER [bodbExtAccNet] FOR LOGIN [bodbExtAccNet] WITH DEFAULT_SCHEMA=[dbo]
+GO
+
+CREATE USER [bodbLicenseeNet] FOR LOGIN [bodbLicenseeNet] WITH DEFAULT_SCHEMA=[dbo]
+GO
+
+
+CREATE USER [Dot_Admin] FOR LOGIN [Dot_Admin] WITH DEFAULT_SCHEMA=[dbo]
+GO
+
+CREATE USER [Dot_Casino] FOR LOGIN [Dot_Casino] WITH DEFAULT_SCHEMA=[dbo]
+GO
+
+CREATE USER [Dot_Member] FOR LOGIN [Dot_Member] WITH DEFAULT_SCHEMA=[dbo]
+GO
+
+CREATE USER [SqlLink] FOR LOGIN [SqlLink] WITH DEFAULT_SCHEMA=[dbo]
+GO
+
+CREATE USER [vndba] FOR LOGIN [vnDBA] WITH DEFAULT_SCHEMA=[dbo]
+GO
+
+CREATE USER [vnteam] FOR LOGIN [vnteam] WITH DEFAULT_SCHEMA=[dbo]
+GO
+
+GRANT CONNECT TO [bodbAdminNet] AS [dbo]
+GO
+
+GRANT CONNECT TO [bodbExtAccNet] AS [dbo]
+GO
+
+GRANT CONNECT TO [bodbLicenseeNet] AS [dbo]
+GO
+
+GRANT SHOWPLAN TO [bodbLicenseeNet] AS [dbo]
+GO
+
+GRANT CONNECT TO [Dot_Admin] AS [dbo]
+GO
+
+GRANT CONNECT TO [Dot_Casino] AS [dbo]
+GO
+
+GRANT CONNECT TO [Dot_Member] AS [dbo]
+GO
+
+GRANT CONNECT TO [SqlLink] AS [dbo]
+GO
+
+
+GRANT CONNECT TO [vndba] AS [dbo]
+GO
+
+GRANT CONNECT TO [vnteam] AS [dbo]
+GO
+
+ALTER DATABASE [bodb_Licensee] SET  READ_WRITE 
+GO
+
+
