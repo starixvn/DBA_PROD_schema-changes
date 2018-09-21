@@ -33,10 +33,6 @@ GO
 ALTER DATABASE [bodb_Licensee] SET COMPATIBILITY_LEVEL = 100
 GO
 
-ALTER DATABASE [bodb_Licensee] SET RECOVERY SIMPLE WITH NO_WAIT
-GO
-
-
 EXEC [bodb_Licensee].dbo.sp_changedbowner @loginame = N'sa', @map = false
 GO
 
@@ -185,3 +181,9 @@ GO
 
 ALTER DATABASE [bodb_Licensee] SET  READ_WRITE 
 GO
+
+USE [master]
+GO
+ALTER DATABASE [bodb_Licensee] SET RECOVERY SIMPLE WITH NO_WAIT
+GO
+
