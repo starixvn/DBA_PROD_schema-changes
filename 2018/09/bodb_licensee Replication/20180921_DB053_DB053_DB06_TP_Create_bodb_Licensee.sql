@@ -156,9 +156,6 @@ GO
 CREATE USER [vndba] FOR LOGIN [vnDBA] WITH DEFAULT_SCHEMA=[dbo]
 GO
 
-CREATE USER [vnteam] FOR LOGIN [vnteam] WITH DEFAULT_SCHEMA=[dbo]
-GO
-
 GRANT CONNECT TO [bodbAdminNet] AS [dbo]
 GO
 
@@ -168,8 +165,6 @@ GO
 GRANT CONNECT TO [bodbLicenseeNet] AS [dbo]
 GO
 
-GRANT SHOWPLAN TO [bodbLicenseeNet] AS [dbo]
-GO
 
 GRANT CONNECT TO [Dot_Admin] AS [dbo]
 GO
@@ -187,10 +182,6 @@ GO
 GRANT CONNECT TO [vndba] AS [dbo]
 GO
 
-GRANT CONNECT TO [vnteam] AS [dbo]
-GO
 
 ALTER DATABASE [bodb_Licensee] SET  READ_WRITE 
 GO
-
-
