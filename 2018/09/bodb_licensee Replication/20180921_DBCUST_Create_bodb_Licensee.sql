@@ -163,10 +163,6 @@ GO
 GRANT CONNECT TO [bodbExtAccNet] AS [dbo]
 GO
 
-
-GRANT SHOWPLAN TO [bodbLicenseeNet] AS [dbo]
-GO
-
 GRANT CONNECT TO [Dot_Admin] AS [dbo]
 GO
 
