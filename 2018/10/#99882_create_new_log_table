@@ -1,0 +1,56 @@
+/*
+	Task: Create new file groups for Depsoit Customer Archive
+	Server: DB052
+	Database: bodb_CustomerLog
+	Data File Folder: M:\IBC_DB\DBALog_Archive_Dep_Cust\
+*/
+
+USE bodb_CustomerLog
+GO
+
+ALTER DATABASE bodb_CustomerLog
+ADD FILEGROUP DBALog_Archive_Cust;
+GO
+
+ALTER DATABASE bodb_CustomerLog 
+ADD FILE 
+(
+    NAME = DBALog_Archive_Dep_Cust_Table_01,
+    FILENAME = 'M:\IBC_DB\bodb_CustomerLog\DBALog_Archive_Dep_Cust_Table_01.ndf',
+    SIZE = 100MB,
+    MAXSIZE = UNLIMITED,
+    FILEGROWTH = 64MB
+)
+TO FILEGROUP DBALog_Archive_Cust;
+GO
+	
+ALTER DATABASE bodb_CustomerLog 
+ADD FILE 
+(
+    NAME = DBALog_Archive_Dep_Cust_Table_02,
+    FILENAME = 'M:\IBC_DB\bodb_CustomerLog\DBALog_Archive_Dep_Cust_Table_02.ndf',
+    SIZE = 100MB,
+    MAXSIZE = UNLIMITED,
+    FILEGROWTH = 64MB
+)
+TO FILEGROUP DBALog_Archive_Cust;
+GO
+
+
+USE bodb_CustomerLog
+GO
+
+--1.DBALog_Archive_Dep_Cust_Process
+	CREATE TABLE DBALog_Archive_Dep_Cust_Process (
+		LogId [int] IDENTITY(1,1)
+		,CustID INT
+		,Action VARCHAR(100)
+		,Status VARCHAR(100)
+		,Message VARCHAR(1000)
+		,LogTime DATETIME
+	) ON DBALog_Archive_Dep_Cust
+	WITH (DATA_COMPRESSION = PAGE) ;
+
+
+CREATE CLUSTERED INDEX CIX_LogTime ON DBALog_Archive_Dep_Cust_Process(LogTime) WITH (DATA_COMPRESSION = PAGE) ON DBALog_Archive_Cust
+
