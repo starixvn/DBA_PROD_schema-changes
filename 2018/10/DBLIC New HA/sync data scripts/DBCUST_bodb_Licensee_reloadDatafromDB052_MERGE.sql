@@ -1,3 +1,11 @@
+/*
+	Task: Sync data from DB052.bodb_Licensee to DBCUST.bodb_Licensee (script is auto-gen from DMVs)
+	Created by Daniel @20181001 for project DBLIC new HA structure (#99855)
+	Run at destination DBCUST.bodb_Licensee
+
+*/
+
+
 --*** Start Country
 declare @tmpAction_Country TABLE (ChangeType VARCHAR(20))
 MERGE dbo.Country TARGET
@@ -330,30 +338,26 @@ select @s_Licensees = @s_Licensees + '; DELETE - ' + ISNULL(convert( varchar(20)
 PRINT 'Licensees: ' + @s_Licensees
 --*** Done Licensees
 --*** Start LicenseeSourcedSetting - NEW
---declare @tmpAction_LicenseeSourcedSetting TABLE (ChangeType VARCHAR(20))
---SET IDENTITY_INSERT LicenseeSourcedSetting ON--MERGE dbo.LicenseeSourcedSetting TARGET
---USING (
---	SELECT  [ID], [SiteName], [LicenseeID], [SourcedLicenseeID], [SourcedCurrencyID], [IsActive], [Roleid], [EffectiveDate], [SourcedId], [SourcedSiteName], [EndDate]
---	FROM DB052.bodb_Licensee.dbo.LicenseeSourcedSetting WITH (NOLOCK)
---) AS SOURCE
---	ON	TARGET.[ID] = SOURCE.[ID]
---WHEN	MATCHED AND (SOURCE.[SiteName] <> TARGET.[SiteName] OR SOURCE.[LicenseeID] <> TARGET.[LicenseeID] OR SOURCE.[SourcedLicenseeID] <> TARGET.[SourcedLicenseeID] OR SOURCE.[SourcedCurrencyID] <> TARGET.[SourcedCurrencyID] OR SOURCE.[IsActive] <> TARGET.[IsActive] OR SOURCE.[Roleid] <> TARGET.[Roleid] OR SOURCE.[EffectiveDate] <> TARGET.[EffectiveDate] OR SOURCE.[SourcedId] <> TARGET.[SourcedId] OR SOURCE.[SourcedSiteName] <> TARGET.[SourcedSiteName] OR SOURCE.[EndDate] <> TARGET.[EndDate]) THEN
---	UPDATE SET  [SiteName] = SOURCE.[SiteName], [LicenseeID] = SOURCE.[LicenseeID], [SourcedLicenseeID] = SOURCE.[SourcedLicenseeID], [SourcedCurrencyID] = SOURCE.[SourcedCurrencyID], [IsActive] = SOURCE.[IsActive], [Roleid] = SOURCE.[Roleid], [EffectiveDate] = SOURCE.[EffectiveDate], [SourcedId] = SOURCE.[SourcedId], [SourcedSiteName] = SOURCE.[SourcedSiteName], [EndDate] = SOURCE.[EndDate]
---WHEN NOT MATCHED BY TARGET THEN	
---	INSERT ( [ID], [SiteName], [LicenseeID], [SourcedLicenseeID], [SourcedCurrencyID], [IsActive], [Roleid], [EffectiveDate], [SourcedId], [SourcedSiteName], [EndDate])
---	VALUES( SOURCE.[ID], SOURCE.[SiteName], SOURCE.[LicenseeID], SOURCE.[SourcedLicenseeID], SOURCE.[SourcedCurrencyID], SOURCE.[IsActive], SOURCE.[Roleid], SOURCE.[EffectiveDate], SOURCE.[SourcedId], SOURCE.[SourcedSiteName], SOURCE.[EndDate])	
---WHEN NOT MATCHED BY SOURCE THEN DELETE
---OUTPUT $action into @tmpAction_LicenseeSourcedSetting;
---SET IDENTITY_INSERT LicenseeSourcedSetting OFF
---declare @s_LicenseeSourcedSe varchar(100)
---select @s_LicenseeSourcedSe = 'INSERT - ' + ISNULL(convert( varchar(20), COUNT(1)), 0) from @tmpAction_LicenseeSourcedSetting where ChangeType = 'INSERT'
---select @s_LicenseeSourcedSe = @s_LicenseeSourcedSe + '; UPDATE - ' + ISNULL(convert( varchar(20), COUNT(1)), 0) from @tmpAction_LicenseeSourcedSetting where ChangeType = 'UPDATE'
---select @s_LicenseeSourcedSe = @s_LicenseeSourcedSe + '; DELETE - ' + ISNULL(convert( varchar(20), COUNT(1)), 0) from @tmpAction_LicenseeSourcedSetting where ChangeType = 'DELETE'
---PRINT 'LicenseeSourcedSetting: ' + @s_LicenseeSourcedSe
---*** Done LicenseeSourcedSetting
-
---*** Start LicenseeSourcedSetting
-DELETE LicenseeSourcedSettingINSERT INTO LicenseeSourcedSetting( [SiteName], [LicenseeID], [SourcedLicenseeID], [SourcedCurrencyID], [IsActive], [Roleid], [EffectiveDate], [SourcedId], [SourcedSiteName], [EndDate])SELECT  [SiteName], [LicenseeID], [SourcedLicenseeID], [SourcedCurrencyID], [IsActive], [Roleid], [EffectiveDate], [SourcedId], [SourcedSiteName], [EndDate]FROM DB052.bodb_Licensee.dbo.LicenseeSourcedSetting WITH(NOLOCK)
+declare @tmpAction_LicenseeSourcedSetting TABLE (ChangeType VARCHAR(20))
+SET IDENTITY_INSERT LicenseeSourcedSetting ONMERGE dbo.LicenseeSourcedSetting TARGET
+USING (
+	SELECT  [ID], [SiteName], [LicenseeID], [SourcedLicenseeID], [SourcedCurrencyID], [IsActive], [Roleid], [EffectiveDate], [SourcedId], [SourcedSiteName], [EndDate]
+	FROM DB052.bodb_Licensee.dbo.LicenseeSourcedSetting WITH (NOLOCK)
+) AS SOURCE
+	ON	TARGET.[ID] = SOURCE.[ID]
+WHEN	MATCHED AND (SOURCE.[SiteName] <> TARGET.[SiteName] OR SOURCE.[LicenseeID] <> TARGET.[LicenseeID] OR SOURCE.[SourcedLicenseeID] <> TARGET.[SourcedLicenseeID] OR SOURCE.[SourcedCurrencyID] <> TARGET.[SourcedCurrencyID] OR SOURCE.[IsActive] <> TARGET.[IsActive] OR SOURCE.[Roleid] <> TARGET.[Roleid] OR SOURCE.[EffectiveDate] <> TARGET.[EffectiveDate] OR SOURCE.[SourcedId] <> TARGET.[SourcedId] OR SOURCE.[SourcedSiteName] <> TARGET.[SourcedSiteName] OR SOURCE.[EndDate] <> TARGET.[EndDate]) THEN
+	UPDATE SET  [SiteName] = SOURCE.[SiteName], [LicenseeID] = SOURCE.[LicenseeID], [SourcedLicenseeID] = SOURCE.[SourcedLicenseeID], [SourcedCurrencyID] = SOURCE.[SourcedCurrencyID], [IsActive] = SOURCE.[IsActive], [Roleid] = SOURCE.[Roleid], [EffectiveDate] = SOURCE.[EffectiveDate], [SourcedId] = SOURCE.[SourcedId], [SourcedSiteName] = SOURCE.[SourcedSiteName], [EndDate] = SOURCE.[EndDate]
+WHEN NOT MATCHED BY TARGET THEN	
+	INSERT ( [ID], [SiteName], [LicenseeID], [SourcedLicenseeID], [SourcedCurrencyID], [IsActive], [Roleid], [EffectiveDate], [SourcedId], [SourcedSiteName], [EndDate])
+	VALUES( SOURCE.[ID], SOURCE.[SiteName], SOURCE.[LicenseeID], SOURCE.[SourcedLicenseeID], SOURCE.[SourcedCurrencyID], SOURCE.[IsActive], SOURCE.[Roleid], SOURCE.[EffectiveDate], SOURCE.[SourcedId], SOURCE.[SourcedSiteName], SOURCE.[EndDate])	
+WHEN NOT MATCHED BY SOURCE THEN DELETE
+OUTPUT $action into @tmpAction_LicenseeSourcedSetting;
+SET IDENTITY_INSERT LicenseeSourcedSetting OFF
+declare @s_LicenseeSourcedSe varchar(100)
+select @s_LicenseeSourcedSe = 'INSERT - ' + ISNULL(convert( varchar(20), COUNT(1)), 0) from @tmpAction_LicenseeSourcedSetting where ChangeType = 'INSERT'
+select @s_LicenseeSourcedSe = @s_LicenseeSourcedSe + '; UPDATE - ' + ISNULL(convert( varchar(20), COUNT(1)), 0) from @tmpAction_LicenseeSourcedSetting where ChangeType = 'UPDATE'
+select @s_LicenseeSourcedSe = @s_LicenseeSourcedSe + '; DELETE - ' + ISNULL(convert( varchar(20), COUNT(1)), 0) from @tmpAction_LicenseeSourcedSetting where ChangeType = 'DELETE'
+PRINT 'LicenseeSourcedSetting: ' + @s_LicenseeSourcedSe
 --*** Done LicenseeSourcedSetting
 --*** Start LicenseeSpecialCust
 declare @tmpAction_LicenseeSpecialCust TABLE (ChangeType VARCHAR(20))

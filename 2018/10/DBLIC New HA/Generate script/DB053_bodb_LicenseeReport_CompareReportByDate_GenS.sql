@@ -1,21 +1,29 @@
+/*
+	Task: Script to generate script compare data for tables sum @bodb_LicenseeReport, compare source is DB052
+	Created by Daniel @20181001 for project DBLIC new HA structure (#99855)
+	Run at destination DB053.bodb_LicenseeReport
+
+*/
+
+
 DECLARE @sql VARCHAR(MAX)
 DECLARE @tbl TABLE(name VARCHAR(50), flg bit)
 DECLARE @fromDate smalldatetime, @toDate smalldatetime
 
 SET NOCOUNT ON
 
-select @fromDate = '20180920', @toDate = '20180924'
+select @fromDate = '20181001', @toDate = '20181018'
 
 INSERT INTO @tbl(name)
 SELECT name FROM sys.tables where name IN(
 --'rpt_betting',
 --'rpt_betting_BA',
-'rptLicWinloss2',
-'rptLicWinlossGMT',
---'rptCustomerActive',
-'rptCustomerMatch',
-'rptCustomerTurnover',
-'rptWinlostbyLeague'
+--'rptLicWinloss2',
+--'rptLicWinlossGMT',
+----'rptCustomerActive',
+--'rptCustomerMatch',
+--'rptCustomerTurnover',
+--'rptWinlostbyLeague'
 
 --'rpt_BettingByProduct',
 --'rpt_BettingBySport',
@@ -24,7 +32,7 @@ SELECT name FROM sys.tables where name IN(
 --'rpt_ThirdPartyWL_ExtraGMT',
 --'rptDepWinlost_ThirdParty',
 --'rptDepWinlost_ThirdParty_Performance',
---'rptKenoWinloss',
+'rptKenoWinloss'
 --'rptLicCashoutSummary'
 
 )
@@ -102,7 +110,7 @@ BEGIN
 
 	SELECT @SumCol_Compare_list =
 		STUFF ((
-			SELECT ' OR ROUND(T1.SUM_' + name + ', 2) difXX ROUND(T2.SUM2_' + name + ', 2)'
+			SELECT ' OR isnull(ROUND(T1.SUM_' + name + ', 2),0) difXX isnull(ROUND(T2.SUM2_' + name + ', 2),0)'
 			FROM @Sum_Cols
 			FOR XML PATH('')), 1, 4, '')
 	SELECT @SumCol_Compare_list = REPLACE(@SumCol_Compare_list, 'difXX', '<>')
@@ -123,7 +131,7 @@ select @fromdate' + @tbl_name + ' = ''' + CONVERT(varchar(10), @fromDate, 120) +
 
 SELECT * into #tmp' + @tbl_name + ' FROM DB052.bodb_LicenseeReport.dbo.' + @tbl_name + ' with (nolock) where ' + @DateCol_list + ' between @fromdate' + @tbl_name + ' AND @todate' + @tbl_name + '
 
-select ''' + @tbl_name + ''', COALESCE(T1.' + @DateCol_list + ', T2.' + @DateCol_list + ') ' + @DateCol_list + ',
+select ''' + @tbl_name + ''' [Table], COALESCE(T1.' + @DateCol_list + ', T2.' + @DateCol_list + ') ' + @DateCol_list + ',
 	' + @Sumcol_list_Main + '
 from
 (
