@@ -469,19 +469,40 @@ select @s_On_User = @s_On_User + '; UPDATE - ' + ISNULL(convert( varchar(20), CO
 select @s_On_User = @s_On_User + '; DELETE - ' + ISNULL(convert( varchar(20), COUNT(1)), 0) from @tmpAction_On_User where ChangeType = 'DELETE'
 PRINT 'On_User: ' + @s_On_User
 --*** Done On_User
---*** Start Product3rd
+----*** Start Product3rd
+--declare @tmpAction_Product3rd TABLE (ChangeType VARCHAR(20))
+--MERGE dbo.Product3rd TARGET
+--USING (
+--	SELECT  [Productid], [ProductName], [Description], [ProductPrefix], [OfferSingle]
+--	FROM DB052.bodb_Licensee.dbo.Product3rd WITH (NOLOCK)
+--) AS SOURCE
+--	ON	TARGET.[Productid] = SOURCE.[Productid]
+--WHEN	MATCHED AND (SOURCE.[ProductName] <> TARGET.[ProductName] OR SOURCE.[Description] <> TARGET.[Description] OR SOURCE.[ProductPrefix] <> TARGET.[ProductPrefix] OR SOURCE.[OfferSingle] <> TARGET.[OfferSingle]) THEN
+--	UPDATE SET  [ProductName] = SOURCE.[ProductName], [Description] = SOURCE.[Description], [ProductPrefix] = SOURCE.[ProductPrefix], [OfferSingle] = SOURCE.[OfferSingle]
+--WHEN NOT MATCHED BY TARGET THEN	
+--	INSERT ( [Productid], [ProductName], [Description], [ProductPrefix], [OfferSingle])
+--	VALUES( SOURCE.[Productid], SOURCE.[ProductName], SOURCE.[Description], SOURCE.[ProductPrefix], SOURCE.[OfferSingle])	
+--WHEN NOT MATCHED BY SOURCE THEN DELETE
+--OUTPUT $action into @tmpAction_Product3rd;
+
+--declare @s_Product3rd varchar(100)
+--select @s_Product3rd = 'INSERT - ' + ISNULL(convert( varchar(20), COUNT(1)), 0) from @tmpAction_Product3rd where ChangeType = 'INSERT'
+--select @s_Product3rd = @s_Product3rd + '; UPDATE - ' + ISNULL(convert( varchar(20), COUNT(1)), 0) from @tmpAction_Product3rd where ChangeType = 'UPDATE'
+--select @s_Product3rd = @s_Product3rd + '; DELETE - ' + ISNULL(convert( varchar(20), COUNT(1)), 0) from @tmpAction_Product3rd where ChangeType = 'DELETE'
+--PRINT 'Product3rd: ' + @s_Product3rd
+----*** Done Product3rd--*** Start Product3rd (with new added column)
 declare @tmpAction_Product3rd TABLE (ChangeType VARCHAR(20))
 MERGE dbo.Product3rd TARGET
 USING (
-	SELECT  [Productid], [ProductName], [Description], [ProductPrefix], [OfferSingle]
+	SELECT  [Productid], [ProductName], [Description], [ProductPrefix], [OfferSingle], [ApplyDCS]
 	FROM DB052.bodb_Licensee.dbo.Product3rd WITH (NOLOCK)
 ) AS SOURCE
 	ON	TARGET.[Productid] = SOURCE.[Productid]
-WHEN	MATCHED AND (SOURCE.[ProductName] <> TARGET.[ProductName] OR SOURCE.[Description] <> TARGET.[Description] OR SOURCE.[ProductPrefix] <> TARGET.[ProductPrefix] OR SOURCE.[OfferSingle] <> TARGET.[OfferSingle]) THEN
-	UPDATE SET  [ProductName] = SOURCE.[ProductName], [Description] = SOURCE.[Description], [ProductPrefix] = SOURCE.[ProductPrefix], [OfferSingle] = SOURCE.[OfferSingle]
+WHEN	MATCHED AND (SOURCE.[ProductName] <> TARGET.[ProductName] OR SOURCE.[Description] <> TARGET.[Description] OR SOURCE.[ProductPrefix] <> TARGET.[ProductPrefix] OR SOURCE.[OfferSingle] <> TARGET.[OfferSingle] OR SOURCE.[ApplyDCS] <> TARGET.[ApplyDCS]) THEN
+	UPDATE SET  [ProductName] = SOURCE.[ProductName], [Description] = SOURCE.[Description], [ProductPrefix] = SOURCE.[ProductPrefix], [OfferSingle] = SOURCE.[OfferSingle], [ApplyDCS] = SOURCE.[ApplyDCS]
 WHEN NOT MATCHED BY TARGET THEN	
-	INSERT ( [Productid], [ProductName], [Description], [ProductPrefix], [OfferSingle])
-	VALUES( SOURCE.[Productid], SOURCE.[ProductName], SOURCE.[Description], SOURCE.[ProductPrefix], SOURCE.[OfferSingle])	
+	INSERT ( [Productid], [ProductName], [Description], [ProductPrefix], [OfferSingle], [ApplyDCS])
+	VALUES( SOURCE.[Productid], SOURCE.[ProductName], SOURCE.[Description], SOURCE.[ProductPrefix], SOURCE.[OfferSingle], SOURCE.[ApplyDCS])	
 WHEN NOT MATCHED BY SOURCE THEN DELETE
 OUTPUT $action into @tmpAction_Product3rd;
 
