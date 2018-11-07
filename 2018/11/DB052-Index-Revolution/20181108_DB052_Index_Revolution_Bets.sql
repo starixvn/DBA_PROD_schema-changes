@@ -20,7 +20,8 @@ GO
 
 CREATE NONCLUSTERED INDEX [IX_matchid] ON [dbo].[bets]
 (
-	[matchid] ASC
-) INCLUDE (winlostdate)
+	[matchid] ASC,
+	[winlostdate] ASC
+)
 WITH (DROP_EXISTING = OFF, ONLINE = OFF) ON bets_index
 GO
