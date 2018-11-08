@@ -4,10 +4,10 @@
 */
 --=======================bettransRnG====================================
 --//drop index
-drop index IX_custid on dbo.bettrans
-drop index IX_recommend on dbo.bettrans
-drop index IX_RefNo on dbo.bettrans
-drop index IX_WinLostDate_StatusId on dbo.bettrans
+drop index IX_custid on dbo.bettransRnG
+drop index IX_recommend on dbo.bettransRnG
+drop index IX_RefNo on dbo.bettransRnG
+drop index IX_WinLostDate_StatusId on dbo.bettransRnG
 
 --//create index
 CREATE NONCLUSTERED INDEX [IX_srecommend] ON [dbo].[bettransRnG]
