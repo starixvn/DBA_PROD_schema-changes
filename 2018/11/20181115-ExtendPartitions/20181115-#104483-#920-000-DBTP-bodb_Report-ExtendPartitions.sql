@@ -5,6 +5,8 @@
 	WBS:		#920-000
 */
 
+USE	bodb_Report;
+GO
 
 -------------------------
 -- ps_DepWLBK_monthly

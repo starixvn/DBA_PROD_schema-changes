@@ -5,6 +5,8 @@
 	WBS:		#520-000
 */
 
+USE	bodb_Report;
+GO
 
 -------------------------
 -- ps_STATEMENT_monthly2

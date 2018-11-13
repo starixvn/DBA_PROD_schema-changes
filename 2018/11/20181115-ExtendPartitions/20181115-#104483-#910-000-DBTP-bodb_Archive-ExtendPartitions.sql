@@ -5,6 +5,8 @@
 	WBS:		#910-000
 */
 
+USE	bodb_Archive;
+GO
 
 -------------------------
 -- ps_TRANSBK_monthly
