@@ -56,7 +56,7 @@ BEGIN
 	----*** Start LicenseeBATransaction_active
 	--TRUNCATE TABLE LicenseeBATransaction_active
 	--INSERT LicenseeBATransaction_active SELECT * FROM DB052.bodb_Licensee.dbo.LicenseeBATransaction_active with (nolock)
-	----*** Done LicenseeBATransaction_active
+	----*** Done LicenseeBATransaction_active
 	--*** Start LICSettings
 	declare @tmpAction_LICSettings TABLE (ChangeType VARCHAR(20))
 	SET IDENTITY_INSERT LICSettings ON	MERGE dbo.LICSettings TARGET
