@@ -35,7 +35,7 @@ GO
 
 /*
 	Add more
-	DB053: mwinlost,comm,acomm,mrecommend --> for job gen limit loss (3s per call)
+	DB053: mwinlost,comm,acomm,mrecommend --> for job gen limit loss (3 mins per call)
 	DB052: 
 */
 CREATE NONCLUSTERED INDEX [IX_custid] ON [dbo].[bettrans]
