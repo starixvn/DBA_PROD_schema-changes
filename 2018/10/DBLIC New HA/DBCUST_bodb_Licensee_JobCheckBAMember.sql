@@ -8,7 +8,7 @@ USE [msdb]
 GO
 DECLARE @jobId BINARY(16)
 EXEC  msdb.dbo.sp_add_job @job_name=N'bodb_Licensee: Check Missing BA Member', 
-		@enabled=0, 
+		@enabled=1, 
 		@notify_level_eventlog=0, 
 		@notify_level_email=2, 
 		@notify_level_netsend=2, 
