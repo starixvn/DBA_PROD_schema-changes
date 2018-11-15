@@ -29,7 +29,7 @@ CREATE NONCLUSTERED INDEX [IX_recommend] ON [dbo].[bettrans]
 	[recommend] ASC,
 	[winlostdate] ASC
 )
-INCLUDE(transid,refno,statusId,ruben,currency,winlost,actual_stake,playercomm,awinlost,comm,stake,modds,liveawayscore,apositiontaking,oddsspread,srecommend,mrecommend,actualrate,oddsid,odds,oddstype,tpositiontaking) 
+INCLUDE(transid,refno,statusId,ruben,currency,winlost,actual_stake,playercomm,awinlost,comm,stake,modds,liveawayscore,apositiontaking,oddsspread,srecommend,mrecommend,actualrate,oddsid,odds,oddstype,tpositiontaking,liveindicator,livehomescore,betdaqid) 
 WITH (DROP_EXISTING = ON, FILLFACTOR = 100) ON [Bettrans_index1]
 GO
 
