@@ -31,3 +31,10 @@ INCLUDE ( 	[roleid],
 	[username2],
 	[currency]) WITH (DROP_EXISTING = ON, ONLINE = OFF) ON [Customer_index]
 GO
+
+CREATE NONCLUSTERED INDEX [IX_username2] ON [dbo].[Customer]
+(
+	[username2] ASC
+)
+WITH (DROP_EXISTING = OFF, ONLINE = OFF) ON [Customer_index]
+GO
