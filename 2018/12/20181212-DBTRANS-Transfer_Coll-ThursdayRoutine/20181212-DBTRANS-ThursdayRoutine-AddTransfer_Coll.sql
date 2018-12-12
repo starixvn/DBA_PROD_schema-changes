@@ -35,7 +35,6 @@ FROM	msdb.dbo.sysjobs AS job WITH (NOLOCK)
 WHERE	job.name = @JobName;
 
 IF	@@ROWCOUNT = 0 OR @JobId IS NULL
-ELSE
 BEGIN;
 	SELECT	@Msg = N'~~ JOB DOES NOT EXIST ~~';
 	RAISERROR(@Msg, 0, 0) WITH NOWAIT;
