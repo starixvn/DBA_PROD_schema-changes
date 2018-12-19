@@ -1,0 +1,17 @@
+USE [bodb02]
+GO
+
+/*
+	 Creator: 20181127@Joseph
+	 Task: LAP - GD Bidme games
+	 Database: DBEXT.bodb02 (DB052, DB053, DB054)
+
+	 Revisions:
+	 -20181219@Joseph: LRF - Rename unused SPs [redmine:#101599]
+*/
+
+EXEC sp_rename 'Lrf_Rpt_ThirdPartyWinloss', 'DEL_Lrf_Rpt_ThirdPartyWinloss', 'Object'
+EXEC sp_rename 'LRF_Rpt_ThirdPartyWinloss_Ag', 'DEL_LRF_Rpt_ThirdPartyWinloss_Ag', 'Object'
+EXEC sp_rename 'LRF_Rpt_ThirdPartyWinloss_Mem', 'DEL_LRF_Rpt_ThirdPartyWinloss_Mem', 'Object'
+
+GO
