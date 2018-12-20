@@ -1,7 +1,7 @@
 /*
 	Creator:	20181220@Billy
-	Task:		Disable TO Control Triggers on DB053 - [Redmine: #106656]
-	Server:		DB053
+	Task:		Enable TO Control Triggers on DB054 - [Redmine: #106656]
+	Server:		DB054
 */
 
 
@@ -9,8 +9,7 @@ USE bodb02;
 GO
 
 --	BEGIN STEP 1:
---		Table [bettrans]
+--		Table [translog]
 ----------------------------------------------------------------------------------------------------
 
-DISABLE TRIGGER	dbo.bettrans_TOControl_INSERT ON dbo.bettrans;
-DISABLE TRIGGER	dbo.bettrans_TOControl_UPDATE ON dbo.bettrans;
+ENABLE TRIGGER	dbo.translog_TOControl_INSERT ON dbo.translog;
