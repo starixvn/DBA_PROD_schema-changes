@@ -1,0 +1,15 @@
+/*
+Created date: 20181220@Lukas
+Task: set tempdb size for best practice
+DB: DB052
+
+*/
+
+USE [master]
+GO
+ALTER DATABASE [tempdb] MODIFY FILE ( NAME = N'tempdb03', SIZE = 524288 KB )
+GO
+ALTER DATABASE [tempdb] MODIFY FILE ( NAME = N'tempdb02', SIZE = 524288 KB )
+GO
+ALTER DATABASE [tempdb] MODIFY FILE ( NAME = N'tempdev', SIZE = 524288 KB )
+GO
