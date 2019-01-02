@@ -7,7 +7,9 @@
 --step 1: Set DB read-only mode
 USE master
 GO
+ALTER DATABASE bodb_LicenseeReport SET SINGLE_USER WITH ROLLBACK IMMEDIATE
 ALTER DATABASE bodb_LicenseeReport SET READ_ONLY WITH NO_WAIT
+ALTER DATABASE bodb_LicenseeReport SET MULTI_USER
 
 /*step 2. Copy data files to new location:
  G:\IBC_DB\bodb_LicenseeReport -> N:\USER_DB\bodb_LicenseeReport
