@@ -12,6 +12,8 @@ ALTER DATABASE bodb_LicenseeReport SET READ_ONLY WITH NO_WAIT
 /*step 2. Copy data files to new location:
  G:\IBC_DB\bodb_LicenseeReport -> N:\USER_DB\bodb_LicenseeReport
  G:\IBC_DB\bodb_LicenseeReport_N -> N:\USER_DB\bodb_LicenseeReport_N
+ M:\IBC_DB\bodb_LicenseeReport -> N:\USER_DB\bodb_LicenseeReport
+ M:\IBC_DB\bodb_LicenseeReport_N -> N:\USER_DB\bodb_LicenseeReport_N
 */
 
 --=========End Before UM steps===============
