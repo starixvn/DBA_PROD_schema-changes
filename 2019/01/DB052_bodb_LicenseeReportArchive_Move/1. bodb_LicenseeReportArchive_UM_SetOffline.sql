@@ -1,5 +1,5 @@
 /*
-	Task: Set read-only mode & offline database bodb_LicenseeReportArchive for copying data files to new N:\
+	Task: Set offline database bodb_LicenseeReportArchive
 	Run at DB052 in UM ONLY!!
 */
 
@@ -10,8 +10,6 @@ GO
 ALTER DATABASE bodb_LicenseeReportArchive SET SINGLE_USER WITH ROLLBACK IMMEDIATE
 
 ALTER DATABASE bodb_LicenseeReportArchive SET OFFLINE
-
---step 2. Copy data files to new location: G:\IBC_DB\bodb_LicenseeReportArchive -> N:\USER_DB\bodb_LicenseeReportArchive
 
 
 																								

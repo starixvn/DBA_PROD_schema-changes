@@ -67,11 +67,6 @@ ALTER DATABASE bodb_LicenseeReportArchive MODIFY FILE (NAME = [rptCustomerTurnov
 ALTER DATABASE bodb_LicenseeReportArchive MODIFY FILE (NAME = [rptCustomerTurnover_bk_20M01], FILENAME = 'N:\USER_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_20M01.ndf')
 ALTER DATABASE bodb_LicenseeReportArchive MODIFY FILE (NAME = [rptCustomerTurnover_bk_20M02], FILENAME = 'N:\USER_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_20M02.ndf')
 ALTER DATABASE bodb_LicenseeReportArchive MODIFY FILE (NAME = [rptCustomerTurnover_bk_20M03], FILENAME = 'N:\USER_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_20M03.ndf')
-/*
-	Task: Alter database bodb_LicenseeReportArchive for moving data files to N:\
-	Run at DB052, after copying files to new location
-*/
-
 ALTER DATABASE bodb_LicenseeReportArchive MODIFY FILE (NAME = [rptCustomerTurnover_bk_20M04], FILENAME = 'N:\USER_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_20M04.ndf')
 ALTER DATABASE bodb_LicenseeReportArchive MODIFY FILE (NAME = [rptCustomerTurnover_bk_20M05], FILENAME = 'N:\USER_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_20M05.ndf')
 ALTER DATABASE bodb_LicenseeReportArchive MODIFY FILE (NAME = [rptCustomerTurnover_bk_20M06], FILENAME = 'N:\USER_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_20M06.ndf')
