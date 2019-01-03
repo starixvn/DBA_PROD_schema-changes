@@ -18,7 +18,7 @@ ALTER DATABASE bodb_Licensee SET OFFLINE WITH ROLLBACK IMMEDIATE
 ALTER DATABASE bodb_Licensee MODIFY FILE ( NAME = bodb_Licensee_Data, FILENAME = 'G:\IBC_DB\bodb_Licensee\bodb_Licensee_Data.mdf')
 ALTER DATABASE bodb_Licensee MODIFY FILE ( NAME = bodb_Licensee_Data_Log, FILENAME = 'G:\IBC_DB\bodb_Licensee\bodb_Licensee_Data_Log.ldf')
 ALTER DATABASE bodb_Licensee MODIFY FILE ( NAME = BATrans_Data, FILENAME = 'H:\IBC_DB\bodb_Licensee\BATrans_Data.ndf')
-ALTER DATABASE bodb_Licensee MODIFY FILE ( NAME = BATrans_Index, FILENAME = 'H:\IBC_DB\bodb_Licensee\BATrans_Index.mdf')
+ALTER DATABASE bodb_Licensee MODIFY FILE ( NAME = BATrans_Index, FILENAME = 'H:\IBC_DB\bodb_Licensee\BATrans_Index.ndf')
 
 --set online db
 ALTER DATABASE bodb_Licensee SET ONLINE
