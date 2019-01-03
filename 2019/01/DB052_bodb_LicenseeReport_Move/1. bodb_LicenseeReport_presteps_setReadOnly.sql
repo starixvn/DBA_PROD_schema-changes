@@ -5,7 +5,7 @@
 
 --Before UM ========================================
 --step 1: Set DB read-only mode
-USE master
+USE bodb_LicenseeReport
 GO
 ALTER DATABASE bodb_LicenseeReport SET SINGLE_USER WITH ROLLBACK IMMEDIATE
 ALTER DATABASE bodb_LicenseeReport SET READ_ONLY WITH NO_WAIT
