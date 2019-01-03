@@ -15,8 +15,8 @@ ALTER DATABASE bodb_Licensee SET OFFLINE WITH ROLLBACK IMMEDIATE
 --Copy the file or files to the new location. --> copy manually
 
 --alter data file
-ALTER DATABASE bodb_Licensee MODIFY FILE ( NAME = bodb_Licensee_Data, FILENAME = 'H:\IBC_DB\bodb_Licensee\bodb_Licensee_Data.mdf')
-ALTER DATABASE bodb_Licensee MODIFY FILE ( NAME = bodb_Licensee_Data_Log, FILENAME = 'H:\IBC_DB\bodb_Licensee\bodb_Licensee_Data_Log.ldf')
+ALTER DATABASE bodb_Licensee MODIFY FILE ( NAME = bodb_Licensee_Data, FILENAME = 'G:\IBC_DB\bodb_Licensee\bodb_Licensee_Data.mdf')
+ALTER DATABASE bodb_Licensee MODIFY FILE ( NAME = bodb_Licensee_Data_Log, FILENAME = 'G:\IBC_DB\bodb_Licensee\bodb_Licensee_Data_Log.ldf')
 ALTER DATABASE bodb_Licensee MODIFY FILE ( NAME = BATrans_Data, FILENAME = 'H:\IBC_DB\bodb_Licensee\BATrans_Data.ndf')
 ALTER DATABASE bodb_Licensee MODIFY FILE ( NAME = BATrans_Index, FILENAME = 'H:\IBC_DB\bodb_Licensee\BATrans_Index.mdf')
 
