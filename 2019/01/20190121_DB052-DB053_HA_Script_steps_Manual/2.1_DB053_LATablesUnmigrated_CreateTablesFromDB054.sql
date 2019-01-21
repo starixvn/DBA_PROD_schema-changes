@@ -1,5 +1,5 @@
 /*
-	Task: Script create LA/OA tables that have not migrated to DBCUST yet, get from DBLIC(DB052). This would be for failover the tables to DB053 if DB052 were down.
+	Task: Script create LA/OA tables that have not migrated to DBCUST yet, get from DB054 (standby for DB052). This would be for failover the tables to DB053 if DB052 were down.
 	Database: DB053.bodb_Licensee
 */
 
