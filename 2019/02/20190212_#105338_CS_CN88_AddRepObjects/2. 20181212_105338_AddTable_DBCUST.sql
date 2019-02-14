@@ -1,9 +1,26 @@
 /*
 	Created: 20181212@Elodie
 	Task: Prepare structure for new credit site
-	DB: DB06/bodb02, DBTP/bodb02
+	DB: DBCUST/CustDB
 */
-USE bodb02
+
+/*
+	DROP TABLE dbo.CS_ByteSeqNumber
+	DROP TABLE dbo.CS_CommTemplate
+	DROP TABLE dbo.CS_CustBetSetting_Agent
+	DROP TABLE dbo.CS_CustBetSetting_Member
+	DROP TABLE dbo.CS_CustDiscount_Agent
+	DROP TABLE dbo.CS_CustDiscount_Member
+	DROP TABLE dbo.CS_CustGroupDiscount_Member
+	DROP TABLE dbo.CS_CustPTGroupSetting_Member
+	DROP TABLE dbo.CS_CustPTSetting_Agent
+	DROP TABLE dbo.CS_CustPTSetting_Member
+	DROP TABLE dbo.CS_CustSettingMode
+	DROP TABLE dbo.CS_GroupConfig
+	DROP TABLE dbo.CS_ProductBetSetting
+	DROP TABLE dbo.CS_ProductSettingDetail
+*/
+USE CustDB
 GO
 
 CREATE TABLE CS_ByteSeq
@@ -33,6 +50,11 @@ CREATE TABLE CS_CustPTSetting_Agent
 	AgentPT		BINARY(10),
 	MinPT		BINARY(10),
 	MaxPT		BINARY(10),
+	SuperPT2	BINARY(10),
+	MasterPT2	BINARY(10),
+	AgentPT2	BINARY(10),
+	MinPT2		BINARY(10),
+	MaxPT2		BINARY(10),
 CONSTRAINT [PK_CS_CustPTSetting_Agent] PRIMARY KEY CLUSTERED 
 (
 	CustId ASC
@@ -46,22 +68,12 @@ CREATE TABLE CS_CustPTGroupSetting_Member
 	SuperPT		BINARY(10) NOT NULL,
 	MasterPT	BINARY(10) NOT NULL,
 	AgentPT		BINARY(10) NOT NULL,
+	SuperPT2	BINARY(10) NOT NULL,
+	MasterPT2	BINARY(10) NOT NULL,
+	AgentPT2	BINARY(10) NOT NULL,
 CONSTRAINT [PK_CS_CustPTGroupSetting_Member] PRIMARY KEY CLUSTERED 
 (
 	AgentId ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [CS_CustPTSetting_Member_table]
-) ON [CS_CustPTSetting_Member_table]
-GO
-
-CREATE TABLE CS_CustPTSetting_Member  
-(
-	CustId		INT NOT NULL,
-	SuperPT		BINARY(10) NOT NULL,
-	MasterPT	BINARY(10) NOT NULL,
-	AgentPT		BINARY(10) NOT NULL,
-CONSTRAINT [PK_CS_CustPTSetting_Member] PRIMARY KEY CLUSTERED 
-(
-	CustId ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [CS_CustPTSetting_Member_table]
 ) ON [CS_CustPTSetting_Member_table]
 GO
@@ -73,7 +85,7 @@ CREATE TABLE CS_CustBetSetting_Agent
 	BetType			SMALLINT NOT NULL,
 	IsLive			BIT NOT NULL,
 	MaxBet			MONEY,
-	MaxPerMatch		MONEY,
+	MaxPerEvent		MONEY,
 CONSTRAINT [PK_CS_CustBetSetting_Agent] PRIMARY KEY CLUSTERED 
 (
 	CustId ASC,
@@ -91,7 +103,7 @@ CREATE TABLE CS_CustBetSetting_Member
 	BetType			SMALLINT NOT NULL,
 	IsLive			BIT NOT NULL,
 	MaxBet			MONEY,
-	MaxPerMatch		MONEY,
+	MaxPerEvent		MONEY,
 CONSTRAINT [PK_CS_CustBetSetting_Member] PRIMARY KEY CLUSTERED 
 (
 	CustId ASC,
@@ -110,7 +122,7 @@ CREATE TABLE CS_ProductBetSetting
 	Currency		TINYINT,
 	MinBet			MONEY,
 	MaxBet			MONEY,
-	MaxPerMatch		MONEY,
+	MaxPerEvent		MONEY,
 CONSTRAINT [PK_CS_ProductBetSetting] PRIMARY KEY CLUSTERED 
 (
 	SportType ASC,
@@ -137,6 +149,18 @@ CONSTRAINT [PK_CS_GroupConfig] PRIMARY KEY CLUSTERED
 ) ON [DATA]
 GO
 
+CREATE TABLE CS_CommTemplate
+(
+	ValueId		TINYINT NOT NULL,
+	Value		DECIMAL(9,8) NOT NULL,
+CONSTRAINT [PK_CS_CommTemplate] PRIMARY KEY CLUSTERED 
+(
+	ValueId ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [DATA]
+) ON [DATA]
+GO
+
+CREATE NONCLUSTERED INDEX IX_CS_CommTemplate_Value ON CS_CommTemplate(Value)
 
 CREATE TABLE CS_CustDiscount_Agent  
 (
