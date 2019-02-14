@@ -1,0 +1,70 @@
+/*
+Created : 20190114@Sophia
+Task: Move Transfer_Fi from DB053.bodb_Sumamry to DB06.bodb_Archive  [Redmind: #105415]
+DB: (DB06) DBARC.bodb_archive 
+
+*/
+
+USE [bodb_archive]
+GO
+
+ALTER DATABASE [bodb_archive] ADD filegroup [TRANSFI]
+ALTER DATABASE [bodb_archive] ADD filegroup [TRANSFI_INDEX]
+GO
+
+ALTER DATABASE [bodb_archive] ADD FILE (name = 'TRANSFI', filename ='I:\IBC_DB\bodb_Archive\TRANSFI.ndf', SIZE = 512 MB ,FILEGROWTH = 64 MB ) TO filegroup [TRANSFI]
+
+ALTER DATABASE [bodb_archive] ADD FILE (name = 'TRANSFI_INDEX', filename ='I:\IBC_DB\bodb_Archive\TRANSFI_INDEX.ndf', SIZE = 128 MB ,FILEGROWTH = 64 MB ) TO filegroup TRANSFI_INDEX
+ 
+GO 
+
+CREATE TABLE [dbo].[transfer_fi](
+	[transid] [bigint] NOT NULL,
+	[custid] [int] NOT NULL,
+	[transdate] [datetime] NOT NULL,
+	[bettype] [smallint] NULL,
+	[actual_stake] [money] NOT NULL,
+	[winlost] [money] NOT NULL,
+	[TransDesc] [nvarchar](300) NULL,
+	[winlostdate] [smalldatetime] NOT NULL,
+	[recommend] [int] NOT NULL,
+	[mrecommend] [int] NOT NULL,
+	[srecommend] [int] NOT NULL,
+	[currency] [tinyint] NULL,
+	[refno] [bigint] NOT NULL,
+	[creator] [int] NULL,
+	[CheckerID] [int] NULL,
+	[CheckerName] [varchar](50) NULL,
+	[checkTime] [datetime] NULL,
+	[ActualRate] [float] NULL,
+	[isReversal] [bit] NULL
+) ON [TRANSFI]
+
+GO
+
+GRANT SELECT ON [transfer_fi] TO [bodbAdminNet]
+GO 
+
+--GRANT SELECT ON [transfer_fi] TO [bodbExtAccNet] ???
+--GO 
+
+
+SET ANSI_PADDING OFF
+GO
+
+/****** Object:  Index [CIX_winlostdate]    Script Date: 1/14/2019 3:02:50 AM ******/
+CREATE CLUSTERED INDEX [CIX_winlostdate] ON [dbo].[transfer_fi]
+(
+	[winlostdate] ASC,
+	[custid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [TRANSFI]
+GO
+
+/****** Object:  Index [IX_refno]    Script Date: 1/14/2019 3:02:50 AM ******/
+CREATE NONCLUSTERED INDEX [IX_refno] ON [dbo].[transfer_fi]
+(
+	[refno] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [TRANSFI_INDEX]
+GO
+
+
