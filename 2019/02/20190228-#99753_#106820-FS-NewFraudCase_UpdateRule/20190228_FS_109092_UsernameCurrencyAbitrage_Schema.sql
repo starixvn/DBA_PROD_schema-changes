@@ -70,9 +70,11 @@ GO
 
 CREATE TABLE tempPerformance
 (
-	ID	INT			IDENTITY
+	ID	INT			IDENTITY(1,1)
 	, StartTime		DATETIME	NULL
 	, EndTime		DATETIME	NULL
 	, Step			TinyINT		NULL
 	, Notes			NVARCHAR(1000)	NULL
 ) ON [DATA]
+
+CREATE CLUSTERED INDEX CIX_tempPerformance ON dbo.tempPerformance (ID) ON DATA
