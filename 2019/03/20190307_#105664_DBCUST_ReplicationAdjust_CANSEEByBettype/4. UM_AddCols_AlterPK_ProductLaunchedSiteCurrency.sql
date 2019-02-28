@@ -4,7 +4,6 @@
 	Warning! Table in replication, need to remove from replication before proceeding
 	DB: DBCust, DB06, DBTP, DBMNL & MNL DBCUST, MNL DB06
 */
-
 ALTER TABLE ProductLaunchedSiteCurrency ADD BetType SMALLINT NOT NULL DEFAULT(0)
 ALTER TABLE ProductLaunchedSiteCurrency ADD LaunchedLevel TINYINT NOT NULL DEFAULT(0)
 
@@ -19,6 +18,9 @@ ALTER TABLE [dbo].[ProductLaunchedSiteCurrency] ADD  CONSTRAINT [PK_ProductLaunc
 	[SiteID] ASC,
 	[Currency] ASC,
 	[SportType] ASC,
+	[BetType] ASC,
 	[LaunchedLevel] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [DATA]
 GO
+
+
