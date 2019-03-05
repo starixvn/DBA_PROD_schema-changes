@@ -1,5 +1,5 @@
 /*
-	Task: Disable dist cleanup job for DBCUST rep
+	Task: Enable dist cleanup job for DBCUST rep
 	Run on DBDIST03
 */
 
