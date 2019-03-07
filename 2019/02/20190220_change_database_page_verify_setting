@@ -1,0 +1,12 @@
+
+/*
+    Created: 20190220@Lukas
+    Task: change database setting PAGE VERIFY to CHECKSUM
+    DB: DB053.bodb02
+*/
+ 
+
+USE master 
+GO
+
+ALTER DATABASE bodb02 SET PAGE_VERIFY CHECKSUM
