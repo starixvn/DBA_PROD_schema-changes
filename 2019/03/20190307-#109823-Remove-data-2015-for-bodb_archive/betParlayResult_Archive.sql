@@ -7,7 +7,7 @@
 
 declare @winlostdate smalldatetime, @message varchar(200)
 
-set @winlostdate = '2015-10-01 00:00:00'
+set @winlostdate = '2011-11-24 00:00:00'
 
 while @winlostdate < '2016-01-01'
 begin
