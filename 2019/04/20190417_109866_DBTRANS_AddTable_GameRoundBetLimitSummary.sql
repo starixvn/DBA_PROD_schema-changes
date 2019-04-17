@@ -15,15 +15,6 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-IF EXISTS (
-			SELECT 1
-			FROM sys.tables WITH(NOLOCK)
-			WHERE object_id = OBJECT_ID('[dbo].[GameRoundBetLimitSummary]')
-			)
-BEGIN
-	DROP TABLE [dbo].[GameRoundBetLimitSummary]
-END
-
 CREATE TABLE [dbo].[GameRoundBetLimitSummary](
 	[GameRound] [varchar](50) NOT NULL,
 	[SportType] [smallint] NOT NULL,
