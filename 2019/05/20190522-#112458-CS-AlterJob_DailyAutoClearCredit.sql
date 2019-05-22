@@ -73,7 +73,9 @@ EXEC msdb.dbo.sp_add_jobstep @job_id=N'2acdc64b-aa08-42b5-8967-415b47157495', @s
 		@retry_attempts=0, 
 		@retry_interval=0, 
 		@os_run_priority=0, @subsystem=N'TSQL', 
-		@command=N'exec dbo.Task_ClearCredit_CustomerClearCredit_Member', 
+		@command=N'EXEC DBACC.bodb02.dbo.DBA_ArchiveAccount_UpdateAcception
+GO
+EXEC dbo.Task_ClearCredit_CustomerClearCredit_Member', 
 		@database_name=N'CustDB', 
 		@flags=0
 GO
@@ -91,3 +93,4 @@ EXEC msdb.dbo.sp_add_jobstep @job_id=N'2acdc64b-aa08-42b5-8967-415b47157495', @s
 		@database_name=N'CustDB', 
 		@flags=0
 GO
+
