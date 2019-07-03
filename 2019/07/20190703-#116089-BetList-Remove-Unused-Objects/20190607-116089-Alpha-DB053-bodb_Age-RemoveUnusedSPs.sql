@@ -1,0 +1,60 @@
+/*
+	Created by: Kos
+	Date: 20190607
+	Task: Remove unused stored procedures [Redmine ID: #116089]
+	DB: DB053.bodb_Age
+*/
+
+USE [bodb_Age]
+GO
+
+EXEC sp_rename 'dbo.Acc_BetListByDayAll', 'Acc_BetListByDayAll_delete'
+EXEC sp_rename 'dbo.Acc_BetsSelBetList_ByTransID', 'Acc_BetsSelBetList_ByTransID_delete'
+EXEC sp_rename 'dbo.Acc_BetsSelBetList_ByTransID_Advance', 'Acc_BetsSelBetList_ByTransID_Advance_delete'
+EXEC sp_rename 'dbo.Age_BetList_SelRunningAll_API', 'Age_BetList_SelRunningAll_API_delete'
+EXEC sp_rename 'dbo.Age_BetList_SelRunningByBettype_Ag', 'Age_BetList_SelRunningByBettype_Ag_delete'
+EXEC sp_rename 'dbo.Age_BetList_SelRunningByBettype_MAg', 'Age_BetList_SelRunningByBettype_MAg_delete'
+EXEC sp_rename 'dbo.Age_BetList_SelRunningByBettypeMatch_SAg', 'Age_BetList_SelRunningByBettypeMatch_SAg_delete'
+EXEC sp_rename 'dbo.Age_BetList_SelRunningByDate_Mem', 'Age_BetList_SelRunningByDate_Mem_delete'
+EXEC sp_rename 'dbo.Age_CoreBetList_Running_SelBetTicket', 'Age_CoreBetList_Running_SelBetTicket_delete'
+EXEC sp_rename 'dbo.Age_SmartPhone_BetList_SelRunningByDate_Mem', 'Age_SmartPhone_BetList_SelRunningByDate_Mem_delete'
+
+GO
+DROP PROCEDURE dbo.Acc_BetListByDayAll_xtest;
+DROP PROCEDURE dbo.Acc_BetsSelBetList_ByTransID_Advance_xtest;
+DROP PROCEDURE dbo.Acc_BetsSelBetList_ByTransID_xtest;
+DROP PROCEDURE dbo.Acc_BetsSelBetList_xtest;
+DROP PROCEDURE dbo.Age_BetList_SelAllByDate_Mem_xpre;
+DROP PROCEDURE dbo.Age_BetList_SelAllByDate_Mem_xtest;
+DROP PROCEDURE dbo.Age_BetList_SelByDayAll_Mem_xtest;
+DROP PROCEDURE dbo.Age_BetList_SelRunningByBettype_Ag_UAT2;
+DROP PROCEDURE dbo.Age_BetList_SelRunningByBettype_Ag_UAT3;
+DROP PROCEDURE dbo.Age_BetList_SelRunningByBettype_Ag_xpre;
+DROP PROCEDURE dbo.Age_BetList_SelRunningByBettype_Ag_xtest;
+DROP PROCEDURE dbo.Age_BetList_SelRunningByBettype_MAg_UAT2;
+DROP PROCEDURE dbo.Age_BetList_SelRunningByBettype_MAg_UAT3;
+DROP PROCEDURE dbo.Age_BetList_SelRunningByBettype_MAg_xpre;
+DROP PROCEDURE dbo.Age_BetList_SelRunningByBettype_MAg_xtest;
+DROP PROCEDURE dbo.Age_BetList_SelRunningByBettypeMatch_SAg_UAT3;
+DROP PROCEDURE dbo.Age_BetList_SelRunningByBettypeMatch_SAg_xpre;
+DROP PROCEDURE dbo.Age_BetList_SelRunningByBettypeMatch_SAg_xtest;
+DROP PROCEDURE dbo.Age_BetList_SelRunningByDate_Mem_bk;
+DROP PROCEDURE dbo.Age_BetList_SelRunningByDate_Mem_dontest;
+DROP PROCEDURE dbo.Age_BetList_SelRunningByDate_Mem_dontest02;
+DROP PROCEDURE dbo.Age_BetList_SelRunningByDate_Mem_dontest03;
+DROP PROCEDURE dbo.Age_BetList_SelRunningByDate_Mem_dontest04;
+DROP PROCEDURE dbo.Age_BetList_SelRunningByDate_Mem_Francis;
+DROP PROCEDURE dbo.Age_BetList_SelRunningByDate_Mem_lukas;
+DROP PROCEDURE dbo.Age_BetList_SelRunningByDate_Mem_Patrick_Test;
+DROP PROCEDURE dbo.Age_BetList_SelRunningByDate_Mem_UAT1;
+DROP PROCEDURE dbo.Age_BetList_SelRunningByDate_Mem_UAT2;
+DROP PROCEDURE dbo.Age_BetList_SelRunningByDate_Mem_UAT3;
+DROP PROCEDURE dbo.Age_BetList_SelRunningByDate_Mem_UAT3_bak;
+DROP PROCEDURE dbo.Age_BetList_SelRunningByDate_Mem_UAT4;
+DROP PROCEDURE dbo.Age_BetList_SelRunningByDate_Mem_xpre;
+DROP PROCEDURE dbo.Age_BetList_SelRunningByDate_Mem_xtest;
+DROP PROCEDURE dbo.Age_BetList_SelWinLossByDate_Mem_xtest;
+DROP PROCEDURE dbo.Age_CoreBetList_Running_SelBetTicket_UAT3;
+DROP PROCEDURE dbo.Age_CoreBetList_Running_SelBetTicket_xpre;
+DROP PROCEDURE dbo.Age_CoreBetList_Running_SelBetTicket_xtest;
+
