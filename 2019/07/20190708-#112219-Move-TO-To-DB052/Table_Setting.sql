@@ -1,3 +1,8 @@
+/*
+	Task: Move TO Control func from DB054 to DB052/53 [Redmine: #112219]
+		+ add new table setting
+	Run on DB052/53
+*/
 USE [bodb02]
 GO
 
@@ -29,17 +34,10 @@ CREATE CLUSTERED INDEX [CIX_TOControl_TicketDetails_Update] ON [dbo].[TOControl_
 ) ON [ServiceBroker]
 GO
 
-
 CREATE TABLE [dbo].[TOControl_Tickets_Setting](
 	[sKey] [varchar](30) NOT NULL,
 	[sValue] [bigint] NOT NULL
 ) ON [PRIMARY]
-GO
-
-CREATE TABLE [dbo].[TOControl_GlobalVariables](
-	[VName] [varchar](20) NULL,
-	[VValue] [varchar](200) NULL
-) ON [Others_table]
 GO
 
 CREATE TABLE [dbo].[TOControl_Transition](
@@ -70,8 +68,3 @@ BEGIN
 END
 
 GO
-
-IF NOT EXISTS (SELECT TOP 1 1 FROM TOControl_GlobalVariables WHERE VName = 'MaxID')
-BEGIN
-	INSERT INTO TOControl_GlobalVariables(VName, VValue) VALUES ('MaxID', 0)
-END

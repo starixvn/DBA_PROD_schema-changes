@@ -1,4 +1,8 @@
-
+/*
+	Task: Move TO Control func from DB054 to DB052/53 [Redmine: #112219]
+		+ init conversation
+	Run on DB052/53
+*/
 GO --int setting data
 
 insert into [sb].[ConfigurationReference](FunctionName, MaxReceiveMsg, MaxReceiveTimeOut, IsExistingTarget)

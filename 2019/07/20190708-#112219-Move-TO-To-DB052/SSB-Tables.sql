@@ -1,3 +1,9 @@
+/*
+	Task: Move TO Control func from DB054 to DB052/53 [Redmine: #112219]
+		+ create ssb objects
+	Run on DB052/53
+*/
+
 USE [bodb02]
 GO
 
