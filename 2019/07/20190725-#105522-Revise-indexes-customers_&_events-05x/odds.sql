@@ -10,7 +10,7 @@ GO
 
 DROP INDEX [CIX_oddsid] ON [dbo].[odds] --> clustered
 GO
-DROP INDEX [PK_odds] ON [dbo].[odds] --> non cluster PK
+ALTER TABLE [dbo].[odds] DROP CONSTRAINT [PK_odds] --> non cluster PK
 GO
 
 --//merge 2 indexes PK_odds & CIX_oddsid
