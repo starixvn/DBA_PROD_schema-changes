@@ -11,7 +11,7 @@ GO
 CREATE DATABASE	BetBackup
 ON	PRIMARY
 		(	NAME		= N'BetBackup'
-		,	FILENAME	= N'D:\IBC_DB\BetBackup\BetBackup.mdf'
+		,	FILENAME	= N'L:\USER_DB\BetBackup\BetBackup.mdf'
 		,	SIZE		= 4MB
 		,	MAXSIZE		= UNLIMITED
 		,	FILEGROWTH	= 4MB
@@ -20,14 +20,14 @@ ON	PRIMARY
 -- Default FILEGROUPs --
 ,	FILEGROUP DATA DEFAULT
 		(	NAME		= N'BetBackup_DATA'
-		,	FILENAME	= N'D:\IBC_DB\BetBackup\BetBackup_DATA.ndf'
+		,	FILENAME	= N'L:\USER_DB\BetBackup\BetBackup_DATA.ndf'
 		,	SIZE		= 32MB
 		,	MAXSIZE		= UNLIMITED
 		,	FILEGROWTH	= 32MB
 		)
 ,	FILEGROUP IDX
 		(	NAME		= N'BetBackup_IDX'
-		,	FILENAME	= N'D:\IBC_DB\BetBackup\BetBackup_IDX.ndf'
+		,	FILENAME	= N'L:\USER_DB\BetBackup\BetBackup_IDX.ndf'
 		,	SIZE		= 32MB
 		,	MAXSIZE		= UNLIMITED
 		,	FILEGROWTH	= 32MB
@@ -36,14 +36,14 @@ ON	PRIMARY
 -- bettrans FILEGROUPs --
 ,	FILEGROUP bettrans_DATA
 		(	NAME		= N'bettrans_DATA'
-		,	FILENAME	= N'D:\IBC_DB\BetBackup\bettrans_DATA.ndf'
+		,	FILENAME	= N'L:\USER_DB\BetBackup\bettrans_DATA.ndf'
 		,	SIZE		= 32MB
 		,	MAXSIZE		= UNLIMITED
 		,	FILEGROWTH	= 32MB
 		)
 ,	FILEGROUP bettrans_IDX
 		(	NAME		= N'bettrans_IDX'
-		,	FILENAME	= N'D:\IBC_DB\BetBackup\bettrans_IDX.ndf'
+		,	FILENAME	= N'L:\USER_DB\BetBackup\bettrans_IDX.ndf'
 		,	SIZE		= 32MB
 		,	MAXSIZE		= UNLIMITED
 		,	FILEGROWTH	= 32MB
@@ -52,14 +52,14 @@ ON	PRIMARY
 -- bettransm FILEGROUP --
 ,	FILEGROUP bettransm_DATA
 		(	NAME		= N'bettransm_DATA'
-		,	FILENAME	= N'D:\IBC_DB\BetBackup\bettransm_DATA.ndf'
+		,	FILENAME	= N'L:\USER_DB\BetBackup\bettransm_DATA.ndf'
 		,	SIZE		= 32MB
 		,	MAXSIZE		= UNLIMITED
 		,	FILEGROWTH	= 32MB
 		)
 ,	FILEGROUP bettransm_IDX
 		(	NAME		= N'bettransm_IDX'
-		,	FILENAME	= N'D:\IBC_DB\BetBackup\bettransm_IDX.ndf'
+		,	FILENAME	= N'L:\USER_DB\BetBackup\bettransm_IDX.ndf'
 		,	SIZE		= 32MB
 		,	MAXSIZE		= UNLIMITED
 		,	FILEGROWTH	= 32MB
@@ -68,14 +68,14 @@ ON	PRIMARY
 -- translog FILEGROUP --
 ,	FILEGROUP translog_DATA
 		(	NAME		= N'translog_DATA'
-		,	FILENAME	= N'D:\IBC_DB\BetBackup\translog_DATA.ndf'
+		,	FILENAME	= N'L:\USER_DB\BetBackup\translog_DATA.ndf'
 		,	SIZE		= 32MB
 		,	MAXSIZE		= UNLIMITED
 		,	FILEGROWTH	= 32MB
 		)
 ,	FILEGROUP translog_IDX
 		(	NAME		= N'translog_IDX'
-		,	FILENAME	= N'D:\IBC_DB\BetBackup\translog_IDX.ndf'
+		,	FILENAME	= N'L:\USER_DB\BetBackup\translog_IDX.ndf'
 		,	SIZE		= 32MB
 		,	MAXSIZE		= UNLIMITED
 		,	FILEGROWTH	= 32MB
@@ -84,14 +84,14 @@ ON	PRIMARY
 -- bettransReject FILEGROUPs --
 ,	FILEGROUP bettransReject_DATA
 		(	NAME		= N'bettransReject_DATA'
-		,	FILENAME	= N'D:\IBC_DB\BetBackup\bettransReject_DATA.ndf'
+		,	FILENAME	= N'L:\USER_DB\BetBackup\bettransReject_DATA.ndf'
 		,	SIZE		= 32MB
 		,	MAXSIZE		= UNLIMITED
 		,	FILEGROWTH	= 32MB
 		)
 ,	FILEGROUP bettransReject_IDX
 		(	NAME		= N'bettransReject_IDX'
-		,	FILENAME	= N'D:\IBC_DB\BetBackup\bettransReject_IDX.ndf'
+		,	FILENAME	= N'L:\USER_DB\BetBackup\bettransReject_IDX.ndf'
 		,	SIZE		= 32MB
 		,	MAXSIZE		= UNLIMITED
 		,	FILEGROWTH	= 32MB
@@ -100,14 +100,14 @@ ON	PRIMARY
 -- translogReject FILEGROUP --
 ,	FILEGROUP translogReject_DATA
 		(	NAME		= N'translogReject_DATA'
-		,	FILENAME	= N'D:\IBC_DB\BetBackup\translogReject_DATA.ndf'
+		,	FILENAME	= N'L:\USER_DB\BetBackup\translogReject_DATA.ndf'
 		,	SIZE		= 32MB
 		,	MAXSIZE		= UNLIMITED
 		,	FILEGROWTH	= 32MB
 		)
 ,	FILEGROUP translogReject_IDX
 		(	NAME		= N'translogReject_IDX'
-		,	FILENAME	= N'D:\IBC_DB\BetBackup\translogReject_IDX.ndf'
+		,	FILENAME	= N'L:\USER_DB\BetBackup\translogReject_IDX.ndf'
 		,	SIZE		= 32MB
 		,	MAXSIZE		= UNLIMITED
 		,	FILEGROWTH	= 32MB
@@ -116,7 +116,7 @@ ON	PRIMARY
 -- LOG --
 	LOG ON
 		(	NAME		= N'BetBackup_LOG'
-		,	FILENAME	= N'D:\IBC_DB\BetBackup\BetBackup_LOG.ldf'
+		,	FILENAME	= N'L:\USER_DB\BetBackup\BetBackup_LOG.ldf'
 		,	SIZE		= 512MB
 		,	MAXSIZE		= UNLIMITED
 		,	FILEGROWTH	= 512MB
@@ -125,7 +125,6 @@ ON	PRIMARY
 
 ALTER DATABASE BetBackup SET COMPATIBILITY_LEVEL = 100;
 ALTER DATABASE BetBackup SET RECOVERY SIMPLE;
-ALTER DATABASE BetBackup SET DB_CHAINING ON;
 ALTER DATABASE BetBackup SET READ_WRITE;
 ALTER AUTHORIZATION ON DATABASE::BetBackup TO sa;
 GO
