@@ -31,7 +31,6 @@ INCLUDE (
 [productID],
 [betfrom],
 [mrecommend],
-[TransId],
 [transdate],
 [status],
 [acomm],

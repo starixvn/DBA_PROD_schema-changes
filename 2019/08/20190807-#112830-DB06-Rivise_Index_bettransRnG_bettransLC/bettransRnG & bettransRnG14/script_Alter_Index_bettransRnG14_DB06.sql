@@ -32,7 +32,7 @@ INCLUDE (
 [Currency],
 [betfrom],
 [mrecommend],
-[TransId],
+[productID],
 [transdate],
 [username],
 [status],

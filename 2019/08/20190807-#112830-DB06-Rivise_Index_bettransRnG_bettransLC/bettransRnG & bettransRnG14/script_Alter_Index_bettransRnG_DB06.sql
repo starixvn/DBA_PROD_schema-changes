@@ -32,11 +32,11 @@ INCLUDE (
 [Currency],
 [betfrom],
 [mrecommend],
-[TransId],
 [transdate],
 [username],
 [status],
 [comm],
+[productID],
 [playercomm]) WITH (DROP_EXISTING = ON, ONLINE = OFF) ON [bettransRnG_index]
 GO
 
