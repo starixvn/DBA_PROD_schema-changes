@@ -1,6 +1,7 @@
 /*
 	Task: Migrate DBAFF to DB052/DB053
 		+ Full backup
+	Run DBAFF
 */
 
 
