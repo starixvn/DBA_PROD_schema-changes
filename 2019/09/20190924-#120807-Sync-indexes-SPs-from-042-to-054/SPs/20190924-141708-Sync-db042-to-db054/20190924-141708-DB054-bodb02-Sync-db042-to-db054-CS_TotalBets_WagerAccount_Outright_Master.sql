@@ -1,0 +1,86 @@
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/****** Object:  Stored Procedure dbo.CS_TotalBets_WagerAccount_Outright_Master    Script Date: 9/24/2019 2:17:16 PM ******/
+/****** Object:  Stored Procedure dbo.CS_TotalBets_WagerAccount_Outright_Master    Script Date: 9/24/2019 2:12:47 AM ******/
+
+CREATE PROCEDURE [dbo].[CS_TotalBets_WagerAccount_Outright_Master]
+	@CustID			INT,
+	@SubAccId		INT = 0,
+	@IsAllDownline	BIT = 1,
+	@MatchID		INT,  
+	@StakeCondition TINYINT = 1,
+	@Stake			MONEY = 0
+AS
+
+/*
+	Created: 20190307@Sophia
+	Task: CN88 Agent Wager Account of Total Bet Outright 
+	DB: DB042.bodb02
+
+	Revisions:
+		- 20190307@Sophia: initial SP [Redmine: #109693]
+		- 20190713@Percy: Add sub account - permission on downlines [RedmineID: #116825]
+	
+	Param's Explanation:
+		- @SubAccId: sub account
+		- @IsAllDownline: is view all downlines
+		- @StakeCondition 	= 0 :  =
+							= 1 :  >  (default)
+							= 2 :  < 
+ 
+		- @CustID : SuperID
+*/
+BEGIN
+	SET NOCOUNT ON
+
+	/* ===== Get downline list by Sub Account ==== */
+	DECLARE @Downlines TABLE (DownlineId INT)
+
+	IF ISNULL(@SubAccId, 0) <> 0 AND ISNULL(@IsAllDownline, 0) = 0
+	BEGIN
+		INSERT INTO @Downlines (DownlineId)
+		SELECT DownlineId FROM dbo.CS_f_GetDownlineBySubAcc(@SubAccId)
+	END
+	/* ===== End Get downline list by Sub Account ==== */
+	
+	SELECT  C.CustID, C.Username, C.Firstname, A.Wager, A.Stake										
+	FROM  (
+			SELECT 
+				b.mrecommend,
+				COUNT(b.TransId) AS Wager,  
+				SUM (b.Stake) AS Stake 				
+			FROM bettrans b WITH (NOLOCK)				
+			WHERE  	
+				b.srecommend = @CustId
+				AND (@IsAllDownline = 1 OR EXISTS (SELECT 1 FROM @Downlines d WHERE b.mrecommend = d.DownlineId))
+				AND b.statusID IN (0,1) 	
+				AND b.bettype = 10 				
+				AND (
+						(@StakeCondition = 0 AND b.Stake = @Stake) 
+						OR (@StakeCondition = 1 AND b.Stake > @Stake)
+						OR (@StakeCondition = 2 AND b.Stake < @Stake)
+					)				
+				AND b.MatchID = @MatchID
+			GROUP BY b.mrecommend
+			) A
+		INNER JOIN bodb02.dbo.Customer c WITH (NOLOCK) 
+				ON c.CustId = A.mrecommend
+		WHERE c.RoleID = 3
+END
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+GO 
+ GRANT EXECUTE ON [dbo].[CS_TotalBets_WagerAccount_Outright_Master] TO [bodbDownlineNetView]
+GO 
+ GRANT EXECUTE ON [dbo].[CS_TotalBets_WagerAccount_Outright_Master] TO [bodbDownlineNet]
+GO 

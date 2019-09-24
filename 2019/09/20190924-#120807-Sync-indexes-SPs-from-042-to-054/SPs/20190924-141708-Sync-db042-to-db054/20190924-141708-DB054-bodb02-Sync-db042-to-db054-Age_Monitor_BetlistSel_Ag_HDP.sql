@@ -1,0 +1,86 @@
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/****** Object:  Stored Procedure dbo.Age_Monitor_BetlistSel_Ag_HDP    Script Date: 9/24/2019 2:17:11 PM ******/
+/****** Object:  Stored Procedure dbo.Age_Monitor_BetlistSel_Ag_HDP    Script Date: 9/24/2019 2:12:44 AM ******/
+CREATE PROCEDURE [dbo].[Age_Monitor_BetlistSel_Ag_HDP]
+	@CustId			INT,
+	@TransId		BIGINT	= 0,
+	@LimitRowCount	INT		= 20
+AS
+
+/*
+	Created: Johnson@20110628
+	Task: Last Bets (handicap bettypes)
+	DB: DB042.bodb02
+	Revision:
+		- 20111122@Sophia: Add Checktime and SecAcceptFlag to show status waiting or running
+		- 20150826@Kos: Add column OddsSpread to support Myanmar Odds
+		- 20160623@Percy: Remove WITH recompile [RedmineID: #58288]
+		- 20180802@Patrick: indexes revolution [RedmineID: #98757]
+		- 20181218@Kos: Support E-Sports phase 2b [#Redmine: 106456]
+		- 20190722@Kos: Support new status Pending [#Redmine: 113142]
+
+	Parameter's Explanation:
+		- @CustId : agent's ID
+		- @TransId: latest transid 
+		- @LimitRowCount: max record return
+*/
+
+BEGIN
+	SET NOCOUNT ON
+
+	SELECT TOP(@LimitRowCount)
+		b.matchid,
+		b.Username,
+		b.bettype,
+		b.transid,
+		b.refno,
+		b.transdate,
+		'' AS Race,
+		b.betid,
+		b.livehomescore,
+		b.liveawayscore,
+		b.liveindicator,
+		b.hdp1,
+		b.hdp2,
+		b.odds,
+		b.stake,
+		CASE
+			WHEN b.status = 'running' AND ISNULL(b.SecAcceptFlag, 0) = 1 AND ISNULL(b.checktime, CURRENT_TIMESTAMP) > CURRENT_TIMESTAMP THEN 'waiting'
+			WHEN b.status = 'running' AND mt.TransId IS NOT NULL THEN 'Pending'
+			ELSE b.status
+		END AS status,
+		b.betteam,
+		b.ip,
+		b.oddstype,
+		ISNULL(b.oddsspread, 0) AS OddsSpread,
+		ISNULL(b.ExtraInfo, '') AS ExtraInfo
+	FROM dbo.bettrans AS b WITH (NOLOCK)
+		LEFT JOIN dbo.MarkedTransaction AS mt WITH (NOLOCK) ON b.transid = mt.TransId
+	WHERE b.recommend = @CustId
+		AND b.statusID IN (0, 1)
+		AND b.transid > @TransId
+		AND b.bettype IN (1, 7, 301, 303)
+	ORDER BY b.transid DESC
+END
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+GO 
+ GRANT EXECUTE ON [dbo].[Age_Monitor_BetlistSel_Ag_HDP] TO [bodbDownlineNetView]
+GO 
+ GRANT EXECUTE ON [dbo].[Age_Monitor_BetlistSel_Ag_HDP] TO [bodbDownlineNet]
+GO 
+ GRANT EXECUTE ON [dbo].[Age_Monitor_BetlistSel_Ag_HDP] TO [vnteam]
+GO 
+ GRANT VIEW DEFINITION ON [dbo].[Age_Monitor_BetlistSel_Ag_HDP] TO [vnteam]
+GO 

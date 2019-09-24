@@ -1,0 +1,66 @@
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/****** Object:  Stored Procedure dbo.Age_Monitor_MatchSel    Script Date: 9/24/2019 2:17:11 PM ******/
+/****** Object:  Stored Procedure dbo.Age_Monitor_MatchSel    Script Date: 9/24/2019 2:12:44 AM ******/
+CREATE PROCEDURE [dbo].[Age_Monitor_MatchSel]
+	@MatchId INT = 0
+AS
+
+/*
+	Created: Johnson@20110628
+	Task: Monitor lastest bets list- get match running
+	DB: DB042.bodb02
+
+	Revision:
+		- 20120301@Jamie: Retrieve showtime for LiveCasino
+		- 20170817@Kos: Return IsNeutral [#Redmine: 66992]
+		- 20180622@Sophia: Add Betstatus [#Redmine: 97219]
+		- 20181002@Kos: Support 2 new status Result Pending and Under Settlement [#Redmine: 101949]
+		- 20190506@Kos: Show match KO time for single ticket [Redmine: #112092]
+
+	Parameter's Explanation:
+		- @MatchId: Lastest running match ID
+*/
+
+BEGIN
+	SET NOCOUNT ON
+	
+	SELECT
+		m.sporttype,
+		m.eventstatus AS Status,
+		m.matchid,
+		m.leagueid,
+		m.matchcode,
+		m.homeid,
+		m.awayid,
+		'' AS Race,
+		m.showtime,
+		m.IsNeutral,
+		m.betstatus,
+		ISNULL(m.SettlementStatus, 0) AS SettlementStatus,
+		m.GlobalShowTime AS EventDate
+	FROM dbo.match AS m WITH (NOLOCK)
+	WHERE m.eventstatus <> 'completed'
+		AND m.matchid >= @MatchId
+END
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+GO 
+ GRANT EXECUTE ON [dbo].[Age_Monitor_MatchSel] TO [bodbDownlineNetView]
+GO 
+ GRANT EXECUTE ON [dbo].[Age_Monitor_MatchSel] TO [bodbDownlineNet]
+GO 
+ GRANT EXECUTE ON [dbo].[Age_Monitor_MatchSel] TO [vnteam]
+GO 
+ GRANT VIEW DEFINITION ON [dbo].[Age_Monitor_MatchSel] TO [vnteam]
+GO 
