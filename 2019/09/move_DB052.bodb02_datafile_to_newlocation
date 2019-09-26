@@ -1,0 +1,20 @@
+
+
+ /*
+	created: 20190926@Lukas
+	Task: migrate bodb02 data file to another disk - ServiceBroker_Data_001 from M$ to G$
+
+	steps: in UM time
+		1. alter data file with new path
+		2. stop sql service 
+		3. copy data file to new location
+		4. reboot server (this is regular UM )
+ */
+
+--step 1: alter data file with new path
+ALTER DATABASE bodb02   
+    MODIFY FILE ( NAME = ServiceBroker_Data_001,   
+                  FILENAME = 'G:\IBC_DB\bodb02\ServiceBroker_Data_001.ndf');  
+
+
+-- step 2-> 4: GUI
