@@ -56,3 +56,9 @@ INCLUDE ( 	[odds],
 	[spositiontaking],
 	[betcheck]) WITH (FILLFACTOR = 100) ON [BettransM_index]
 GO
+
+ALTER TABLE [dbo].[bettransm] ADD  CONSTRAINT [PK_bettransm] PRIMARY KEY NONCLUSTERED 
+(
+	[transid] ASC
+)WITH (FILLFACTOR = 100) ON [BettransM_index]
+GO
