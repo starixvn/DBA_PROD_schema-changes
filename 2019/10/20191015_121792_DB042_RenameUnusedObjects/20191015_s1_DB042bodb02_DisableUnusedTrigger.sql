@@ -1,6 +1,5 @@
 /*
-	Task: Disable unused trigger, preparing to be deleted later (Tables/SPs)
-	Run on DB042.bodb02
+	Task: Disable unused trigger, preparing to be deleted later
 */ 
 
 use bodb02

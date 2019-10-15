@@ -1,5 +1,5 @@
 /*
-	Task: Rename unused SPs to DEL_, preparing to be deleted later (Tables/SPs)
+	Task: Rename unused SPs to DEL_, preparing to be deleted later
 	Run on DB042.bodb02
 */     
 use bodb02
