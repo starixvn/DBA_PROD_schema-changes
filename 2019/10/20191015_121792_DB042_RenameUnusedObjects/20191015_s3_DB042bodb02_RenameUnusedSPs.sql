@@ -1116,7 +1116,7 @@ EXEC sp_rename 'Task_Parlay_Correct_Tickets_settled_xtest', 'DEL_Task_Parlay_Cor
 EXEC sp_rename 'Task_SettleTicketsByTrans', 'DEL_Task_SettleTicketsByTrans'
 EXEC sp_rename 'Task_SettleTicketsByTrans_Patrick', 'DEL_Task_SettleTicketsByTrans_Patrick'
 EXEC sp_rename 'Task_SettleTicketsByTrans2', 'DEL_Task_SettleTicketsByTrans2'
-EXEC sp_rename 'Task_Update_SettleTickets5', 'DEL_Task_Update_SettleTickets5'
+EXEC sp_rename 'sb.Task_Update_SettleTickets5', 'DEL_Task_Update_SettleTickets5'
 EXEC sp_rename 'TeamLeague_Add', 'DEL_TeamLeague_Add'
 EXEC sp_rename 'TeamLeague_Del', 'DEL_TeamLeague_Del'
 EXEC sp_rename 'TeamLeague_List', 'DEL_TeamLeague_List'
