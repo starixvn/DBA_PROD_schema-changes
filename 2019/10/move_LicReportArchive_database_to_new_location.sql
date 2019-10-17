@@ -1,0 +1,112 @@
+
+/*
+refer to steps of moving Affiliate databases
+
+	1. change database to no recovery mode - GUI (not standby mode then can update metadata)
+	2. update file path metadata with new location
+	3. stop sql service 
+	4. copy data files to new location
+		4.1 Affiliate databases
+		4.2 bodb_LicenseeReportArchive
+	5. start sql service (optional)
+	6. reboot server
+*/
+
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[bodb_LicenseeReportArchive_Data]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\bodb_LicenseeReportArchive_Data.mdf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[bodb_LicenseeReportArchive_Log]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\bodb_LicenseeReportArchive_Data_Log.ldf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[BATrans_Data]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\Audit_Data.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[BATrans_Index]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\Audit_Data_Index.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_15M09]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_15M09.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_15M10]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_15M10.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_15M11]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_15M11.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_15M12]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_15M12.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_16M01]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_16M01.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_16M02]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_16M02.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_16M03]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_16M03.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_16M04]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_16M04.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_16M05]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_16M05.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_16M06]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_16M06.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_16M07]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_16M07.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_16M08]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_16M08.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_16M09]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_16M09.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_16M10]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_16M10.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_16M11]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_16M11.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_16M12]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_16M12.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_17M01]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_17M01.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_17M02]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_17M02.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_17M03]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_17M03.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_17M04]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_17M04.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_17M05]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_17M05.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_17M06]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_17M06.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_17M07]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_17M07.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_17M08]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_17M08.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_17M09]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_17M09.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_17M10]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_17M10.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_17M11]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_17M11.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_17M12]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_17M12.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_18M01]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_18M01.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_18M02]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_18M02.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_18M03]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_18M03.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_18M04]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_18M04.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_18M05]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_18M05.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_18M06]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_18M06.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_18M07]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_18M07.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_18M08]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_18M08.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_18M09]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_18M09.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_18M10]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_18M10.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_18M11]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_18M11.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_18M12]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_18M12.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_19M01]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_19M01.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_19M02]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_19M02.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_19M03]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_19M03.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_19M04]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_19M04.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_19M05]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_19M05.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_19M06]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_19M06.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_19M07]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_19M07.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_19M08]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_19M08.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_19M09]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_19M09.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_19M10]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_19M10.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_19M11]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_19M11.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_19M12]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_19M12.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_MAX]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_MAX.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_20M01]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_20M01.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_20M02]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_20M02.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_20M03]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_20M03.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_20M04]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_20M04.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_20M05]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_20M05.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_20M06]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_20M06.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_20M07]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_20M07.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_20M08]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_20M08.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_20M09]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_20M09.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_20M10]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_20M10.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_20M11]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_20M11.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_20M12]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_20M12.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_21M01]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_21M01.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_21M02]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_21M02.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_21M03]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_21M03.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_21M04]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_21M04.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_21M05]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_21M05.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_21M06]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_21M06.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_21M07]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_21M07.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_21M08]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_21M08.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_21M09]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_21M09.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_21M10]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_21M10.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_21M11]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_21M11.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_21M12]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_21M12.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_22M01]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_22M01.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_22M02]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_22M02.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_22M03]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_22M03.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_22M04]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_22M04.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_22M05]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_22M05.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_22M06]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_22M06.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_22M07]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_22M07.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_22M08]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_22M08.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_22M09]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_22M09.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_22M10]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_22M10.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_22M11]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_22M11.ndf');
+ALTER DATABASE 	bodb_LicenseeReportArchive	MODIFY FILE ( NAME = 	[rptCustomerTurnover_bk_22M12]	, FILENAME = 'N:\IBC_DB\bodb_LicenseeReportArchive\rptCustomerTurnover_bk_22M12.ndf');
+
+
+
+
+
