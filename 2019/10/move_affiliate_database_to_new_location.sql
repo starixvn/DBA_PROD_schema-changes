@@ -1,5 +1,4 @@
 
-
 /*
 	-- steps to migrate secondary logshipping database to another disk
 	1. change database to no recovery mode - GUI (not standby mode then can update metadata)
@@ -7,7 +6,7 @@
 	3. stop sql service 
 	4. copy data files to new location
 		4.1 Affiliate databases
-		4.2 bodb_LicenseeReportArchive
+		4.2 bodb_LicenseeReportArchive (cancel this step)
 	5. start sql service (optional)
 	6. reboot server
 */
