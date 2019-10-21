@@ -1,0 +1,46 @@
+/*
+	Creator:	20191001@Harvey.Nguyen
+	Task:		Create new tables - [Redmine: #120794]
+	Server:		DBFRAUD - FPS_MiddleService
+
+	Notes:
+		- 
+*/
+
+USE FPS_MiddleService
+GO
+
+CREATE TABLE dbo.AssociatedAccountMonitoring (
+	AssAccId INT IDENTITY(1, 1) NOT NULL
+	,CustIdLevel0 INT NULL
+	,CustIdLevel2 INT NULL
+	,FirstAssociatedDate DATETIME NULL
+	,VerifiedBy INT NULL
+	,VerifiedDate DATETIME NULL
+	,Note NVARCHAR(2000) NULL
+	CONSTRAINT PK_AssociatedAccountMonitoring PRIMARY KEY CLUSTERED (AssAccId ASC) WITH (PAD_INDEX = OFF,STATISTICS_NORECOMPUTE = OFF,IGNORE_DUP_KEY = OFF,ALLOW_ROW_LOCKS = ON,ALLOW_PAGE_LOCKS = ON) ON DATA) ON DATA
+GO
+
+CREATE NONCLUSTERED INDEX NCIX_CustIdLevel0_CustIdLevel2 ON dbo.AssociatedAccountMonitoring (
+	CustIdLevel0 ASC
+	,CustIdLevel2 ASC
+	) WITH (PAD_INDEX = OFF,STATISTICS_NORECOMPUTE = OFF,SORT_IN_TEMPDB = OFF,DROP_EXISTING = OFF,ONLINE = OFF,ALLOW_ROW_LOCKS = ON,ALLOW_PAGE_LOCKS = ON) ON DATA
+GO
+
+CREATE NONCLUSTERED INDEX NCIX_FirstAssociatedDate ON dbo.AssociatedAccountMonitoring (
+	FirstAssociatedDate ASC
+	) WITH (PAD_INDEX = OFF,STATISTICS_NORECOMPUTE = OFF,SORT_IN_TEMPDB = OFF,DROP_EXISTING = OFF,ONLINE = OFF,ALLOW_ROW_LOCKS = ON,ALLOW_PAGE_LOCKS = ON) ON DATA
+GO
+
+CREATE TABLE dbo.CustomerEvidences100 (
+	CustId INT NULL
+	,DeviceId INT NULL
+	,CreatedDate DATETIME NULL
+	) ON DATA
+
+GO
+
+-- Add column EviLevel into current table
+ALTER TABLE CustomerEvidences
+ADD EviLevel TINYINT;
+
