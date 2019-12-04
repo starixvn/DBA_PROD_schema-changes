@@ -1,5 +1,5 @@
 /*
-	Task - Sync indexes for customer | custinfo | match | league | Odds from DB042 to DB054
+	Task - Sync indexes for customer | custinfo | match | league from DB042 to DB054
 	Run on DB054.bodb02
 */
 --//custinfo
