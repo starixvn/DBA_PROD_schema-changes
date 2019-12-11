@@ -1,15 +1,16 @@
 
-
 /*
 	Move data file on DB05, from I to t
 	step 1: change database state to read_only
 	step 2: copy data files to new location [bodb_Customer] & [Bodb_Archive_Customer_Licensee]
 	step 3: copying data file
-		bodb_OWP database: 
-		bodb_licensee
-	step 4: reboot windows server (regular UM)
+		bodb_customer  
+		Bodb_Archive_Customer_Licensee
+	step 4: create new database with different name
+	step 5: verify new databases
+	step 6: drop the old one and rename the newly created to original name
 	
-	notes: bodb_ost on I can be removed later (non UM time)
+
 */
 
 
