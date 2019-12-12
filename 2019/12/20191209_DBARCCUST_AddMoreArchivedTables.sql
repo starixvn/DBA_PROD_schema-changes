@@ -29,8 +29,9 @@ CREATE TABLE [CustPTSetting3rd_Agent_Old](
 
 GO
 
+
 CREATE TABLE [custSub_Old](
-	[subaccid] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
+	[subaccid] [int] NOT NULL,
 	[custid] [int] NOT NULL,
 	[username] [varchar](30) NULL,
 	[userpwd] [varchar](40) NULL,
@@ -105,6 +106,81 @@ CREATE TABLE [AgentCommRate_Old](
 ) ON [CustSetting3rd_table]
 
 GO
+
+
+CREATE TABLE [CustBetSetting3rd_Agent_Old](
+	[CustID] [int] NOT NULL,
+	[SportType] [smallint] NOT NULL,
+	[BetType] [smallint] NOT NULL,
+	[MinBet] [money] NULL,
+	[MaxBet] [money] NULL,
+	[MaxPerMatch] [money] NULL,
+ CONSTRAINT [PK_CustBetSetting3rd_Agent_Old] PRIMARY KEY CLUSTERED 
+(
+	[CustID] ASC,
+	[SportType] ASC,
+	[BetType] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [CustSetting3rd_table]
+) ON [CustSetting3rd_table]
+
+GO
+
+CREATE TABLE [CustDiscount3rd_Agent_Old](
+	[CustID] [int] NOT NULL,
+	[SportType] [smallint] NOT NULL,
+	[BetType] [smallint] NOT NULL,
+	[Discount] [decimal](9, 8) NOT NULL,
+ CONSTRAINT [PK_CustDiscount3rd_Agent_Old] PRIMARY KEY CLUSTERED 
+(
+	[CustID] ASC,
+	[SportType] ASC,
+	[BetType] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [CustSetting3rd_table]
+) ON [CustSetting3rd_table]
+
+GO
+
+
+CREATE TABLE [CustStakeLevel_Agent_Old](
+	[CustID] [int] NOT NULL,
+	[SportType] [smallint] NOT NULL,
+	[BetType] [int] NOT NULL,
+	[StakeLevelList] [varchar](200) NULL,
+ CONSTRAINT [PK_CustStakeLevel_Agent_Old] PRIMARY KEY CLUSTERED 
+(
+	[CustID] ASC,
+	[SportType] ASC,
+	[BetType] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [DATA]
+) ON [DATA]
+
+GO
+
+
+CREATE TABLE [CustWinLimit_Old](
+	[CustId] [int] NOT NULL,
+	[SportType] [smallint] NOT NULL,
+	[BetType] [smallint] NOT NULL,
+	[MaxWinLimit] [smallmoney] NULL,
+	[IsAutoReset] [bit] NULL,
+	[MaxLossLimit] [money] NULL,
+ CONSTRAINT [PK_CustWinLimit_Olde] PRIMARY KEY CLUSTERED 
+(
+	[CustId] ASC,
+	[SportType] ASC,
+	[BetType] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [DATA]
+) ON [DATA]
+
+GO
+
+
+
+
+
+
+
+
 
 
 
