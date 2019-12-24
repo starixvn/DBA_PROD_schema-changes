@@ -1,7 +1,12 @@
-
 /*
     
+    created 20121225@Lukas
+    Task: re-arrange data files on DB054
     
+    step 1 : alter data file path
+    step 2: stop sql service 
+    step 3: copy the files to new location
+    step 4: enable sql service 
     
 */
 
