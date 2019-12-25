@@ -1,5 +1,5 @@
 /*
-	Task: CS_ProductBetSetting: Drop artical / remove table from replication
+	Task: Acc_GroupExtraPTSetting: Drop artical / remove table from replication
 	Using UI or run script below @DBTP
 */
 

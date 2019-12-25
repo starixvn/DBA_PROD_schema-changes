@@ -1,5 +1,5 @@
 /*
-	Task: CS_ProductBetSetting: add artical / add table into replication
+	Task: CS_ProblemAccount: add artical / add table into replication
 	Using UI or run script below @ MNL DB06
 */
 
