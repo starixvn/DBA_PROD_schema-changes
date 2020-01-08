@@ -1,0 +1,15 @@
+/*
+	Task: Drop all subscriptions from the indicated publication
+	Run @ DBTP
+*/
+
+-- Dropping the transactional subscriptions
+use [bodb_Licensee]
+exec sp_dropsubscription @publication = N'DBTP_bodb_licensee', @subscriber = N'DBMNL', @destination_db = N'bodb_licensee', @article = N'all'
+GO
+
+-- Dropping the transactional subscriptions
+use [bodb02]
+exec sp_dropsubscription @publication = N'DBTP_DR_sync', @subscriber = N'DBMNL', @destination_db = N'bodb02', @article = N'all'
+GO
+
