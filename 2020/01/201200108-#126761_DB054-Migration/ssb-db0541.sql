@@ -1,0 +1,59 @@
+USE [master]
+GO
+/*
+	Run on DB054
+*/
+ALTER DATABASE bodb02 SET ENABLE_BROKER WITH ROLLBACK IMMEDIATE;
+ALTER DATABASE ServiceBrokerDB SET ENABLE_BROKER WITH ROLLBACK IMMEDIATE;
+ALTER DATABASE bodb_ost SET ENABLE_BROKER WITH ROLLBACK IMMEDIATE;
+ALTER DATABASE bodb_CustomerLog SET ENABLE_BROKER WITH ROLLBACK IMMEDIATE;
+
+--//renew ssb
+ALTER DATABASE bodb02 SET NEW_BROKER
+GO
+ALTER DATABASE ServiceBrokerDB SET NEW_BROKER
+GO
+ALTER DATABASE bodb_ost SET NEW_BROKER
+GO
+ALTER DATABASE bodb_CustomerLog SET NEW_BROKER
+GO
+
+--//create master ket for ssb certtificate
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = N'!i@b#ssb#mlogin$9)';
+GO
+
+--Creating certificate that will be used for encrypting messages. 
+CREATE CERTIFICATE [SSBS_DB054_Cert]
+       WITH SUBJECT = N'Certificate For DB054',
+       EXPIRY_DATE = N'12/31/2080';
+GO
+
+--//backup ssb certificate
+BACKUP CERTIFICATE [SSBS_DB054_Cert]
+       TO FILE = N'D:\\SSBSQLCertificates\SSBS_DB054_Cert.cer';
+GO
+
+--//restore ssb certificate ==> from DB052
+CREATE CERTIFICATE SSBS_LOG_Cert
+   AUTHORIZATION dba_cert_User
+   FROM FILE = N'D:\\SSBSQLCertificates\SSBS_LOG_Cert.cer'
+GO
+
+--//restore ssb certificate ==> from DBCUST
+CREATE CERTIFICATE SSBS_CUST_Cert
+   AUTHORIZATION dba_cert_User
+   FROM FILE = N'D:\\SSBSQLCertificates\SSBS_CUST_Cert.cer'
+GO
+
+--//create endpoint
+CREATE ENDPOINT [Endpoint_SSB_DB054] 
+	STATE = STARTED
+	AS TCP (LISTENER_PORT = 4742, LISTENER_IP = ALL)
+	FOR SERVICE_BROKER (MESSAGE_FORWARDING = DISABLED
+						, MESSAGE_FORWARD_SIZE = 10
+						, AUTHENTICATION = CERTIFICATE [SSBS_DB054_Cert]
+						, ENCRYPTION = REQUIRED ALGORITHM RC4)
+GO
+
+GRANT CONNECT ON ENDPOINT::[Endpoint_SSB_DB054] TO dba_cert_User
+GO
