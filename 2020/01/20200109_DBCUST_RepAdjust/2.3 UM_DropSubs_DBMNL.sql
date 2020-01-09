@@ -9,7 +9,7 @@ use [bodb_Licensee]
 exec sp_dropsubscription @publication = N'DBMNL_bodb_Licensee_C', @subscriber = N'DBCUST', @destination_db = N'bodb_licensee', @article = N'all'
 GO
 
--- Dropping the transactional subscriptions
-use [bodb02]
-exec sp_dropsubscription @publication = N'DBMNL_DR_sync_C', @subscriber = N'DBCUST', @destination_db = N'CustDB', @article = N'all'
-GO
+-- Dropping the transactional subscriptions -SKIPPED
+--use [bodb02]
+--exec sp_dropsubscription @publication = N'DBMNL_DR_sync_C', @subscriber = N'DBCUST', @destination_db = N'CustDB', @article = N'all'
+--GO
