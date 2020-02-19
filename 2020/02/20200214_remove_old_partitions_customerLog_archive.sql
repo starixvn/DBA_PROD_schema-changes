@@ -5,8 +5,8 @@
 	C0.prepare 3.sql
 	
 	UserLog_ExternalAPI - 0
-    UserLog_Login  1 - 25
-    UserLog_RunSP  1-25
+    UserLog_Login  1 - 24
+    UserLog_RunSP  1-24
     UserLog_Credit  1- 24
     UserLog_Settle 1-24
     UserLog_Transaction 1-24
@@ -15,7 +15,7 @@
 
 */
 
-declare @sourceTable varchar(100) = 'CS_UserLog_RunSP',
+declare @sourceTable varchar(100) = 'UserLog_Login',
 		@targetTable varchar(100) = '',
 		@tmptable varchar(100)	  = '',	
 		@partitionsch varchar(512) = '',
