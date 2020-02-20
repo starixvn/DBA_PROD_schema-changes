@@ -4,7 +4,7 @@
 	DB: DBCUST/CustDB and all replicated server of related pubs
 */
 
--- pub CustDB_Customer_Info - DBCUST/DB04x/DB05x/DB06x/DBTP/MNL
+-- pub CustDB_Customer_Info - DBCUST/DB04x/DB05x/DB06x/DBTP/DBDWx/MNL
 --==========================
 CREATE TABLE ProblemAccount
 (
