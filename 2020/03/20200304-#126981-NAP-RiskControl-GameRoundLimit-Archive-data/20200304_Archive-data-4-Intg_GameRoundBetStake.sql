@@ -3,6 +3,7 @@
 		+ Remove this table out replication
 		+ truncate table / create new index
 		+ Add back this table to replication
+	https://nexdev.net/issues/126981
 
 	please do it @ DB06x / DBTP and MNL as well
 	run this script after remove replication
