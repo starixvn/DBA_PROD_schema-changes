@@ -169,6 +169,11 @@ GO
 
 
 ----------------------------
+ALTER TABLE custinfo add [DangerLevel] [tinyint] NULL
+GO
+
+
+----------------------------
 ALTER TABLE ProblemAccount ADD isMarkVoid BIT NULL CONSTRAINT [DF_ProblemAccount_isMarkVoid] DEFAULT ((0))
 GO
 ALTER TABLE ProblemAccount ADD Matchid1 INT NULL
