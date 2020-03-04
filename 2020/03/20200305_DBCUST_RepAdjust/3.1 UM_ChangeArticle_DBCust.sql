@@ -6,12 +6,12 @@
 
 -- Add article
 use [CustDB]
-exec sp_addarticle @publication = N'CustDB_Customer_Info', @article = N'ProblemAccount', @source_owner = N'dbo', @source_object = N'ProblemAccount', @type = N'logbased', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x000000000847589F, @identityrangemanagementoption = N'none', @destination_table = N'ProblemAccount', @destination_owner = N'dbo', @status = 8, @vertical_partition = N'false', @ins_cmd = N'CALL [sp_MSins_dboProblemAccount]', @del_cmd = N'CALL [sp_MSdel_dboProblemAccount]', @upd_cmd = N'SCALL [sp_MSupd_dboProblemAccount]'
+exec sp_addarticle @publication = N'CustDB_DR_sync', @article = N'CS_ReportPermission', @source_owner = N'dbo', @source_object = N'CS_ReportPermission', @type = N'logbased', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x000000000847589F, @identityrangemanagementoption = N'none', @destination_table = N'CS_ReportPermission', @destination_owner = N'dbo', @status = 24, @vertical_partition = N'false', @ins_cmd = N'CALL [sp_MSins_dboCS_ReportPermission]', @del_cmd = N'CALL [sp_MSdel_dboCS_ReportPermission]', @upd_cmd = N'SCALL [sp_MSupd_dboCS_ReportPermission]'
 GO
 
 -- Add article
 use [CustDB]
-exec sp_addarticle @publication = N'CustDB_CustSetting', @article = N'ProblemAccountAction', @source_owner = N'dbo', @source_object = N'ProblemAccountAction', @type = N'logbased', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x000000000847589F, @identityrangemanagementoption = N'none', @destination_table = N'ProblemAccountAction', @destination_owner = N'dbo', @status = 24, @vertical_partition = N'false', @ins_cmd = N'CALL [sp_MSins_dboProblemAccountAction]', @del_cmd = N'CALL [sp_MSdel_dboProblemAccountAction]', @upd_cmd = N'SCALL [sp_MSupd_dboProblemAccountAction]'
+exec sp_addarticle @publication = N'CustDB_CustSetting', @article = N'Dep_CustVIP', @source_owner = N'dbo', @source_object = N'Dep_CustVIP', @type = N'logbased', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x000000000847589F, @identityrangemanagementoption = N'none', @destination_table = N'Dep_CustVIP', @destination_owner = N'dbo', @status = 8, @vertical_partition = N'false', @ins_cmd = N'CALL [sp_MSins_dboDep_CustVIP]', @del_cmd = N'CALL [sp_MSdel_dboDep_CustVIP]', @upd_cmd = N'SCALL [sp_MSupd_dboDep_CustVIP]'
 GO
 
 

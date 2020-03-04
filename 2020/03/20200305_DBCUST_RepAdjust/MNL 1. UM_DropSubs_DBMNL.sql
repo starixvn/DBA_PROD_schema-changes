@@ -3,10 +3,9 @@
 	Run @ DBMNL
 */
 
-
 -- Dropping the transactional subscriptions
 use [bodb02]
-exec sp_dropsubscription @publication = N'DBMNL_Customer_Info_C', @subscriber = N'DBCUST', @destination_db = N'CustDB', @article = N'all'
+exec sp_dropsubscription @publication = N'DBMNL_DR_sync_C', @subscriber = N'DBCUST', @destination_db = N'CustDB', @article = N'all'
 GO
 
 -- Dropping the transactional subscriptions
