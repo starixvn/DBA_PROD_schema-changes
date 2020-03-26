@@ -3,14 +3,6 @@
 	Task: Create table CustQRCode to store members are created by QR code
 	DB: DBCUST/CustDB and CustDB_DR_sync publication
 */
-USE [CustDB]
-GO
---DROP TABLE [dbo].[CustQRCode]
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
 
 CREATE TABLE [dbo].[CustQRCode](
 	[CustID] [int] NOT NULL
