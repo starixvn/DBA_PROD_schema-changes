@@ -32,6 +32,8 @@ FROM    (
 		,   ('NBCbet')			--<========== INPUT HERE ==========<
 		,   ('HJTK')			--<========== INPUT HERE ==========<
 		,   ('Storm88')			--<========== INPUT HERE ==========<
+		,   ('JIDU')			--<========== INPUT HERE ==========<
+		,   ('Gameroom')		--<========== INPUT HERE ==========<
 ) AS input(SubscriberName);
 
 UPDATE  tmp WITH (TABLOCK)

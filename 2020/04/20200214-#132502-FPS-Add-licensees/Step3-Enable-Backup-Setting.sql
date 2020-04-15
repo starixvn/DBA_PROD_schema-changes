@@ -21,6 +21,7 @@ FROM    (
         ,   ('ZhiFeng009')        --<========== INPUT HERE ==========<
 		,   ('awc')				  --<========== INPUT HERE ==========<
 		,   ('SV88')			  --<========== INPUT HERE ==========<
+		,   ('Junbet')			  --<========== INPUT HERE ==========<
 ) AS input(SubscriberName);
 
 INSERT INTO PerfMonDB.dbo.vnDBA_FPS_BackupDatabases (ServerName, DatabaseName, Threshold, Active, NoFullFiles, NoDiffFiles)

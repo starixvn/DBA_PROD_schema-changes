@@ -21,6 +21,7 @@ FROM    (
         ,   ('ZhiFeng009')        --<========== INPUT HERE ==========<
 		,   ('awc')				  --<========== INPUT HERE ==========<
 		,   ('SV88')              --<========== INPUT HERE ==========<
+		,   ('Junbet')			  --<========== INPUT HERE ==========<
 ) AS input(SubscriberName);
 
 DECLARE @Query      NVARCHAR(MAX)
