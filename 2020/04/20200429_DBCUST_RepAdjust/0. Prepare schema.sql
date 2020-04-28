@@ -18,10 +18,9 @@ ADD FILE
 	--FILENAME = 'I:\USER_DB\bodb_Licensee\LicenseeCustComm_History_table_01.ndf', --for DB061
 	--FILENAME = 'H:\IBC_DB\bodb_Licensee\LicenseeCustComm_History_table_01.ndf', --for DB0TP
 
-	--FILENAME = 'H:\IBC_DB\bodb_Licensee\LicenseeCustComm_History_table_01.ndf', --for DBMNL
-	--FILENAME = 'H:\IBC_DB\bodb_Licensee\LicenseeCustComm_History_table_01.ndf', --for MNL DBCUST
-	--FILENAME = 'H:\IBC_DB\bodb_Licensee\LicenseeCustComm_History_table_01.ndf', --for MNL DB052
-	--FILENAME = 'H:\IBC_DB\bodb_Licensee\LicenseeCustComm_History_table_01.ndf', --for MNL DB06
+	--FILENAME = 'H:\USER_DB\bodb_Licensee\LicenseeCustComm_History_table_01.ndf',--for DBMNL, MNL DBCUST, MNL DB06
+	--FILENAME = 'G:\IBC_DB\bodb_Licensee\LicenseeCustComm_History_table_01.ndf', --for MNL DB052
+	--FILENAME = 'D:\IBC_DB\bodb_Licensee\LicenseeCustComm_History_table_01.ndf', --for MNL DB053
 
     SIZE = 10MB,    
     FILEGROWTH = 10MB  
