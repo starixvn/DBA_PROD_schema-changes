@@ -4,7 +4,7 @@
 	Run on DB061
 */
 
-RESTORE DATABASE bodb_Report_New FROM DISK = N'\\10.1.1.77\DBBackup\DB061.bodb_Report_full_20200427.bak' 	
+RESTORE DATABASE bodb_report_New FROM DISK = N'\\10.1.1.77\DBBackup\DB061.bodb_Report_full_20200427.bak' 	
 WITH NORECOVERY, FILE = 1,	
 MOVE N'bodb_Report_Primary'	 TO N'F:\USER_DB\bodb_Report\bodb_Report_Primary.mdf',
 MOVE N'bodb_Report_Data_01'	 TO N'F:\USER_DB\bodb_Report\bodb_Report_Data_01.ndf',

@@ -3,17 +3,17 @@
 		+ Step rename database
 */
 
-use bodb_Report
+use bodb_report
 go
 SET DEADLOCK_PRIORITY HIGH
 go
-ALTER DATABASE bodb_Report SET SINGLE_USER WITH ROLLBACK IMMEDIATE
+ALTER DATABASE bodb_report SET SINGLE_USER WITH ROLLBACK IMMEDIATE
 go
-EXEC sp_renamedb 'bodb_Report', 'bodb_Report_Old' 
+EXEC sp_renamedb 'bodb_report', 'bodb_report_Old' 
 go
-EXEC sp_renamedb 'bodb_Report_New', 'bodb_Report' 
+EXEC sp_renamedb 'bodb_report_New', 'bodb_report' 
 go
-ALTER DATABASE bodb_Report_Old SET MULTI_USER
+ALTER DATABASE bodb_report_Old SET MULTI_USER
 GO
-ALTER DATABASE bodb_Report_Old SET READ_ONLY
+ALTER DATABASE bodb_report_Old SET READ_ONLY
 GO
