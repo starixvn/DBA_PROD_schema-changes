@@ -1,3 +1,8 @@
+/*
+    Task: Integrate new licensees M8Credit, Bsdbet, & awc2 [RedmindId: #133330]
+		+ Create new database for Bsdbet
+    Server: FPS_DB01\MSSQLSERVERWEB
+*/
 USE [master]
 GO
 /****** Object:  Database [FPS_SUB_Bsdbet]    Script Date: 4/28/2020 4:55:15 AM ******/

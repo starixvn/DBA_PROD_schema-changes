@@ -1,5 +1,5 @@
 /*
-    Task - Remove terminated licensees: TGame | Salon365 | NBCbet |	HJTK | Storm88
+    Task - Remove terminated licensee: Mrcatsb [RedmindId: #133330]
 		Perform last FULL backup
 		
     Server: FPS_DB01\MSSQLSERVERWEB

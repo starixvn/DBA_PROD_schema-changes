@@ -1,5 +1,5 @@
 /*
-    Task: Integrate new licensees ZhiFeng036, ZhiFeng009, awc & SV88 [RedmindId: #132227]
+    Task: Integrate new licensees M8Credit, Bsdbet, & awc2 [RedmindId: #133330]
 		+ Enable backup setting
     Server:     DBFRAUD
 */
