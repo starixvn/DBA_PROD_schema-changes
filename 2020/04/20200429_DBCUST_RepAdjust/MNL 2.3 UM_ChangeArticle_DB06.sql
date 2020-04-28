@@ -1,0 +1,26 @@
+/*
+	Task: Change article from replication
+	Using UI or run script below @ MNL DB06
+*/
+
+-- Dropping the transactional articles
+use [bodb02]
+exec sp_dropsubscription @publication = N'DB06_Customer_n_Setting', @article = N'CustCommRate', @subscriber = N'all', @destination_db = N'all'
+GO
+use [bodb02]
+exec sp_droparticle @publication = N'DB06_Customer_n_Setting', @article = N'CustCommRate', @force_invalidate_snapshot = 1
+GO
+use [bodb02]
+exec sp_dropsubscription @publication = N'DB06_Customer_n_Setting', @article = N'AgentCommRate', @subscriber = N'all', @destination_db = N'all'
+GO
+use [bodb02]
+exec sp_droparticle @publication = N'DB06_Customer_n_Setting', @article = N'AgentCommRate', @force_invalidate_snapshot = 1
+GO
+
+-- Adding the transactional articles
+use [bodb_Licensee]
+exec sp_addarticle @publication = N'DB06_bodb_Licensee', @article = N'LicenseeGroupComm', @source_owner = N'dbo', @source_object = N'LicenseeGroupComm', @type = N'logbased', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x000000000847589F, @identityrangemanagementoption = N'manual', @destination_table = N'LicenseeGroupComm', @destination_owner = N'dbo', @status = 24, @vertical_partition = N'false', @ins_cmd = N'CALL [sp_MSins_dboLicenseeGroupComm]', @del_cmd = N'CALL [sp_MSdel_dboLicenseeGroupComm]', @upd_cmd = N'SCALL [sp_MSupd_dboLicenseeGroupComm]'
+GO
+use [bodb_Licensee]
+exec sp_addarticle @publication = N'DB06_bodb_Licensee', @article = N'f_CheckRepTable', @source_owner = N'dbo', @source_object = N'f_CheckRepTable', @type = N'func schema only', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_table = N'f_CheckRepTable', @destination_owner = N'dbo', @status = 16
+GO
