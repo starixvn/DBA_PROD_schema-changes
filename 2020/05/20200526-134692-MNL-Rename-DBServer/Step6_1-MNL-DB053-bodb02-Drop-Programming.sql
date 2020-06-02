@@ -17,7 +17,7 @@ DROP FUNCTION  dbo.f_Decimal_Binary
 DROP FUNCTION  dbo.f_EncodeXMLValue
 DROP FUNCTION  dbo.f_Get_MsgNamebyMsgID
 DROP FUNCTION  dbo.f_GetChoice
-DROP FUNCTION  dbo.f_GetColumnList_mnl
+--DROP FUNCTION  dbo.f_GetColumnList_mnl
 DROP FUNCTION  dbo.f_GetValueFromP25
 DROP FUNCTION  dbo.f_IsDummySuper
 DROP FUNCTION  dbo.f_IsMatchCustCurrency
@@ -74,8 +74,8 @@ DROP FUNCTION  dbo.f_SportBettypeMatrix_Sel_Mode4
 DROP FUNCTION  dbo.f_StringSplit
 DROP FUNCTION  dbo.f_SumWinloss_ConditionSel
 DROP FUNCTION  dbo.Lrf_f_GetCustId
-DROP FUNCTION  dbo.tf_GetMBUDay_mnl
-DROP FUNCTION  dbo.tf_GetMovingBetDays_mnl
+--DROP FUNCTION  dbo.tf_GetMBUDay_mnl
+--DROP FUNCTION  dbo.tf_GetMovingBetDays_mnl
 DROP PROCEDURE dbo.__Portal_SBA
 DROP PROCEDURE dbo.__Portal_SBA14
 DROP PROCEDURE dbo.__Portal_SBAP
@@ -776,7 +776,7 @@ DROP PROCEDURE dbo.dba_GetTicketCountByMatchID
 DROP PROCEDURE dbo.DBA_GetTimeStamp
 DROP PROCEDURE dbo.DBA_LiveCustomer_GetCustomerSetting
 DROP PROCEDURE dbo.DBA_MatchName
-DROP PROCEDURE dbo.DBA_MNLBackupSPs
+--DROP PROCEDURE dbo.DBA_MNLBackupSPs
 DROP PROCEDURE dbo.DBA_PrintResultPT
 DROP PROCEDURE dbo.DBA_PrintResultPT_1
 DROP PROCEDURE dbo.DBA_SP
@@ -1995,10 +1995,10 @@ DROP PROCEDURE dbo.Task_RacingCheckDoubleCalculate_DummmyTrans
 DROP PROCEDURE dbo.TASK_RoutineDatabaseBackup
 DROP PROCEDURE dbo.Task_SettleTicketsByTrans
 DROP PROCEDURE dbo.Task_SettleTicketsByTrans2
-DROP PROCEDURE dbo.Task_Sync_Check_bettrans_mnl
-DROP PROCEDURE dbo.Task_Sync_Check_bettrans14_mnl
-DROP PROCEDURE dbo.Task_Sync_Check_bettransm_mnl
-DROP PROCEDURE dbo.Task_Sync_GetData_mnl
+--DROP PROCEDURE dbo.Task_Sync_Check_bettrans_mnl
+--DROP PROCEDURE dbo.Task_Sync_Check_bettrans14_mnl
+--DROP PROCEDURE dbo.Task_Sync_Check_bettransm_mnl
+--DROP PROCEDURE dbo.Task_Sync_GetData_mnl
 DROP PROCEDURE dbo.TASK_TOControl_DeleteOldTransition
 DROP PROCEDURE dbo.TASK_TOControl_DeleteTicketDetails_Insert
 DROP PROCEDURE dbo.TASK_TOControl_DeleteTicketDetails_Update

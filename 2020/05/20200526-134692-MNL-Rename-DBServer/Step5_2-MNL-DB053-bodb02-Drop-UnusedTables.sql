@@ -36,7 +36,7 @@ DROP TABLE dbo.MatchForecast_Resourceid
 DROP TABLE dbo.oddsExtData
 DROP TABLE dbo.OddsMonitor
 DROP TABLE dbo.RiskInfo
-DROP TABLE dbo.Task_Sync_ChecksumResult_mnl
+--DROP TABLE dbo.Task_Sync_ChecksumResult_mnl
 DROP TABLE dbo.TOControl_GlobalVariables
 DROP TABLE dbo.TOControl_LevelSetting
 DROP TABLE dbo.TOControl_TicketDetails_Insert

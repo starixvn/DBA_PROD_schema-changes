@@ -6,10 +6,13 @@
 
 
 --	BEGIN STEP :
---		DISABLE table's triggers on bodb02
+--		ENABLE/DISABLE table's triggers on bodb02
 ----------------------------------------------------------------------------------------------------
 USE bodb02
 GO
+
+ENABLE TRIGGER [dbo].[db042_bettrans_instead_of_insert_mnl]
+ON [dbo].[bettrans];
 
 DISABLE TRIGGER dbo.translog_after_insert4Danger_mnl 
 ON dbo.translog;

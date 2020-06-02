@@ -65,7 +65,7 @@ DROP PROCEDURE dbo.Lrf_GetDBCurrentDatetime
 DROP PROCEDURE dbo.Lrf_GetNumberOfOnlineUsers
 DROP PROCEDURE dbo.Lrf_GroupCommCheckByName
 DROP PROCEDURE dbo.Lrf_GroupCommGetById
-DROP PROCEDURE dbo.LRF_InternalLogin_mnl
+--DROP PROCEDURE dbo.LRF_InternalLogin_mnl
 DROP PROCEDURE dbo.Lrf_IsUserExisted
 DROP PROCEDURE dbo.Lrf_LicenseeBACustUpdComm
 DROP PROCEDURE dbo.Lrf_LicenseeBAHistoryIns
@@ -90,7 +90,7 @@ DROP PROCEDURE dbo.Lrf_LicenseeUserFunctionsSel
 DROP PROCEDURE dbo.Lrf_LicenseeUserSelCheckBelonging
 DROP PROCEDURE dbo.Lrf_PageAccessByLicenseeSel
 DROP PROCEDURE dbo.Lrf_ReCheckIn
-DROP PROCEDURE dbo.Lrf_ReCheckIn_mnl
+--DROP PROCEDURE dbo.Lrf_ReCheckIn_mnl
 DROP PROCEDURE dbo.Lrf_rpt_DWWinloss
 DROP PROCEDURE dbo.Lrf_Rpt_MonthlyLicCurrencyPlay
 DROP PROCEDURE dbo.Lrf_SelBetTypeBySport
