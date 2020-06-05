@@ -8,6 +8,9 @@
 --	BEGIN STEP :
 --		Create new service broker objects
 ----------------------------------------------------------------------------------------------------
-use master;
-GO
+
+--these is files use for setup ssb
+--==>\setup-ssb\step1_ssb-db055.sql
+--==>\setup-ssb\step2_ssb-db052.sql
+--==>\setup-ssb\step4_ssb-db052_renew-conversation.sql
 
