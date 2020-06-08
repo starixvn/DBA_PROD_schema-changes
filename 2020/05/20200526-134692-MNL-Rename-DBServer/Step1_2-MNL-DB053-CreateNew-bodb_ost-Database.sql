@@ -91,358 +91,20 @@ ALTER DATABASE [bodb_ost] SET DB_CHAINING OFF
 GO
 EXEC sys.sp_db_vardecimal_storage_format N'bodb_ost', N'ON'
 GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [vnteam]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [vnteam] WITH PASSWORD=N'nzItj0YJNEf6mXiUlTizFyS59Rq89LO8SYSKg7anTfg=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [vnteam] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [vnPatrick]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [vnPatrick] WITH PASSWORD=N'/pam4sc6pJM75EsVqlqDsP/Nqkq+zf2VMjt0uNY7MRI=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [vnPatrick] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [vnLukas]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [vnLukas] WITH PASSWORD=N'5UonA19X/bACLa3cOECvknF4lZhbeQkzjIKf9hsMgMs=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [vnLukas] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [vnJoe]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [vnJoe] WITH PASSWORD=N'18Y2y6pPtTgVPKHITiARhxiqUKWu4Hn7jSsQMYOwpS4=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [vnJoe] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [vnHelen]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [vnHelen] WITH PASSWORD=N'xpz0w373b3mRsdhD+TY40IXGJI2aE5RtBi93pj6FO9I=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [vnHelen] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [vnDBA]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [vnDBA] WITH PASSWORD=N'u68qkpX9i+xDG0yluoxORyN8856Mgm6MihJoev+NxkA=', DEFAULT_DATABASE=[bodb02], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [vnDBA] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [vnDaniel]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [vnDaniel] WITH PASSWORD=N'oipzC7G+B371frqGvGPvnsugKMCr9rt6e3Fqu0cNP3M=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [vnDaniel] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [vnBobby]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [vnBobby] WITH PASSWORD=N'kz8It6HYDxT9BUv2CPrtRHpu3C4sk9HUaEXSt4qkPVo=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [vnBobby] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [vnBilly]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [vnBilly] WITH PASSWORD=N'FsXimYhJ6LnJ7I8P5BmSVO1nFJ7vzR/RtxoFKPrZjtg=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [vnBilly] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [Viet]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [Viet] WITH PASSWORD=N'aXyh3FgEiVPeoNzohM+Cd6UZ+oHyof7+5hp/in9xlx0=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [Viet] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [thien]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [thien] WITH PASSWORD=N'/LatIeBAEQi61oW2Z+8GwUOFHFkoYeuQTVtdVZ8aeW0=', DEFAULT_DATABASE=[bodb02], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [thien] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [SqlLink]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [SqlLink] WITH PASSWORD=N'uRMVDjJUDEFjgr+A0iLPA0Op0DCLX6W+o2LgcLbxt6o=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [SqlLink] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [ServerMonitor]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [ServerMonitor] WITH PASSWORD=N'0M7RbjDhB0vJWjsCKhOxOaSB7hOJ8Dt6gggPsW2dh8E=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [ServerMonitor] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [repl_ap]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [repl_ap] WITH PASSWORD=N'ULg7Bor+iDjmbpxxQiuqtM84aTzbRcNXhB+JQ6Q2bAk=', DEFAULT_DATABASE=[bodb02], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [repl_ap] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [rdvivi]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [rdvivi] WITH PASSWORD=N'PHlC2SK0T16avuPav+LXmgr6ybEW2RgewfFPMobAXYA=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [rdvivi] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [RDVictor]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [RDVictor] WITH PASSWORD=N'stMI2q5UZoNBWpx/G6xha7HWeFtfCPxuQq/zOEdPeb8=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [RDVictor] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [RDSylvia]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [RDSylvia] WITH PASSWORD=N'h6MlvBGGIjC1vpNZiM63XgaxLMa6MqmpqdsCEU2Ez/s=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=ON
-GO
-ALTER LOGIN [RDSylvia] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [rdsvntrack]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [rdsvntrack] WITH PASSWORD=N'xhP28pPhKSP6YDk8RvFWTa9pfA+ljj8DdbXpGDOA7FE=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [rdsvntrack] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [RDLeon]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [RDLeon] WITH PASSWORD=N'RXAdKUN6KHNHWviNsHRjFzu3/K0epDZhEBc/e9168wI=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [RDLeon] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [RDKai]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [RDKai] WITH PASSWORD=N'nFyGroEimU4DuJGfgXZwmiyskzRgKW0ZhRtRBjWErLI=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [RDKai] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [RDJames]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [RDJames] WITH PASSWORD=N'7+PKzcHzxUXFxd5waaZFm/fxKvMyheYBEkQzqUdcTXo=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [RDJames] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [RDFrank]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [RDFrank] WITH PASSWORD=N'FDlhEPENBdAzvk7nEYNuP179PCxPesftXzVxilWSpKI=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [RDFrank] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [RDCooper]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [RDCooper] WITH PASSWORD=N'kw6z6hGAU299nldbFZhWmxY0ZWumDjWNzWnRHoMELaM=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [RDCooper] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [RDBenLee]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [RDBenLee] WITH PASSWORD=N'vgE21ti5VQTd22frO/a9tkWgwn/qAy4PS76k/M/I1rw=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [RDBenLee] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [RDAlfie]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [RDAlfie] WITH PASSWORD=N'VWmSx+PxXfJcufpsWy17lD2Qa7VifRtjWjmMsCTFVNU=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [RDAlfie] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [RB_Member]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [RB_Member] WITH PASSWORD=N's7GE/t/gKz74dAIC5N5H8LERWB1irtAGJnSSrKBQXaw=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [RB_Member] DISABLE
-GO
-/****** Object:  Login [NT SERVICE\SQLSERVERAGENT]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [NT SERVICE\SQLSERVERAGENT] FROM WINDOWS WITH DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english]
-GO
-/****** Object:  Login [NT SERVICE\MSSQLSERVER]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [NT SERVICE\MSSQLSERVER] FROM WINDOWS WITH DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english]
-GO
-/****** Object:  Login [NT AUTHORITY\SYSTEM]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS WITH DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english]
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [MonDB_User]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [MonDB_User] WITH PASSWORD=N'e5i2Zfdp6a1xlEXskXZjM9OH0tfNwjzpYIe9y16m5Cc=', DEFAULT_DATABASE=[MonDB], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [MonDB_User] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [ibcrep]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [ibcrep] WITH PASSWORD=N'E+LL383zqrhU0M3CFLwCILRzf81RY1/+EdNeghkm0LY=', DEFAULT_DATABASE=[bodb02], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [ibcrep] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [Dot_Member]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [Dot_Member] WITH PASSWORD=N'QMHGhSybKpkpgWN0Ko9SYLe4Qd9G4IT0BwmJCUNFmhE=', DEFAULT_DATABASE=[bodb02], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [Dot_Member] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [Dot_Casino]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [Dot_Casino] WITH PASSWORD=N'prnRdyketCZkUi5zo7prR+rzruFSYD5FWp6AXdTapMM=', DEFAULT_DATABASE=[bodb02], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [Dot_Casino] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [Dot_Admin]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [Dot_Admin] WITH PASSWORD=N'jnkDqAc6W/E+gTdBH0pKOZv9SKPgq6qrdWP/rxi+xC8=', DEFAULT_DATABASE=[bodb02], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [Dot_Admin] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [dba_Cert_User]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [dba_Cert_User] WITH PASSWORD=N'Ae1R1GsKr85niqnd+I2zB0WCBwJBaW4nwlEgaDYTQpI=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=ON
-GO
-ALTER LOGIN [dba_Cert_User] DISABLE
-GO
-/****** Object:  Login [DB055\sql]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [DB055\sql] FROM WINDOWS WITH DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english]
-GO
-/****** Object:  Login [DB055\DBA_Scheduler]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [DB055\DBA_Scheduler] FROM WINDOWS WITH DEFAULT_DATABASE=[MonDB], DEFAULT_LANGUAGE=[us_english]
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [CTO_Test]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [CTO_Test] WITH PASSWORD=N'hbEs9R2+9b7azugv724xCtuFhOGhLqmOx3CnIV/NINE=', DEFAULT_DATABASE=[bodb02], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [CTO_Test] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [bodbLicenseeNet]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [bodbLicenseeNet] WITH PASSWORD=N'eh9QeMruLKLs30MUKgeSkG8gaQoL8cVPXWMMy55WN84=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [bodbLicenseeNet] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [bodbExtAccNet]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [bodbExtAccNet] WITH PASSWORD=N'6j2FMWxeU23XRtZKm51AdPpjt3Hdf7dYsXES6Nh1GLg=', DEFAULT_DATABASE=[bodb02], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [bodbExtAccNet] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [bodbDownlineNetView]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [bodbDownlineNetView] WITH PASSWORD=N'yjUV2OelHD4g8xHZQCG8ztwJE3vrs2s/Y2Y6ygibbPM=', DEFAULT_DATABASE=[bodb02], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [bodbDownlineNetView] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [bodbDownlineNet]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [bodbDownlineNet] WITH PASSWORD=N'7P8wXvFWdFjXSaAex1LJNjpOLQWODWL+f5GBZXGSbOs=', DEFAULT_DATABASE=[bodb02], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [bodbDownlineNet] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [bodbAdminNet]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [bodbAdminNet] WITH PASSWORD=N'sJZq53YgC74Hajrx162PgEtFPjye5BtytezE9OrhKvY=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [bodbAdminNet] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [ANS_Member]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [ANS_Member] WITH PASSWORD=N'S0Bwkf2eR5Pfahik/rrbnwIjGE+tz8iChYiRgkQRGLI=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-ALTER LOGIN [ANS_Member] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [##MS_PolicyTsqlExecutionLogin##]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [##MS_PolicyTsqlExecutionLogin##] WITH PASSWORD=N'D67Bt7a4zzAkPF+86ekGDJ/a19VjEOJNVoY7milVEBw=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=ON
-GO
-ALTER LOGIN [##MS_PolicyTsqlExecutionLogin##] DISABLE
-GO
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [##MS_PolicyEventProcessingLogin##]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [##MS_PolicyEventProcessingLogin##] WITH PASSWORD=N'DRatCq+/w2VcUFIpI4nu+TarkZFZcyuiGOIHbTkqbNo=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=ON
-GO
-ALTER LOGIN [##MS_PolicyEventProcessingLogin##] DISABLE
-GO
-/****** Object:  Login [dbacert_user]    Script Date: 5/25/2020 11:01:16 PM ******/
-CREATE LOGIN [dbacert_user] FROM CERTIFICATE [serverlevel_cert]
-GO
-ALTER AUTHORIZATION ON DATABASE::[bodb_ost] TO [sa]
-GO
-ALTER SERVER ROLE [sysadmin] ADD MEMBER [vnPatrick]
-GO
-ALTER SERVER ROLE [sysadmin] ADD MEMBER [vnLukas]
-GO
-ALTER SERVER ROLE [sysadmin] ADD MEMBER [vnJoe]
-GO
-ALTER SERVER ROLE [sysadmin] ADD MEMBER [vnDaniel]
-GO
-ALTER SERVER ROLE [sysadmin] ADD MEMBER [vnBilly]
-GO
-ALTER SERVER ROLE [sysadmin] ADD MEMBER [Viet]
-GO
-ALTER SERVER ROLE [sysadmin] ADD MEMBER [rdvivi]
-GO
-ALTER SERVER ROLE [sysadmin] ADD MEMBER [RDVictor]
-GO
-ALTER SERVER ROLE [sysadmin] ADD MEMBER [RDSylvia]
-GO
-ALTER SERVER ROLE [sysadmin] ADD MEMBER [RDLeon]
-GO
-ALTER SERVER ROLE [sysadmin] ADD MEMBER [RDJames]
-GO
-ALTER SERVER ROLE [sysadmin] ADD MEMBER [RDFrank]
-GO
-ALTER SERVER ROLE [sysadmin] ADD MEMBER [RDCooper]
-GO
-ALTER SERVER ROLE [sysadmin] ADD MEMBER [RDBenLee]
-GO
-ALTER SERVER ROLE [sysadmin] ADD MEMBER [RDAlfie]
-GO
-ALTER SERVER ROLE [sysadmin] ADD MEMBER [NT SERVICE\SQLSERVERAGENT]
-GO
-ALTER SERVER ROLE [sysadmin] ADD MEMBER [NT SERVICE\MSSQLSERVER]
-GO
-ALTER SERVER ROLE [sysadmin] ADD MEMBER [NT AUTHORITY\SYSTEM]
-GO
-ALTER SERVER ROLE [sysadmin] ADD MEMBER [DB055\sql]
-GO
+
 USE [bodb_ost]
 GO
-/****** Object:  User [vnteam]    Script Date: 5/25/2020 11:01:17 PM ******/
-CREATE USER [vnteam] FOR LOGIN [vnteam] WITH DEFAULT_SCHEMA=[dbo]
-GO
-/****** Object:  User [vnBobby]    Script Date: 5/25/2020 11:01:17 PM ******/
-CREATE USER [vnBobby] FOR LOGIN [vnBobby] WITH DEFAULT_SCHEMA=[dbo]
-GO
-/****** Object:  User [SqlLink]    Script Date: 5/25/2020 11:01:17 PM ******/
-CREATE USER [SqlLink] FOR LOGIN [SqlLink] WITH DEFAULT_SCHEMA=[dbo]
-GO
-/****** Object:  User [repl_ap]    Script Date: 5/25/2020 11:01:17 PM ******/
-CREATE USER [repl_ap] FOR LOGIN [repl_ap] WITH DEFAULT_SCHEMA=[dbo]
-GO
-/****** Object:  User [rdsvntrack]    Script Date: 5/25/2020 11:01:17 PM ******/
-CREATE USER [rdsvntrack] FOR LOGIN [rdsvntrack] WITH DEFAULT_SCHEMA=[dbo]
-GO
-/****** Object:  User [bodbDownlineNetView]    Script Date: 5/25/2020 11:01:17 PM ******/
-CREATE USER [bodbDownlineNetView] FOR LOGIN [bodbDownlineNetView] WITH DEFAULT_SCHEMA=[dbo]
-GO
-/****** Object:  User [bodbDownlineNet]    Script Date: 5/25/2020 11:01:17 PM ******/
+/****** Object:  User [bodbDownlineNet]    Script Date: 6/8/2020 2:11:06 AM ******/
 CREATE USER [bodbDownlineNet] FOR LOGIN [bodbDownlineNet] WITH DEFAULT_SCHEMA=[dbo]
 GO
-ALTER ROLE [db_datareader] ADD MEMBER [vnteam]
+/****** Object:  User [bodbDownlineNetView]    Script Date: 6/8/2020 2:11:06 AM ******/
+CREATE USER [bodbDownlineNetView] FOR LOGIN [bodbDownlineNetView] WITH DEFAULT_SCHEMA=[dbo]
 GO
-ALTER ROLE [db_datareader] ADD MEMBER [vnBobby]
+/****** Object:  User [SqlLink]    Script Date: 6/8/2020 2:11:06 AM ******/
+CREATE USER [SqlLink] FOR LOGIN [SqlLink] WITH DEFAULT_SCHEMA=[dbo]
 GO
-ALTER ROLE [db_datareader] ADD MEMBER [SqlLink]
-GO
-GRANT CONNECT TO [bodbDownlineNet] AS [dbo]
-GO
-GRANT CONNECT TO [bodbDownlineNetView] AS [dbo]
-GO
-GRANT CONNECT TO [rdsvntrack] AS [dbo]
-GO
-GRANT CONNECT TO [repl_ap] AS [dbo]
-GO
-GRANT CONNECT TO [SqlLink] AS [dbo]
-GO
-GRANT CONNECT TO [vnBobby] AS [dbo]
-GO
-GRANT CONNECT TO [vnteam] AS [dbo]
-GO
-GRANT SHOWPLAN TO [vnteam] AS [dbo]
-GO
-GRANT VIEW DEFINITION TO [vnteam] AS [dbo]
-GO
-/****** Object:  UserDefinedTableType [dbo].[TVP_Bettrans]    Script Date: 5/25/2020 11:01:18 PM ******/
+
+/****** Object:  UserDefinedTableType [dbo].[TVP_Bettrans]    Script Date: 6/8/2020 2:11:06 AM ******/
 CREATE TYPE [dbo].[TVP_Bettrans] AS TABLE(
 	[transid] [bigint] NOT NULL,
 	[custid] [int] NULL,
@@ -519,11 +181,8 @@ CREATE TYPE [dbo].[TVP_Bettrans] AS TABLE(
 )WITH (IGNORE_DUP_KEY = OFF)
 )
 GO
-ALTER AUTHORIZATION ON TYPE::[dbo].[TVP_Bettrans] TO  SCHEMA OWNER 
-GO
-GRANT EXECUTE ON TYPE::[dbo].[TVP_Bettrans] TO [repl_ap] AS [dbo]
-GO
-/****** Object:  StoredProcedure [dbo].[DBA_InsertReplLog]    Script Date: 5/25/2020 11:01:18 PM ******/
+
+/****** Object:  StoredProcedure [dbo].[DBA_InsertReplLog]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -553,9 +212,7 @@ END
 
 
 GO
-ALTER AUTHORIZATION ON [dbo].[DBA_InsertReplLog] TO  SCHEMA OWNER 
-GO
-/****** Object:  StoredProcedure [dbo].[DBA_ReIndex]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[DBA_ReIndex]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -693,9 +350,7 @@ EXEC sp_updatestats
 
 
 GO
-ALTER AUTHORIZATION ON [dbo].[DBA_ReIndex] TO  SCHEMA OWNER 
-GO
-/****** Object:  StoredProcedure [dbo].[Dot_DBCompare_Select_Constraint]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Dot_DBCompare_Select_Constraint]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -720,9 +375,7 @@ END
 
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Dot_DBCompare_Select_Constraint] TO  SCHEMA OWNER 
-GO
-/****** Object:  StoredProcedure [dbo].[Dot_DBCompare_Select_DataType]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Dot_DBCompare_Select_DataType]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -747,9 +400,7 @@ END
 
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Dot_DBCompare_Select_DataType] TO  SCHEMA OWNER 
-GO
-/****** Object:  StoredProcedure [dbo].[Dot_DBCompare_Select_FK]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Dot_DBCompare_Select_FK]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -774,9 +425,7 @@ END
 
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Dot_DBCompare_Select_FK] TO  SCHEMA OWNER 
-GO
-/****** Object:  StoredProcedure [dbo].[Dot_DBCompare_Select_Function]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Dot_DBCompare_Select_Function]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -804,9 +453,7 @@ END
 
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Dot_DBCompare_Select_Function] TO  SCHEMA OWNER 
-GO
-/****** Object:  StoredProcedure [dbo].[Dot_DBCompare_Select_Identity]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Dot_DBCompare_Select_Identity]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -835,9 +482,7 @@ END
 
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Dot_DBCompare_Select_Identity] TO  SCHEMA OWNER 
-GO
-/****** Object:  StoredProcedure [dbo].[Dot_DBCompare_Select_PermByObject]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Dot_DBCompare_Select_PermByObject]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -868,9 +513,7 @@ END
 
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Dot_DBCompare_Select_PermByObject] TO  SCHEMA OWNER 
-GO
-/****** Object:  StoredProcedure [dbo].[Dot_DBCompare_Select_Repl]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Dot_DBCompare_Select_Repl]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -895,9 +538,7 @@ END
 
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Dot_DBCompare_Select_Repl] TO  SCHEMA OWNER 
-GO
-/****** Object:  StoredProcedure [dbo].[Dot_DBCompare_Select_Repl_Article]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Dot_DBCompare_Select_Repl_Article]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -932,9 +573,7 @@ END
 
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Dot_DBCompare_Select_Repl_Article] TO  SCHEMA OWNER 
-GO
-/****** Object:  StoredProcedure [dbo].[Dot_DBCompare_Select_SP]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Dot_DBCompare_Select_SP]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -960,9 +599,7 @@ END
 
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Dot_DBCompare_Select_SP] TO  SCHEMA OWNER 
-GO
-/****** Object:  StoredProcedure [dbo].[Dot_DBCompare_Select_Synonym]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Dot_DBCompare_Select_Synonym]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -988,9 +625,7 @@ END
 
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Dot_DBCompare_Select_Synonym] TO  SCHEMA OWNER 
-GO
-/****** Object:  StoredProcedure [dbo].[Dot_DBCompare_Select_Table]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Dot_DBCompare_Select_Table]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1016,9 +651,7 @@ END
 
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Dot_DBCompare_Select_Table] TO  SCHEMA OWNER 
-GO
-/****** Object:  StoredProcedure [dbo].[Dot_DBCompare_Select_TableType]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Dot_DBCompare_Select_TableType]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1045,9 +678,7 @@ END
 
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Dot_DBCompare_Select_TableType] TO  SCHEMA OWNER 
-GO
-/****** Object:  StoredProcedure [dbo].[Dot_DBCompare_Select_Trigger]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Dot_DBCompare_Select_Trigger]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1075,9 +706,7 @@ END
 
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Dot_DBCompare_Select_Trigger] TO  SCHEMA OWNER 
-GO
-/****** Object:  StoredProcedure [dbo].[Dot_DBCompare_Select_View]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Dot_DBCompare_Select_View]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1103,9 +732,7 @@ END
 
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Dot_DBCompare_Select_View] TO  SCHEMA OWNER 
-GO
-/****** Object:  StoredProcedure [dbo].[Ost_BetList_TotalBet]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Ost_BetList_TotalBet]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1495,13 +1122,11 @@ BEGIN
 END
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Ost_BetList_TotalBet] TO  SCHEMA OWNER 
-GO
 GRANT EXECUTE ON [dbo].[Ost_BetList_TotalBet] TO [bodbDownlineNet] AS [dbo]
 GO
 GRANT EXECUTE ON [dbo].[Ost_BetList_TotalBet] TO [bodbDownlineNetView] AS [dbo]
 GO
-/****** Object:  StoredProcedure [dbo].[Ost_Forecast_SelByLeague_Ag]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Ost_Forecast_SelByLeague_Ag]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1873,13 +1498,11 @@ BEGIN
 END	
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Ost_Forecast_SelByLeague_Ag] TO  SCHEMA OWNER 
-GO
 GRANT EXECUTE ON [dbo].[Ost_Forecast_SelByLeague_Ag] TO [bodbDownlineNet] AS [dbo]
 GO
 GRANT EXECUTE ON [dbo].[Ost_Forecast_SelByLeague_Ag] TO [bodbDownlineNetView] AS [dbo]
 GO
-/****** Object:  StoredProcedure [dbo].[Ost_Forecast_SelByLeague_MAg]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Ost_Forecast_SelByLeague_MAg]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2249,13 +1872,11 @@ BEGIN
 END
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Ost_Forecast_SelByLeague_MAg] TO  SCHEMA OWNER 
-GO
 GRANT EXECUTE ON [dbo].[Ost_Forecast_SelByLeague_MAg] TO [bodbDownlineNet] AS [dbo]
 GO
 GRANT EXECUTE ON [dbo].[Ost_Forecast_SelByLeague_MAg] TO [bodbDownlineNetView] AS [dbo]
 GO
-/****** Object:  StoredProcedure [dbo].[Ost_Forecast_SelByLeague_SAg]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Ost_Forecast_SelByLeague_SAg]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2626,13 +2247,11 @@ BEGIN
 END
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Ost_Forecast_SelByLeague_SAg] TO  SCHEMA OWNER 
-GO
 GRANT EXECUTE ON [dbo].[Ost_Forecast_SelByLeague_SAg] TO [bodbDownlineNet] AS [dbo]
 GO
 GRANT EXECUTE ON [dbo].[Ost_Forecast_SelByLeague_SAg] TO [bodbDownlineNetView] AS [dbo]
 GO
-/****** Object:  StoredProcedure [dbo].[Ost_Forecast_SelHDP]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Ost_Forecast_SelHDP]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2735,13 +2354,11 @@ BEGIN
 END
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Ost_Forecast_SelHDP] TO  SCHEMA OWNER 
-GO
 GRANT EXECUTE ON [dbo].[Ost_Forecast_SelHDP] TO [bodbDownlineNet] AS [dbo]
 GO
 GRANT EXECUTE ON [dbo].[Ost_Forecast_SelHDP] TO [bodbDownlineNetView] AS [dbo]
 GO
-/****** Object:  StoredProcedure [dbo].[Ost_Forecast_SelOU]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Ost_Forecast_SelOU]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2845,13 +2462,11 @@ BEGIN
 END
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Ost_Forecast_SelOU] TO  SCHEMA OWNER 
-GO
 GRANT EXECUTE ON [dbo].[Ost_Forecast_SelOU] TO [bodbDownlineNet] AS [dbo]
 GO
 GRANT EXECUTE ON [dbo].[Ost_Forecast_SelOU] TO [bodbDownlineNetView] AS [dbo]
 GO
-/****** Object:  StoredProcedure [dbo].[Ost_LastBets_All]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Ost_LastBets_All]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2932,100 +2547,11 @@ BEGIN
 END
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Ost_LastBets_All] TO  SCHEMA OWNER 
-GO
 GRANT EXECUTE ON [dbo].[Ost_LastBets_All] TO [bodbDownlineNet] AS [dbo]
 GO
 GRANT EXECUTE ON [dbo].[Ost_LastBets_All] TO [bodbDownlineNetView] AS [dbo]
 GO
-/****** Object:  StoredProcedure [dbo].[Ost_LastBets_All_xtest]    Script Date: 5/25/2020 11:01:18 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE PROCEDURE [dbo].[Ost_LastBets_All_xtest]
-	@CustId			INT,
-	@TransId		BIGINT	= 0,
-	@LimitRowCount	INT		= 20
-AS
-
-/*
-	Created: Kos@20200109
-	Task: Last Bets - All bet types
-	DB: DBOST.bodb_ost
-	Revision:
-		- 20200109@Kos: Created [Redmine: #121898]
-*/
-
-BEGIN
-	SET NOCOUNT ON
-
-	DECLARE @IsTest BIT
-
-	SELECT @IsTest = bodb02.dbo.f_CheckSPVersion(@@PROCID)
-
-	; WITH __bettypeList AS (
-		SELECT BetType
-		FROM bodb02.dbo.SportBettypeMatrix WITH (NOLOCK)
-		WHERE ProductID = 1 AND IsTest IN (0, @IsTest)
-		GROUP BY BetType
-	)
-
-	SELECT TOP(@LimitRowCount)
-		b.custid,
-		b.matchid,
-		b.Username,
-		b.bettype,
-		b.transid,
-		b.refno,
-		b.transdate,
-		b.betid,
-		b.livehomescore,
-		b.liveawayscore,
-		b.liveindicator,
-		b.hdp1,
-		b.hdp2,
-		b.odds,
-		b.stake,
-		b.actual_stake,
-		CASE
-			WHEN b.bettype NOT IN (9, 29) AND b.status = 'running' AND ISNULL(b.SecAcceptFlag, 0) = 1 AND ISNULL(b.checktime, CURRENT_TIMESTAMP) > CURRENT_TIMESTAMP THEN 'waiting'
-			WHEN b.bettype IN (9, 29) AND b.status = 'running' THEN
-				CASE
-					WHEN EXISTS (SELECT 1 FROM bodb02.dbo.bettransm AS bm WITH (NOLOCK)
-								WHERE bm.custid = b.custid
-									AND bm.refno = b.refno
-									AND (bm.status = 'waiting'
-										OR (bm.status = 'running' AND ISNULL(bm.SecAcceptFlag, 0) = 1 AND ISNULL(bm.checktime, CURRENT_TIMESTAMP) > CURRENT_TIMESTAMP)))
-						THEN 'Waiting'
-					ELSE b.status
-				END
-			ELSE b.status
-		END AS Status,
-		b.betteam,
-		b.ip,
-		b.oddstype,
-		ISNULL(b.betcheck, '') AS BetCheck,
-		ISNULL(b.transdesc, '') AS transdesc,
-		ISNULL(b.oddsspread, 0) AS OddsSpread,
-		ISNULL(b.ExtraInfo, '') AS ExtraInfo
-	FROM dbo.bettrans AS b WITH (NOLOCK)
-	WHERE b.recommend = @CustId 
-		AND b.transid > @TransId
-		AND b.statusID IN (0, 1)
-		AND b.bettype NOT BETWEEN 801 AND 806
-		AND EXISTS (SELECT TOP 1 1 FROM __bettypeList AS s WHERE b.bettype = s.Bettype)
-	ORDER BY b.transid DESC
-END
-
-GO
-ALTER AUTHORIZATION ON [dbo].[Ost_LastBets_All_xtest] TO  SCHEMA OWNER 
-GO
-GRANT EXECUTE ON [dbo].[Ost_LastBets_All_xtest] TO [bodbDownlineNet] AS [dbo]
-GO
-GRANT EXECUTE ON [dbo].[Ost_LastBets_All_xtest] TO [bodbDownlineNetView] AS [dbo]
-GO
-/****** Object:  StoredProcedure [dbo].[Ost_LastBets_HDP]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Ost_LastBets_HDP]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3080,74 +2606,11 @@ BEGIN
 END
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Ost_LastBets_HDP] TO  SCHEMA OWNER 
-GO
 GRANT EXECUTE ON [dbo].[Ost_LastBets_HDP] TO [bodbDownlineNet] AS [dbo]
 GO
 GRANT EXECUTE ON [dbo].[Ost_LastBets_HDP] TO [bodbDownlineNetView] AS [dbo]
 GO
-/****** Object:  StoredProcedure [dbo].[Ost_LastBets_HDP_xtest]    Script Date: 5/25/2020 11:01:18 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE PROCEDURE [dbo].[Ost_LastBets_HDP_xtest]
-	@CustId			INT,
-	@TransId		BIGINT	= 0,
-	@LimitRowCount	INT		= 20
-AS
-
-/*
-	Created: Kos@20200109
-	Task: Last Bets - Handicap bet types
-	DB: DBOST.bodb_ost
-	Revision:
-		- 20200109@Kos: Created [Redmine: #121898]
-*/
-
-BEGIN
-	SET NOCOUNT ON
-
-	SELECT TOP(@LimitRowCount)
-		b.matchid,
-		b.Username,
-		b.bettype,
-		b.transid,
-		b.refno,
-		b.transdate,
-		b.betid,
-		b.livehomescore,
-		b.liveawayscore,
-		b.liveindicator,
-		b.hdp1,
-		b.hdp2,
-		b.odds,
-		b.stake,
-		CASE
-			WHEN b.status = 'running' AND ISNULL(b.SecAcceptFlag, 0) = 1 AND ISNULL(b.checktime, CURRENT_TIMESTAMP) > CURRENT_TIMESTAMP THEN 'waiting'
-			ELSE b.status
-		END AS Status,
-		b.betteam,
-		b.ip,
-		b.oddstype,
-		ISNULL(b.oddsspread, 0) AS OddsSpread,
-		ISNULL(b.ExtraInfo, '') AS ExtraInfo
-	FROM dbo.bettrans AS b WITH (NOLOCK)
-	WHERE b.recommend = @CustId
-		AND b.statusID IN (0, 1)
-		AND b.transid > @TransId
-		AND b.bettype IN (1, 7)
-	ORDER BY b.transid DESC
-END
-
-GO
-ALTER AUTHORIZATION ON [dbo].[Ost_LastBets_HDP_xtest] TO  SCHEMA OWNER 
-GO
-GRANT EXECUTE ON [dbo].[Ost_LastBets_HDP_xtest] TO [bodbDownlineNet] AS [dbo]
-GO
-GRANT EXECUTE ON [dbo].[Ost_LastBets_HDP_xtest] TO [bodbDownlineNetView] AS [dbo]
-GO
-/****** Object:  StoredProcedure [dbo].[Ost_LastBets_Other]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Ost_LastBets_Other]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3228,100 +2691,11 @@ BEGIN
 END
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Ost_LastBets_Other] TO  SCHEMA OWNER 
-GO
 GRANT EXECUTE ON [dbo].[Ost_LastBets_Other] TO [bodbDownlineNet] AS [dbo]
 GO
 GRANT EXECUTE ON [dbo].[Ost_LastBets_Other] TO [bodbDownlineNetView] AS [dbo]
 GO
-/****** Object:  StoredProcedure [dbo].[Ost_LastBets_Other_xtest]    Script Date: 5/25/2020 11:01:18 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE PROCEDURE [dbo].[Ost_LastBets_Other_xtest]
-	@CustId			INT,
-	@TransId		BIGINT	= 0,
-	@LimitRowCount	INT		= 20
-AS
-
-/*
-	Created: Kos@20200109
-	Task: Last Bets - Other bet types
-	DB: DBOST.bodb_ost
-	Revision:
-		- 20200109@Kos: Created [Redmine: #121898]
-*/
-
-BEGIN
-	SET NOCOUNT ON
-
-	DECLARE @IsTest BIT = 0
-
-	SELECT @IsTest = bodb02.dbo.f_CheckSPVersion(@@PROCID)
-
-	; WITH __bettypeList AS (
-		SELECT BetType
-		FROM bodb02.dbo.SportBettypeMatrix WITH (NOLOCK)
-		WHERE ProductID = 1 AND IsTest IN (0, @IsTest)
-		GROUP BY BetType
-	)
-	SELECT TOP(@LimitRowCount)
-		b.custid,
-		b.matchid,
-		b.Username,
-		b.bettype,
-		b.transid,
-		b.refno,
-		b.transdate,
-		b.betid,
-		b.livehomescore,
-		b.liveawayscore,
-		b.liveindicator,
-		b.hdp1,
-		b.hdp2,
-		b.odds,
-		b.stake,
-		b.actual_stake,
-		CASE
-			WHEN b.bettype NOT IN (9, 29) AND b.status = 'running' AND ISNULL(b.SecAcceptFlag, 0) = 1 AND ISNULL(b.checktime, CURRENT_TIMESTAMP) > CURRENT_TIMESTAMP THEN 'waiting'
-			WHEN b.bettype IN (9, 29) AND b.status = 'running' THEN
-				CASE
-					WHEN EXISTS (SELECT 1 FROM bodb02.dbo.bettransm AS bm WITH (NOLOCK)
-								WHERE bm.custid = b.custid
-									AND bm.refno = b.refno
-									AND (bm.status = 'waiting'
-										OR (bm.status = 'running' AND ISNULL(bm.SecAcceptFlag, 0) = 1 AND ISNULL(bm.checktime, CURRENT_TIMESTAMP) > CURRENT_TIMESTAMP)))
-						THEN 'Waiting'
-					ELSE b.status
-				END
-			ELSE b.status
-		END AS status,
-		b.betteam,
-		b.ip,
-		b.oddstype,
-		ISNULL(b.betcheck, '') AS Betcheck,
-		ISNULL(b.transdesc, '') AS transdesc,
-		0 AS OddsSpread,
-		ISNULL(b.ExtraInfo, '') AS ExtraInfo
-	FROM dbo.bettrans AS b WITH (NOLOCK)
-	WHERE b.recommend = @CustId
-		AND b.statusID IN (0,1)
-		AND b.transid > @TransId
-		AND b.bettype NOT BETWEEN 801 AND 806
-		AND b.bettype NOT IN (1, 3, 7, 8)
-		AND EXISTS (SELECT TOP 1 1 FROM __bettypeList AS s WHERE b.bettype = s.BetType)
-	ORDER BY b.transid DESC
-END
-
-GO
-ALTER AUTHORIZATION ON [dbo].[Ost_LastBets_Other_xtest] TO  SCHEMA OWNER 
-GO
-GRANT EXECUTE ON [dbo].[Ost_LastBets_Other_xtest] TO [bodbDownlineNet] AS [dbo]
-GO
-GRANT EXECUTE ON [dbo].[Ost_LastBets_Other_xtest] TO [bodbDownlineNetView] AS [dbo]
-GO
-/****** Object:  StoredProcedure [dbo].[Ost_LastBets_OU]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Ost_LastBets_OU]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3376,74 +2750,11 @@ BEGIN
 END
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Ost_LastBets_OU] TO  SCHEMA OWNER 
-GO
 GRANT EXECUTE ON [dbo].[Ost_LastBets_OU] TO [bodbDownlineNet] AS [dbo]
 GO
 GRANT EXECUTE ON [dbo].[Ost_LastBets_OU] TO [bodbDownlineNetView] AS [dbo]
 GO
-/****** Object:  StoredProcedure [dbo].[Ost_LastBets_OU_xtest]    Script Date: 5/25/2020 11:01:18 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE PROCEDURE [dbo].[Ost_LastBets_OU_xtest]
-	@CustId			INT,
-	@TransId		BIGINT	= 0,
-	@LimitRowCount	INT		= 20
-AS
-
-/*
-	Created: Kos@20200109
-	Task: Last Bets - Over/Under bet types
-	DB: DBOST.bodb_ost
-	Revision:
-		- 20200109@Kos: Created [Redmine: #121898]
-*/
-
-BEGIN
-	SET NOCOUNT ON
-
-	SELECT TOP(@LimitRowCount)
-		b.matchid,
-		b.Username,
-		b.bettype,
-		b.transid,
-		b.refno,
-		b.transdate,
-		b.betid,
-		b.livehomescore,
-		b.liveawayscore,
-		b.liveindicator,
-		b.hdp1,
-		b.hdp2,
-		b.odds,
-		b.stake,
-		CASE
-			WHEN b.status = 'running' AND ISNULL(b.SecAcceptFlag, 0) = 1 AND ISNULL(b.checktime, CURRENT_TIMESTAMP) > CURRENT_TIMESTAMP THEN 'waiting'
-			ELSE b.status
-		END AS Status,
-		b.betteam,
-		b.ip,
-		b.oddstype,
-		ISNULL(b.oddsspread, 0) AS OddsSpread,
-		ISNULL(b.ExtraInfo, '') AS ExtraInfo
-	FROM dbo.bettrans AS b WITH (NOLOCK)
-	WHERE b.recommend = @CustId
-		AND b.statusID IN (0, 1)
-		AND b.transid > @TransId
-		AND b.bettype IN (3, 8)
-	ORDER BY b.transid DESC
-END
-
-GO
-ALTER AUTHORIZATION ON [dbo].[Ost_LastBets_OU_xtest] TO  SCHEMA OWNER 
-GO
-GRANT EXECUTE ON [dbo].[Ost_LastBets_OU_xtest] TO [bodbDownlineNet] AS [dbo]
-GO
-GRANT EXECUTE ON [dbo].[Ost_LastBets_OU_xtest] TO [bodbDownlineNetView] AS [dbo]
-GO
-/****** Object:  StoredProcedure [dbo].[Ost_LeagueSelRunning_Ag]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Ost_LeagueSelRunning_Ag]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3498,13 +2809,11 @@ BEGIN
 END
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Ost_LeagueSelRunning_Ag] TO  SCHEMA OWNER 
-GO
 GRANT EXECUTE ON [dbo].[Ost_LeagueSelRunning_Ag] TO [bodbDownlineNet] AS [dbo]
 GO
 GRANT EXECUTE ON [dbo].[Ost_LeagueSelRunning_Ag] TO [bodbDownlineNetView] AS [dbo]
 GO
-/****** Object:  StoredProcedure [dbo].[Ost_LeagueSelRunning_MAg]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Ost_LeagueSelRunning_MAg]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3559,13 +2868,11 @@ BEGIN
 END
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Ost_LeagueSelRunning_MAg] TO  SCHEMA OWNER 
-GO
 GRANT EXECUTE ON [dbo].[Ost_LeagueSelRunning_MAg] TO [bodbDownlineNet] AS [dbo]
 GO
 GRANT EXECUTE ON [dbo].[Ost_LeagueSelRunning_MAg] TO [bodbDownlineNetView] AS [dbo]
 GO
-/****** Object:  StoredProcedure [dbo].[Ost_LeagueSelRunning_SAg]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Ost_LeagueSelRunning_SAg]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3620,13 +2927,11 @@ BEGIN
 END
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Ost_LeagueSelRunning_SAg] TO  SCHEMA OWNER 
-GO
 GRANT EXECUTE ON [dbo].[Ost_LeagueSelRunning_SAg] TO [bodbDownlineNet] AS [dbo]
 GO
 GRANT EXECUTE ON [dbo].[Ost_LeagueSelRunning_SAg] TO [bodbDownlineNetView] AS [dbo]
 GO
-/****** Object:  StoredProcedure [dbo].[Ost_NewTotalBetsForeCast_Main]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Ost_NewTotalBetsForeCast_Main]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3958,351 +3263,11 @@ BEGIN
 END 
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Ost_NewTotalBetsForeCast_Main] TO  SCHEMA OWNER 
-GO
 GRANT EXECUTE ON [dbo].[Ost_NewTotalBetsForeCast_Main] TO [bodbDownlineNet] AS [dbo]
 GO
 GRANT EXECUTE ON [dbo].[Ost_NewTotalBetsForeCast_Main] TO [bodbDownlineNetView] AS [dbo]
 GO
-/****** Object:  StoredProcedure [dbo].[Ost_NewTotalBetsForeCast_Main_xtest]    Script Date: 5/25/2020 11:01:18 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE PROCEDURE [dbo].[Ost_NewTotalBetsForeCast_Main_xtest]   
-    @CustID			INT  
-    , @MatchIDList  VARCHAR (MAX)
-    , @IsLive		BIT = 1  
-	, @roleid		TINYINT = NULL
-AS  
-/*  
-	Created By: 20191219@Bobby  
-	Task: New Total Bet & Forecast [Redmine: 121898]   
-	DB: DBOST/bodb_ost
-	Original:DBAGE.bodb02.[Age_NewTotalBetsForeCast_Main]
-	  
-	Revisions:  
-		- 20191219@Bobby : Move to bodb_ost - [Redmine:121898] 
-	
-	Example:
-	exec Ost_NewTotalBetsForeCast_Main_xtest @MatchIDList='17354067,17354069,17354078,17354080,17354085,17354087,17354099,17354101',@IsLive=0,@CustID=18364243
-
-*/
-BEGIN  
-	SET NOCOUNT ON
-	DECLARE @_CustID	INT
-	DECLARE @MatchIDs	TABLE(matchid INT PRIMARY KEY)
-
-	DECLARE @MatchInfo TABLE(
-		MatchID INT PRIMARY KEY
-		, homeid INT
-		, awayid INT
-		, livehomescore INT
-		, liveawayscore INT
-		, HasLive BIT
-		, kickofftime DATETIME
-		, leagueid INT
-		, showtime NVARCHAR(50)
-		, scorediff INT
-		, TotalGoals INT
-		, IsEndOfHalfTime BIT
-	)
-
-	DECLARE @ForecastTbl TABLE(
-		MatchID INT
-		, BettypeID SMALLINT
-		, F1 SMALLINT
-		, F2 SMALLINT
-		, F3 SMALLINT
-		, F4 SMALLINT
-		, F5 SMALLINT
-		, HighlightValue_3_8 SMALLINT
-		, PRIMARY KEY CLUSTERED (
-			BettypeID
-			, MatchID
-		)
-	)
-
-	----------------------------------------
-	SELECT @_CustID	= ISNULL(@CustID, 0)
-	SELECT TOP 1
-		@roleid			= roleid
-	FROM bodb02.dbo.custInfo WITH(NOLOCK)
-	WHERE @roleid IS NULL
-	AND custid = @_CustID
-
-	-- PARSE matchid
-	INSERT INTO @MatchIDs(matchid)
-	SELECT DISTINCT t.val 
-	FROM dbo.strSplit_Key(@MatchIDList, ',') AS t
-
-	-- SELECT match info
-	INSERT INTO @MatchInfo (MatchID, homeid, awayid, livehomescore, liveawayscore, HasLive, kickofftime, leagueid, showtime,scorediff,totalGoals, IsEndOfHalfTime)
-	SELECT m.matchid, m.homeid, m.awayid  
-		, m.livehomescore  
-		, m.liveawayscore
-		, 0
-		, m.kickofftime
-		, m.leagueid
-		, m.showtime
-		, m.livehomescore - m.liveawayscore as scorediff
-		, m.livehomescore + m.liveawayscore as TotalGoals
-		, CASE WHEN DATEADD(MINUTE,45,kickofftime) < GETDATE() THEN 1 ELSE 0 END AS IsEndOfHalfTime 
-	FROM dbo.match m WITH (NOLOCK)
-	WHERE EXISTS (SELECT 1 FROM @MatchIDs t WHERE t.matchid = m.matchid) 
-		AND m.eventstatus NOT IN ('completed','Internal')
-	
-	-- PREPARE F values
-	IF @IsLive = 1
-	BEGIN
-		INSERT INTO @ForecastTbl (MatchID ,BettypeID ,F1, F2 , F3 , F4 , F5 )  
-		SELECT DISTINCT od.MatchID,od.bettype
-				, CASE 
-						WHEN od.bettype IN (1,7) THEN m.scorediff + 2
-						WHEN od.bettype IN (3,8) THEN m.TotalGoals + 4
-						ELSE 0
-				  END F1
-				, CASE 
-						WHEN od.bettype IN (1,7) THEN m.scorediff + 1
-						WHEN od.bettype IN (3,8) THEN m.TotalGoals + 3
-						ELSE 0
-				  END F2
-			  , CASE 
-					WHEN od.bettype IN (1,7) THEN m.scorediff 
-					WHEN od.bettype IN (3,8) THEN m.TotalGoals + 2 
-					ELSE 0
-			  END F3
-			  , CASE 
-					WHEN od.bettype IN (1,7) THEN m.scorediff - 1
-					WHEN od.bettype IN (3,8) THEN m.TotalGoals + 1
-					ELSE 0
-			  END F4
-			  , CASE 
-					WHEN od.bettype IN (1,7) THEN m.scorediff - 2
-					WHEN od.bettype IN (3,8) THEN m.TotalGoals 
-					ELSE 0
-			  END F5	
-						
-		FROM dbo.odds od WITH (NOLOCK) 
-			INNER JOIN @MatchInfo M ON M.MatchID = OD.matchid --AND od.oddsstatus = 'running'
-		WHERE (M.IsEndOfHalfTime = 0 AND od.bettype IN (1,3,7,8,5,15)) OR (M.IsEndOfHalfTime = 1 AND od.bettype IN (1,3,5))
-		
-	END
-	ELSE --IF @IsLive = 0
-	BEGIN
-		INSERT INTO @ForecastTbl (MatchID ,BettypeID ,F1, F2 , F3 , F4 , F5, HighlightValue_3_8 )  
-		SELECT F.matchid, F.bettype 
-				, CASE WHEN F.bettype IN (5,15) THEN 0 ELSE ForecastScore + 2	END AS	F1
-				, CASE WHEN F.bettype IN (5,15) THEN 0 ELSE ForecastScore + 1	END AS	F2
-				, CASE WHEN F.bettype IN (5,15) THEN 0 ELSE ForecastScore		END AS	F3
-				, CASE WHEN F.bettype IN (5,15) THEN 0 ELSE ForecastScore - 1	END AS	F4
-				, CASE WHEN F.bettype IN (5,15) THEN 0 ELSE ForecastScore - 2	END AS	F5
-				, CASE WHEN F.bettype IN (3,8) THEN HighlightValue_3_8 ELSE 0	END AS HighlightValue_3_8
-			  
-		FROM (
-			SELECT DISTINCT od.MatchID,od.bettype
-					, CASE WHEN od.bettype IN (1,7) THEN CAST(AVG (od.hdp1 - od.hdp2) AS SMALLINT)
-						   WHEN od.bettype IN (3,8) THEN 
-								CASE WHEN AVG (od.hdp1) < = 2  THEN 2  ELSE CAST (AVG (od.hdp1) AS SMALLINT)
-								END
-							ELSE 0	
-						END AS ForecastScore
-					, AVG (od.hdp1) AS HighlightValue_3_8		
-			FROM dbo.odds od WITH (NOLOCK) 
-				INNER JOIN @MatchInfo M ON M.MatchID = OD.matchid AND od.oddsstatus = 'running'
-			WHERE (M.IsEndOfHalfTime = 0 AND od.bettype IN (1,3,7,8)) OR (M.IsEndOfHalfTime = 1 AND od.bettype IN (1,3))
-			GROUP BY od.matchid,od.bettype
-			
-			UNION ALL
-			
-			SELECT DISTINCT od.MatchID,od.bettype
-					, 0 ForecastScore
-					, 0 AS HighlightValue_3_8		
-			FROM dbo.odds od WITH (NOLOCK) 
-				INNER JOIN @MatchInfo M ON M.MatchID = OD.matchid 
-			WHERE (M.IsEndOfHalfTime = 0 AND od.bettype IN (5,15)) OR (M.IsEndOfHalfTime = 1 AND od.bettype IN (5))
-			
-		) AS F
-	END
-
-	CREATE TABLE #bettrans_AIO (
-		matchid INT
-		, bettype SMALLINT
-		, betteam NVARCHAR(10)
-		, livehomescore SMALLINT
-		, liveawayscore SMALLINT
-		, hdp1 SMALLMONEY
-		, hdp2 SMALLMONEY
-		, odds SMALLMONEY
-		, betcount INT
-		, SMA_stake MONEY
-		, SMA_actual_stake MONEY
-	)
-
-	---------------
-	CREATE CLUSTERED INDEX CIX_MatchBettypeAIO ON #bettrans_AIO(bettype, matchid)
-
-	DECLARE @Bettype_AIO_tmp AS TABLE (
-		bettype SMALLINT
-		, IsEndOfHalfTime BIT
-		, GroupByttype TINYINT
-	)
-		
-	--GroupByttype=1
-	INSERT INTO @Bettype_AIO_tmp (bettype,IsEndOfHalfTime, GroupByttype)
-	VALUES (1,0,1), (3,0,1),(7,0,1),(8,0,1), (1,1,1), (3,1,1)
-
-	--GroupByttype=2
-	INSERT INTO @Bettype_AIO_tmp (bettype,IsEndOfHalfTime, GroupByttype)
-	VALUES (5,0,2), (15,0,2), (5,1,2)
-
-	IF @roleID = 2
-	BEGIN
-		-- bettrans 1_7_3_8
-		INSERT INTO #bettrans_AIO (matchid,bettype,betteam,livehomescore,liveawayscore,hdp1,hdp2,Odds
-			,betcount,SMA_stake,SMA_actual_stake
-		)  
-		SELECT b.matchid, b.bettype,b.betteam,b.livehomescore,b.liveawayscore,b.hdp1,b.hdp2,b.odds
-			, COUNT(1) AS BetCount
-			, SUM(b.stake * b.apositiontaking) AS SMA_stake
-			, SUM(b.actual_stake * b.apositiontaking) AS SMA_actual_stake
-			
-		--FROM dbo.Ost_f_bettrans_running() b
-		FROM dbo.bettrans b with(nolock)
-			INNER JOIN @MatchInfo M ON b.matchid = m.MatchID
-			INNER JOIN @Bettype_AIO_tmp bt ON bt.bettype = b.bettype AND M.IsEndOfHalfTime = bt.IsEndOfHalfTime
-		WHERE b.recommend		= @_CustID 
-			AND b.statusID IN (0,1)
-		GROUP BY  b.matchid, b.bettype,b.betteam,b.livehomescore,b.liveawayscore,b.hdp1,b.hdp2,b.odds
-	END
-	ELSE 
-	IF @roleID = 3
-	BEGIN
-		INSERT INTO #bettrans_AIO (matchid,bettype,betteam,livehomescore,liveawayscore,hdp1,hdp2,Odds
-			,betcount,SMA_stake,SMA_actual_stake
-		)  
-		SELECT b.matchid, b.bettype,b.betteam,b.livehomescore,b.liveawayscore,b.hdp1,b.hdp2,b.odds
-			, COUNT(1) AS BetCount
-			, SUM(b.stake * b.mpositiontaking) AS SMA_stake
-			, SUM(b.actual_stake * b.mpositiontaking) AS SMA_actual_stake
-			
-		--FROM dbo.Ost_f_bettrans_running() b
-		FROM dbo.bettrans b with(nolock)
-			INNER JOIN @MatchInfo M ON b.matchid = m.MatchID
-			INNER JOIN @Bettype_AIO_tmp bt ON bt.bettype = b.bettype AND M.IsEndOfHalfTime = bt.IsEndOfHalfTime
-		WHERE b.mrecommend	= @_CustID
-			AND b.statusID IN (0,1)
-		GROUP BY  b.matchid, b.bettype,b.betteam,b.livehomescore,b.liveawayscore,b.hdp1,b.hdp2,b.odds
-					
-	END
-	ELSE 
-	IF @roleID = 4
-	BEGIN
-		INSERT INTO #bettrans_AIO (matchid,bettype,betteam,livehomescore,liveawayscore,hdp1,hdp2,Odds
-			,betcount,SMA_stake,SMA_actual_stake
-		)  
-		SELECT b.matchid, b.bettype,b.betteam,b.livehomescore,b.liveawayscore,b.hdp1,b.hdp2,b.odds
-			, COUNT(1) AS BetCount
-			, SUM(b.stake * b.spositiontaking) AS SMA_stake
-			, SUM(b.actual_stake * b.spositiontaking) AS SMA_actual_stake
-			
-		--FROM dbo.Ost_f_bettrans_running() b
-		FROM dbo.bettrans b with(nolock)
-			INNER JOIN @MatchInfo M ON b.matchid = m.MatchID
-			INNER JOIN @Bettype_AIO_tmp bt ON bt.bettype = b.bettype AND M.IsEndOfHalfTime = bt.IsEndOfHalfTime
-		WHERE b.srecommend = @_CustID 
-			AND b.statusID IN (0,1)
-		GROUP BY b.matchid, b.bettype,b.betteam,b.livehomescore,b.liveawayscore,b.hdp1,b.hdp2,b.odds
-	END
-	
-	-- Match info
-	SELECT m.matchid, m.homeid, m.awayid  
-		, m.livehomescore  
-		, m.liveawayscore
-		, m.HasLive
-		, m.kickofftime
-		, m.leagueid
-		, m.showtime
-		, @IsLive AS IsLive
-	FROM @MatchInfo M
-	
-	-- Forecast winloss	
-	-- Bettype HDP/OU
-	SELECT f.matchid,f.BettypeID
-		, SUM(ISNULL(F1.Winloss,0)) AS Winloss1
-		, SUM(ISNULL(F2.Winloss,0)) AS Winloss2
-		, SUM(ISNULL(F3.Winloss,0)) AS Winloss3
-		, SUM(ISNULL(F4.Winloss,0)) AS Winloss4
-		, SUM(ISNULL(F5.Winloss,0)) AS Winloss5
-	FROM @ForecastTbl F 
-		LEFT JOIN #bettrans_AIO b ON b.matchid = f.MatchID AND b.bettype = F.BettypeID
-		OUTER APPLY [dbo].[Ost_F_TotalBetsForecast_CalWinLoss_xtest](F.BettypeID, F.F1, b.betteam, b.hdp1, b.hdp2, b.SMA_stake, b.SMA_actual_stake, b.odds, b.livehomescore, b.liveawayscore) AS F1
-		OUTER APPLY [dbo].[Ost_F_TotalBetsForecast_CalWinLoss_xtest](F.BettypeID, F.F2, b.betteam, b.hdp1, b.hdp2, b.SMA_stake, b.SMA_actual_stake, b.odds, b.livehomescore, b.liveawayscore) AS F2
-		OUTER APPLY [dbo].[Ost_F_TotalBetsForecast_CalWinLoss_xtest](F.BettypeID, F.F3, b.betteam, b.hdp1, b.hdp2, b.SMA_stake, b.SMA_actual_stake, b.odds, b.livehomescore, b.liveawayscore) AS F3
-		OUTER APPLY [dbo].[Ost_F_TotalBetsForecast_CalWinLoss_xtest](F.BettypeID, F.F4, b.betteam, b.hdp1, b.hdp2, b.SMA_stake, b.SMA_actual_stake, b.odds, b.livehomescore, b.liveawayscore) AS F4
-		OUTER APPLY [dbo].[Ost_F_TotalBetsForecast_CalWinLoss_xtest](F.BettypeID, F.F5, b.betteam, b.hdp1, b.hdp2, b.SMA_stake, b.SMA_actual_stake, b.odds, b.livehomescore, b.liveawayscore) AS F5
-	WHERE F.BettypeID IN (1,3,7,8)
-	GROUP BY F.matchid,F.BettypeID
-
-	-- Bettype 1X2
-	UNION ALL
-	SELECT matchid, BettypeID,   
-		-- Member View
-		--Negative number in black indicates the amount SMA may win and Members may lose.	
-		--Positive number in red indicates the amount SMA may lose and Members may win.
-		(x.homewin - x.awaylose - x.drawlose) 'w1',
-		(x.drawwin - x.awaylose - x.homelose) 'wx',  
-		(x.awaywin - x.homelose - x.drawlose) 'w2',
-		0,
-		0  -- away win, agent lose
-	FROM (
-		SELECT  F.matchid, F.BettypeID,
-			SUM(CASE WHEN betteam='1' THEN (CASE WHEN odds < 0 THEN 1 ELSE odds - 1 END) * SMA_stake ELSE 0 END) homewin,  
-			SUM(CASE WHEN betteam='2' THEN (CASE WHEN odds < 0 THEN 1 ELSE odds - 1 END) * SMA_stake ELSE 0 END) awaywin,  
-			SUM(CASE WHEN betteam='x' THEN (CASE WHEN odds < 0 THEN 1 ELSE odds - 1 END) * SMA_stake ELSE 0 END) drawwin,  
-
-			SUM(CASE WHEN betteam='1' THEN (CASE WHEN odds < 0 THEN ABS(odds - 1) ELSE 1 END)  * SMA_stake ELSE 0 END) homelose,  
-			SUM(CASE WHEN betteam='2' THEN (CASE WHEN odds < 0 THEN ABS(odds - 1) ELSE 1 END)  * SMA_stake ELSE 0 END) awaylose,  
-			SUM(CASE WHEN betteam='x' THEN (CASE WHEN odds < 0 THEN ABS(odds - 1) ELSE 1 END)  * SMA_stake ELSE 0 END) drawlose
-
-		FROM @ForecastTbl F
-			LEFT JOIN #bettrans_AIO b ON F.matchid = b.matchid AND F.bettypeid = b.bettype
-		WHERE f.BettypeID IN (5,15)	
-		GROUP BY F.matchid,F.BettypeID
-	) AS  x   
-
-	-- Forecast Score Definition
-	SELECT f.matchid,f.BettypeID
-		, SUM(ISNULL(T.SMA_stake,0)) AS TurnOver,SUM(ISNULL(T.BetCount,0)) AS BetCount
-		, f.F1 AS column1	
-		, f.F2 AS column2	
-		, f.F3 AS column3	
-		, f.F4 AS column4	
-		, f.F5 AS column5	
-		, ISNULL(f.HighlightValue_3_8,0) AS HighlightValue_3_8
-			
-	FROM @ForecastTbl f 
-		LEFT JOIN #bettrans_AIO AS T ON T.BetType = f.BetTypeID AND T.matchid = F.MatchID
-	GROUP BY f.matchid,f.BettypeID
-		,f.F1
-		,f.F2
-		,f.F3
-		,f.F4
-		,f.F5
-		,f.HighlightValue_3_8
-
-	-- CLEAN:
-	DROP TABLE #bettrans_AIO
-END 
-
-GO
-ALTER AUTHORIZATION ON [dbo].[Ost_NewTotalBetsForeCast_Main_xtest] TO  SCHEMA OWNER 
-GO
-GRANT EXECUTE ON [dbo].[Ost_NewTotalBetsForeCast_Main_xtest] TO [bodbDownlineNet] AS [dbo]
-GO
-GRANT EXECUTE ON [dbo].[Ost_NewTotalBetsForeCast_Main_xtest] TO [bodbDownlineNetView] AS [dbo]
-GO
-/****** Object:  StoredProcedure [dbo].[Repl_InsUpdBettrans_TVP]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Repl_InsUpdBettrans_TVP]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -4416,11 +3381,7 @@ END
 
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Repl_InsUpdBettrans_TVP] TO  SCHEMA OWNER 
-GO
-GRANT EXECUTE ON [dbo].[Repl_InsUpdBettrans_TVP] TO [repl_ap] AS [dbo]
-GO
-/****** Object:  StoredProcedure [dbo].[Repl_QueryReplLog]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Repl_QueryReplLog]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -4445,11 +3406,7 @@ END
 
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Repl_QueryReplLog] TO  SCHEMA OWNER 
-GO
-GRANT EXECUTE ON [dbo].[Repl_QueryReplLog] TO [repl_ap] AS [dbo]
-GO
-/****** Object:  StoredProcedure [dbo].[Repl_QueryReplValue]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[Repl_QueryReplValue]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -4471,11 +3428,8 @@ END
 
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Repl_QueryReplValue] TO  SCHEMA OWNER 
-GO
-GRANT EXECUTE ON [dbo].[Repl_QueryReplValue] TO [repl_ap] AS [dbo]
-GO
-/****** Object:  StoredProcedure [dbo].[Repl_UpdateReplValue]    Script Date: 5/25/2020 11:01:18 PM ******/
+
+/****** Object:  StoredProcedure [dbo].[Repl_UpdateReplValue]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -4498,11 +3452,7 @@ END
 
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Repl_UpdateReplValue] TO  SCHEMA OWNER 
-GO
-GRANT EXECUTE ON [dbo].[Repl_UpdateReplValue] TO [repl_ap] AS [dbo]
-GO
-/****** Object:  StoredProcedure [dbo].[task_dba_olddata_cleanup]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[task_dba_olddata_cleanup]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -4573,9 +3523,7 @@ begin
 end
  
 GO
-ALTER AUTHORIZATION ON [dbo].[task_dba_olddata_cleanup] TO  SCHEMA OWNER 
-GO
-/****** Object:  StoredProcedure [dbo].[vndba_monitor_replication_latency]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  StoredProcedure [dbo].[vndba_monitor_replication_latency]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -4599,36 +3547,24 @@ begin
 end
 
 GO
-ALTER AUTHORIZATION ON [dbo].[vndba_monitor_replication_latency] TO  SCHEMA OWNER 
-GO
 GRANT EXECUTE ON [dbo].[vndba_monitor_replication_latency] TO [SqlLink] AS [dbo]
 GO
-/****** Object:  Synonym [dbo].[league]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  Synonym [dbo].[league]    Script Date: 6/8/2020 2:11:06 AM ******/
 CREATE SYNONYM [dbo].[league] FOR [bodb02].[dbo].[league]
 GO
-ALTER AUTHORIZATION ON [dbo].[league] TO  SCHEMA OWNER 
-GO
-/****** Object:  Synonym [dbo].[match]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  Synonym [dbo].[match]    Script Date: 6/8/2020 2:11:06 AM ******/
 CREATE SYNONYM [dbo].[match] FOR [bodb02].[dbo].[match]
 GO
-ALTER AUTHORIZATION ON [dbo].[match] TO  SCHEMA OWNER 
-GO
-/****** Object:  Synonym [dbo].[match_remark]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  Synonym [dbo].[match_remark]    Script Date: 6/8/2020 2:11:06 AM ******/
 CREATE SYNONYM [dbo].[match_remark] FOR [bodb02].[dbo].[match_remark]
 GO
-ALTER AUTHORIZATION ON [dbo].[match_remark] TO  SCHEMA OWNER 
-GO
-/****** Object:  Synonym [dbo].[odds]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  Synonym [dbo].[odds]    Script Date: 6/8/2020 2:11:06 AM ******/
 CREATE SYNONYM [dbo].[odds] FOR [bodb02].[dbo].[odds]
 GO
-ALTER AUTHORIZATION ON [dbo].[odds] TO  SCHEMA OWNER 
-GO
-/****** Object:  Synonym [dbo].[OddsES]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  Synonym [dbo].[OddsES]    Script Date: 6/8/2020 2:11:06 AM ******/
 CREATE SYNONYM [dbo].[OddsES] FOR [bodb02].[dbo].[OddsES]
 GO
-ALTER AUTHORIZATION ON [dbo].[OddsES] TO  SCHEMA OWNER 
-GO
-/****** Object:  UserDefinedFunction [dbo].[strSplit]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  UserDefinedFunction [dbo].[strSplit]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -4690,9 +3626,7 @@ END
 
 
 GO
-ALTER AUTHORIZATION ON [dbo].[strSplit] TO  SCHEMA OWNER 
-GO
-/****** Object:  UserDefinedFunction [dbo].[strSplit_Key]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  UserDefinedFunction [dbo].[strSplit_Key]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -4743,9 +3677,7 @@ BEGIN
 END
 
 GO
-ALTER AUTHORIZATION ON [dbo].[strSplit_Key] TO  SCHEMA OWNER 
-GO
-/****** Object:  Table [dbo].[bettrans]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  Table [dbo].[bettrans]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -4832,9 +3764,7 @@ CREATE TABLE [dbo].[bettrans](
 GO
 SET ANSI_PADDING OFF
 GO
-ALTER AUTHORIZATION ON [dbo].[bettrans] TO  SCHEMA OWNER 
-GO
-/****** Object:  Table [dbo].[ReplLog]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  Table [dbo].[ReplLog]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -4849,9 +3779,7 @@ CREATE TABLE [dbo].[ReplLog](
 ) ON [Data_table]
 
 GO
-ALTER AUTHORIZATION ON [dbo].[ReplLog] TO  SCHEMA OWNER 
-GO
-/****** Object:  Table [dbo].[ReplRef]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  Table [dbo].[ReplRef]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -4871,9 +3799,7 @@ CREATE TABLE [dbo].[ReplRef](
 GO
 SET ANSI_PADDING OFF
 GO
-ALTER AUTHORIZATION ON [dbo].[ReplRef] TO  SCHEMA OWNER 
-GO
-/****** Object:  Table [dbo].[vnDBA_ReplicationLatencyChecking]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  Table [dbo].[vnDBA_ReplicationLatencyChecking]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -4893,9 +3819,7 @@ PRIMARY KEY CLUSTERED
 ) ON [Data_table]
 
 GO
-ALTER AUTHORIZATION ON [dbo].[vnDBA_ReplicationLatencyChecking] TO  SCHEMA OWNER 
-GO
-/****** Object:  Table [dbo].[vndba_replicationMissingcheck]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  Table [dbo].[vndba_replicationMissingcheck]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -4907,9 +3831,7 @@ CREATE TABLE [dbo].[vndba_replicationMissingcheck](
 ) ON [Data_table]
 
 GO
-ALTER AUTHORIZATION ON [dbo].[vndba_replicationMissingcheck] TO  SCHEMA OWNER 
-GO
-/****** Object:  Table [dbo].[vndba_tracking]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  Table [dbo].[vndba_tracking]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -4924,9 +3846,7 @@ CREATE TABLE [dbo].[vndba_tracking](
 ) ON [Data_table]
 
 GO
-ALTER AUTHORIZATION ON [dbo].[vndba_tracking] TO  SCHEMA OWNER 
-GO
-/****** Object:  UserDefinedFunction [dbo].[f_GetHalfTimeBetType]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  UserDefinedFunction [dbo].[f_GetHalfTimeBetType]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -4952,9 +3872,7 @@ RETURN (
 )
 
 GO
-ALTER AUTHORIZATION ON [dbo].[f_GetHalfTimeBetType] TO  SCHEMA OWNER 
-GO
-/****** Object:  UserDefinedFunction [dbo].[Ost_f_bettrans_running]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  UserDefinedFunction [dbo].[Ost_f_bettrans_running]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5029,9 +3947,7 @@ RETURN (
 )
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Ost_f_bettrans_running] TO  SCHEMA OWNER 
-GO
-/****** Object:  UserDefinedFunction [dbo].[Ost_F_TotalBetsForecast_CalWinLoss]    Script Date: 5/25/2020 11:01:18 PM ******/
+/****** Object:  UserDefinedFunction [dbo].[Ost_F_TotalBetsForecast_CalWinLoss]    Script Date: 6/8/2020 2:11:06 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5114,93 +4030,8 @@ RETURN (
 )
 
 GO
-ALTER AUTHORIZATION ON [dbo].[Ost_F_TotalBetsForecast_CalWinLoss] TO  SCHEMA OWNER 
-GO
-/****** Object:  UserDefinedFunction [dbo].[Ost_F_TotalBetsForecast_CalWinLoss_xtest]    Script Date: 5/25/2020 11:01:18 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE FUNCTION [dbo].[Ost_F_TotalBetsForecast_CalWinLoss_xtest]
-(	
-	@bettype			INT
-	, @fValue			SMALLINT
-	, @betteam			NVARCHAR(10) = NULL
-	, @hdp1				SMALLMONEY = NULL
-	, @hdp2				SMALLMONEY = NULL
-	, @stake			MONEY = 0
-	, @actual_stake		MONEY = 0
-	, @odds				SMALLMONEY = 1
-	, @livehomescore	SMALLINT = NULL
-	, @liveawayscore	SMALLINT = NULL
-	
-)
-RETURNS TABLE 
-AS 
-/*  
-	Created By: 20191219@Bobby  
-	Task: New Total Bet & Forecast [Redmine: 121898]   
-	DB: DBOST/bodb_ost
-	  
-	Revisions:  
-		- 20191219@Bobby : Move to bodb_ost - [Redmine:121898] 
-*/       
-RETURN (
-	SELECT
-	--- output result
-		CASE  
-			WHEN mo.Modds >= 0 THEN (ra.Ratio * b.stake)
-			ELSE (ra.Ratio * b.actual_stake)
-		END AS Winloss
-	--- bettrans
-	FROM (
-		VALUES (
-			@bettype
-			, CASE WHEN @bettype IN (1,7) THEN @fValue ELSE 0 END --scorediff
-			, CASE WHEN @bettype IN (3,8) THEN @fValue ELSE 0 END --totalGoals
-			, @betteam
-			, @hdp2
-			, @hdp1
-			, @stake
-			, @actual_stake
-			, CASE WHEN @odds < 0 THEN 1 ELSE @odds END
-			, @livehomescore
-			, @liveawayscore
-		)
-	) AS b (bettype, scorediff, totalGoals, betteam, hdp2, hdp1, stake, actual_stake, odds, livehomescore, liveawayscore)
-	--- call modds
-	CROSS APPLY
-	(
-		SELECT 
-			CASE 
-				WHEN b.bettype IN (1,7) THEN 
-					CASE b.betteam 
-						WHEN 'h' THEN (b.hdp2 - b.hdp1) + (b.scorediff - b.livehomescore  + b.liveawayscore)
-						WHEN 'a' THEN (b.hdp1 - b.hdp2) + (-b.scorediff + b.livehomescore  - b.liveawayscore)
-					END
-				WHEN b.bettype IN (3,8) THEN 
-					CASE b.betteam 
-						WHEN 'h' THEN b.totalGoals - b.hdp1
-						WHEN 'a' THEN b.hdp1 - b.totalGoals
-					END
-				ELSE 0 -- not support
-			END AS Modds
-	) AS mo
-	-- call ratio
-	CROSS APPLY (
-		SELECT CASE 
-			WHEN mo.Modds >  0.25	THEN b.odds
-			WHEN mo.Modds =  0.25	THEN 0.5 * b.odds
-			WHEN mo.Modds =  0		THEN 0.00
-			WHEN mo.Modds = -0.25	THEN -0.5
-			WHEN mo.Modds < -0.25	THEN -1.00 
-		END Ratio
-	) AS ra
-)
 
-GO
-ALTER AUTHORIZATION ON [dbo].[Ost_F_TotalBetsForecast_CalWinLoss_xtest] TO  SCHEMA OWNER 
-GO
+
 /****** Object:  Index [CIX_CreatedDate]    Script Date: 5/25/2020 11:01:18 PM ******/
 CREATE CLUSTERED INDEX [CIX_CreatedDate] ON [dbo].[ReplLog]
 (
