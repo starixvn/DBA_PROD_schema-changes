@@ -678,11 +678,11 @@ DROP PROCEDURE dbo.controllerearlyclosed
 DROP PROCEDURE dbo.controllernew
 DROP PROCEDURE dbo.controllertotalgoal
 DROP PROCEDURE dbo.controllertotalgoalclosed
-DROP PROCEDURE dbo.ConversationManagement_Del
-DROP PROCEDURE dbo.ConversationManagement_End
-DROP PROCEDURE dbo.ConversationManagement_Ins
-DROP PROCEDURE dbo.ConversationManagement_Upd
-DROP PROCEDURE dbo.ConversationPick
+DROP PROCEDURE sb.ConversationManagement_Del
+DROP PROCEDURE sb.ConversationManagement_End
+DROP PROCEDURE sb.ConversationManagement_Ins
+DROP PROCEDURE sb.ConversationManagement_Upd
+DROP PROCEDURE sb.ConversationPick
 DROP PROCEDURE dbo.CS_Acc_CustomerInfo_HeadlineSel
 DROP PROCEDURE dbo.CS_BetList_AbnormalBet_Mem
 DROP PROCEDURE dbo.CS_BetList_CancelledBet_Mem
@@ -762,7 +762,7 @@ DROP PROCEDURE dbo.DBA_CheckPT3rd_Credit
 DROP PROCEDURE dbo.DBA_CheckTicketCnt
 DROP PROCEDURE dbo.DBA_CheckTicketStatusNoChange
 DROP PROCEDURE dbo.DBA_CleanDataforAdminSite
-DROP PROCEDURE dbo.DBA_ConversationManagement
+DROP PROCEDURE sb.DBA_ConversationManagement
 DROP PROCEDURE dbo.DBA_DatabaseBackup
 DROP PROCEDURE dbo.DBA_Exec
 DROP PROCEDURE dbo.DBA_GetAgent
