@@ -20,7 +20,7 @@ DROP INDEX CIX_MatchBettype ON dbo.Dot_Admin_PrecalculateForecast
 DROP INDEX CIX_matchID ON dbo.MatchForecast
 DROP INDEX CIX_matchID ON dbo.MatchForecast_FlexOdds
 DROP INDEX CIX_MatchID ON dbo.UserLog_AcceptBet
-DROP INDEX CIX_Sync_ChecksumResult ON dbo.Task_Sync_ChecksumResult_mnl
+--DROP INDEX CIX_Sync_ChecksumResult ON dbo.Task_Sync_ChecksumResult_mnl
 DROP INDEX CIX_TOControl_TicketDetails_Insert ON dbo.TOControl_TicketDetails_Insert
 DROP INDEX CIX_TOControl_Tickets_setting ON dbo.TOControl_Tickets_Setting
 DROP INDEX ClX_MatchForecast_Resourceid_matchID ON dbo.MatchForecast_Resourceid
@@ -81,7 +81,7 @@ DROP INDEX IX_srecommend ON dbo.bettransRnG
 DROP INDEX IX_sum_winloss_ag ON dbo.sum_winloss
 DROP INDEX IX_sum_winloss_ma ON dbo.sum_winloss
 DROP INDEX IX_sum_winloss_sa ON dbo.sum_winloss
-DROP INDEX IX_Sync_ChecksumResult_Status ON dbo.Task_Sync_ChecksumResult_mnl
+--DROP INDEX IX_Sync_ChecksumResult_Status ON dbo.Task_Sync_ChecksumResult_mnl
 DROP INDEX IX_translog_danger ON dbo.translog_lastDanger
 DROP INDEX IX_translog_danger2 ON dbo.translog_lastDanger
 DROP INDEX IX_translog_danger3 ON dbo.translog_lastDanger
