@@ -15,11 +15,11 @@ GO
 EXEC master.dbo.sp_dropserver @server=N'DB053', @droplogins='droplogins'
 GO
 
-EXEC master.dbo.sp_dropserver @server=N'SYNCCENTER', @droplogins='droplogins'
-GO
+--EXEC master.dbo.sp_dropserver @server=N'SYNCCENTER', @droplogins='droplogins'
+--GO
 
-EXEC master.dbo.sp_dropserver @server=N'10.11.1.31', @droplogins='droplogins'
-GO
+--EXEC master.dbo.sp_dropserver @server=N'10.11.1.31', @droplogins='droplogins'
+--GO
 
-EXEC master.dbo.sp_dropserver @server=N'DBMNL', @droplogins='droplogins'
-GO
+--EXEC master.dbo.sp_dropserver @server=N'DBMNL', @droplogins='droplogins'
+--GO

@@ -104,6 +104,9 @@ GO
 CREATE USER [SqlLink] FOR LOGIN [SqlLink] WITH DEFAULT_SCHEMA=[dbo]
 GO
 
+EXEC sp_addrolemember 'db_datareader', 'SqlLink'
+GO
+
 /****** Object:  UserDefinedTableType [dbo].[TVP_Bettrans]    Script Date: 6/8/2020 2:11:06 AM ******/
 CREATE TYPE [dbo].[TVP_Bettrans] AS TABLE(
 	[transid] [bigint] NOT NULL,

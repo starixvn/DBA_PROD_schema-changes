@@ -10,6 +10,16 @@
 ----------------------------------------------------------------------------------------------------
 USE bodb02
 GO
+
+--Truncate data for bet[14] tables
+TRUNCATE TABLE bettrans14
+TRUNCATE TABLE betransRnG14
+TRUNCATE TABLE translog14
+TRUNCATE TABLE bettransm14
+TRUNCATE TABLE bettransLC14
+TRUNCATE TABLE bettransG14
+GO
+
 DROP INDEX _MS_Sys_47_48_3_mnl ON dbo.odds
 DROP INDEX CIX ON dbo.outright
 DROP INDEX CIX_eventdate ON dbo.Dot_Admin_Report_MatchInfo
@@ -123,6 +133,7 @@ DROP INDEX PK_UserLog_AcceptBet ON dbo.UserLog_AcceptBet
 DROP INDEX PK_VirtualMapping ON dbo.VirtualMapping
 DROP INDEX PK_WinLimit_GlobalSetting ON dbo.WinLimit_GlobalSetting
 DROP INDEX PK_winlostdate ON dbo.bettransm14
+GO
 
 /*
 * Create new table's indexes
