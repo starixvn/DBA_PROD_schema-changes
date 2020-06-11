@@ -2,7 +2,7 @@
 	Task: Add back subscriptions to indicated publication
 	Run @ DBTP
 	** ATTENTION!! Must replace xxx for @subscriber_password with correct sa password of subscriber servers
-		& Remote to DBDIST02C\DIST02 and connect DBTP to run script
+		& Remote to DBTP02C and connect DBTP to run script
 */
 
 
