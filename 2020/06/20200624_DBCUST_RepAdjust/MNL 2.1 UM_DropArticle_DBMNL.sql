@@ -4,9 +4,9 @@
 */
 
 -- Dropping the transactional articles
-use [CustDB]
-exec sp_dropsubscription @publication = N'CustDB_CustSetting', @article = N'CustSettingAutoSuspend', @subscriber = N'all', @destination_db = N'all'
+use [bodb02]
+exec sp_dropsubscription @publication = N'DBMNL_Customer_Setting_C', @article = N'CustSettingAutoSuspend', @subscriber = N'all', @destination_db = N'all'
 GO
-use [CustDB]
-exec sp_droparticle @publication = N'CustDB_CustSetting', @article = N'CustSettingAutoSuspend', @force_invalidate_snapshot = 1
+use [bodb02]
+exec sp_droparticle @publication = N'DBMNL_Customer_Setting_C', @article = N'CustSettingAutoSuspend', @force_invalidate_snapshot = 1
 GO
