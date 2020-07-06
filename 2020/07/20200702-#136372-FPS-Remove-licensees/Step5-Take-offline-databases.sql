@@ -18,8 +18,7 @@ INSERT INTO #TerminatedLicensees (SubscriberName)
 SELECT  DISTINCT
         input.SubscriberName
 FROM    (
-    VALUES  ('HC6YAYOU')			--<========== INPUT HERE ==========<
-        ,   ('liv66')				--<========== INPUT HERE ==========<
+    VALUES  ('YBTech')			--<========== INPUT HERE ==========<
 ) AS input(SubscriberName);
 
 DECLARE @Query      NVARCHAR(MAX)

@@ -1,5 +1,5 @@
 /*
-	Task - Remove terminated licensees: HC6YAYOU, liv66
+	Task - Remove terminated licensees: YBTech
 		Remove FPS Admin Configuration
 		
     Server: DBFRAUD
@@ -27,8 +27,8 @@ INSERT INTO #TerminatedLicensees (SubscriberName)
 SELECT  DISTINCT
         input.SubscriberName
 FROM    (
-    VALUES  ('HC6YAYOU')			--<========== INPUT HERE ==========<
-        ,   ('liv66')				--<========== INPUT HERE ==========<
+    VALUES  ('YBTech')			--<========== INPUT HERE ==========<
+       
 ) AS input(SubscriberName);
 
 UPDATE  tmp WITH (TABLOCK)
