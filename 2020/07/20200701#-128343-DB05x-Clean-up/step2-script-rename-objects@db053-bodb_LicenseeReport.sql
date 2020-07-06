@@ -1,6 +1,6 @@
 /*
 	Task - Rename object @ DB053.bodb_LicenseeReport
-	21 objects
+	22 objects
 */
 use bodb_LicenseeReport
 go
@@ -24,4 +24,7 @@ EXEC sp_rename 'dbo.GET_DepositDataToValidate_LicenseeWL_xtest', 'dbo.DEL_GET_De
 EXEC sp_rename 'dbo.Task_CustomerActive_CopyData', 'dbo.DEL_Task_CustomerActive_CopyData';
 EXEC sp_rename 'dbo.Task_CustomerActive_GenDataForPlaytechCS_AGCasino', 'dbo.DEL_Task_CustomerActive_GenDataForPlaytechCS_AGCasino';
 EXEC sp_rename 'dbo.Task_CustomerActive_GenDataDaily', 'dbo.DEL_Task_CustomerActive_GenDataDaily';
+EXEC sp_rename 'dbo.Task_DepositDataCompare_HouseNetIncome', 'dbo.DEL_Task_DepositDataCompare_HouseNetIncome';
 EXEC sp_rename 'dbo.Task_PrepareStaging_Patrick_xtest', 'dbo.DEL_Task_PrepareStaging_Patrick_xtest';
+
+GO

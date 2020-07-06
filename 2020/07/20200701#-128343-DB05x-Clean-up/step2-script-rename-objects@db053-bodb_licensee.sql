@@ -1,5 +1,6 @@
 /*
 	Task - Rename object @ DB053.bodb_Licensee
+	71 objects
 */
 use bodb_Licensee
 go
@@ -10,6 +11,7 @@ EXEC sp_rename 'dbo.LA_DiscountGet_UAT2', 'dbo.DEL_LA_DiscountGet_UAT2';
 EXEC sp_rename 'dbo.LA_DiscountGroupCurrencySel_UAT2', 'dbo.DEL_LA_DiscountGroupCurrencySel_UAT2';
 EXEC sp_rename 'dbo.LA_DiscountIns_UAT2', 'dbo.DEL_LA_DiscountIns_UAT2';
 EXEC sp_rename 'dbo.LA_DiscountUpd_UAT2', 'dbo.DEL_LA_DiscountUpd_UAT2';
+EXEC sp_rename 'dbo.LA_ExchangeRateBillingSel', 'dbo.DEL_LA_ExchangeRateBillingSel';
 EXEC sp_rename 'dbo.LA_f_LicenseeEventLog_UAT4', 'dbo.DEL_LA_f_LicenseeEventLog_UAT4';
 EXEC sp_rename 'dbo.LA_GEN_LicPerformanceAnalysis_Adjustment_UAT4', 'dbo.DEL_LA_GEN_LicPerformanceAnalysis_Adjustment_UAT4';
 EXEC sp_rename 'dbo.LA_Inv_ChargeRateInfoGet_xtest', 'dbo.DEL_LA_Inv_ChargeRateInfoGet_xtest';
@@ -36,6 +38,7 @@ EXEC sp_rename 'dbo.LA_Rpt_LicenseeAnalysis_UAT3', 'dbo.DEL_LA_Rpt_LicenseeAnaly
 EXEC sp_rename 'dbo.LA_Rpt_LicenseeWinLossByDynamicProduct_UAT3', 'dbo.DEL_LA_Rpt_LicenseeWinLossByDynamicProduct_UAT3';
 EXEC sp_rename 'dbo.LA_Rpt_LicPerformance_Automail_UAT3', 'dbo.DEL_LA_Rpt_LicPerformance_Automail_UAT3';
 EXEC sp_rename 'dbo.LA_Rpt_SuperliveWinLoss_UAT4', 'dbo.DEL_LA_Rpt_SuperliveWinLoss_UAT4';
+EXEC sp_rename 'dbo.LA_TotalTransByDate', 'dbo.DEL_LA_TotalTransByDate';
 EXEC sp_rename 'dbo.Lrf_CheckEditBetSetting', 'dbo.DEL_Lrf_CheckEditBetSetting';
 EXEC sp_rename 'dbo.Lrf_CurrencyCustSel', 'dbo.DEL_Lrf_CurrencyCustSel';
 EXEC sp_rename 'dbo.Lrf_CustomerMoveGroupComm_UAT4', 'dbo.DEL_Lrf_CustomerMoveGroupComm_UAT4';
@@ -45,19 +48,31 @@ EXEC sp_rename 'dbo.Lrf_CustomerSelUserSearch_UAT3', 'dbo.DEL_Lrf_CustomerSelUse
 EXEC sp_rename 'dbo.Lrf_CustomerSelUserSearch_UAT4', 'dbo.DEL_Lrf_CustomerSelUserSearch_UAT4';
 EXEC sp_rename 'dbo.Lrf_CustomerSetDefaultComm_UAT4', 'dbo.DEL_Lrf_CustomerSetDefaultComm_UAT4';
 EXEC sp_rename 'dbo.Lrf_CustomerUpdMemberComm_UAT4', 'dbo.DEL_Lrf_CustomerUpdMemberComm_UAT4';
+EXEC sp_rename 'dbo.LRF_Get_CurrentDate', 'dbo.DEL_LRF_Get_CurrentDate';
 EXEC sp_rename 'dbo.Lrf_GET_ExchangeRateOANDA', 'dbo.DEL_Lrf_GET_ExchangeRateOANDA';
+EXEC sp_rename 'dbo.Lrf_GetDBCurrentDatetime', 'dbo.DEL_Lrf_GetDBCurrentDatetime';
+EXEC sp_rename 'dbo.Lrf_GetNumberOfOnlineUsers', 'dbo.DEL_Lrf_GetNumberOfOnlineUsers';
+EXEC sp_rename 'dbo.Lrf_IsUserExisted', 'dbo.DEL_Lrf_IsUserExisted';
 EXEC sp_rename 'dbo.Lrf_LicenseeCustCommUpd_UAT4', 'dbo.DEL_Lrf_LicenseeCustCommUpd_UAT4';
+EXEC sp_rename 'dbo.Lrf_LicenseeGroupCommDel_UAT4', 'dbo.DEL_Lrf_LicenseeGroupCommDel_UAT4';
 EXEC sp_rename 'dbo.Lrf_LicenseeGroupCommIns_UAT4', 'dbo.DEL_Lrf_LicenseeGroupCommIns_UAT4';
+EXEC sp_rename 'dbo.Lrf_LicenseeGroupCommSel', 'dbo.DEL_Lrf_LicenseeGroupCommSel';
 EXEC sp_rename 'dbo.Lrf_LicenseeGroupCommSel_UAT4', 'dbo.DEL_Lrf_LicenseeGroupCommSel_UAT4';
 EXEC sp_rename 'dbo.Lrf_LicenseeGroupCommUpd_UAT4', 'dbo.DEL_Lrf_LicenseeGroupCommUpd_UAT4';
+EXEC sp_rename 'dbo.Lrf_PageAccessByLicenseeSel', 'dbo.DEL_Lrf_PageAccessByLicenseeSel';
 EXEC sp_rename 'dbo.Lrf_SelBetTypeBySport_UAT3', 'dbo.DEL_Lrf_SelBetTypeBySport_UAT3';
 EXEC sp_rename 'dbo.Lrf_SelBetTypeBySport_UAT4', 'dbo.DEL_Lrf_SelBetTypeBySport_UAT4';
 EXEC sp_rename 'dbo.Lrf_SelBetTypeBySport_xpre', 'dbo.DEL_Lrf_SelBetTypeBySport_xpre';
 EXEC sp_rename 'dbo.Lrf_SelBetTypesByProduct_UAT4', 'dbo.DEL_Lrf_SelBetTypesByProduct_UAT4';
+EXEC sp_rename 'dbo.Lrf_SelCurrency', 'dbo.DEL_Lrf_SelCurrency';
 EXEC sp_rename 'dbo.Lrf_SelMatchByleague_UAT4', 'dbo.DEL_Lrf_SelMatchByleague_UAT4';
 EXEC sp_rename 'dbo.Lrf_SelSportDetail_UAT3', 'dbo.DEL_Lrf_SelSportDetail_UAT3';
 EXEC sp_rename 'dbo.Lrf_SelSportDetail_UAT4', 'dbo.DEL_Lrf_SelSportDetail_UAT4';
 EXEC sp_rename 'dbo.Lrf_SelSportDetail_xpre', 'dbo.DEL_Lrf_SelSportDetail_xpre';
+EXEC sp_rename 'dbo.Lrf_SportSel', 'dbo.DEL_Lrf_SportSel';
+EXEC sp_rename 'dbo.Lrf_SSOLinkSel', 'dbo.DEL_Lrf_SSOLinkSel';
+EXEC sp_rename 'dbo.Lrf_UserSaltSel', 'dbo.DEL_Lrf_UserSaltSel';
 EXEC sp_rename 'dbo.NAP_SpecialCustSetting_LicenseeList_UAT4', 'dbo.DEL_NAP_SpecialCustSetting_LicenseeList_UAT4';
 EXEC sp_rename 'dbo.NAP_SpecialCustSettingAgent_SelByCurrencyAndLicensee_UAT4', 'dbo.DEL_NAP_SpecialCustSettingAgent_SelByCurrencyAndLicensee_UAT4';
 EXEC sp_rename 'dbo.Task_CheckMissingActiveBAMember', 'dbo.DEL_Task_CheckMissingActiveBAMember';
+GO

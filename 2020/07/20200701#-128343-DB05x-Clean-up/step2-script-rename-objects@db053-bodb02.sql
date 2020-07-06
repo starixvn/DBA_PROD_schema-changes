@@ -1,6 +1,6 @@
 /*
 	Task - Rename object @ DB053.bodb02
-	1677 objects
+	1696 objects
 */
 use bodb_Summary
 go
@@ -53,6 +53,8 @@ EXEC sp_rename 'dbo.Acc_BetlistCombinationParlay_Details_xtest', 'dbo.DEL_Acc_Be
 EXEC sp_rename 'dbo.Acc_BetsSelBetCheckGD_xtest', 'dbo.DEL_Acc_BetsSelBetCheckGD_xtest';
 EXEC sp_rename 'dbo.Acc_BetsSelBetCheckM_All_UAT3', 'dbo.DEL_Acc_BetsSelBetCheckM_All_UAT3';
 EXEC sp_rename 'dbo.Acc_BettransSelDelSpecial_MixParlay_viettest', 'dbo.DEL_Acc_BettransSelDelSpecial_MixParlay_viettest';
+EXEC sp_rename 'dbo.Acc_BettransSelSpecialDel_MixParlay_EarlyKO', 'dbo.DEL_Acc_BettransSelSpecialDel_MixParlay_EarlyKO';
+EXEC sp_rename 'dbo.Acc_BettransSelSpecialDel_MixParlay_EarlyKO_xtest', 'dbo.DEL_Acc_BettransSelSpecialDel_MixParlay_EarlyKO_xtest';
 EXEC sp_rename 'dbo.Acc_Calculate_3', 'dbo.DEL_Acc_Calculate_3';
 EXEC sp_rename 'dbo.Acc_Calculate_4', 'dbo.DEL_Acc_Calculate_4';
 EXEC sp_rename 'dbo.Acc_Calculate_5', 'dbo.DEL_Acc_Calculate_5';
@@ -343,15 +345,12 @@ EXEC sp_rename 'dbo.Age_BetList_SelWinLossByDate_Mem_UAT2', 'dbo.DEL_Age_BetList
 EXEC sp_rename 'dbo.Age_BetList_SelWinlossHR_Ag_UAT2', 'dbo.DEL_Age_BetList_SelWinlossHR_Ag_UAT2';
 EXEC sp_rename 'dbo.Age_BetList_SelWinlossHR_Ag_UAT3', 'dbo.DEL_Age_BetList_SelWinlossHR_Ag_UAT3';
 EXEC sp_rename 'dbo.Age_BetList_SelWinlossHR_Ag_xpre', 'dbo.DEL_Age_BetList_SelWinlossHR_Ag_xpre';
-EXEC sp_rename 'dbo.Age_BetList_SelWinlossHR_Ag_xtest', 'dbo.DEL_Age_BetList_SelWinlossHR_Ag_xtest';
 EXEC sp_rename 'dbo.Age_BetList_SelWinlossHR_MAg_UAT2', 'dbo.DEL_Age_BetList_SelWinlossHR_MAg_UAT2';
 EXEC sp_rename 'dbo.Age_BetList_SelWinlossHR_MAg_UAT3', 'dbo.DEL_Age_BetList_SelWinlossHR_MAg_UAT3';
 EXEC sp_rename 'dbo.Age_BetList_SelWinlossHR_MAg_xpre', 'dbo.DEL_Age_BetList_SelWinlossHR_MAg_xpre';
-EXEC sp_rename 'dbo.Age_BetList_SelWinlossHR_MAg_xtest', 'dbo.DEL_Age_BetList_SelWinlossHR_MAg_xtest';
 EXEC sp_rename 'dbo.Age_BetList_SelWinlossHR_SAg_UAT2', 'dbo.DEL_Age_BetList_SelWinlossHR_SAg_UAT2';
 EXEC sp_rename 'dbo.Age_BetList_SelWinlossHR_SAg_UAT3', 'dbo.DEL_Age_BetList_SelWinlossHR_SAg_UAT3';
 EXEC sp_rename 'dbo.Age_BetList_SelWinlossHR_SAg_xpre', 'dbo.DEL_Age_BetList_SelWinlossHR_SAg_xpre';
-EXEC sp_rename 'dbo.Age_BetList_SelWinlossHR_SAg_xtest', 'dbo.DEL_Age_BetList_SelWinlossHR_SAg_xtest';
 EXEC sp_rename 'dbo.Age_BetList_SelWinlossOutright_Ag_UAT2', 'dbo.DEL_Age_BetList_SelWinlossOutright_Ag_UAT2';
 EXEC sp_rename 'dbo.Age_BetList_SelWinlossOutright_Ag_xtest', 'dbo.DEL_Age_BetList_SelWinlossOutright_Ag_xtest';
 EXEC sp_rename 'dbo.Age_BetList_SelWinlossOutright_MAg_UAT2', 'dbo.DEL_Age_BetList_SelWinlossOutright_MAg_UAT2';
@@ -571,7 +570,6 @@ EXEC sp_rename 'dbo.Age_Result_SportSelByDate_UAT1', 'dbo.DEL_Age_Result_SportSe
 EXEC sp_rename 'dbo.Age_Result_SportSelByDate_UAT2', 'dbo.DEL_Age_Result_SportSelByDate_UAT2';
 EXEC sp_rename 'dbo.Age_Result_VirtualHRSelByMeeting_xpre', 'dbo.DEL_Age_Result_VirtualHRSelByMeeting_xpre';
 EXEC sp_rename 'dbo.Age_Result_VirtualHRSelByMeeting_xtest', 'dbo.DEL_Age_Result_VirtualHRSelByMeeting_xtest';
-EXEC sp_rename 'dbo.Age_Result_VSRaceSelByMeeting_xtest', 'dbo.DEL_Age_Result_VSRaceSelByMeeting_xtest';
 EXEC sp_rename 'dbo.Age_Rpt_CommByBettype_Agent_UAT1', 'dbo.DEL_Age_Rpt_CommByBettype_Agent_UAT1';
 EXEC sp_rename 'dbo.Age_Rpt_CommByBettype_Agent_UAT3', 'dbo.DEL_Age_Rpt_CommByBettype_Agent_UAT3';
 EXEC sp_rename 'dbo.Age_Rpt_CommByBettype_HR_Ag', 'dbo.DEL_Age_Rpt_CommByBettype_HR_Ag';
@@ -605,6 +603,7 @@ EXEC sp_rename 'dbo.Age_Rpt_MatchWinloss_GetLeagueByProduct_UAT2', 'dbo.DEL_Age_
 EXEC sp_rename 'dbo.Age_Rpt_MatchWinloss_GetLeagueByProduct_UAT3', 'dbo.DEL_Age_Rpt_MatchWinloss_GetLeagueByProduct_UAT3';
 EXEC sp_rename 'dbo.Age_Rpt_MatchWinloss_GetLeagueByProduct_xpre', 'dbo.DEL_Age_Rpt_MatchWinloss_GetLeagueByProduct_xpre';
 EXEC sp_rename 'dbo.Age_Rpt_MatchWinloss_GetLeagueByProduct_xtest', 'dbo.DEL_Age_Rpt_MatchWinloss_GetLeagueByProduct_xtest';
+EXEC sp_rename 'dbo.Age_Rpt_MatchWinLoss_Member', 'dbo.DEL_Age_Rpt_MatchWinLoss_Member';
 EXEC sp_rename 'dbo.Age_Rpt_MatchWinloss_SelLeagueBySport_UAT4', 'dbo.DEL_Age_Rpt_MatchWinloss_SelLeagueBySport_UAT4';
 EXEC sp_rename 'dbo.Age_Rpt_MatchWinloss_SelLeagueBySport_xpre', 'dbo.DEL_Age_Rpt_MatchWinloss_SelLeagueBySport_xpre';
 EXEC sp_rename 'dbo.Age_Rpt_MatchWinloss_SelLeagueBySport_xtest', 'dbo.DEL_Age_Rpt_MatchWinloss_SelLeagueBySport_xtest';
@@ -716,6 +715,7 @@ EXEC sp_rename 'dbo.Age_Rpt_WinLossByBettype_Ag_xpre', 'dbo.DEL_Age_Rpt_WinLossB
 EXEC sp_rename 'dbo.Age_Rpt_WinLossByBettype_Ag_xtest', 'dbo.DEL_Age_Rpt_WinLossByBettype_Ag_xtest';
 EXEC sp_rename 'dbo.Age_Rpt_WinLossByBettype_Casino_Details', 'dbo.DEL_Age_Rpt_WinLossByBettype_Casino_Details';
 EXEC sp_rename 'dbo.Age_Rpt_WinLossByBettype_Casino_Details_xtest', 'dbo.DEL_Age_Rpt_WinLossByBettype_Casino_Details_xtest';
+EXEC sp_rename 'dbo.Age_Rpt_WinLossByBettype_Details', 'dbo.DEL_Age_Rpt_WinLossByBettype_Details';
 EXEC sp_rename 'dbo.Age_Rpt_WinLossByBettype_Details_UAT1', 'dbo.DEL_Age_Rpt_WinLossByBettype_Details_UAT1';
 EXEC sp_rename 'dbo.Age_Rpt_WinLossByBettype_Details_xtest', 'dbo.DEL_Age_Rpt_WinLossByBettype_Details_xtest';
 EXEC sp_rename 'dbo.Age_Rpt_WinLossByBettype_MAg_UAT1', 'dbo.DEL_Age_Rpt_WinLossByBettype_MAg_UAT1';
@@ -766,18 +766,22 @@ EXEC sp_rename 'dbo.Age_Rpt_WinLossDetail_Member_xpre', 'dbo.DEL_Age_Rpt_WinLoss
 EXEC sp_rename 'dbo.Age_Rpt_WinLossDetail_SAg_UAT1', 'dbo.DEL_Age_Rpt_WinLossDetail_SAg_UAT1';
 EXEC sp_rename 'dbo.Age_Rpt_WinLossDetail_SAg_UAT2', 'dbo.DEL_Age_Rpt_WinLossDetail_SAg_UAT2';
 EXEC sp_rename 'dbo.Age_Rpt_WinLossDetail_SAg_UAT4', 'dbo.DEL_Age_Rpt_WinLossDetail_SAg_UAT4';
+EXEC sp_rename 'dbo.Age_ScoreMap_Result_Ag', 'dbo.DEL_Age_ScoreMap_Result_Ag';
 EXEC sp_rename 'dbo.Age_ScoreMap_Result_Ag_UAT1', 'dbo.DEL_Age_ScoreMap_Result_Ag_UAT1';
 EXEC sp_rename 'dbo.Age_ScoreMap_Result_Ag_xpre', 'dbo.DEL_Age_ScoreMap_Result_Ag_xpre';
 EXEC sp_rename 'dbo.Age_ScoreMap_Result_Ag_xtest', 'dbo.DEL_Age_ScoreMap_Result_Ag_xtest';
+EXEC sp_rename 'dbo.Age_ScoreMap_Result_MAg', 'dbo.DEL_Age_ScoreMap_Result_MAg';
 EXEC sp_rename 'dbo.Age_ScoreMap_Result_MAg_UAT1', 'dbo.DEL_Age_ScoreMap_Result_MAg_UAT1';
 EXEC sp_rename 'dbo.Age_ScoreMap_Result_MAg_xpre', 'dbo.DEL_Age_ScoreMap_Result_MAg_xpre';
 EXEC sp_rename 'dbo.Age_ScoreMap_Result_MAg_xtest', 'dbo.DEL_Age_ScoreMap_Result_MAg_xtest';
+EXEC sp_rename 'dbo.Age_ScoreMap_Result_SAg', 'dbo.DEL_Age_ScoreMap_Result_SAg';
 EXEC sp_rename 'dbo.Age_ScoreMap_Result_SAg_UAT1', 'dbo.DEL_Age_ScoreMap_Result_SAg_UAT1';
 EXEC sp_rename 'dbo.Age_ScoreMap_Result_SAg_xpre', 'dbo.DEL_Age_ScoreMap_Result_SAg_xpre';
 EXEC sp_rename 'dbo.Age_ScoreMap_Result_SAg_xtest', 'dbo.DEL_Age_ScoreMap_Result_SAg_xtest';
 EXEC sp_rename 'dbo.Age_ScoreMap_SelBettype_UAT1', 'dbo.DEL_Age_ScoreMap_SelBettype_UAT1';
 EXEC sp_rename 'dbo.Age_ScoreMap_SelBettype_xpre', 'dbo.DEL_Age_ScoreMap_SelBettype_xpre';
 EXEC sp_rename 'dbo.Age_ScoreMap_SelBettype_xtest', 'dbo.DEL_Age_ScoreMap_SelBettype_xtest';
+EXEC sp_rename 'dbo.Age_ScoreMap_SelLeague', 'dbo.DEL_Age_ScoreMap_SelLeague';
 EXEC sp_rename 'dbo.Age_ScoreMap_SelLeague_xpre', 'dbo.DEL_Age_ScoreMap_SelLeague_xpre';
 EXEC sp_rename 'dbo.Age_ScoreMap_SelLeague_xtest', 'dbo.DEL_Age_ScoreMap_SelLeague_xtest';
 EXEC sp_rename 'dbo.Age_ScoreMap_SelMatch_UAT1', 'dbo.DEL_Age_ScoreMap_SelMatch_UAT1';
@@ -940,6 +944,9 @@ EXEC sp_rename 'dbo.current_ts', 'dbo.DEL_current_ts';
 EXEC sp_rename 'dbo.CustomerSelDepositInfo', 'dbo.DEL_CustomerSelDepositInfo';
 EXEC sp_rename 'dbo.customerturnover_by_site', 'dbo.DEL_customerturnover_by_site';
 EXEC sp_rename 'dbo.CustSubCheckPageAccess', 'dbo.DEL_CustSubCheckPageAccess';
+EXEC sp_rename 'dbo.DataSync_CreateObject', 'dbo.DEL_DataSync_CreateObject';
+EXEC sp_rename 'dbo.DataSync_getFieldInfo', 'dbo.DEL_DataSync_getFieldInfo';
+EXEC sp_rename 'dbo.DBA_CheckDiskSpace', 'dbo.DEL_DBA_CheckDiskSpace';
 EXEC sp_rename 'dbo.DBA_CheckPT3rd_Credit', 'dbo.DEL_DBA_CheckPT3rd_Credit';
 EXEC sp_rename 'dbo.DBA_GetPT_1', 'dbo.DEL_DBA_GetPT_1';
 EXEC sp_rename 'dbo.DBA_GetPT_xtest', 'dbo.DEL_DBA_GetPT_xtest';
@@ -948,6 +955,7 @@ EXEC sp_rename 'dbo.DBA_GetResultPT_xpre', 'dbo.DEL_DBA_GetResultPT_xpre';
 EXEC sp_rename 'dbo.DBA_GetResultPT_xtest', 'dbo.DEL_DBA_GetResultPT_xtest';
 EXEC sp_rename 'dbo.DBA_GetSPs_Viet', 'dbo.DEL_DBA_GetSPs_Viet';
 EXEC sp_rename 'dbo.DBA_GetSPText', 'dbo.DEL_DBA_GetSPText';
+EXEC sp_rename 'dbo.dba_GetTicketCountByMatchID', 'dbo.DEL_dba_GetTicketCountByMatchID';
 EXEC sp_rename 'dbo.DBA_LiveCustomer_GetCustomerSetting', 'dbo.DEL_DBA_LiveCustomer_GetCustomerSetting';
 EXEC sp_rename 'dbo.DBA_PrintResultPT_xtest', 'dbo.DEL_DBA_PrintResultPT_xtest';
 EXEC sp_rename 'dbo.DBA_SPs_Jamie2', 'dbo.DEL_DBA_SPs_Jamie2';
@@ -964,6 +972,7 @@ EXEC sp_rename 'dbo.Dot_Admin_cteamlist_horse', 'dbo.DEL_Dot_Admin_cteamlist_hor
 EXEC sp_rename 'dbo.Dot_Admin_cteamlist_horse_fix', 'dbo.DEL_Dot_Admin_cteamlist_horse_fix';
 EXEC sp_rename 'dbo.Dot_Admin_cteamlist_SingleMatch', 'dbo.DEL_Dot_Admin_cteamlist_SingleMatch';
 EXEC sp_rename 'dbo.DOT_Admin_cteamlistcs_SingleMatch', 'dbo.DEL_DOT_Admin_cteamlistcs_SingleMatch';
+EXEC sp_rename 'dbo.Dot_Admin_cteamlistdel_new', 'dbo.DEL_Dot_Admin_cteamlistdel_new';
 EXEC sp_rename 'dbo.Dot_admin_cteamlistdelLIVE_ref', 'dbo.DEL_Dot_admin_cteamlistdelLIVE_ref';
 EXEC sp_rename 'dbo.Dot_Admin_cteamlistdelover', 'dbo.DEL_Dot_Admin_cteamlistdelover';
 EXEC sp_rename 'dbo.DOT_Admin_cteamlisting1x2_SingleMatch', 'dbo.DEL_DOT_Admin_cteamlisting1x2_SingleMatch';
@@ -986,6 +995,7 @@ EXEC sp_rename 'dbo.Dot_Admin_MatchLog_OddsPart', 'dbo.DEL_Dot_Admin_MatchLog_Od
 EXEC sp_rename 'dbo.Dot_Admin_mparlay', 'dbo.DEL_Dot_Admin_mparlay';
 EXEC sp_rename 'dbo.Dot_Admin_mparlay_all', 'dbo.DEL_Dot_Admin_mparlay_all';
 EXEC sp_rename 'dbo.Dot_Admin_QueryCustID', 'dbo.DEL_Dot_Admin_QueryCustID';
+EXEC sp_rename 'dbo.Dot_Admin_RemoveAcceptTicketActionLog_Test', 'dbo.DEL_Dot_Admin_RemoveAcceptTicketActionLog_Test';
 EXEC sp_rename 'dbo.Dot_Admin_Robot_LiveGame_List', 'dbo.DEL_Dot_Admin_Robot_LiveGame_List';
 EXEC sp_rename 'dbo.Dot_Admin_ScoreForecast_query_real_SingleMatch', 'dbo.DEL_Dot_Admin_ScoreForecast_query_real_SingleMatch';
 EXEC sp_rename 'dbo.Dot_Admin_ScoreForecast_query_SingleMatch', 'dbo.DEL_Dot_Admin_ScoreForecast_query_SingleMatch';
@@ -1136,9 +1146,12 @@ EXEC sp_rename 'dbo.f_LicWinLoss_ProductSportType_Sel_UAT3', 'dbo.DEL_f_LicWinLo
 EXEC sp_rename 'dbo.f_LicWinLoss_ProductSportType_Sel_UAT4', 'dbo.DEL_f_LicWinLoss_ProductSportType_Sel_UAT4';
 EXEC sp_rename 'dbo.f_LicWinLoss_ProductSportType_Sel_xpre', 'dbo.DEL_f_LicWinLoss_ProductSportType_Sel_xpre';
 EXEC sp_rename 'dbo.f_LicWinLoss_ProductSportType_Sel_xtest', 'dbo.DEL_f_LicWinLoss_ProductSportType_Sel_xtest';
+EXEC sp_rename 'dbo.f_NewTotalBetsForecast_GetWinLost_HDP', 'dbo.DEL_f_NewTotalBetsForecast_GetWinLost_HDP';
 EXEC sp_rename 'dbo.f_NewTotalBetsForecast_GetWinLost_HDP_xtest', 'dbo.DEL_f_NewTotalBetsForecast_GetWinLost_HDP_xtest';
+EXEC sp_rename 'dbo.f_NewTotalBetsForecast_GetWinLost_OU', 'dbo.DEL_f_NewTotalBetsForecast_GetWinLost_OU';
 EXEC sp_rename 'dbo.f_NewTotalBetsForecast_GetWinLost_OU_xtest', 'dbo.DEL_f_NewTotalBetsForecast_GetWinLost_OU_xtest';
 EXEC sp_rename 'dbo.f_ProgressiveGamesContribution_Bettype_Sel_xtest', 'dbo.DEL_f_ProgressiveGamesContribution_Bettype_Sel_xtest';
+EXEC sp_rename 'dbo.f_SportBettypeMatrix_Sel_Mode4', 'dbo.DEL_f_SportBettypeMatrix_Sel_Mode4';
 EXEC sp_rename 'dbo.f_SportBettypeMatrix_Sel_Mode4_UAT4', 'dbo.DEL_f_SportBettypeMatrix_Sel_Mode4_UAT4';
 EXEC sp_rename 'dbo.f_SportBettypeMatrixByProduct_Sel_xtest', 'dbo.DEL_f_SportBettypeMatrixByProduct_Sel_xtest';
 EXEC sp_rename 'dbo.f_SportBettypeMatrixByProduct_xtest', 'dbo.DEL_f_SportBettypeMatrixByProduct_xtest';
@@ -1196,6 +1209,8 @@ EXEC sp_rename 'dbo.Is_Odds_SystemSel', 'dbo.DEL_Is_Odds_SystemSel';
 EXEC sp_rename 'dbo.LA_Rpt_NumberGameWinloss_UAT4', 'dbo.DEL_LA_Rpt_NumberGameWinloss_UAT4';
 EXEC sp_rename 'dbo.LA_Rpt_PlatformWinloss_UAT4', 'dbo.DEL_LA_Rpt_PlatformWinloss_UAT4';
 EXEC sp_rename 'dbo.LA_Rpt_PlatformWinlossSummary_UAT4', 'dbo.DEL_LA_Rpt_PlatformWinlossSummary_UAT4';
+EXEC sp_rename 'dbo.LA_SportsGetAll', 'dbo.DEL_LA_SportsGetAll';
+EXEC sp_rename 'dbo.LA_SporttypeGetVirtualSport', 'dbo.DEL_LA_SporttypeGetVirtualSport';
 EXEC sp_rename 'dbo.LAS_CustSetting_00', 'dbo.DEL_LAS_CustSetting_00';
 EXEC sp_rename 'dbo.LAS_CustSetting_01', 'dbo.DEL_LAS_CustSetting_01';
 EXEC sp_rename 'dbo.LAS_CustSetting_02', 'dbo.DEL_LAS_CustSetting_02';
@@ -1347,7 +1362,6 @@ EXEC sp_rename 'dbo.Lrf_Monitor_MatchSel', 'dbo.DEL_Lrf_Monitor_MatchSel';
 EXEC sp_rename 'dbo.Lrf_Monitor_OutrightSel', 'dbo.DEL_Lrf_Monitor_OutrightSel';
 EXEC sp_rename 'dbo.Lrf_Result_MatchSelNumberGameByLeague_UAT2', 'dbo.DEL_Lrf_Result_MatchSelNumberGameByLeague_UAT2';
 EXEC sp_rename 'dbo.Lrf_Result_Outright_xtest', 'dbo.DEL_Lrf_Result_Outright_xtest';
-EXEC sp_rename 'dbo.Lrf_Result_RaceSelByMeeting_xtest', 'dbo.DEL_Lrf_Result_RaceSelByMeeting_xtest';
 EXEC sp_rename 'dbo.Lrf_Rpt_CashoutWinloss_Detail_UAT1', 'dbo.DEL_Lrf_Rpt_CashoutWinloss_Detail_UAT1';
 EXEC sp_rename 'dbo.Lrf_Rpt_CashoutWinloss_UAT1', 'dbo.DEL_Lrf_Rpt_CashoutWinloss_UAT1';
 EXEC sp_rename 'dbo.Lrf_Rpt_CasinoTurnover_UAT1', 'dbo.DEL_Lrf_Rpt_CasinoTurnover_UAT1';
@@ -1372,6 +1386,7 @@ EXEC sp_rename 'dbo.Lrf_Rpt_ExchangeWinloss_UAT1', 'dbo.DEL_Lrf_Rpt_ExchangeWinl
 EXEC sp_rename 'dbo.LRF_Rpt_GoldDeluxeWinloss_Ag_UAT1', 'dbo.DEL_LRF_Rpt_GoldDeluxeWinloss_Ag_UAT1';
 EXEC sp_rename 'dbo.LRF_Rpt_GoldDeluxeWinloss_Mem_UAT1', 'dbo.DEL_LRF_Rpt_GoldDeluxeWinloss_Mem_UAT1';
 EXEC sp_rename 'dbo.Lrf_Rpt_GoldDeluxeWinloss_UAT1', 'dbo.DEL_Lrf_Rpt_GoldDeluxeWinloss_UAT1';
+EXEC sp_rename 'dbo.Lrf_Rpt_LicWinloss_BySourced', 'dbo.DEL_Lrf_Rpt_LicWinloss_BySourced';
 EXEC sp_rename 'dbo.Lrf_Rpt_LicWinloss_BySourced_UAT4', 'dbo.DEL_Lrf_Rpt_LicWinloss_BySourced_UAT4';
 EXEC sp_rename 'dbo.Lrf_Rpt_LicWinloss_BySourced_xpre', 'dbo.DEL_Lrf_Rpt_LicWinloss_BySourced_xpre';
 EXEC sp_rename 'dbo.Lrf_Rpt_LicWinloss_FromAPI_UAT1', 'dbo.DEL_Lrf_Rpt_LicWinloss_FromAPI_UAT1';
@@ -1496,6 +1511,7 @@ EXEC sp_rename 'dbo.NAP_Admin_Calculate_8_UAT5', 'dbo.DEL_NAP_Admin_Calculate_8_
 EXEC sp_rename 'dbo.NAP_Admin_Calculate_Main_UAT5', 'dbo.DEL_NAP_Admin_Calculate_Main_UAT5';
 EXEC sp_rename 'dbo.NAP_Admin_Calculate_MP_29_Joe_Test', 'dbo.DEL_NAP_Admin_Calculate_MP_29_Joe_Test';
 EXEC sp_rename 'dbo.NAP_BettransSelSpecialDel', 'dbo.DEL_NAP_BettransSelSpecialDel';
+EXEC sp_rename 'dbo.NAP_BettransSelSpecialDel_xtest', 'dbo.DEL_NAP_BettransSelSpecialDel_xtest';
 EXEC sp_rename 'dbo.NAP_BettransSpecialDelBetID_Sel', 'dbo.DEL_NAP_BettransSpecialDelBetID_Sel';
 EXEC sp_rename 'dbo.NAP_BetTypeSel_xtest', 'dbo.DEL_NAP_BetTypeSel_xtest';
 EXEC sp_rename 'dbo.NAP_EventSelect_xtest', 'dbo.DEL_NAP_EventSelect_xtest';
@@ -1566,7 +1582,7 @@ EXEC sp_rename 'dbo.refnoX', 'dbo.DEL_refnoX';
 EXEC sp_rename 'dbo.Rpt_CustomerInfo', 'dbo.DEL_Rpt_CustomerInfo';
 EXEC sp_rename 'dbo.Rpt_CustomerInfoBySite', 'dbo.DEL_Rpt_CustomerInfoBySite';
 EXEC sp_rename 'dbo.RptExMatchWinLossAll_1', 'dbo.DEL_RptExMatchWinLossAll_1';
-EXEC sp_rename 'dbo.SBQueue_receive_Patrick_bk', 'dbo.DEL_SBQueue_receive_Patrick_bk';
+EXEC sp_rename 'sb.SBQueue_receive_Patrick_bk', 'sb.DEL_SBQueue_receive_Patrick_bk';
 EXEC sp_rename 'dbo.selectodds', 'dbo.DEL_selectodds';
 EXEC sp_rename 'dbo.Server_Check_CpuUtilization', 'dbo.DEL_Server_Check_CpuUtilization';
 EXEC sp_rename 'dbo.Server_IsHeavyLoadPermitted', 'dbo.DEL_Server_IsHeavyLoadPermitted';
@@ -1584,8 +1600,8 @@ EXEC sp_rename 'dbo.showmatch1', 'dbo.DEL_showmatch1';
 EXEC sp_rename 'dbo.showmatch1c', 'dbo.DEL_showmatch1c';
 EXEC sp_rename 'dbo.showmatchc', 'dbo.DEL_showmatchc';
 EXEC sp_rename 'dbo.SiteSel', 'dbo.DEL_SiteSel';
-EXEC sp_rename 'dbo.SplitStrings_Moden', 'dbo.DEL_SplitStrings_Moden';
-EXEC sp_rename 'dbo.SplitStrings_XML', 'dbo.DEL_SplitStrings_XML';
+EXEC sp_rename 'DataSync.SplitStrings_Moden', 'DataSync.DEL_SplitStrings_Moden';
+EXEC sp_rename 'DataSync.SplitStrings_XML', 'DataSync.DEL_SplitStrings_XML';
 EXEC sp_rename 'dbo.SplitStrings_XML_Test', 'dbo.DEL_SplitStrings_XML_Test';
 EXEC sp_rename 'dbo.SpTest_GetResult', 'dbo.DEL_SpTest_GetResult';
 EXEC sp_rename 'dbo.SpTest_GetResult1', 'dbo.DEL_SpTest_GetResult1';
@@ -1594,6 +1610,7 @@ EXEC sp_rename 'dbo.stop', 'dbo.DEL_stop';
 EXEC sp_rename 'dbo.stopht', 'dbo.DEL_stopht';
 EXEC sp_rename 'dbo.Task_Archive_Bet', 'dbo.DEL_Task_Archive_Bet';
 EXEC sp_rename 'dbo.Task_BackupFull', 'dbo.DEL_Task_BackupFull';
+EXEC sp_rename 'dbo.Task_BalanceUp_Status', 'dbo.DEL_Task_BalanceUp_Status';
 EXEC sp_rename 'dbo.Task_BATransaction_Loop', 'dbo.DEL_Task_BATransaction_Loop';
 EXEC sp_rename 'dbo.Task_CheckSUM_VerifyData', 'dbo.DEL_Task_CheckSUM_VerifyData';
 EXEC sp_rename 'dbo.Task_DailyRptLicWinloss_Job', 'dbo.DEL_Task_DailyRptLicWinloss_Job';
@@ -1627,7 +1644,7 @@ EXEC sp_rename 'dbo.teamlistingiddanger', 'dbo.DEL_teamlistingiddanger';
 EXEC sp_rename 'dbo.test', 'dbo.DEL_test';
 EXEC sp_rename 'dbo.testExecRep_02', 'dbo.DEL_testExecRep_02';
 EXEC sp_rename 'dbo.Thien_Stats_MSupd_dboodds', 'dbo.DEL_Thien_Stats_MSupd_dboodds';
-EXEC sp_rename 'dbo.TOControl_SendMessage_20180510_xtest', 'dbo.DEL_TOControl_SendMessage_20180510_xtest';
+EXEC sp_rename 'sb.TOControl_SendMessage_20180510_xtest', 'sb.DEL_TOControl_SendMessage_20180510_xtest';
 EXEC sp_rename 'dbo.totalbet', 'dbo.DEL_totalbet';
 EXEC sp_rename 'dbo.totalbet1x2', 'dbo.DEL_totalbet1x2';
 EXEC sp_rename 'dbo.totalbet1x2odds', 'dbo.DEL_totalbet1x2odds';
@@ -1659,6 +1676,7 @@ EXEC sp_rename 'dbo.U3_BetList_SelMatchResultNumberGame_xtest', 'dbo.DEL_U3_BetL
 EXEC sp_rename 'dbo.U3_BetList_SelWinlossByBettypeMatch_Ag_xtest', 'dbo.DEL_U3_BetList_SelWinlossByBettypeMatch_Ag_xtest';
 EXEC sp_rename 'dbo.U3_BetList_SelWinlossByBettypeMatch_MAg_xtest', 'dbo.DEL_U3_BetList_SelWinlossByBettypeMatch_MAg_xtest';
 EXEC sp_rename 'dbo.U3_BetList_SelWinlossByBettypeMatch_SAg_xtest', 'dbo.DEL_U3_BetList_SelWinlossByBettypeMatch_SAg_xtest';
+EXEC sp_rename 'dbo.U3_BetsSelBetList_ByTransID_Advance', 'dbo.DEL_U3_BetsSelBetList_ByTransID_Advance';
 EXEC sp_rename 'dbo.U3_BetsSelBetList_ByTransID_Advance_xtest', 'dbo.DEL_U3_BetsSelBetList_ByTransID_Advance_xtest';
 EXEC sp_rename 'dbo.U3_BetsSelBetList_ByTransID_UAT3', 'dbo.DEL_U3_BetsSelBetList_ByTransID_UAT3';
 EXEC sp_rename 'dbo.U3_BetsSelBetList_ByTransID_xtest', 'dbo.DEL_U3_BetsSelBetList_ByTransID_xtest';
@@ -1674,6 +1692,7 @@ EXEC sp_rename 'dbo.U3_Rpt_WinLossByBettype_MAg_xtest', 'dbo.DEL_U3_Rpt_WinLossB
 EXEC sp_rename 'dbo.U3_Rpt_WinLossByBettype_SAg_xtest', 'dbo.DEL_U3_Rpt_WinLossByBettype_SAg_xtest';
 EXEC sp_rename 'dbo.updateoddslive', 'dbo.DEL_updateoddslive';
 EXEC sp_rename 'dbo.updatetotal', 'dbo.DEL_updatetotal';
+EXEC sp_rename 'dbo.vndba_sync_data_ComboParlay', 'dbo.DEL_vndba_sync_data_ComboParlay';
 EXEC sp_rename 'dbo.whichodds', 'dbo.DEL_whichodds';
 EXEC sp_rename 'dbo.winloseratio', 'dbo.DEL_winloseratio';
 EXEC sp_rename 'dbo.winloseratioleague', 'dbo.DEL_winloseratioleague';
@@ -1681,3 +1700,5 @@ EXEC sp_rename 'dbo.winloseratiomain', 'dbo.DEL_winloseratiomain';
 EXEC sp_rename 'dbo.winloseratiotype', 'dbo.DEL_winloseratiotype';
 EXEC sp_rename 'dbo.winlostbetlist', 'dbo.DEL_winlostbetlist';
 EXEC sp_rename 'dbo.XYZ', 'dbo.DEL_XYZ';
+
+GO

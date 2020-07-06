@@ -1,6 +1,7 @@
 
 /*
 	Task - Rename object @ DB052.bodb_Licensee
+	860 objects
 */
 use bodb_Licensee
 go
@@ -429,7 +430,9 @@ EXEC sp_rename 'dbo.AffAdmin_GroupPolicy_Update_xtest', 'dbo.DEL_AffAdmin_GroupP
 EXEC sp_rename 'dbo.AffAdmin_ITAdminUser_Insert_xtest', 'dbo.DEL_AffAdmin_ITAdminUser_Insert_xtest';
 EXEC sp_rename 'dbo.AffAdmin_ITAdminUser_Update_xtest', 'dbo.DEL_AffAdmin_ITAdminUser_Update_xtest';
 EXEC sp_rename 'dbo.AffAdmin_ReCheckIn_xtest', 'dbo.DEL_AffAdmin_ReCheckIn_xtest';
+EXEC sp_rename 'dbo.AffAdmin_UserCurrency_Delete', 'dbo.DEL_AffAdmin_UserCurrency_Delete';
 EXEC sp_rename 'dbo.AffAdmin_UserCurrency_Delete_xtest', 'dbo.DEL_AffAdmin_UserCurrency_Delete_xtest';
+EXEC sp_rename 'dbo.AffAdmin_UserCurrency_Insert', 'dbo.DEL_AffAdmin_UserCurrency_Insert';
 EXEC sp_rename 'dbo.AffAdmin_UserCurrency_Insert_xtest', 'dbo.DEL_AffAdmin_UserCurrency_Insert_xtest';
 EXEC sp_rename 'dbo.AffAdmin_UserInfoSelByUserName_xtest', 'dbo.DEL_AffAdmin_UserInfoSelByUserName_xtest';
 EXEC sp_rename 'dbo.AffAdmin_UserPolicy_Insert_xtest', 'dbo.DEL_AffAdmin_UserPolicy_Insert_xtest';
@@ -473,6 +476,9 @@ EXEC sp_rename 'dbo.IMS_LicenseeProductSel_xtest', 'dbo.DEL_IMS_LicenseeProductS
 EXEC sp_rename 'dbo.IMS_LicenseeSel', 'dbo.DEL_IMS_LicenseeSel';
 EXEC sp_rename 'dbo.LA_AmountToCompanyByDiscountCurrencySel_UAT4', 'dbo.DEL_LA_AmountToCompanyByDiscountCurrencySel_UAT4';
 EXEC sp_rename 'dbo.LA_AnalysisFileStatusSel_UAT1', 'dbo.DEL_LA_AnalysisFileStatusSel_UAT1';
+EXEC sp_rename 'dbo.LA_ChargeRateSettingDel_UAT2', 'dbo.DEL_LA_ChargeRateSettingDel_UAT2';
+EXEC sp_rename 'dbo.LA_ChargeRateSettingDel_UAT4', 'dbo.DEL_LA_ChargeRateSettingDel_UAT4';
+EXEC sp_rename 'dbo.LA_ChargeRateSettingDel_xtest', 'dbo.DEL_LA_ChargeRateSettingDel_xtest';
 EXEC sp_rename 'dbo.LA_ChargeRateSettingModify_UAT2', 'dbo.DEL_LA_ChargeRateSettingModify_UAT2';
 EXEC sp_rename 'dbo.LA_ChargeRateSettingModify_UAT4', 'dbo.DEL_LA_ChargeRateSettingModify_UAT4';
 EXEC sp_rename 'dbo.LA_ChargeRateSettingModify_xtest', 'dbo.DEL_LA_ChargeRateSettingModify_xtest';
@@ -482,6 +488,7 @@ EXEC sp_rename 'dbo.LA_ChargeRateValidate_xtest', 'dbo.DEL_LA_ChargeRateValidate
 EXEC sp_rename 'dbo.LA_Discount_AvailablePartyListSel_UAT3', 'dbo.DEL_LA_Discount_AvailablePartyListSel_UAT3';
 EXEC sp_rename 'dbo.LA_Discount_PartyHasBillingSel_UAT3', 'dbo.DEL_LA_Discount_PartyHasBillingSel_UAT3';
 EXEC sp_rename 'dbo.LA_Discount_PartyListSel_UAT4', 'dbo.DEL_LA_Discount_PartyListSel_UAT4';
+EXEC sp_rename 'dbo.LA_DiscountDel_UAT3', 'dbo.DEL_LA_DiscountDel_UAT3';
 EXEC sp_rename 'dbo.LA_DiscountedCurrencySel_UAT2', 'dbo.DEL_LA_DiscountedCurrencySel_UAT2';
 EXEC sp_rename 'dbo.LA_DiscountGet_UAT2', 'dbo.DEL_LA_DiscountGet_UAT2';
 EXEC sp_rename 'dbo.LA_DiscountGet_UAT3', 'dbo.DEL_LA_DiscountGet_UAT3';
@@ -494,6 +501,7 @@ EXEC sp_rename 'dbo.LA_DiscountModify_xtest', 'dbo.DEL_LA_DiscountModify_xtest';
 EXEC sp_rename 'dbo.LA_DiscountSel_UAT3', 'dbo.DEL_LA_DiscountSel_UAT3';
 EXEC sp_rename 'dbo.LA_DiscountUpd_UAT2', 'dbo.DEL_LA_DiscountUpd_UAT2';
 EXEC sp_rename 'dbo.LA_DiscountUpd_UAT3', 'dbo.DEL_LA_DiscountUpd_UAT3';
+EXEC sp_rename 'dbo.LA_ExchangeRateBillingSel', 'dbo.DEL_LA_ExchangeRateBillingSel';
 EXEC sp_rename 'dbo.LA_f_LicenseeEventLog_UAT4', 'dbo.DEL_LA_f_LicenseeEventLog_UAT4';
 EXEC sp_rename 'dbo.LA_GEN_LicPerformanceAnalysis_Adjustment_UAT4', 'dbo.DEL_LA_GEN_LicPerformanceAnalysis_Adjustment_UAT4';
 EXEC sp_rename 'dbo.LA_GetExchangeRateOANDA_UAT3', 'dbo.DEL_LA_GetExchangeRateOANDA_UAT3';
@@ -505,9 +513,11 @@ EXEC sp_rename 'dbo.LA_Inv_ChargeRateInfoGet_xtest', 'dbo.DEL_LA_Inv_ChargeRateI
 EXEC sp_rename 'dbo.LA_Inv_HostingFeeSettlement_UAT3', 'dbo.DEL_LA_Inv_HostingFeeSettlement_UAT3';
 EXEC sp_rename 'dbo.LA_Inv_HostingFeeSettlement_xtest', 'dbo.DEL_LA_Inv_HostingFeeSettlement_xtest';
 EXEC sp_rename 'dbo.LA_Inv_InvoiceBillerInfoGet_xtest', 'dbo.DEL_LA_Inv_InvoiceBillerInfoGet_xtest';
+EXEC sp_rename 'dbo.LA_Inv_InvoiceDetailInfoGet', 'dbo.DEL_LA_Inv_InvoiceDetailInfoGet';
 EXEC sp_rename 'dbo.LA_Inv_InvoiceDetailInfoGet_UAT2', 'dbo.DEL_LA_Inv_InvoiceDetailInfoGet_UAT2';
 EXEC sp_rename 'dbo.LA_Inv_InvoiceDetailInfoGet_UAT4', 'dbo.DEL_LA_Inv_InvoiceDetailInfoGet_UAT4';
 EXEC sp_rename 'dbo.LA_Inv_InvoiceDetailInfoGet_xtest', 'dbo.DEL_LA_Inv_InvoiceDetailInfoGet_xtest';
+EXEC sp_rename 'dbo.LA_Inv_InvoiceInfoDel_xtest', 'dbo.DEL_LA_Inv_InvoiceInfoDel_xtest';
 EXEC sp_rename 'dbo.LA_Inv_InvoiceInfoGet_xtest', 'dbo.DEL_LA_Inv_InvoiceInfoGet_xtest';
 EXEC sp_rename 'dbo.LA_Inv_InvoiceInfoInsert_xtest', 'dbo.DEL_LA_Inv_InvoiceInfoInsert_xtest';
 EXEC sp_rename 'dbo.LA_Inv_InvoiceListGet_xtest', 'dbo.DEL_LA_Inv_InvoiceListGet_xtest';
@@ -541,6 +551,7 @@ EXEC sp_rename 'dbo.LA_LicenseeInfoSel_xtest', 'dbo.DEL_LA_LicenseeInfoSel_xtest
 EXEC sp_rename 'dbo.LA_LicenseeReconciliation_SummaryIns_UAT3', 'dbo.DEL_LA_LicenseeReconciliation_SummaryIns_UAT3';
 EXEC sp_rename 'dbo.LA_LicenseeSel_UAT3', 'dbo.DEL_LA_LicenseeSel_UAT3';
 EXEC sp_rename 'dbo.LA_LicPerformanceAnalysisStatusSel_UAT4', 'dbo.DEL_LA_LicPerformanceAnalysisStatusSel_UAT4';
+EXEC sp_rename 'dbo.LA_MinFeeSettingDel_xtest', 'dbo.DEL_LA_MinFeeSettingDel_xtest';
 EXEC sp_rename 'dbo.LA_MinFeeSettingModify_xtest', 'dbo.DEL_LA_MinFeeSettingModify_xtest';
 EXEC sp_rename 'dbo.LA_PartyListSel_xpre', 'dbo.DEL_LA_PartyListSel_xpre';
 EXEC sp_rename 'dbo.LA_PayerGroupPartyListSel_UAT4', 'dbo.DEL_LA_PayerGroupPartyListSel_UAT4';
@@ -549,6 +560,8 @@ EXEC sp_rename 'dbo.LA_PayerInfoSel_xtest', 'dbo.DEL_LA_PayerInfoSel_xtest';
 EXEC sp_rename 'dbo.LA_PayerListSel_xtest', 'dbo.DEL_LA_PayerListSel_xtest';
 EXEC sp_rename 'dbo.LA_PayerModify_xtest', 'dbo.DEL_LA_PayerModify_xtest';
 EXEC sp_rename 'dbo.LA_PayerNonOfficialIns_UAT4', 'dbo.DEL_LA_PayerNonOfficialIns_UAT4';
+EXEC sp_rename 'dbo.LA_PayerSettingDel_UAT2', 'dbo.DEL_LA_PayerSettingDel_UAT2';
+EXEC sp_rename 'dbo.LA_PayerSettingDel_UAT4', 'dbo.DEL_LA_PayerSettingDel_UAT4';
 EXEC sp_rename 'dbo.LA_PayerSettingDetailSel_UAT2', 'dbo.DEL_LA_PayerSettingDetailSel_UAT2';
 EXEC sp_rename 'dbo.LA_PayerSettingDetailSel_UAT4', 'dbo.DEL_LA_PayerSettingDetailSel_UAT4';
 EXEC sp_rename 'dbo.LA_PayerSettingDetailSel_xtest', 'dbo.DEL_LA_PayerSettingDetailSel_xtest';
@@ -560,6 +573,7 @@ EXEC sp_rename 'dbo.LA_PayerSettingSel_UAT4', 'dbo.DEL_LA_PayerSettingSel_UAT4';
 EXEC sp_rename 'dbo.LA_PayerSettingSel_xtest', 'dbo.DEL_LA_PayerSettingSel_xtest';
 EXEC sp_rename 'dbo.LA_Rebate_HasBilling_UAT3', 'dbo.DEL_LA_Rebate_HasBilling_UAT3';
 EXEC sp_rename 'dbo.LA_Rebate_PartyListSel_UAT3', 'dbo.DEL_LA_Rebate_PartyListSel_UAT3';
+EXEC sp_rename 'dbo.LA_RebateDel_UAT3', 'dbo.DEL_LA_RebateDel_UAT3';
 EXEC sp_rename 'dbo.LA_RebateGet_UAT3', 'dbo.DEL_LA_RebateGet_UAT3';
 EXEC sp_rename 'dbo.LA_RebateIns_UAT3', 'dbo.DEL_LA_RebateIns_UAT3';
 EXEC sp_rename 'dbo.LA_RebateSel_UAT3', 'dbo.DEL_LA_RebateSel_UAT3';
@@ -607,6 +621,7 @@ EXEC sp_rename 'dbo.LA_Rpt_SuperliveWinLoss_UAT2', 'dbo.DEL_LA_Rpt_SuperliveWinL
 EXEC sp_rename 'dbo.LA_Rpt_SuperliveWinLoss_UAT4', 'dbo.DEL_LA_Rpt_SuperliveWinLoss_UAT4';
 EXEC sp_rename 'dbo.LA_SelBaseCurrency_xtest', 'dbo.DEL_LA_SelBaseCurrency_xtest';
 EXEC sp_rename 'dbo.LA_SelCurrencyByParty_xtest', 'dbo.DEL_LA_SelCurrencyByParty_xtest';
+EXEC sp_rename 'dbo.LA_TotalTransByDate', 'dbo.DEL_LA_TotalTransByDate';
 EXEC sp_rename 'dbo.LA_TotalTransByDate_UAT2', 'dbo.DEL_LA_TotalTransByDate_UAT2';
 EXEC sp_rename 'dbo.LA_TotalTransByDate_UAT4', 'dbo.DEL_LA_TotalTransByDate_UAT4';
 EXEC sp_rename 'dbo.LA_TotalTransByDate_xpre', 'dbo.DEL_LA_TotalTransByDate_xpre';
@@ -647,6 +662,7 @@ EXEC sp_rename 'dbo.Lrf_CustomerUpdUserSearch_xtest', 'dbo.DEL_Lrf_CustomerUpdUs
 EXEC sp_rename 'dbo.Lrf_FunctionsSel_xpre', 'dbo.DEL_Lrf_FunctionsSel_xpre';
 EXEC sp_rename 'dbo.LRF_FunctionsSel_xtest', 'dbo.DEL_LRF_FunctionsSel_xtest';
 EXEC sp_rename 'dbo.LRF_Get_BudgetByPeriod_KPIs', 'dbo.DEL_LRF_Get_BudgetByPeriod_KPIs';
+EXEC sp_rename 'dbo.LRF_Get_CurrentDate', 'dbo.DEL_LRF_Get_CurrentDate';
 EXEC sp_rename 'dbo.Lrf_GET_ExchangeRateOANDA', 'dbo.DEL_Lrf_GET_ExchangeRateOANDA';
 EXEC sp_rename 'dbo.Lrf_GET_ExchangeRateOANDA_xpre', 'dbo.DEL_Lrf_GET_ExchangeRateOANDA_xpre';
 EXEC sp_rename 'dbo.Lrf_GET_ExchangeRateOANDA_xtest', 'dbo.DEL_Lrf_GET_ExchangeRateOANDA_xtest';
@@ -681,7 +697,10 @@ EXEC sp_rename 'dbo.LRF_Get_TopSportsByLicenseeGroup_KPIs_BA', 'dbo.DEL_LRF_Get_
 EXEC sp_rename 'dbo.LRF_Get_TopSportsByLicenseeGroup_KPIs_BA_xtest', 'dbo.DEL_LRF_Get_TopSportsByLicenseeGroup_KPIs_BA_xtest';
 EXEC sp_rename 'dbo.LRF_Get_TopSportsByLicenseeGroup_KPIs_xtest', 'dbo.DEL_LRF_Get_TopSportsByLicenseeGroup_KPIs_xtest';
 EXEC sp_rename 'dbo.Lrf_GetActiveDomain_xtest', 'dbo.DEL_Lrf_GetActiveDomain_xtest';
+EXEC sp_rename 'dbo.Lrf_GetDBCurrentDatetime', 'dbo.DEL_Lrf_GetDBCurrentDatetime';
+EXEC sp_rename 'dbo.Lrf_GetNumberOfOnlineUsers', 'dbo.DEL_Lrf_GetNumberOfOnlineUsers';
 EXEC sp_rename 'dbo.Lrf_GroupCommGetById_UAT1', 'dbo.DEL_Lrf_GroupCommGetById_UAT1';
+EXEC sp_rename 'dbo.Lrf_IsUserExisted', 'dbo.DEL_Lrf_IsUserExisted';
 EXEC sp_rename 'dbo.Lrf_LicenseeBACustUpdComm_xtest', 'dbo.DEL_Lrf_LicenseeBACustUpdComm_xtest';
 EXEC sp_rename 'dbo.Lrf_LicenseeBAHistoryIns_xtest', 'dbo.DEL_Lrf_LicenseeBAHistoryIns_xtest';
 EXEC sp_rename 'dbo.Lrf_LicenseeBAHistoryUpdDone_xtest', 'dbo.DEL_Lrf_LicenseeBAHistoryUpdDone_xtest';
@@ -693,9 +712,14 @@ EXEC sp_rename 'dbo.Lrf_LicenseeCustSel_xpre', 'dbo.DEL_Lrf_LicenseeCustSel_xpre
 EXEC sp_rename 'dbo.Lrf_LicenseeCustSel_xtest', 'dbo.DEL_Lrf_LicenseeCustSel_xtest';
 EXEC sp_rename 'dbo.Lrf_LicenseeFunctionsSel_xpre', 'dbo.DEL_Lrf_LicenseeFunctionsSel_xpre';
 EXEC sp_rename 'dbo.Lrf_LicenseeFunctionsSel_xtest', 'dbo.DEL_Lrf_LicenseeFunctionsSel_xtest';
+EXEC sp_rename 'dbo.Lrf_LicenseeGroupCommDel_UAT1', 'dbo.DEL_Lrf_LicenseeGroupCommDel_UAT1';
+EXEC sp_rename 'dbo.Lrf_LicenseeGroupCommDel_UAT4', 'dbo.DEL_Lrf_LicenseeGroupCommDel_UAT4';
+EXEC sp_rename 'dbo.Lrf_LicenseeGroupCommDel_xpre', 'dbo.DEL_Lrf_LicenseeGroupCommDel_xpre';
+EXEC sp_rename 'dbo.Lrf_LicenseeGroupCommDel_xtest', 'dbo.DEL_Lrf_LicenseeGroupCommDel_xtest';
 EXEC sp_rename 'dbo.Lrf_LicenseeGroupCommIns_UAT1', 'dbo.DEL_Lrf_LicenseeGroupCommIns_UAT1';
 EXEC sp_rename 'dbo.Lrf_LicenseeGroupCommIns_xpre', 'dbo.DEL_Lrf_LicenseeGroupCommIns_xpre';
 EXEC sp_rename 'dbo.Lrf_LicenseeGroupCommIns_xtest', 'dbo.DEL_Lrf_LicenseeGroupCommIns_xtest';
+EXEC sp_rename 'dbo.Lrf_LicenseeGroupCommSel', 'dbo.DEL_Lrf_LicenseeGroupCommSel';
 EXEC sp_rename 'dbo.Lrf_LicenseeGroupCommSel_UAT1', 'dbo.DEL_Lrf_LicenseeGroupCommSel_UAT1';
 EXEC sp_rename 'dbo.Lrf_LicenseeGroupCommSel_xpre', 'dbo.DEL_Lrf_LicenseeGroupCommSel_xpre';
 EXEC sp_rename 'dbo.Lrf_LicenseeGroupCommSel_xtest', 'dbo.DEL_Lrf_LicenseeGroupCommSel_xtest';
@@ -712,9 +736,11 @@ EXEC sp_rename 'dbo.Lrf_LicenseeProductSel_xpre', 'dbo.DEL_Lrf_LicenseeProductSe
 EXEC sp_rename 'dbo.Lrf_LicenseeSel_xtest', 'dbo.DEL_Lrf_LicenseeSel_xtest';
 EXEC sp_rename 'dbo.Lrf_LicenseeSelBySiteName_xtest', 'dbo.DEL_Lrf_LicenseeSelBySiteName_xtest';
 EXEC sp_rename 'dbo.LRF_LicenseeSourcedSel_xtest', 'dbo.DEL_LRF_LicenseeSourcedSel_xtest';
+EXEC sp_rename 'dbo.Lrf_LicenseeUserFunctionsDel_xtest', 'dbo.DEL_Lrf_LicenseeUserFunctionsDel_xtest';
 EXEC sp_rename 'dbo.Lrf_LicenseeUserFunctionsIns_xtest', 'dbo.DEL_Lrf_LicenseeUserFunctionsIns_xtest';
 EXEC sp_rename 'dbo.Lrf_LicenseeUserFunctionsSel_xpre', 'dbo.DEL_Lrf_LicenseeUserFunctionsSel_xpre';
 EXEC sp_rename 'dbo.Lrf_LicenseeUserFunctionsSel_xtest', 'dbo.DEL_Lrf_LicenseeUserFunctionsSel_xtest';
+EXEC sp_rename 'dbo.Lrf_PageAccessByLicenseeSel', 'dbo.DEL_Lrf_PageAccessByLicenseeSel';
 EXEC sp_rename 'dbo.Lrf_rpt_DWTopCustomerSel_xpre', 'dbo.DEL_Lrf_rpt_DWTopCustomerSel_xpre';
 EXEC sp_rename 'dbo.Lrf_rpt_DWTopCustomerSel_xtest', 'dbo.DEL_Lrf_rpt_DWTopCustomerSel_xtest';
 EXEC sp_rename 'dbo.Lrf_rpt_DWWinloss_UAT2', 'dbo.DEL_Lrf_rpt_DWWinloss_UAT2';
@@ -725,6 +751,7 @@ EXEC sp_rename 'dbo.Lrf_SelBetTypeBySport_UAT3', 'dbo.DEL_Lrf_SelBetTypeBySport_
 EXEC sp_rename 'dbo.Lrf_SelBetTypeBySport_UAT4', 'dbo.DEL_Lrf_SelBetTypeBySport_UAT4';
 EXEC sp_rename 'dbo.Lrf_SelBetTypeBySport_xpre', 'dbo.DEL_Lrf_SelBetTypeBySport_xpre';
 EXEC sp_rename 'dbo.Lrf_SelBetTypesByProduct_UAT1', 'dbo.DEL_Lrf_SelBetTypesByProduct_UAT1';
+EXEC sp_rename 'dbo.Lrf_SelCurrency', 'dbo.DEL_Lrf_SelCurrency';
 EXEC sp_rename 'dbo.Lrf_SelCurrency_xtest', 'dbo.DEL_Lrf_SelCurrency_xtest';
 EXEC sp_rename 'dbo.Lrf_SelLeagueBySport_UAT3', 'dbo.DEL_Lrf_SelLeagueBySport_UAT3';
 EXEC sp_rename 'dbo.Lrf_SelLeagueBySport_UAT4', 'dbo.DEL_Lrf_SelLeagueBySport_UAT4';
@@ -736,12 +763,15 @@ EXEC sp_rename 'dbo.Lrf_SelSportDetail_UAT1', 'dbo.DEL_Lrf_SelSportDetail_UAT1';
 EXEC sp_rename 'dbo.Lrf_SelSportDetail_UAT3', 'dbo.DEL_Lrf_SelSportDetail_UAT3';
 EXEC sp_rename 'dbo.Lrf_SelSportDetail_UAT4', 'dbo.DEL_Lrf_SelSportDetail_UAT4';
 EXEC sp_rename 'dbo.Lrf_SelSportDetail_xpre', 'dbo.DEL_Lrf_SelSportDetail_xpre';
+EXEC sp_rename 'dbo.Lrf_SportSel', 'dbo.DEL_Lrf_SportSel';
+EXEC sp_rename 'dbo.Lrf_SSOLinkSel', 'dbo.DEL_Lrf_SSOLinkSel';
 EXEC sp_rename 'dbo.Lrf_SyncInternalUser_xtest', 'dbo.DEL_Lrf_SyncInternalUser_xtest';
 EXEC sp_rename 'dbo.Lrf_UpdateUser_xtest', 'dbo.DEL_Lrf_UpdateUser_xtest';
 EXEC sp_rename 'dbo.Lrf_UserAccessSel_xtest', 'dbo.DEL_Lrf_UserAccessSel_xtest';
 EXEC sp_rename 'dbo.Lrf_UserInfoSelByUserName_xtest', 'dbo.DEL_Lrf_UserInfoSelByUserName_xtest';
 EXEC sp_rename 'dbo.Lrf_UserPasswordUpd_xtest', 'dbo.DEL_Lrf_UserPasswordUpd_xtest';
 EXEC sp_rename 'dbo.Lrf_UserPwdReset_xtest', 'dbo.DEL_Lrf_UserPwdReset_xtest';
+EXEC sp_rename 'dbo.Lrf_UserSaltSel', 'dbo.DEL_Lrf_UserSaltSel';
 EXEC sp_rename 'dbo.Lrf_UserUpdAccount_xtest', 'dbo.DEL_Lrf_UserUpdAccount_xtest';
 EXEC sp_rename 'dbo.NAP_SpecialCustSetting_LicenseeList_UAT4', 'dbo.DEL_NAP_SpecialCustSetting_LicenseeList_UAT4';
 EXEC sp_rename 'dbo.NAP_SpecialCustSettingAgent_SelByCurrencyAndLicensee_UAT4', 'dbo.DEL_NAP_SpecialCustSettingAgent_SelByCurrencyAndLicensee_UAT4';
@@ -820,8 +850,8 @@ EXEC sp_rename 'dbo.OAS_TotalTrans_GetLicByResellerID', 'dbo.DEL_OAS_TotalTrans_
 EXEC sp_rename 'dbo.OAS_TotalTrans_GetLicByResellerID_xtest', 'dbo.DEL_OAS_TotalTrans_GetLicByResellerID_xtest';
 EXEC sp_rename 'dbo.OAS_Users_GetSalt', 'dbo.DEL_OAS_Users_GetSalt';
 EXEC sp_rename 'dbo.OAS_Users_UpdatePassword', 'dbo.DEL_OAS_Users_UpdatePassword';
-EXEC sp_rename 'dbo.SplitStrings_Moden', 'dbo.DEL_SplitStrings_Moden';
-EXEC sp_rename 'dbo.SplitStrings_XML', 'dbo.DEL_SplitStrings_XML';
+EXEC sp_rename 'DataSync.SplitStrings_Moden', 'DataSync.DEL_SplitStrings_Moden';
+EXEC sp_rename 'DataSync.SplitStrings_XML', 'DataSync.DEL_SplitStrings_XML';
 EXEC sp_rename 'dbo.SYNC_LicenseeCommSetting_xtest', 'dbo.DEL_SYNC_LicenseeCommSetting_xtest';
 EXEC sp_rename 'dbo.Task_Archive_rptCustomerMatch', 'dbo.DEL_Task_Archive_rptCustomerMatch';
 EXEC sp_rename 'dbo.Task_Archive_rptCustomerTurnover', 'dbo.DEL_Task_Archive_rptCustomerTurnover';
