@@ -2,7 +2,7 @@
 	Task - Rename object @ DB053.bodb02
 	1696 objects
 */
-use bodb_Summary
+use bodb02
 go
 EXEC sp_rename 'dbo.__Portal_SBA', 'dbo.DEL___Portal_SBA';
 EXEC sp_rename 'dbo.__Portal_SBA14', 'dbo.DEL___Portal_SBA14';
