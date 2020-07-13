@@ -1,0 +1,18 @@
+/*
+    Task: Move DBFRAUD to new Server
+		+ Enable sql login
+    Server: DBFRAUD | FPS_DB01 | FPS_DB01\MSSQLSERVERWEB | FPS_DB02 | FPS_DB02\FPS_DB01
+
+*/
+USE master
+GO
+
+ALTER LOGIN vnfps ENABLE
+ALTER LOGIN fpsWinService ENABLE
+ALTER LOGIN fpsWebSub ENABLE
+ALTER LOGIN fpsWebService ENABLE
+ALTER LOGIN fpsWebAdmin ENABLE
+ALTER LOGIN fpsdev ENABLE
+ALTER LOGIN thaifps ENABLE
+
+GO
