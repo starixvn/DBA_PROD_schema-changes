@@ -14,6 +14,6 @@
 DECLARE @fileName varchar(200)
 SET @fileName = 'G:\DBAGroup\Patrick' + '\' + @@SERVERNAME + '.' + 'bodb_OWP' + '_' + '20200724' + '.bak' 
 print @fileName
-BACKUP DATABASE @databaseName TO DISK = @fileName  WITH FORMAT, INIT, COMPRESSION
+BACKUP DATABASE bodb_OWP TO DISK = @fileName  WITH FORMAT, INIT, COMPRESSION
 
 GO
