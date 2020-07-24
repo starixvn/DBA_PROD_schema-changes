@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Created: 20200724@Chris
 	Task: Scan new tickets of HKK members after blocked MemberSite
 	DB: DB061/DBTP
@@ -43,34 +43,37 @@ order by HeadlineID, c.currency, c.roleid, c.custid
 			, @maxid_bettransRnG = 102277958611
 			, @maxid_translog = 717833343
 
+	declare @scantime datetime
+	select @scantime = '2020-07-26 21:00:00.000' --GMT-4 => GMT+8 = '2020-07-27 09:00:00.000'
+
 	SELECT s.*, b.bettype, b.* from bettrans b with (nolock)
 	inner join #supers s with (nolock) on s.custid = b.srecommend
-	where b.transdate >= '2020-07-26 21:00:00.000' --GMT-4 => GMT+8 = '2020-07-27 09:00:00.000'
+	where b.transdate >= @scantime
 	and b.statusID in (0,1)
 	AND transid > @maxid_bettrans
 
 	SELECT s.*, ci.custid, ci.username, ci.currency, b.bettype, b.* from bettransG b with (nolock)
 	inner join custInfo ci with (nolock) on ci.custid = b.custid
 	inner join #supers s with (nolock) on s.custid = ci.srecommend
-	where b.transdate >= '2020-07-26 21:00:00.000'
+	where b.transdate >= @scantime
 	and b.statusID in (0,1)
 	AND transid > @maxid_bettransG
 
 	SELECT s.*, b.gameID, b.* from bettransLC b with (nolock)
 	inner join #supers s with (nolock) on s.custid = b.srecommend
-	where b.transdate >= '2020-07-26 21:00:00.000'
+	where b.transdate >= @scantime
 	and b.statusID in (0,1)
 	AND transid > @maxid_bettransLC
 		
 	SELECT s.*, b.gameID, b.* from bettransRnG b with (nolock)
 	inner join #supers s with (nolock) on s.custid = b.srecommend
-	where b.transdate >= '2020-07-26 21:00:00.000'
+	where b.transdate >= @scantime
 	and b.statusID in (0,1)
 	AND transid > @maxid_bettransRnG
 
 	SELECT s.*, b.gameID, b.* from translog b with (nolock)
 	inner join #supers s with (nolock) on s.custid = b.srecommend
-	where b.transdate >= '2020-07-26 21:00:00.000'
+	where b.transdate >= @scantime
 	and b.statusID in (0,1)
 	AND translogid > @maxid_translog
 		
@@ -79,4 +82,3 @@ order by HeadlineID, c.currency, c.roleid, c.custid
 	
 
 drop table #supers
-
