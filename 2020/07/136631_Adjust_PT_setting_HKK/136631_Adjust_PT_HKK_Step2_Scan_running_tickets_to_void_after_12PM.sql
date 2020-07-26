@@ -70,7 +70,7 @@ order by HeadlineID, c.currency, c.roleid, c.custid
 	where b.winlostdate >= '2020-07-27'
 	and b.statusID in (0,1)
 	AND transid > @maxid_bettrans
-	and bettype in (29) 
+	and b.matchid = 29 AND b.bettype = 29
 
 		
 	--get all tickets have bettrans.status = 'running' and eventstatus = postponed/internal OR settlementstatus in ( MTD hold, undecided, result pending, under settlement) => NOT VOID
