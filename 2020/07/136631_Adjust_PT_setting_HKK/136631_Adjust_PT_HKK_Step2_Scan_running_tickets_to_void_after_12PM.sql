@@ -116,12 +116,19 @@ order by HeadlineID, c.currency, c.roleid, c.custid
 		where MoveEventDate >= '2020-07-27'
 
 	--get VOID Sportsbook tickets list
-		select t.* 
-		from #ticketSB t 
-			LEFT JOIN #excludeMatch t1 ON t1.matchid = t.matchid
-			LEFT JOIN #MoveEventDate t2 ON t2.matchid =  t.matchid
-		where t1.matchid IS NULL 
-			OR t2.matchid IS NULL
+		CREATE TABLE #ExcludeMatch_Final (Matchid INT)
+        INSERT INTO #ExcludeMatch_Final (Matchid)
+        SELECT matchid 
+        FROM #excludeMatch
+        UNION 
+        SELECT matchid 
+        FROM #MoveEventDate
+        
+        SELECT t.* 
+        FROM #ticketSB t 
+        	LEFT JOIN #ExcludeMatch_Final t1 ON t1.matchid = t.matchid
+        WHERE t1.matchid IS NULL 
+	
 	
 	/*
 		--scan Metric Gaming tickets
