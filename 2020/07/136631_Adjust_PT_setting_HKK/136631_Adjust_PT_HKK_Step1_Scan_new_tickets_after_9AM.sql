@@ -38,7 +38,9 @@ where c.roleid in (4)
 --Active Headline_Void Early 25-7	(49 supers)	
 ,'JYT','JYG','JYU','JYK','YYL','SG4H','SG7H','SG15H','SG21H','SG9H','SG31H','SG32H','SG33H','SG36H','SG40H','SG43H','SG45H','SG46H','SG6H','SG49H','SG1H','801H','802H','802AH','801AH','801BH','801CH','801DH','801HK','801Z','803H','805H','806H','807H','808H','801SH','801W','SG33Z','801Q','SG33M','801F','801G','801J','801N','EE89','801TH','801L','GG69','802CH'
 
-) ----input account list--Total: 316 supers (8 duplicated)
+--
+,'QWB'
+) ----input account list--Total: 317 supers (8 duplicated)
 order by HeadlineID, c.currency, c.roleid, c.custid
 
 
