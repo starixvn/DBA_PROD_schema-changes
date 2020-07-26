@@ -28,8 +28,9 @@ where c.roleid in (4)
 
 --Active Headline_Void Early 25-7	(49 supers)	
 ,'JYT','JYG','JYU','JYK','YYL','SG4H','SG7H','SG15H','SG21H','SG9H','SG31H','SG32H','SG33H','SG36H','SG40H','SG43H','SG45H','SG46H','SG6H','SG49H','SG1H','801H','802H','802AH','801AH','801BH','801CH','801DH','801HK','801Z','803H','805H','806H','807H','808H','801SH','801W','SG33Z','801Q','SG33M','801F','801G','801J','801N','EE89','801TH','801L','GG69','802CH'
-
-) ----input account list--Total: 316 supers (8 duplicated)
+--
+,'QWB'
+) ----input account list--Total: 317 supers (8 duplicated)
 order by HeadlineID, c.currency, c.roleid, c.custid
 
 
@@ -61,7 +62,7 @@ order by HeadlineID, c.currency, c.roleid, c.custid
 	AND transid > @maxid_bettrans
 	and bettype in (select bettype from #bettypeSB where bettype not in (9,29)) 
 
-	--scan all Parlay tickets
+	--scan all Parlay tickets and provide CSD
 	SELECT s.HeadlineID, s.HeadlineUser, b.srecommend, s.username as 'SuperUserName', b.custid, b.username, b.currency, b.bettype, b.refno, b.transid, b.transdate, b.winlostdate, b.status, b.statusID, b.matchid
 	into #ticketPL
 	from bettrans b with (nolock)
@@ -93,16 +94,13 @@ order by HeadlineID, c.currency, c.roleid, c.custid
 		
 
 	--Check matches are moved eventdate => NOT VOID
-		create table #temp (matchid INT, isParlay bit)
-		insert into #temp (matchid, isParlay)
-		select distinct matchid, 0 from #ticketSB t where t.matchid not in (select matchid from #excludeMatch)
-		union all 
-		select distinct matchid, 1 from #ticketPL t where t.matchid not in (select matchid from #excludeMatch)
+		create table #temp (matchid INT)
+		insert into #temp (matchid)
+		select distinct matchid from #ticketSB t where t.matchid not in (select matchid from #excludeMatch)
 
 		SELECT t.matchid
 			, AddEvent
 			,MoveEventDate
-			,t.isParlay
 		into #MoveEventDate
 		FROM #temp t
 		CROSS APPLY (SELECT logid, convert(date,REPLACE((SUBSTRING(doing, CHARINDEX('evDate:',doing)+8,10)),']','')) as AddEvent
@@ -118,11 +116,13 @@ order by HeadlineID, c.currency, c.roleid, c.custid
 		where MoveEventDate >= '2020-07-27'
 
 	--get VOID Sportsbook tickets list
-		select * from #ticketSB t where t.matchid not in (select matchid from #excludeMatch) or t.matchid not in (select distinct matchid from #MoveEventDate where isParlay = 0)
+		select t.* 
+		from #ticketSB t 
+			LEFT JOIN #excludeMatch t1 ON t1.matchid = t.matchid
+			LEFT JOIN #MoveEventDate t2 ON t2.matchid =  t.matchid
+		where t1.matchid IS NULL 
+			OR t2.matchid IS NULL
 	
-	--get Parlay tickets and provide CSD	
-		select * from #ticketPL t where t.matchid not in (select matchid from #excludeMatch) or t.matchid not in (select distinct matchid from #MoveEventDate where isParlay = 1)
-
 	/*
 		--scan Metric Gaming tickets
 			SELECT s.HeadlineID, s.HeadlineUser, b.srecommend, s.username as 'SuperUserName', b.custid, b.username, b.currency, b.gameID, b.translogid, b.transdate, b.winlostdate, b.status, b.statusID, b.eventID 
