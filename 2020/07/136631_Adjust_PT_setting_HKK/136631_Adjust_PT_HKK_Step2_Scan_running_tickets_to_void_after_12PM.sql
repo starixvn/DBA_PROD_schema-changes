@@ -130,7 +130,7 @@ order by HeadlineID, c.currency, c.roleid, c.custid
         	LEFT JOIN #ExcludeMatch_Final t1 ON t1.matchid = t.matchid
         WHERE t1.matchid IS NULL 
 	
-	select * from ticketPL
+	select * from #ticketPL
 	
 	/*
 		--scan Metric Gaming tickets
@@ -200,5 +200,9 @@ drop table #supers
 drop table #excludeMatch
 drop table #ticketSB
 drop table #ticketPL
+
+drop table #temp
+drop table #ExcludeMatch_Final
+drop table #MoveEventDate
 
 --drop table #ticketMG
