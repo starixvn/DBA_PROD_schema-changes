@@ -50,11 +50,11 @@ order by HeadlineID, c.currency, c.roleid, c.custid
 	---> Run 1 more time at 5PM (GMT+8)
 
 	declare @maxid_bettrans bigint, @maxid_bettransG bigint, @maxid_bettransLC bigint, @maxid_bettransRnG bigint, @maxid_translog bigint
-	select @maxid_bettrans = 109495468107
-			, @maxid_bettransG = 1256019672
-			, @maxid_bettransLC = 134116430
-			, @maxid_bettransRnG = 102277958611
-			, @maxid_translog = 717833343
+	select @maxid_bettrans = 109515343393
+			, @maxid_bettransG = 1256107826
+			, @maxid_bettransLC = 135122523
+			, @maxid_bettransRnG = 102285719568
+			, @maxid_translog = 719112227
 
 	declare @scantime datetime
 	select @scantime = '2020-07-26 21:00:00.000' --GMT-4 => GMT+8 = '2020-07-27 09:00:00.000'
