@@ -40,7 +40,7 @@ where c.roleid in (4)
 
 --
 ,'QWB'
-) ----input account list--Total: 317 supers (8 duplicated)
+) ----input account list--Total: 316 supers (8 duplicated)
 order by HeadlineID, c.currency, c.roleid, c.custid
 
 
@@ -57,7 +57,7 @@ order by HeadlineID, c.currency, c.roleid, c.custid
 			, @maxid_translog = 719112227
 
 	declare @scantime datetime
-	select @scantime = '2020-07-26 21:00:00.000' --GMT-4 => GMT+8 = '2020-07-27 09:00:00.000'
+	select @scantime = '2020-07-26 21:10:00.000' --GMT-4 => GMT+8 = '2020-07-27 09:10:00.000'
 
 	SELECT s.*, b.bettype, b.* from bettrans b with (nolock)
 	inner join #supers s with (nolock) on s.custid = b.srecommend
