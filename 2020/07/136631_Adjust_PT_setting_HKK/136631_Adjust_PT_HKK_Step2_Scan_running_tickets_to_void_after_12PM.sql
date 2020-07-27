@@ -60,7 +60,7 @@ order by HeadlineID, c.currency, c.roleid, c.custid
 	inner join #supers s with (nolock) on s.custid = b.srecommend
 	where b.winlostdate >= '2020-07-27'
 	and b.statusID in (0,1)
-	AND transid > @maxid_bettrans
+	--AND transid > @maxid_bettrans
 	and bettype in (select bettype from #bettypeSB where bettype not in (29)) 
 
 	--scan all Parlay tickets and provide CSD
@@ -70,7 +70,7 @@ order by HeadlineID, c.currency, c.roleid, c.custid
 	inner join #supers s with (nolock) on s.custid = b.srecommend
 	where b.winlostdate >= '2020-07-27'
 	and b.statusID in (0,1)
-	AND transid > @maxid_bettrans
+	--AND transid > @maxid_bettrans
 	and b.matchid = 29 AND b.bettype = 29
 
 		
@@ -130,6 +130,7 @@ order by HeadlineID, c.currency, c.roleid, c.custid
         	LEFT JOIN #ExcludeMatch_Final t1 ON t1.matchid = t.matchid
         WHERE t1.matchid IS NULL 
 	
+	select * from ticketPL
 	
 	/*
 		--scan Metric Gaming tickets
