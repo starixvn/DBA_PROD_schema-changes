@@ -1,3 +1,14 @@
+/*
+    step 1. update new file patch
+    step 2. stop sql service
+    step 3. copy data file to new location
+    step 4. start sql service
+    step 5. verify database
+*/
+
+-- bodb02
+
+
 ALTER DATABASE 	bodb02	MODIFY FILE ( NAME = 	[bodb02_OLD_01]	, FILENAME = 'H:\IBC_DB\bodb02G\bodb02_OLD_01.NDF');
 ALTER DATABASE 	bodb02	MODIFY FILE ( NAME = 	[P2PSetting]	, FILENAME = 'H:\IBC_DB\bodb02G\P2PSetting.ndf');
 ALTER DATABASE 	bodb02	MODIFY FILE ( NAME = 	[P2PSetting_index]	, FILENAME = 'H:\IBC_DB\bodb02G\P2PSetting_index.ndf');
