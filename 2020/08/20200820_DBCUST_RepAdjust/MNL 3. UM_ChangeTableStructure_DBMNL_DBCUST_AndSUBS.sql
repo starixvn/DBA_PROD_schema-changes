@@ -7,7 +7,7 @@
 
 
 --================================================================================================================================================
--- 3. import all data from old table to new table
+-- 1. import all data from old table to new table
 insert [exchange_new](exchangeid, currency, stakerate, actualrate, commaxpayout, creator, minbet, minbetlive, AUDRate, ZARRate, GBPRate, EURORate, US$Rate, Code, Description, MultipliedBy, ExVirtualRate, PJUnitPrice, 
                          OfferSite, IsActive)
 select exchangeid, currency, stakerate, actualrate, commaxpayout, creator, minbet, minbetlive, AUDRate, ZARRate, GBPRate, EURORate, US$Rate, Code, Description, MultipliedBy, ExVirtualRate, PJUnitPrice, 
@@ -16,12 +16,12 @@ from dbo.exchange with (nolock)
 GO
 
 --================================================================================================================================================
--- 4. Drop old table
+-- 2. Drop old table
 drop table dbo.exchange
 GO
 
 --================================================================================================================================================
--- 5. rename new objects to main
+-- 3. rename new objects to main
 exec sp_rename 'dbo.exchange_new', 'exchange'
 exec sp_rename 'dbo.PK_exchange_new', 'PK_exchange'
 exec sp_rename 'dbo.DF_Exchange_new_OfferSite', 'DF_Exchange_OfferSite'

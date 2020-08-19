@@ -1,6 +1,6 @@
 -- Task: Remove idenitty proprerty of exchange.exchangeid - Clone new table preparing for switch table (rename) in UM
--- ** Must removing the table from Replication 1st
--- Run on 19 servers DBCUST, DB04x, DB05x, DB06x, DBTP, DBTRANS, DB02, DBM2STAGE, DBODDSCx, DBDWx
+-- Do before UM for both KBT & MNL related servers
+-- Run on DBCUST, DB04x, DB05x, DB06x, DBTP, DBTRANS, DB02, DBM2STAGE, DBODDSCx, DBDWx + MNL
 
 
 --================================================================================================================================================
