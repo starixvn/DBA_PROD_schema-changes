@@ -3,6 +3,12 @@
 	DB: DBCUST/CustDB
 
 */
+--Add new column to custinfo
+--deploy @DBCust/custdb
+USE CustDB
+GO
+ALTER TABLE custinfo ADD CustomerClass SMALLINT NULL																										
+GO
 
 --Add new columns into LicenseeCustComm & LicenseeGroupComm
 --deploy @DBCust/bodb_Licensee
