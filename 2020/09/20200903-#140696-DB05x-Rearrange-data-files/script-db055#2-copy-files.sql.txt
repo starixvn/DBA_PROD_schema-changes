@@ -1,0 +1,5 @@
+rem copy files
+xcopy "C:\Program Files\Microsoft SQL Server\MSSQL10_50.MSSQLSERVER\MSSQL\DATA\MSDBLog.ldf" "G:\user_db\msdb\"
+xcopy "C:\Program Files\Microsoft SQL Server\MSSQL10_50.MSSQLSERVER\MSSQL\DATA\MSDBData.mdf" "G:\user_db\msdb\"
+
+pause
