@@ -7,7 +7,7 @@ USE master
 GO
 
 BACKUP DATABASE [bodb_Licensee] TO DISK = 
-	N'G:\BACKUP\SITDB052.bodb_Licensee_20200914.bak'
+	N'G:\BACKUP\SITDB052.bodb_Licensee_20200915.bak'
 WITH COPY_ONLY, NOFORMAT, NOINIT, NAME = 
 	N'bodb_Licensee-Full Database Backup', SKIP, 
 	NOREWIND, NOUNLOAD, COMPRESSION, STATS = 10

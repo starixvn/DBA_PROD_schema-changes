@@ -8,7 +8,7 @@ GO
 
 RESTORE DATABASE [bodb_Licensee]
 FROM DISK = 
-	N'G:\BACKUP\SITDB052.bodb_Licensee_20200914.bak'
+	N'G:\BACKUP\SITDB052.bodb_Licensee_20200915.bak'
 WITH FILE = 1, MOVE N'bodb_Licensee' TO 
 	N'G:\USER_DB\bodb_Licensee\bodb_Licensee.mdf', 
 	MOVE N'bodb_Licensee_log' TO 
