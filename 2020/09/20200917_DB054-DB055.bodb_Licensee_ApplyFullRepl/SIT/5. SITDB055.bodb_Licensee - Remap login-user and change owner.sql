@@ -1,6 +1,6 @@
 /*
 	Task: Remap login-user @bodb_Licensee after restoring
-	Run on SIT Env - SITDB055, need create folder AFF, BA, DW_rpt_Betting, OWA, rptLicWL in G:\USER_DB\bodb_Licensee\
+	Run on SIT Env - SITDB055
 	
 	--Check missing user
 	select *
