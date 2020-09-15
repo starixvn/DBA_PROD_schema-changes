@@ -50,3 +50,7 @@ EXEC sp_change_users_login 'update_one',[vnhelen],[vnhelen]
 EXEC sp_change_users_login 'update_one',[vnjamie],[vnjamie]
 EXEC sp_change_users_login 'update_one',[bodbDownlineNet],[bodbDownlineNet]
 EXEC sp_change_users_login 'update_one',[dwrs2],[dwrs2]
+GO
+
+EXEC [bodb_Licensee].dbo.sp_changedbowner @loginame = N'sa', @map = false
+GO
