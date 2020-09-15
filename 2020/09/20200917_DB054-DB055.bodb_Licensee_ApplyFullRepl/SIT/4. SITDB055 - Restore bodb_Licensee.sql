@@ -3,8 +3,10 @@
 	Run on SIT Env - SITDB055, need create folder AFF, BA, DW_rpt_Betting, OWA, rptLicWL in G:\USER_DB\bodb_Licensee\
 */
 
-USE master
+USE [master]
 GO
+
+ALTER DATABASE [bodb_Licensee] SET SINGLE_USER WITH ROLLBACK IMMEDIATE
 
 RESTORE DATABASE [bodb_Licensee]
 FROM DISK = 
