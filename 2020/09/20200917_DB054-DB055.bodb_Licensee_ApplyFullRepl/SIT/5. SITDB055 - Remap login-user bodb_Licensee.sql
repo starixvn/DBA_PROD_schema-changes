@@ -1,5 +1,5 @@
 /*
-	Task: Remap login-user @bodb_Licensee from backup file of DB052.bodb_Licensee for applying full replication
+	Task: Remap login-user @bodb_Licensee after restoring
 	Run on SIT Env - SITDB055, need create folder AFF, BA, DW_rpt_Betting, OWA, rptLicWL in G:\USER_DB\bodb_Licensee\
 	
 	--Check missing user
