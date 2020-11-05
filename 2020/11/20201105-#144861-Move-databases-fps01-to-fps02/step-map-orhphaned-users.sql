@@ -3,7 +3,7 @@
 		+ Map orphan user
     Server: FPS_DB02\FPS_01
 
-	Full backup:
+	Databases:
 		FPS_SUB_FUN88
 		FPS_SUB_M88
 		FPS_SUB_BBIN

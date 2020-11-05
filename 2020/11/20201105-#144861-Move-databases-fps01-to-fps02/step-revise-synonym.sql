@@ -2,6 +2,15 @@
     Task: Move some dbs from fps_01 to fps_02
 		+ Revise synonym
     Server: FPS_DB02\FPS_01
+
+	Databases:
+		FPS_SUB_FUN88
+		FPS_SUB_M88
+		FPS_SUB_BBIN
+		FPS_SUB_12BET
+		FPS_SUB_Newhonbet
+		FPS_SUB_ALPHA
+		FPS_SUB_W88
 	
 */
 

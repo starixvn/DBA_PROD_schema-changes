@@ -3,7 +3,7 @@
 		+ Diff backup
     Server: FPS_DB01\MSSQLSERVERWEB
 
-	Full backup:
+	Databases:
 		FPS_SUB_FUN88
 		FPS_SUB_M88
 		FPS_SUB_BBIN
