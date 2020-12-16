@@ -13,6 +13,6 @@ EXEC sp_detach_db 'MonDB', 'true';
 
 --attach mondb with new location
 CREATE DATABASE [MonDB] ON 
-( FILENAME = N'F:\IBC_DB\MonDB\MonDB.mdf'),
-( FILENAME = N'F:\IBC_DB\MonDB\MonDB_log.ldf')
+( FILENAME = N'F:\USER_DB\MonDB\MonDB.mdf'),
+( FILENAME = N'F:\USER_DB\MonDB\MonDB_log.ldf')
 FOR ATTACH
