@@ -1,0 +1,51 @@
+USE [master]
+GO
+/*
+	Task - Setup new server DB052
+	Run on DB052
+*/
+
+CREATE LOGIN [dba_Cert_User] WITH PASSWORD = 0x01008B96DC0803E1130BBB7376D7392CBDCB7FB593A0A9A56624 HASHED, SID = 0x8E4C25C4B2F7364AB9F96F3B1272C80D, DEFAULT_DATABASE = [master], CHECK_POLICY = ON, CHECK_EXPIRATION = OFF
+CREATE USER [dba_Cert_User] FOR LOGIN [dba_Cert_User]
+GO
+
+--ALTER DATABASE bodb02 SET ENABLE_BROKER WITH ROLLBACK IMMEDIATE;
+----//renew ssb
+--ALTER DATABASE bodb02 SET NEW_BROKER;
+--GO
+
+use master
+GO
+--//create master ket for ssb certtificate
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = N'!i@b#ssb#mlogin$9)';
+GO
+
+--Creating certificate that will be used for encrypting messages. 
+CREATE CERTIFICATE [SSBS_DB052_Cert]
+       WITH SUBJECT = N'Certificate For DB052',
+       EXPIRY_DATE = N'12/31/2080';
+GO
+
+--//backup ssb certificate
+BACKUP CERTIFICATE [SSBS_DB052_Cert]
+       TO FILE = N'G:\\SSBSQLCertificates\SSBS_DB052_Cert.cer';
+GO
+
+--//restore ssb certificate ==> from DB054
+CREATE CERTIFICATE SSBS_DB054_Cert
+   AUTHORIZATION dba_cert_User
+   FROM FILE = N'D:\\SSBSQLCertificates\SSBS_DB054_Cert.cer'
+GO
+
+--//create endpoint
+CREATE ENDPOINT [Endpoint_SSB_DB052] 
+	STATE = STARTED
+	AS TCP (LISTENER_PORT = 4741, LISTENER_IP = ALL)
+	FOR SERVICE_BROKER (MESSAGE_FORWARDING = DISABLED
+						, MESSAGE_FORWARD_SIZE = 10
+						, AUTHENTICATION = CERTIFICATE [SSBS_DB052_Cert]
+						, ENCRYPTION = REQUIRED ALGORITHM RC4)
+GO
+
+GRANT CONNECT ON ENDPOINT::[Endpoint_SSB_DB052] TO dba_cert_User
+GO
