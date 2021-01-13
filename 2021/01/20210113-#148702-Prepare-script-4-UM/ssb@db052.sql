@@ -34,7 +34,7 @@ GO
 --//restore ssb certificate ==> from DB054
 CREATE CERTIFICATE SSBS_DB054_Cert
    AUTHORIZATION dba_cert_User
-   FROM FILE = N'D:\\SSBSQLCertificates\SSBS_DB054_Cert.cer'
+   FROM FILE = N'G:\\SSBSQLCertificates\SSBS_DB054_Cert.cer'
 GO
 
 --//create endpoint

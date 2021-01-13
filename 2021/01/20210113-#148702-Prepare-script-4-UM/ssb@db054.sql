@@ -7,7 +7,7 @@ GO
 	Run on DB054
 */
 --//drop old certificate
-DROP CERTIFICATE SSBS_BET_RUNNING_Cert
+DROP CERTIFICATE SSBS_LOG_Cert
 
 --//restore ssb certificate ==> from DB052
 -->> Need to copy file first
