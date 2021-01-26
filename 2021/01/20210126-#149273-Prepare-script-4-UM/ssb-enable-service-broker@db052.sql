@@ -1,0 +1,10 @@
+USE [master]
+GO
+/*
+	Task - Setup new server DB054
+		+ Enable service broker
+	Run on DB054
+*/
+
+ALTER DATABASE bodb02 SET ENABLE_BROKER WITH ROLLBACK IMMEDIATE;
+ALTER DATABASE ServiceBrokerDB SET ENABLE_BROKER WITH ROLLBACK IMMEDIATE;
