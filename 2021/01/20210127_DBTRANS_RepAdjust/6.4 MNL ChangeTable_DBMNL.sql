@@ -11,7 +11,7 @@
 /*
     Created: 20201118@Max
 	Task: [TVS] Abnormal Account - [Redmine: #143666]
-	DB: MNL DB06
+	DB: MNL DBMNL
 */
 
 USE [bodb02]

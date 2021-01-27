@@ -1,6 +1,6 @@
 /*
 	Task: Add article
-	Run script below @DBTRANS
+	Run script below @DBTP
 */
 
 
