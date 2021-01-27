@@ -32,7 +32,7 @@ EXEC [Sb].[DBA_ConversationManagement]
 	, @contractName = 'Contract_CustomerLog_UserLog_Login'		  
 	, @fromService = 'Service_CustomerLog_DBCUST'
 	, @toService = 'Service_CustomerLog_DBLOG'
-	, @Coversation_number = 5
+	, @Coversation_number = 10
 	, @Mode = 'Reset'
 
 GO
