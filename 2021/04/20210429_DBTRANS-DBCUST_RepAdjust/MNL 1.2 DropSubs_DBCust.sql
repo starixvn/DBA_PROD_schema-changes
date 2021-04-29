@@ -4,6 +4,6 @@
 */
 
 -- Dropping the transactional subscriptions
-use [bodb02]
-exec sp_dropsubscription @publication = N'DBMNL_DR_sync_C', @subscriber = N'DBCUST', @destination_db = N'CustDB', @article = N'all'
+use [CustDB]
+exec sp_dropsubscription @publication = N'CustDB_DR_sync', @subscriber = N'DB06', @destination_db = N'bodb02', @article = N'all'
 GO
