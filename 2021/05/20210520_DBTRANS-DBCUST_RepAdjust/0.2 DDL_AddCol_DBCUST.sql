@@ -8,9 +8,10 @@ go
 
 -- Add new columns
 alter table dbo.Product3rd
-	add Enabled bit constraint DF_Product3rd_Enabled default (1)
+	add
+		OfferSite tinyint constraint DF_Product3rd_OfferSite default (0)
+		,Enabled bit constraint DF_Product3rd_Enabled default (1)
 		,EndOfSupportDate date
-
 
 -- Initialize data
 declare @tblProduct3rd table (ProductId int, Enabled bit, EndOfSupportDate date)
@@ -24,15 +25,15 @@ select 14, 0, '2018-08-28' union all -- Microgaming - Live Casino
 select 17, 0, '2018-08-28' union all -- Microgaming - RNG Casino
 select 30, 0, '2018-03-01' union all -- Bullfighting
 select 33, 0, '2019-04-16' union all -- Poker Games
-select 11, 0, NULL union all -- Gold Deluxe
-select 13, 0, NULL union all -- BetTrade
-select 24, 0, NULL -- Fishing World
+select 11, 0, '2020-09-06' union all -- Gold Deluxe
+select 13, 0, NULL -- BetTrade
 
 update p with (rowlock)
 set p.Enabled = isnull(t.Enabled, 1)
 	,p.EndOfSupportDate = t.EndOfSupportDate
 from dbo.Product3rd p
 	left join @tblProduct3rd t on p.ProductId = t.ProductId
+
 	
 	
 ------------------------------------------------
