@@ -1,4 +1,5 @@
 
+
 -- run on DBTP
 -- dropped steps on DBTP
 
@@ -6,13 +7,14 @@
 use [bodb_Licensee]
 exec sp_dropsubscription @publication = N'CustDB_bodb_licensee_DR_Sync', @subscriber = N'DBMNL', @destination_db = N'bodb_licensee', @article = N'all'
 GO
-
-/****** Begin: Script to be run at Publisher ******/
+ 
 use [bodb_licensee]
 GO
 exec sp_dropsubscription @publication =N'CustDB_bodb_licensee_DR_Sync', @subscriber = N'DBTKO', @article = N'all', @destination_db = N'bodb_Licensee'
-
-/****** End: Script to be run at Publisher ******/
+GO
+use [bodb_licensee]
+exec sp_dropsubscription @publication =N'CustDB_bodb_licensee_DR_Sync', @subscriber = N'DBBAL', @article = N'all', @destination_db = N'bodb_licensee'
+GO
 
 -- Dropping the transactional articles 
 GO
@@ -28,11 +30,14 @@ GO
 use [bodb_Licensee]
 exec sp_dropsubscription @publication = N'DBTP_bodb_licensee', @subscriber = N'DBMNL', @destination_db = N'bodb_licensee', @article = N'all'
 GO
-/****** Begin: Script to be run at Publisher ******/
 use [bodb_Licensee]
 GO
 exec sp_dropsubscription @publication =N'DBTP_bodb_licensee', @subscriber = N'DBTKO', @article = N'all', @destination_db = N'bodb_Licensee'
- 
+
+use [bodb_licensee]
+exec sp_dropsubscription @publication =N'DBTP_bodb_licensee', @subscriber = N'DBBAL', @article = N'all', @destination_db = N'bodb_licensee'
+GO
+
 /****** End: Script to be run at Publisher ******/
 -- Dropping the transactional articles
 GO
