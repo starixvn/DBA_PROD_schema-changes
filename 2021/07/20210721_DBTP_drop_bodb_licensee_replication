@@ -1,0 +1,46 @@
+
+
+-- run on DBTP
+-- dropped steps on DBTP
+
+-- Dropping the transactional subscriptions
+use [bodb_Licensee]
+exec sp_dropsubscription @publication = N'CustDB_bodb_licensee_DR_Sync', @subscriber = N'DBMNL', @destination_db = N'bodb_licensee', @article = N'all'
+GO
+
+/****** Begin: Script to be run at Publisher ******/
+use [bodb_licensee]
+GO
+exec sp_dropsubscription @publication =N'CustDB_bodb_licensee_DR_Sync', @subscriber = N'DBTKO', @article = N'all', @destination_db = N'bodb_Licensee'
+
+/****** End: Script to be run at Publisher ******/
+
+-- Dropping the transactional articles 
+GO
+use [bodb_Licensee]
+exec sp_dropsubscription @publication = N'CustDB_bodb_licensee_DR_Sync', @article = N'Aff_LicenseeUser ', @subscriber = N'all', @destination_db = N'all'
+GO
+use [bodb_Licensee]
+exec sp_droparticle @publication = N'CustDB_bodb_licensee_DR_Sync', @article = N'Aff_LicenseeUser ', @force_invalidate_snapshot = 1
+GO
+ 
+
+-- Dropping the transactional subscriptions
+use [bodb_Licensee]
+exec sp_dropsubscription @publication = N'DBTP_bodb_licensee', @subscriber = N'DBMNL', @destination_db = N'bodb_licensee', @article = N'all'
+GO
+/****** Begin: Script to be run at Publisher ******/
+use [bodb_Licensee]
+GO
+exec sp_dropsubscription @publication =N'DBTP_bodb_licensee', @subscriber = N'DBTKO', @article = N'all', @destination_db = N'bodb_Licensee'
+ 
+/****** End: Script to be run at Publisher ******/
+-- Dropping the transactional articles
+GO
+use [bodb_Licensee]
+exec sp_dropsubscription @publication = N'DBTP_bodb_licensee', @article = N'LA_ChargeRateByCurrency ', @subscriber = N'all', @destination_db = N'all'
+GO
+use [bodb_Licensee]
+exec sp_droparticle @publication = N'DBTP_bodb_licensee', @article = N'LA_ChargeRateByCurrency ', @force_invalidate_snapshot = 1
+GO
+  
