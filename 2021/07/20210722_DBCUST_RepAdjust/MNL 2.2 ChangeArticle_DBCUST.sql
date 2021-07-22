@@ -6,7 +6,7 @@
 
 -- Adding the transactional articles
 use [CustDB]
-exec sp_addarticle @publication = N'CustDB_CustSetting', @article = N'BetLimitControlType', @source_owner = N'dbo', @source_object = N'BetLimitControlType', @type = N'logbased', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x000000000847589F, @identityrangemanagementoption = N'manual', @destination_table = N'BetLimitControlType', @destination_owner = N'dbo', @status = 24, @vertical_partition = N'false', @ins_cmd = N'CALL [sp_MSins_dboBetLimitControlType]', @del_cmd = N'CALL [sp_MSdel_dboBetLimitControlType]', @upd_cmd = N'SCALL [sp_MSupd_dboBetLimitControlType]'
+exec sp_addarticle @publication = N'CustDB_CustSetting', @article = N'Dep_CustCategoryHistory', @source_owner = N'dbo', @source_object = N'Dep_CustCategoryHistory', @type = N'logbased', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x000000000847589F, @identityrangemanagementoption = N'manual', @destination_table = N'Dep_CustCategoryHistory', @destination_owner = N'dbo', @status = 24, @vertical_partition = N'false', @ins_cmd = N'CALL [sp_MSins_dboDep_CustCategoryHistory]', @del_cmd = N'CALL [sp_MSdel_dboDep_CustCategoryHistory]', @upd_cmd = N'SCALL [sp_MSupd_dboDep_CustCategoryHistory]'
 GO
 
 -- Adding the transactional articles
