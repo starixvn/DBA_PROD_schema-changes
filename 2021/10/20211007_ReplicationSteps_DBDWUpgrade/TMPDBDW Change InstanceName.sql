@@ -1,6 +1,6 @@
 /*
 	Task: Check and change Servername if mismatched with others
-	Run on DBDW
+	Run on TMPDBDW
 */
 
 --Check server properties 
@@ -13,14 +13,13 @@ SERVERPROPERTY('instanceName') AS 'InstanceName',
 SERVERPROPERTY('IsClustered') AS 'IsClustered'
 
 
---If you find any mismatch, then you need to follow below steps:
 --Execute below to drop the current server name
 EXEC sp_DROPSERVER 'TMPDBDW'
 
 --Execute below to add a new server name. Make sure local is specified.
 EXEC sp_ADDSERVER 'DBDW', 'local'
 
---Restart SQL Services.
+--Change OS Servername then Reboot server.
 
 --Verify the new name using:
 SELECT @@SERVERNAME
