@@ -6,7 +6,7 @@
 -- Gen script to disable all jobs then copy & run commands
 use msdb
 go
-select 'EXEC msdb.dbo.sp_update_job @job_name=''' + name + ''',@enabled = 1' from sysjobs
+select 'EXEC msdb.dbo.sp_update_job @job_name=''' + name + ''',@enabled = 0' from sysjobs
 
 --Enable spec jobs on new DBDW from saved settings, re-check again the list before UM 1h
 EXEC msdb.dbo.sp_update_job @job_name='bodb_Account - Gen data for Auto Bet Limit Control',@enabled = 1
