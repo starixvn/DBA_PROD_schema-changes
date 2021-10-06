@@ -4,6 +4,8 @@
 */
 
 -- Gen script to disable all jobs then copy & run commands
+use msdb
+go
 select 'EXEC msdb.dbo.sp_update_job @job_name=''' + name + ''',@enabled = 0' from sysjobs
 
 --Enable spec jobs on new DBDW from saved settings, re-check again the list before UM 1h
