@@ -1,8 +1,16 @@
 /*
-	Task: Add back subscription DBDW to indicated publication
+	Task: Add subscriber/subscription DBDW to indicated publication
 	** ATTENTION!! Must replace xxx, yyy for @subscriber_password with correct sa password of subscriber servers
 	Run @ DBTP
 */
+
+-- Installing the server as a Distributor.
+use master
+GO 
+exec sp_addsubscriber @subscriber = N'DBDW', @type = 0, @description = N''
+GO
+
+
 -- Adding the transactional subscriptions
 use [bodb02]
 exec sp_addsubscription @publication = N'DBTP_Customer_Info', @subscriber = N'DBDW', @destination_db = N'bodb02', @subscription_type = N'Push', @sync_type = N'replication support only', @article = N'all', @update_mode = N'read only', @subscriber_type = 0

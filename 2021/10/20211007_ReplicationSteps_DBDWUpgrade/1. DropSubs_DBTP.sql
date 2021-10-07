@@ -25,3 +25,10 @@ GO
 use [bodb02]
 exec sp_dropsubscription @publication = N'DBTP_Odds_Odds', @subscriber = N'DBDW', @destination_db = N'bodb02', @article = N'all'
 GO
+
+
+-- Dropping the registered subscriber
+use master
+GO 
+exec sp_dropsubscriber @subscriber = N'DBDW'
+GO
