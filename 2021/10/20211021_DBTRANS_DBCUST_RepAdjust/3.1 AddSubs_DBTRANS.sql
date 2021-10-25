@@ -1,7 +1,7 @@
 /*
 	Task: Add back subscriptions to indicated publication - Skip add sub DB061 as it will be handled by TW DBA
 	** ATTENTION!! Must replace xxx, yyy for @subscriber_password with correct sa password of subscriber servers
-	Run @ DB02
+	Run @ DBTRANS
 */
 -- Adding the transactional subscriptions
 use [bodb02]
