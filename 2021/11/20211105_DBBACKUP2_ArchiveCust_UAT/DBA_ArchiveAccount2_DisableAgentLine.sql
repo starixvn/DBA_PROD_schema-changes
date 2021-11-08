@@ -551,7 +551,7 @@ WHERE custid IN (SELECT custid FROM custInfo WITH (NOLOCK) WHERE roleid = 1 and 
 
 -- update enable = 0, credit = 0 for whole agent line (use new execRep SP)
 --> Insert data for Cust_ArchiveAccount
-SET @ProcessedDate = @curentdate
+SET @ProcessedDate = @currentdate
 
 EXEC dbo.[Acc_DormantAccountList_InsertUpdate] 
 	@CustId = @AgentID,
