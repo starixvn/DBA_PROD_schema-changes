@@ -1,4 +1,3 @@
-/*<info serverAlias="DB055-master"></info>*/
 /*
 	Task - Upgrade SQL Server DB055 to 2019
 		1- Restore FULL backup: MonDB
