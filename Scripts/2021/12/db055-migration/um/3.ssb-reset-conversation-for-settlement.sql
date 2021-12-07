@@ -3,7 +3,7 @@
 		1- remove data in DialogPool
 		2- reset conversation
 		
-	Run on db055
+	Run on db055 |db053 | db061 | dbtp
 */
 
 use bodb02

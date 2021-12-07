@@ -6,7 +6,7 @@
 		4- Drop Product assembly
 		5- Create Product assembly
 		6- Create Product aggregate function
-	Run on db055
+	Run on db055 |db053 | db061 | db05bk1 | dbtp | db04admin1
 */
 
 USE bodb02
