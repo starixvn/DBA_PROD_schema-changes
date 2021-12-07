@@ -12,6 +12,32 @@
 USE bodb02
 GO
 
+--check clr enable or not
+SELECT * FROM sys.configurations
+WHERE name in ('clr enabled', 'clr strict security')
+
+--if did not enable then run this script
+/*
+	--Disable clr strict security
+	sp_configure 'show advanced options', 1;
+	GO
+	RECONFIGURE;
+	GO
+	EXEC sp_configure 'clr strict security', 0;  
+	RECONFIGURE;
+
+	go
+
+	--Enable clr enabled
+	sp_configure 'show advanced options', 1;
+	GO
+	RECONFIGURE;
+	GO
+	EXEC sp_configure 'clr enabled', 1;  
+	RECONFIGURE;
+*/
+
+
 --1- Generate script Product aggregate function
 --2- Generate Product assembly
 
