@@ -80,3 +80,51 @@ print @__fileName
 backup database @__databaseName to disk = @__fileName with format, init, compression
 
 go
+
+--bodb_CustomerLog ==> use for recover
+set nocount on
+declare @__fileName varchar(512)
+	, @__databaseName varchar(200)
+	, @__datetimeString varchar(30)
+	, @__backupPath varchar(200)
+
+select @__backupPath = 'G:\backup', @__databaseName = 'bodb_CustomerLog'
+	, @__datetimeString = replace(replace(convert(varchar(19), getdate(), 121), ':', ''), ' ', '-')
+
+set @__fileName = @__backupPath + '\' + @@servername + '.' + @__databaseName + '_' + @__datetimeString + '.bak' 
+print @__fileName
+backup database @__databaseName to disk = @__fileName with format, init, compression
+
+go
+
+--bodb_N88Log ==> use for recover
+set nocount on
+declare @__fileName varchar(512)
+	, @__databaseName varchar(200)
+	, @__datetimeString varchar(30)
+	, @__backupPath varchar(200)
+
+select @__backupPath = 'G:\backup', @__databaseName = 'bodb_N88Log'
+	, @__datetimeString = replace(replace(convert(varchar(19), getdate(), 121), ':', ''), ' ', '-')
+
+set @__fileName = @__backupPath + '\' + @@servername + '.' + @__databaseName + '_' + @__datetimeString + '.bak' 
+print @__fileName
+backup database @__databaseName to disk = @__fileName with format, init, compression
+
+go
+
+--bodb_NAPLog ==> use for recover
+set nocount on
+declare @__fileName varchar(512)
+	, @__databaseName varchar(200)
+	, @__datetimeString varchar(30)
+	, @__backupPath varchar(200)
+
+select @__backupPath = 'G:\backup', @__databaseName = 'bodb_NAPLog'
+	, @__datetimeString = replace(replace(convert(varchar(19), getdate(), 121), ':', ''), ' ', '-')
+
+set @__fileName = @__backupPath + '\' + @@servername + '.' + @__databaseName + '_' + @__datetimeString + '.bak' 
+print @__fileName
+backup database @__databaseName to disk = @__fileName with format, init, compression
+
+go
