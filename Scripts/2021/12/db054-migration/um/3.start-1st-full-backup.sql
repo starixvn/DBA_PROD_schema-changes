@@ -1,6 +1,6 @@
 /*
 	Task - Upgrade SQL Server DB054 to 2019
-		1- DB055: Start DBA_Full_Backup Job
+		1- DB054: Start DBA_Full_Backup Job
 	Run on db054
 */
 

@@ -2,7 +2,8 @@
 	Task - Upgrade SQL Server DB054 to 2019
 		1- DB054_Drop LS @bodb_N88Log, bodb_NAPLog @DB054
 */
---++run on db054
+--1. ++run on db054
+--for db055
 EXEC master.dbo.sp_delete_log_shipping_primary_secondary
 	@primary_database = N'bodb_N88Log'
 	,@secondary_server = N'DB055'
@@ -17,15 +18,26 @@ GO
 --for DB055@MNL
 EXEC master.dbo.sp_delete_log_shipping_primary_secondary
 	@primary_database = N'bodb_N88Log'
-	,@secondary_server = N'10.11.1.21' --> db055 @MNL
+	,@secondary_server = N'10.11.1.22' --> db055 @MNL
 	,@secondary_database = N'bodb_N88Log'
 GO
 EXEC master.dbo.sp_delete_log_shipping_primary_secondary
 	@primary_database = N'bodb_NAPLog'
-	,@secondary_server = N'10.11.1.21' --> db055 @MNL
+	,@secondary_server = N'10.11.1.22' --> db055 @MNL
 	,@secondary_database = N'bodb_NAPLog'
 GO
 
+--for DB054@AWS
+EXEC master.dbo.sp_delete_log_shipping_primary_secondary
+	@primary_database = N'bodb_N88Log'
+	,@secondary_server = N'10.14.1.95' --> db054 @AWS
+	,@secondary_database = N'bodb_N88Log'
+GO
+EXEC master.dbo.sp_delete_log_shipping_primary_secondary
+	@primary_database = N'bodb_NAPLog'
+	,@secondary_server = N'10.14.1.95' --> db054 @AWS
+	,@secondary_database = N'bodb_NAPLog'
+GO
 
 --2. On the secondary server, execute sp_delete_log_shipping_secondary_database to delete 
 --the secondary database.
@@ -38,6 +50,14 @@ GO
 --2. On the secondary server, execute sp_delete_log_shipping_secondary_database to delete 
 --the secondary database.
 --++run on DB055@MNL
+EXEC sp_delete_log_shipping_secondary_database N'bodb_N88Log'
+EXEC sp_delete_log_shipping_secondary_database N'bodb_NAPLog'
+
+GO
+
+--2. On the secondary server, execute sp_delete_log_shipping_secondary_database to delete 
+--the secondary database.
+--++run on DB054@AWS
 EXEC sp_delete_log_shipping_secondary_database N'bodb_N88Log'
 EXEC sp_delete_log_shipping_secondary_database N'bodb_NAPLog'
 
