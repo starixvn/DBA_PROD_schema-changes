@@ -1,7 +1,8 @@
 
 /*
 	Task - Upgrade SQL Server DB054 to 2019
-		+ Diff backup databases: bodb02, bodb_licensee, ServiceBorkerDB, MonDB
+		+ Diff backup databases: bodb_Licensee, bodb_ost, bodb02, ServiceBrokerDB, MonDB
+			, bodb_CustomerLog, bodb_N88Log, bodb_NAPLog
 	Run on db054
 */
 --bodb02
@@ -35,14 +36,14 @@ backup database @__databaseName to disk = @__fileName with differential, format,
 
 go
 
---ServiceBorkerDB
+--ServiceBrokerDB
 set nocount on
 declare @__fileName varchar(512)
 	, @__databaseName varchar(200)
 	, @__datetimeString varchar(30)
 	, @__backupPath varchar(200)
 
-select @__backupPath = 'G:\backup', @__databaseName = 'ServiceBorkerDB'
+select @__backupPath = 'G:\backup', @__databaseName = 'ServiceBrokerDB'
 	, @__datetimeString = replace(replace(convert(varchar(19), getdate(), 121), ':', ''), ' ', '-')
 
 set @__fileName = @__backupPath + '\' + replace(@@servername, '\', '_') + '.' + @__databaseName + '_' + @__datetimeString + '.dif' 
