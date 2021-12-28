@@ -12,7 +12,7 @@ declare @__fileName varchar(512)
 select @__backupPath = 'G:\backup', @__databaseName = 'MonDB'
 	, @__datetimeString = replace(replace(convert(varchar(19), getdate(), 121), ':', ''), ' ', '-')
 
-set @__fileName = @__backupPath + '\' + @@servername + '.' + @__databaseName + '_' + @__datetimeString + '.bak' 
+set @__fileName = @__backupPath + '\' + replace(@@servername, '\', '_') + '.' + @__databaseName + '_' + @__datetimeString + '.bak' 
 print @__fileName
 backup database @__databaseName to disk = @__fileName with format, init, compression
 
