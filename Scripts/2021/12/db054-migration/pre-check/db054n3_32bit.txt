@@ -1,0 +1,12 @@
+Alias Name	Server	Protocol	Parameters
+DBTRANS	10.1.1.17	tcp	
+DBCASINOQA2	10.40.40.170	tcp	
+DBCASINOQA1	10.40.40.169	tcp	
+DBCASINO	10.1.1.217	tcp	
+DB06	10.1.1.91	tcp	
+DB052	10.1.1.92	tcp	
+DB05	10.1.1.90	tcp	
+DB042	10.1.1.82	tcp	
+DB04	10.1.1.80	tcp	
+DB03	10.1.1.90	tcp	
+DB02	10.1.1.40	tcp	
