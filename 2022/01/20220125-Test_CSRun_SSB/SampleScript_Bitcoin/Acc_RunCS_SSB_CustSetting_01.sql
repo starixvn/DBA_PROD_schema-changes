@@ -1,22 +1,16 @@
-/*<info serverAlias="DBCUST-CUSTDB"></info>*/
-/*
-	Created: Winfred
-	Date: 20210806
-	Task: Delete existing data of Bitcoin [ RedmineID:#159039]
-	DB: DBCUST/CustDB
-	P/s : Step 3 Delete existing data
-*/ 
- 
- -- BEGIN STEP 1: DEPLOY THIS SP @DBCUST.CustDB ------
-------------------------------------------------------
-ALTER PROCEDURE [dbo].[Acc_DynamicCustSetting3rd_09]
-	@target VARCHAR(20)
+/*<info serverAlias="DBSPARE-bodb02_CustRep" executers="" selecters="" viewers="" isFunction="0" isNested="0"></info>*/
+ALTER PROCEDURE [dbo].[Acc_RunCS_SSB_CustSetting_01]
 AS
+/*
+	Created: 20210806@Winfred
+	Task : Delete existing data of Bitcoin [ RedmineID:#159039]
+	DB:  DBCUST/CustDB
+	Original:
+	
+	Revision
+*/
 BEGIN
 	SET NOCOUNT ON
-	
-	IF (@target = 'REPLICATED' AND @@SERVERNAME IN ('DBCUST','SITDBCUST','DB233','DB230\SQLSERVER2008R2')) RETURN	-- run at all replicated servers
-	IF (@target = 'DBCUST' AND @@SERVERNAME NOT IN ('DBCUST','SITDBCUST','DB233','DB230\SQLSERVER2008R2')) RETURN -- run at dbcust only
 
 	IF dbo.f_CheckRepTable('CustInfo') = 0 RETURN
 	IF dbo.f_CheckRepTable('site') = 0 RETURN
@@ -267,17 +261,5 @@ BEGIN
 
 		TRUNCATE TABLE #CustWinLossLimit_MemberTemp
 	END
-END	
-GO
--- END STEP 1: DEPLOY THIS SP @DBCUST.CustDB --------
-------------------------------------------------------	
-
--- BEGIN STEP 2: RUN THIS SCRIPT AT ALL REPLICATED SERVERS -----
---------------------------------------------------------------------------------------
-EXEC dbo.Acc_DynamicCustSetting3rd_09 @target = 'REPLICATED'
-
-
--- BEGIN STEP 3: RUN THIS SCRIPT AT DBCUST -----
---------------------------------------------------------------------------------------
-EXEC dbo.Acc_DynamicCustSetting3rd_09 @target = 'DBCUST'
+END
 
