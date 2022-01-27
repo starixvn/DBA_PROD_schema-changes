@@ -1,17 +1,20 @@
 /*<info serverAlias="DBCUST-CUSTDB"></info>*/
-/*
-	Created: Winfred
-	Date: 20210806
-	Task: Initialize Product Status for Bitcoin [Redmine: 159039]
-	DB: DBCUST/CustDB
-	P/s : Step 5 Initialize Product Status
-*/ 
 ALTER PROCEDURE [dbo].[Acc_DynamicCustomerInfo_09]
 	@Custid INT
 	,@maxcustid INT
 	,@target VARCHAR(20)
 
 AS
+/*
+	Created: Winfred
+	Date: 20210806
+	Task: Initialize Product Status for Bitcoin [Redmine: 159039]
+	DB: DBCUST/CustDB
+	P/s : Step 5 Initialize Product Status
+	
+	Revisions:
+		20220127@Daniel: Cloned
+*/ 
 BEGIN
 	SET NOCOUNT ON
 	
