@@ -378,6 +378,5 @@ BEGIN
 	DROP TABLE #MemberTempIns
 	
 END
-GO
 
 

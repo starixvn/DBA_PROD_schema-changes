@@ -166,5 +166,4 @@ BEGIN
 	WHERE cs.SportType = @Sporttype
 	
 END
-GO
 
