@@ -37,8 +37,14 @@ BEGIN
 
 	--=====================================================================================
 	--Step xx:    Get and log max CustID from DBTP
+	
+	--for prod DBCUST
+	--DECLARE @MaxCustID INT 
+	--select @MaxCustID = max(custid) from DBTP.bodb02.dbo.custinfo with (nolock)
+	
+	--for test server
 	DECLARE @MaxCustID INT 
-	select @MaxCustID = max(custid) from DBTP.bodb02.dbo.custinfo with (nolock)
+	select @MaxCustID = max(custid) from dbo.custinfo with (nolock)
 	--[Write log or log to systemSetting table]
 	
 
