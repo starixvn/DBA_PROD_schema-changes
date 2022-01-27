@@ -9,7 +9,8 @@ AS
 	DB:  DBCUST/CustDB
 	Original:
 	
-	Revision
+		Revision:
+		20220126@Daniel: Init for Bitcoin x
 */
 BEGIN
 	SET NOCOUNT ON

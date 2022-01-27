@@ -8,6 +8,9 @@ AS
 	Task: Create Group PT Setting for Bitcoin [Redmine: 159039]
 	DB: DBCUST/CustDB
 	P/s : Step 10 Create Group PT Setting
+	
+		Revision:
+		20220126@Daniel: Init for Bitcoin x
 */ 
 BEGIN
 	SET NOCOUNT ON

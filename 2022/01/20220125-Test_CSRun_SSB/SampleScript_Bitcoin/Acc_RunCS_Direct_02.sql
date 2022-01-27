@@ -8,6 +8,9 @@ AS
 	Task: Initialize Product Status for Bitcoin - Caller [Redmine: 159039]
 	DB: DBCUST/CustDB
 	P/s : Step 5 Initialize Product Status
+	
+		Revision:
+		20220126@Daniel: Init for Bitcoin x
 */ 
 BEGIN
 	-- BEGIN STEP 2: RUN THIS SCRIPT AT ALL REPLICATED SERVERS -----

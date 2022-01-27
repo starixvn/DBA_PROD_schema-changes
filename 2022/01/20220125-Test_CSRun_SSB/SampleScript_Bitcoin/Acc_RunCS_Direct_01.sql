@@ -8,7 +8,8 @@ AS
 	DB:  DBCUST/CustDB
 	Original:
 	
-	Revision
+		Revision:
+		20220126@Daniel: Init for Bitcoin x
 */
 BEGIN
 	PRINT N'Step 4: Start on ' + CAST(GETDATE() AS NVARCHAR(30)) + N'.';  

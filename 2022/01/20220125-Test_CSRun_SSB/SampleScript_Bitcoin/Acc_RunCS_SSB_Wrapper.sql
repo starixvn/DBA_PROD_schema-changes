@@ -8,7 +8,7 @@ AS
 	DB: DBCUST/CustDB
 	
 	Revision:
-		20220126@Daniel: Init for Bitcoin
+		20220126@Daniel: Init for Bitcoin x
 	
 */
 BEGIN

@@ -7,6 +7,9 @@ AS
 	Task: Disable status for 10 headlines (SDRMB, 266HK, M863HK, SBSR, YKH, S188RM, PYY, POT, SF8, S80R) of Bitcoin [Redmine: 159039]
 	DB: DBCUST/CustDB
 	P/s : Step 12 Disable status for 10 headlines
+	
+		Revision:
+		20220126@Daniel: Init for Bitcoin x
 */
 BEGIN
 --Get Group ID
