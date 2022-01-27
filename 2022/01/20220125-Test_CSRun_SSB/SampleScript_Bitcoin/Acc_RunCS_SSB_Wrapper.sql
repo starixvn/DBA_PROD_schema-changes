@@ -23,14 +23,14 @@ BEGIN
 	
 	--=====================================================================================
 	--Step 2:    Insert global loss limit real currency
-	DECLARE @ProductID INT = 69
+	--DECLARE @ProductID INT = 69
 
-	INSERT INTO dbo.LossLimit_GlobalSetting (ProductId, ExchangeId, MinLossLimit, DefaultLossLimit)
-	SELECT @ProductID, lg.ExchangeId, MinLossLimit, DefaultLossLimit
-	FROM LossLimit_GlobalSetting lg WITH (NOLOCK)
-		INNER JOIN dbo.exchange e ON e.exchangeid = lg.ExchangeId
-	WHERE ProductId = 44 
-		AND  e.exchangeid IN ( 2,3,5,6,7,9,12,13,15,16,22,33,34,35,41,42,43,45,47,50,51,52,53,54,57,58,64,67,69,71,81,95)
+	--INSERT INTO dbo.LossLimit_GlobalSetting (ProductId, ExchangeId, MinLossLimit, DefaultLossLimit)
+	--SELECT @ProductID, lg.ExchangeId, MinLossLimit, DefaultLossLimit
+	--FROM LossLimit_GlobalSetting lg WITH (NOLOCK)
+	--	INNER JOIN dbo.exchange e ON e.exchangeid = lg.ExchangeId
+	--WHERE ProductId = 44 
+	--	AND  e.exchangeid IN ( 2,3,5,6,7,9,12,13,15,16,22,33,34,35,41,42,43,45,47,50,51,52,53,54,57,58,64,67,69,71,81,95)
 	--RM,US$,HK$,EURO,DON,AUD,GBP,RMB,IN,Yen,IND,IDD,IDR,$US,CHF,PE,THB,Won,DDD,CAN,INH,DKK,SEK,NOK,CZK,RON,UT,HKK,MMK,KHR,CY,USD
 
 
@@ -75,21 +75,21 @@ BEGIN
 	--=====================================================================================
 	--Step 6:    Delete the redundant setting
 	--------------------------------------------------------------------------------------
-	EXEC dbo.Acc_RunCS_Direct_03 @max_custid = @MaxCustID
+	EXEC dbo.Acc_RunCS_Direct_03 @MaxCustID = @MaxCustID
 	
 	
 	
 	--=====================================================================================
 	--Step 7:    Copy Setting for newly created customers 
 	--------------------------------------------------------------------------------------
-	EXEC dbo.Acc_RunCS_Direct_04 @max_custid = @MaxCustID
+	EXEC dbo.Acc_RunCS_Direct_04 @MaxCustID = @MaxCustID
 
 
 
 	--=====================================================================================
 	--Step 8:    Copy Setting for newly created customers UUS 
 	--------------------------------------------------------------------------------------
-	EXEC dbo.Acc_RunCS_Direct_05 @max_custid = 54541671
+	EXEC dbo.Acc_RunCS_Direct_05 @MaxCustID = 54541671
 
 
 
