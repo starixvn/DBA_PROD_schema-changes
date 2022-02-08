@@ -76,7 +76,7 @@ BEGIN
 				
 		EXEC [dbo].[Acc_RunCS_SSB]
 			@CSType = 'CustSetting', --CustSetting/CustInfo
-			@Step = 4,
+			@Step = 3,
 			@custid = @srecommend
 				
 		--waitfor delay '00:00:0.200'
