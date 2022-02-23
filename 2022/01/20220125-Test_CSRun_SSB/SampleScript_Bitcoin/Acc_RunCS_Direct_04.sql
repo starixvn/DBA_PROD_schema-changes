@@ -9,6 +9,9 @@ AS
 	DB: DBCUST/CustDB
 	
 	P/s : Step 7 Copy setting for newly created customer
+	
+		Revision:
+		20220126@Daniel: Init for Bitcoin x
 */ 
 BEGIN
 

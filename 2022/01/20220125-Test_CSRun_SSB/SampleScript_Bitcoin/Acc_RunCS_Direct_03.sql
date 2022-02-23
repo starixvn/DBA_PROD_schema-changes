@@ -9,6 +9,9 @@ AS
 	DB: DBCUST/CustDB
 	
 	P/s : Step 6 Delete redundant data
+	
+		Revision:
+		20220126@Daniel: Init for Bitcoin x
 */ 
 BEGIN
 	PRINT N'Step 6: Start on ' + CAST(GETDATE() AS NVARCHAR(30)) + N'.';  

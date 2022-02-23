@@ -8,6 +8,9 @@ AS
 	DB: DBCUST/CustDB
 	
 	P/s : Step 9  Adjust Setting PT , Com , winlossLimit for customer
+	
+		Revision:
+		20220126@Daniel: Init for Bitcoin x
 */
 BEGIN
 	PRINT N'Step 9: Start on ' + CAST(GETDATE() AS NVARCHAR(30)) + N'.';  

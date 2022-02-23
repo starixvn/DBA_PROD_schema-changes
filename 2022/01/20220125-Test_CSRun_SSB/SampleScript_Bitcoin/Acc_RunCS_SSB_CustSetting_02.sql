@@ -9,13 +9,12 @@ AS
 	DB:  DBCUST/CustDB
 	Original:
 	
-	Revision
+		Revision:
+		20220126@Daniel: Init for Bitcoin x
 */
 BEGIN
 	SET NOCOUNT ON
 	
-	IF (@target = 'REPLICATED' AND @@SERVERNAME IN ('DBCUST','SITDBCUST','DB233','DB230\SQLSERVER2008R2')) RETURN -- run at all replicated servers
-	IF (@target = 'DBCUST' AND @@SERVERNAME NOT IN ('DBCUST','SITDBCUST','DB233','DB230\SQLSERVER2008R2')) RETURN -- run at dbcust only
 	
 	IF dbo.f_CheckRepTable('CustInfo') = 0 RETURN
 	IF dbo.f_CheckRepTable('Customer') = 0 RETURN
@@ -377,6 +376,5 @@ BEGIN
 	DROP TABLE #MemberTempIns
 	
 END
-GO
 
 

@@ -7,6 +7,9 @@ AS
 	Task: Create Group PT Setting for Bitcoin - Caller [Redmine: 159039]
 	DB: DBCUST/CustDB
 	P/s : Step 10 Create Group PT Setting
+	
+		Revision:
+		20220126@Daniel: Init for Bitcoin x
 */ 
 BEGIN
 	PRINT N'Step 10: Start on ' + CAST(GETDATE() AS NVARCHAR(30)) + N'.';  
@@ -73,7 +76,7 @@ BEGIN
 				
 		EXEC [dbo].[Acc_RunCS_SSB]
 			@CSType = 'CustSetting', --CustSetting/CustInfo
-			@Step = 4,
+			@Step = 3,
 			@custid = @srecommend
 				
 		--waitfor delay '00:00:0.200'
