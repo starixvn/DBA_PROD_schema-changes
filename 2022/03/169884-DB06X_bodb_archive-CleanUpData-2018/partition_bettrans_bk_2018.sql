@@ -22,7 +22,7 @@ BEGIN TRANSACTION
 USE [bodb_archive]
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
-CREATE TABLE [dbo].[staging_bettrans_bk_20220314-044116](
+CREATE TABLE [dbo].[__switch_bettrans_bk_partition_temp](
 	[custid] [int] NOT NULL,
 	[transdate] [datetime] NOT NULL,
 	[oddsid] [int] NOT NULL,
@@ -93,89 +93,94 @@ CREATE TABLE [dbo].[staging_bettrans_bk_20220314-044116](
 	[epositiontaking] [smallmoney] NULL,
 	[ReasonID] [smallint] NULL,
 	[sort] [smallint] NULL
-) ON [Bettrans_1801]
+)
 WITH
 (
 DATA_COMPRESSION = PAGE
 )
 
 USE [bodb_archive]
-CREATE CLUSTERED INDEX [staging_bettrans_bk_20220314-044116_CIX_winlostdate] ON [dbo].[staging_bettrans_bk_20220314-044116]
+CREATE CLUSTERED INDEX [__switch_bettrans_bk_partition_temp_CIX_winlostdate] ON [dbo].[__switch_bettrans_bk_partition_temp]
 (
 	[winlostdate] ASC
-)WITH (PAD_INDEX = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [Bettrans_1801]
+)WITH (PAD_INDEX = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) 
+ON ps_bettrans_monthly([winlostdate])
 USE [bodb_archive]
-CREATE NONCLUSTERED INDEX [staging_bettrans_bk_20220314-044116_IX_custid] ON [dbo].[staging_bettrans_bk_20220314-044116]
+CREATE NONCLUSTERED INDEX [__switch_bettrans_bk_partition_temp_IX_custid] ON [dbo].[__switch_bettrans_bk_partition_temp]
 (
 	[custid] ASC
 )
-INCLUDE([winlostdate],[matchid],[bettype]) WITH (PAD_INDEX = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [Bettrans_1801]
+INCLUDE([winlostdate],[matchid],[bettype]) WITH (PAD_INDEX = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) 
+ON ps_bettrans_monthly([winlostdate])
 USE [bodb_archive]
-CREATE NONCLUSTERED INDEX [staging_bettrans_bk_20220314-044116_IX_transid] ON [dbo].[staging_bettrans_bk_20220314-044116]
+CREATE NONCLUSTERED INDEX [__switch_bettrans_bk_partition_temp_IX_transid] ON [dbo].[__switch_bettrans_bk_partition_temp]
 (
 	[transid] ASC
 )
-INCLUDE([winlostdate]) WITH (PAD_INDEX = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [Bettrans_1801]
-USE [bodb_archive]
---ALTER TABLE [dbo].[staging_bettrans_bk_20220314-044116]  WITH CHECK ADD  CONSTRAINT [chk_staging_bettrans_bk_20220314-044116_partition_1] CHECK  ([winlostdate]<=N'2018-01-31T 23:59:00')
---ALTER TABLE [dbo].[staging_bettrans_bk_20220314-044116] CHECK CONSTRAINT [chk_staging_bettrans_bk_20220314-044116_partition_1]
-ALTER TABLE [bodb_archive].[dbo].[bettrans_bk] SWITCH PARTITION 1 TO [bodb_archive].[dbo].[staging_bettrans_bk_20220314-044116] WITH (WAIT_AT_LOW_PRIORITY (MAX_DURATION = 0 MINUTES, ABORT_AFTER_WAIT = NONE))
+INCLUDE([winlostdate]) WITH (PAD_INDEX = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) 
+ON ps_bettrans_monthly([winlostdate]);
 COMMIT TRANSACTION
 GO
 
 USE [bodb_archive]
-DROP TABLE [bodb_archive].[dbo].[staging_bettrans_bk_20220314-044116];
+ALTER TABLE [dbo].[bettrans_bk] SWITCH PARTITION 1 TO [dbo].[__switch_bettrans_bk_partition_temp] partition 1 WITH (WAIT_AT_LOW_PRIORITY (MAX_DURATION = 0 MINUTES, ABORT_AFTER_WAIT = NONE))
+ALTER TABLE [dbo].[bettrans_bk] SWITCH PARTITION 2 TO [dbo].[__switch_bettrans_bk_partition_temp] partition 2 WITH (WAIT_AT_LOW_PRIORITY (MAX_DURATION = 0 MINUTES, ABORT_AFTER_WAIT = NONE))
+ALTER TABLE [dbo].[bettrans_bk] SWITCH PARTITION 3 TO [dbo].[__switch_bettrans_bk_partition_temp] partition 3 WITH (WAIT_AT_LOW_PRIORITY (MAX_DURATION = 0 MINUTES, ABORT_AFTER_WAIT = NONE))
+ALTER TABLE [dbo].[bettrans_bk] SWITCH PARTITION 4 TO [dbo].[__switch_bettrans_bk_partition_temp] partition 4 WITH (WAIT_AT_LOW_PRIORITY (MAX_DURATION = 0 MINUTES, ABORT_AFTER_WAIT = NONE))
+ALTER TABLE [dbo].[bettrans_bk] SWITCH PARTITION 5 TO [dbo].[__switch_bettrans_bk_partition_temp] partition 5 WITH (WAIT_AT_LOW_PRIORITY (MAX_DURATION = 0 MINUTES, ABORT_AFTER_WAIT = NONE))
+ALTER TABLE [dbo].[bettrans_bk] SWITCH PARTITION 6 TO [dbo].[__switch_bettrans_bk_partition_temp] partition 6 WITH (WAIT_AT_LOW_PRIORITY (MAX_DURATION = 0 MINUTES, ABORT_AFTER_WAIT = NONE))
+ALTER TABLE [dbo].[bettrans_bk] SWITCH PARTITION 7 TO [dbo].[__switch_bettrans_bk_partition_temp] partition 7 WITH (WAIT_AT_LOW_PRIORITY (MAX_DURATION = 0 MINUTES, ABORT_AFTER_WAIT = NONE))
+ALTER TABLE [dbo].[bettrans_bk] SWITCH PARTITION 8 TO [dbo].[__switch_bettrans_bk_partition_temp] partition 8 WITH (WAIT_AT_LOW_PRIORITY (MAX_DURATION = 0 MINUTES, ABORT_AFTER_WAIT = NONE))
+ALTER TABLE [dbo].[bettrans_bk] SWITCH PARTITION 9 TO [dbo].[__switch_bettrans_bk_partition_temp] partition 9 WITH (WAIT_AT_LOW_PRIORITY (MAX_DURATION = 0 MINUTES, ABORT_AFTER_WAIT = NONE))
+ALTER TABLE [dbo].[bettrans_bk] SWITCH PARTITION 10 TO [dbo].[__switch_bettrans_bk_partition_temp] partition 10 WITH (WAIT_AT_LOW_PRIORITY (MAX_DURATION = 0 MINUTES, ABORT_AFTER_WAIT = NONE))
+ALTER TABLE [dbo].[bettrans_bk] SWITCH PARTITION 11 TO [dbo].[__switch_bettrans_bk_partition_temp] partition 12 WITH (WAIT_AT_LOW_PRIORITY (MAX_DURATION = 0 MINUTES, ABORT_AFTER_WAIT = NONE))
+ALTER TABLE [dbo].[bettrans_bk] SWITCH PARTITION 12 TO [dbo].[__switch_bettrans_bk_partition_temp] partition 12 WITH (WAIT_AT_LOW_PRIORITY (MAX_DURATION = 0 MINUTES, ABORT_AFTER_WAIT = NONE))
+
+
+USE [bodb_archive]
+DROP TABLE [bodb_archive].[dbo].[__switch_bettrans_bk_partition_temp];
 GO
 
 USE [bodb_archive]
 alter partition function pf_bettrans_monthly() merge range (N'2018-01-31T23:59:00')
---alter partition function pf_bettrans_monthly() merge range (N'2018-02-28T23:59:00')
---alter partition function pf_bettrans_monthly() merge range (N'2018-03-31T23:59:00')
---alter partition function pf_bettrans_monthly() merge range (N'2018-04-30T23:59:00')
---alter partition function pf_bettrans_monthly() merge range (N'2018-05-31T23:59:00')
---alter partition function pf_bettrans_monthly() merge range (N'2018-06-30T23:59:00')
---alter partition function pf_bettrans_monthly() merge range (N'2018-07-31T23:59:00')
---alter partition function pf_bettrans_monthly() merge range (N'2018-08-31T23:59:00')
---alter partition function pf_bettrans_monthly() merge range (N'2018-09-30T23:59:00')
---alter partition function pf_bettrans_monthly() merge range (N'2018-10-31T23:59:00')
---alter partition function pf_bettrans_monthly() merge range (N'2018-11-30T23:59:00')
---alter partition function pf_bettrans_monthly() merge range (N'2018-12-31T23:59:00')
+alter partition function pf_bettrans_monthly() merge range (N'2018-02-28T23:59:00')
+alter partition function pf_bettrans_monthly() merge range (N'2018-03-31T23:59:00')
+alter partition function pf_bettrans_monthly() merge range (N'2018-04-30T23:59:00')
+alter partition function pf_bettrans_monthly() merge range (N'2018-05-31T23:59:00')
+alter partition function pf_bettrans_monthly() merge range (N'2018-06-30T23:59:00')
+alter partition function pf_bettrans_monthly() merge range (N'2018-07-31T23:59:00')
+alter partition function pf_bettrans_monthly() merge range (N'2018-08-31T23:59:00')
+alter partition function pf_bettrans_monthly() merge range (N'2018-09-30T23:59:00')
+alter partition function pf_bettrans_monthly() merge range (N'2018-10-31T23:59:00')
+alter partition function pf_bettrans_monthly() merge range (N'2018-11-30T23:59:00')
+alter partition function pf_bettrans_monthly() merge range (N'2018-12-31T23:59:00')
 GO
 
-USE [bodb_archive]
+USE [master]
 alter database bodb_archive remove file [Bettrans_1801]
-alter database bodb_archive remove filegroup [Bettrans_1801]
+alter database bodb_archive remove file [Bettrans_1802]
+alter database bodb_archive remove file [Bettrans_1803]
+alter database bodb_archive remove file [Bettrans_1804]
+alter database bodb_archive remove file [Bettrans_1805]
+alter database bodb_archive remove file [Bettrans_1806]
+alter database bodb_archive remove file [Bettrans_1807]
+alter database bodb_archive remove file [Bettrans_1808]
+alter database bodb_archive remove file [Bettrans_1809]
+alter database bodb_archive remove file [Bettrans_1810]
+alter database bodb_archive remove file [Bettrans_1811]
+alter database bodb_archive remove file [Bettrans_1812]
 GO
---alter database bodb_archive remove file [Bettrans_1802]
---alter database bodb_archive remove filegroup [Bettrans_1802]
---GO
---alter database bodb_archive remove file [Bettrans_1803]
---alter database bodb_archive remove filegroup [Bettrans_1803]
---GO
---alter database bodb_archive remove file [Bettrans_1804]
---alter database bodb_archive remove filegroup [Bettrans_1804]
---GO
---alter database bodb_archive remove file [Bettrans_1805]
---alter database bodb_archive remove filegroup [Bettrans_1805]
---GO
---alter database bodb_archive remove file [Bettrans_1806]
---alter database bodb_archive remove filegroup [Bettrans_1806]
---GO
---alter database bodb_archive remove file [Bettrans_1807]
---alter database bodb_archive remove filegroup [Bettrans_1807]
---GO
---alter database bodb_archive remove file [Bettrans_1808]
---alter database bodb_archive remove filegroup [Bettrans_1808]
---GO
---alter database bodb_archive remove file [Bettrans_1809]
---alter database bodb_archive remove filegroup [Bettrans_1809]
---GO
---alter database bodb_archive remove file [Bettrans_1810]
---alter database bodb_archive remove filegroup [Bettrans_1810]
---GO
---alter database bodb_archive remove file [Bettrans_1811]
---alter database bodb_archive remove filegroup [Bettrans_1811]
---GO
---alter database bodb_archive remove file [Bettrans_1812]
---alter database bodb_archive remove filegroup [Bettrans_1812]
---GO
+
+user [master];
+alter database bodb_archive remove filegroup [Bettrans_1801]
+alter database bodb_archive remove filegroup [Bettrans_1802]
+alter database bodb_archive remove filegroup [Bettrans_1803]
+alter database bodb_archive remove filegroup [Bettrans_1804]
+alter database bodb_archive remove filegroup [Bettrans_1805]
+alter database bodb_archive remove filegroup [Bettrans_1806]
+alter database bodb_archive remove filegroup [Bettrans_1807]
+alter database bodb_archive remove filegroup [Bettrans_1808]
+alter database bodb_archive remove filegroup [Bettrans_1809]
+alter database bodb_archive remove filegroup [Bettrans_1810]
+alter database bodb_archive remove filegroup [Bettrans_1811]
+alter database bodb_archive remove filegroup [Bettrans_1812]
