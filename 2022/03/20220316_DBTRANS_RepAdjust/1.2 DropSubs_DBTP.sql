@@ -1,6 +1,6 @@
 /*
 	Task: Drop all subscriptions from the indicated publication
-	Run @ DBTP - Must RDP to DBTP02C
+	Run @ DBTP - Must RDP to DBTP03C
 */
 
 

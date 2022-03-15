@@ -1,7 +1,7 @@
 /*
 	Task: Add back subscriptions to indicated publication
 	Run @ DBTP
-	** ATTENTION!! Must change xxx to sa subs password and Remote to DBDIST02C and connect DBTP to run script
+	** ATTENTION!! Must change xxx to sa subs password and Remote to DBDIST03C and connect DBTP to run script
 */
 
 -- Adding the transactional subscriptions
