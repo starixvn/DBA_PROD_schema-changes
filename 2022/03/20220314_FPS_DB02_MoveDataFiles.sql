@@ -1,3 +1,4 @@
+/*<info serverAlias="FPSDI-FPS_DeviceFingerprint"></info>*/
 /***
 	Created@20220314: bobby.nguyen
 	Task: #169911 - FPS_DB02 - Move data files

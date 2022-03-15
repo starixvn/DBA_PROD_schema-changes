@@ -1,3 +1,4 @@
+/*<info serverAlias="DBARC-bodb_Archive"></info>*/
 /***
 	Created@20220314: bobby.nguyen
 	Task: #169911 - DBA clean up 2018 historical data
@@ -114,7 +115,7 @@ alter table bettransG switch partition 12 to __switch_bettransG_partition_temp p
 
 
 USE bodb_Archive
-drop table bodb_Archive.dbo.__switch_bettransG_partition_temp
+drop table [bodb_Archive].[dbo].[__switch_bettransG_partition_temp]
 go
 
 USE bodb_Archive
