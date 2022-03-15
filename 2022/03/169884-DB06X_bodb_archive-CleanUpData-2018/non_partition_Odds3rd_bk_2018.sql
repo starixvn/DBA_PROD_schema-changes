@@ -1,4 +1,4 @@
-/*<info serverAlias="DBARC-bodb_Archive"></info>*/
+/*<info serverAlias="DBARC-bodb_Archive" executers="" viewers="" isFunction="0" isNested="0"></info>*/
 /*
 	Task remove data 2018 year in bodb_Archive
 	Run on DB06x.bodb_Archive

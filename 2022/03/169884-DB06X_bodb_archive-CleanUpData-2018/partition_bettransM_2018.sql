@@ -1,4 +1,4 @@
-/*<info serverAlias="DBARC-bodb_Archive"></info>*/
+/*<info serverAlias="DBARC-bodb_Archive" executers="" viewers="" isFunction="0" isNested="0"></info>*/
 /***
 	Created@20220314: bobby.nguyen
 	Task: #169911 - DBA clean up 2018 historical data
