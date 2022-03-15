@@ -20,8 +20,6 @@
 
 BEGIN TRANSACTION
 USE [bodb_archive]
-SET ANSI_NULLS ON
-SET QUOTED_IDENTIFIER ON
 CREATE TABLE [dbo].[__switch_bettrans_bk_partition_temp](
 	[custid] [int] NOT NULL,
 	[transdate] [datetime] NOT NULL,
@@ -133,9 +131,9 @@ ALTER TABLE [dbo].[bettrans_bk] SWITCH PARTITION 7 TO [dbo].[__switch_bettrans_b
 ALTER TABLE [dbo].[bettrans_bk] SWITCH PARTITION 8 TO [dbo].[__switch_bettrans_bk_partition_temp] partition 8 WITH (WAIT_AT_LOW_PRIORITY (MAX_DURATION = 0 MINUTES, ABORT_AFTER_WAIT = NONE))
 ALTER TABLE [dbo].[bettrans_bk] SWITCH PARTITION 9 TO [dbo].[__switch_bettrans_bk_partition_temp] partition 9 WITH (WAIT_AT_LOW_PRIORITY (MAX_DURATION = 0 MINUTES, ABORT_AFTER_WAIT = NONE))
 ALTER TABLE [dbo].[bettrans_bk] SWITCH PARTITION 10 TO [dbo].[__switch_bettrans_bk_partition_temp] partition 10 WITH (WAIT_AT_LOW_PRIORITY (MAX_DURATION = 0 MINUTES, ABORT_AFTER_WAIT = NONE))
-ALTER TABLE [dbo].[bettrans_bk] SWITCH PARTITION 11 TO [dbo].[__switch_bettrans_bk_partition_temp] partition 12 WITH (WAIT_AT_LOW_PRIORITY (MAX_DURATION = 0 MINUTES, ABORT_AFTER_WAIT = NONE))
+ALTER TABLE [dbo].[bettrans_bk] SWITCH PARTITION 11 TO [dbo].[__switch_bettrans_bk_partition_temp] partition 11 WITH (WAIT_AT_LOW_PRIORITY (MAX_DURATION = 0 MINUTES, ABORT_AFTER_WAIT = NONE))
 ALTER TABLE [dbo].[bettrans_bk] SWITCH PARTITION 12 TO [dbo].[__switch_bettrans_bk_partition_temp] partition 12 WITH (WAIT_AT_LOW_PRIORITY (MAX_DURATION = 0 MINUTES, ABORT_AFTER_WAIT = NONE))
-
+GO
 
 USE [bodb_archive]
 DROP TABLE [bodb_archive].[dbo].[__switch_bettrans_bk_partition_temp];
@@ -171,7 +169,7 @@ alter database bodb_archive remove file [Bettrans_1811]
 alter database bodb_archive remove file [Bettrans_1812]
 GO
 
-user [master];
+USE [master];
 alter database bodb_archive remove filegroup [Bettrans_1801]
 alter database bodb_archive remove filegroup [Bettrans_1802]
 alter database bodb_archive remove filegroup [Bettrans_1803]
