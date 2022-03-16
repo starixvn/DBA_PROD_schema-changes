@@ -1,6 +1,6 @@
 /*
 	Task: Change article from replication
-	Using UI or run script below @ DBTKO
+	Using UI or run script below @ AWS DBTRANS
 */
 
 
