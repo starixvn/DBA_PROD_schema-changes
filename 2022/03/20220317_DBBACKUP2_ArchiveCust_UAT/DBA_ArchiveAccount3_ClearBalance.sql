@@ -1,8 +1,4 @@
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
+/*<info serverAlias="DBBACKUP2-bodb02" executers="" selecters="" viewers="" isFunction="0" isNested="0"></info>*/
 CREATE PROCEDURE [DBA_ArchiveAccount3_ClearBalance]
 	@AccName varchar(50),	
 	@UserID int = 360418,
@@ -277,7 +273,7 @@ Select @LogSPData = '<DBA_ArchiveAccount3_ClearBalance AccName="'+ coalesce(cast
 set @endRun = getdate()
 set @duration  = datediff (millisecond,@startRun,@endRun)
 					
-EXEC DBLOG.bodb_CustomerLog.dbo.WriteLog_UserLog_RunSP 
+EXEC bodb_CustomerLog.dbo.WriteLog_UserLog_RunSP 
 	@UserID = @UserID,
 	@CustID = @AgentID,
 	@ActionID = 1502,

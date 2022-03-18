@@ -1,8 +1,4 @@
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
+/*<info serverAlias="DBBACKUP2-bodb_Report" executers="" selecters="" viewers="" isFunction="0" isNested="0"></info>*/
 CREATE PROCEDURE [Task_ArchiveAccount_StatementLoad]
 AS
 /*
@@ -22,13 +18,17 @@ BEGIN
 	declare @_from smalldatetime, @_to smalldatetime
 	declare @Msg VARCHAR(150), @batch_days int
 
+	-- simulate run date based on test data version
+	declare @currentDate smalldatetime 
+	select @currentDate = VValue from bodb02.dbo.Systemsettings with (nolock) where VName = 'aa_TestDate'
+
 	set @batch_days = 10 --set days per batch to load avoiding performance issue
 
 	select @status = VValue from bodb02.dbo.Systemsettings with (nolock) where VName = 'aa_Stmt_Status'
 
 	if @status IN('Stage 4 - Done', 'Stage 1 - Running')--start routine - Load statement for stage 1 (3 months)
 	begin
-		select @from = convert(varchar(10), dateadd(MM, -3, getdate()), 120)
+		select @from = convert(varchar(10), dateadd(MM, -3, @currentDate), 120)
 
 		set @status = 'Stage 1 - Running'
 
@@ -46,7 +46,7 @@ BEGIN
 		select @from = VValue from bodb02.dbo.Systemsettings with (nolock) where VName = 'aa_Stmt_EndDate'
 		select @from =  dateadd(dd, 1, @from)
 
-		select @fromEx = convert(varchar(10), dateadd(MM, -7, getdate()), 120)
+		select @fromEx = convert(varchar(10), dateadd(MM, -7, @currentDate), 120)
 
 		select @toEx = VValue from bodb02.dbo.Systemsettings with (nolock) where VName = 'aa_Stmt_StartDate'
 		select @toEx =  dateadd(dd, -1, @toEx)

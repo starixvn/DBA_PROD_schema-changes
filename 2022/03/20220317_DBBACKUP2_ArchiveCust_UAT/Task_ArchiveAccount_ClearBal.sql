@@ -1,8 +1,4 @@
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
+/*<info serverAlias="DBBACKUP2-custDB_DBTRANS" executers="" selecters="" viewers="" isFunction="0" isNested="0"></info>*/
 CREATE PROCEDURE [Task_ArchiveAccount_ClearBal]
 AS
 /*
@@ -39,7 +35,7 @@ BEGIN
 	DECLARE @UserID int = 360418
 	SET @startRun = GETDATE()
 	
-	if exists(select 1 from DBACC.bodb02.dbo.SystemSettings with(nolock) where VName = 'aa_Status' AND VValue IN ('Stage 3 - Running','Stage 3 - Done'))
+	if exists(select 1 from bodb02.dbo.SystemSettings with(nolock) where VName = 'aa_Status' AND VValue IN ('Stage 3 - Running','Stage 3 - Done'))
 	BEGIN
 		-- from member to agent
 		EXEC DBA_ArchiveAccount_GenMasterSuperGroupLevel @StageId = 3
@@ -151,7 +147,7 @@ BEGIN
 			set @endRun = getdate()
 			set @duration  = datediff (millisecond,@startRun,@endRun)
 								
-			EXEC DBLOG.bodb_CustomerLog.dbo.WriteLog_UserLog_RunSP 
+			EXEC bodb_CustomerLog.dbo.WriteLog_UserLog_RunSP 
 				@UserID = @UserID,
 				@CustID = @custid_tmp,
 				@ActionID = 1503,
@@ -234,7 +230,7 @@ BEGIN
 				SET @endRun = getdate()
 				SET @duration  = datediff (millisecond,@startRun,@endRun)
 									
-				EXEC DBLOG.bodb_CustomerLog.dbo.WriteLog_UserLog_RunSP 
+				EXEC bodb_CustomerLog.dbo.WriteLog_UserLog_RunSP 
 					@UserID = @UserID,
 					@CustID = @custid_tmp,
 					@ActionID = 1504,

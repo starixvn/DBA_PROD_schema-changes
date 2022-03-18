@@ -1,8 +1,4 @@
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
+/*<info serverAlias="DBBACKUP2-bodb02" executers="" selecters="" viewers="" isFunction="0" isNested="0"></info>*/
 CREATE PROCEDURE [DBA_ArchiveAccount3_ClearBalance_MasterSuper]
 	@recommend INT = 0,
 	@agentname varchar(50) = '',	
