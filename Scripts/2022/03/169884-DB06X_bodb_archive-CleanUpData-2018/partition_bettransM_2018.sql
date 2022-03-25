@@ -72,6 +72,7 @@ CREATE TABLE [dbo].[__switch_bettransm_partition_temp](
 	[checktime] [datetime] NULL,
 	[ReasonIDm] [smallint] NULL
 )
+ON [ps_bettransm_monthly]([winlostdate])
 WITH
 (
 DATA_COMPRESSION = PAGE

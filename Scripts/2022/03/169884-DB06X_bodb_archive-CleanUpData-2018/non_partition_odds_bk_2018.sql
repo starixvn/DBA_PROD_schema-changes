@@ -3,7 +3,7 @@
 	Task remove data 2018 year in bodb_Archive
 	Run on DB06x.bodb_Archive
 */
-
+use bodb_Archive;
 declare @__winlostdate smalldatetime, @__dateto smalldatetime, @__message varchar(200)
 select @__winlostdate = '2018-01-01', @__dateto = '2019-01-01'
 

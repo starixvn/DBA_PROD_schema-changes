@@ -77,6 +77,7 @@ CREATE TABLE [dbo].[__switch_bettransRnG_bk_partition_temp](
 	[SiteID] [varchar](7) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[ip] [varchar](45) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
 )
+ON [ps_BETRNG_monthly_new]([winlostdate])
 WITH
 (
 DATA_COMPRESSION = PAGE

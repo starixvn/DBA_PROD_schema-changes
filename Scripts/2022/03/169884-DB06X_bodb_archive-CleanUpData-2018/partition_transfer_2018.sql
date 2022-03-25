@@ -35,7 +35,8 @@ CREATE TABLE [dbo].[__switch_transfer_bk_partition_temp](
 	[transid] [bigint] NOT NULL,
 	[bettype] [smallint] NULL,
 	[balance] [money] NULL
-)
+) 
+ON [ps_TRANSBK_monthly]([winlostdate])
 WITH
 (
 DATA_COMPRESSION = PAGE

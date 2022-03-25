@@ -19,7 +19,8 @@ CREATE TABLE [dbo].[__switch_Dot_Admin_LiveLog_partition_temp](
 	[action_memo] [varchar](600) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[OperatorID] [int] NULL,
 	[transtime] [datetime] NOT NULL
-)
+) 
+ON [ps_LiveLog_quarterly]([transtime])
 WITH
 (
 DATA_COMPRESSION = PAGE

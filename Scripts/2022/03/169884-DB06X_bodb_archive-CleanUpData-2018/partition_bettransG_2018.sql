@@ -63,7 +63,8 @@ CREATE TABLE [dbo].[__switch_bettransG_partition_temp](
 	[epositiontaking] [smallmoney] NULL,
 	[actual_stake] [money] NULL,
 	[netstake] [money] NULL
-)
+) 
+ON [ps_BETG_monthly]([winlostdate])
 WITH
 (
 DATA_COMPRESSION = PAGE
