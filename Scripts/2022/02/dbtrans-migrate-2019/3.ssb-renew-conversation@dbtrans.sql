@@ -1,3 +1,4 @@
+/*<info serverAlias="DBTXN-bodb_CustomerLog"></info>*/
 /*
 	Task - Upgrade SQL Server dbtrans to 2019
 		+ Renew conversation

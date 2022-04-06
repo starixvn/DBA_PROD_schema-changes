@@ -1,3 +1,4 @@
+/*<info serverAlias="DB054-master"></info>*/
 /*
 	Task - Upgrade SQL Server DBTrans to 2019
 		+ Setup SSB ( certificate, endpoint)

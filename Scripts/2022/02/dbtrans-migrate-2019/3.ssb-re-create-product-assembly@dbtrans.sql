@@ -1,3 +1,4 @@
+/*<info serverAlias="DBTXN-master"></info>*/
 /*
 	Task - Upgrade SQL Server dbtrans to 2019
 		1- Generate script Product aggregate function

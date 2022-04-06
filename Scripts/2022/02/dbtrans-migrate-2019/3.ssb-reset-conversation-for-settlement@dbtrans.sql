@@ -1,3 +1,4 @@
+/*<info serverAlias="DBTXN-bodb02"></info>*/
 /*
 	Task - Upgrade SQL Server dbtrans to 2019
 		1- remove data in DialogPool

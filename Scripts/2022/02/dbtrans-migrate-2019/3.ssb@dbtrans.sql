@@ -1,3 +1,4 @@
+/*<info serverAlias="DBTXN-master"></info>*/
 /*
 	Task - Upgrade SQL Server DBTrans to 2019
 		+ Setup SSB ( certificate, endpoint)
