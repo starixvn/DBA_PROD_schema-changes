@@ -1,4 +1,4 @@
-/*
+ /*
 	Task: Prepare DB schema add objects to replication
 	
 */
@@ -20,8 +20,8 @@ CREATE TABLE [dbo].[Dep_CustBetSettingGame_Member](
 	[CustID] ASC,
 	[SportType] ASC,
 	[BetType] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [Dep_CustBetSetting_Member_table]
-) ON [Dep_CustBetSetting_Member_table]
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [Dep_Custsetting_table]
+) ON [Dep_Custsetting_table]
 
 GO
 
@@ -39,8 +39,8 @@ CREATE TABLE [dbo].[Dep_CustBetSettingGame_Agent](
 	[CustID] ASC,
 	[SportType] ASC,
 	[BetType] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [Dep_CustBetSetting_Agent_table]
-) ON [Dep_CustBetSetting_Agent_table]
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [Dep_Custsetting_table]
+) ON [Dep_Custsetting_table]
 
 GO
 
@@ -58,10 +58,11 @@ CREATE TABLE [dbo].[Dep_CustBetSettingGameGroup_Member](
 	[AgentID] ASC,
 	[SportType] ASC,
 	[BetType] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [Dep_CustBetSetting_Agent_table]
-) ON [Dep_CustBetSetting_Member_table]
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [Dep_Custsetting_table]
+) ON [Dep_Custsetting_table]
 
 GO
+
 
 
 
