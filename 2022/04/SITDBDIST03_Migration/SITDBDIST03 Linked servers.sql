@@ -7,6 +7,8 @@
 
 USE [master]
 GO
+
+/****** Object:  LinkedServer [DB02]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'DB02', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'DB02',@useself=N'False',@locallogin=NULL,@rmtuser=N'SqlLink',@rmtpassword='########'
@@ -51,7 +53,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'DB02', @optname=N'remote proc transaction promotion', @optvalue=N'true'
 GO
 
-/****** Object:  LinkedServer [DB04]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [DB04]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'DB04', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'DB04',@useself=N'False',@locallogin=NULL,@rmtuser=N'SqlLink',@rmtpassword='########'
@@ -96,7 +98,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'DB04', @optname=N'remote proc transaction promotion', @optvalue=N'true'
 GO
 
-/****** Object:  LinkedServer [DB042]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [DB042]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'DB042', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'DB042',@useself=N'False',@locallogin=NULL,@rmtuser=N'SqlLink',@rmtpassword='########'
@@ -141,7 +143,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'DB042', @optname=N'remote proc transaction promotion', @optvalue=N'true'
 GO
 
-/****** Object:  LinkedServer [DB044]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [DB044]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'DB044', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'DB044',@useself=N'False',@locallogin=NULL,@rmtuser=N'SqlLink',@rmtpassword='########'
@@ -186,7 +188,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'DB044', @optname=N'remote proc transaction promotion', @optvalue=N'true'
 GO
 
-/****** Object:  LinkedServer [DB05]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [DB05]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'DB05', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'DB05',@useself=N'False',@locallogin=NULL,@rmtuser=N'SqlLink',@rmtpassword='########'
@@ -232,7 +234,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'DB05', @optname=N'remote proc transaction promotion', @optvalue=N'true'
 GO
 
-/****** Object:  LinkedServer [DB052]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [DB052]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'DB052', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'DB052',@useself=N'False',@locallogin=NULL,@rmtuser=N'SqlLink',@rmtpassword='########'
@@ -279,7 +281,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'DB052', @optname=N'remote proc transaction promotion', @optvalue=N'true'
 GO
 
-/****** Object:  LinkedServer [DB053]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [DB053]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'DB053', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'DB053',@useself=N'False',@locallogin=NULL,@rmtuser=N'SqlLink',@rmtpassword='########'
@@ -324,7 +326,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'DB053', @optname=N'remote proc transaction promotion', @optvalue=N'true'
 GO
 
-/****** Object:  LinkedServer [DB06]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [DB06]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'DB06', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'DB06',@useself=N'False',@locallogin=NULL,@rmtuser=N'SqlLink',@rmtpassword='########'
@@ -372,7 +374,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'DB06', @optname=N'remote proc transaction promotion', @optvalue=N'true'
 GO
 
-/****** Object:  LinkedServer [DB07]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [DB07]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'DB07', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'DB07',@useself=N'False',@locallogin=NULL,@rmtuser=N'SqlLink',@rmtpassword='########'
@@ -418,7 +420,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'DB07', @optname=N'remote proc transaction promotion', @optvalue=N'true'
 GO
 
-/****** Object:  LinkedServer [DBCUST]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [DBCUST]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'DBCUST', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'DBCUST',@useself=N'False',@locallogin=NULL,@rmtuser=N'SqlLink',@rmtpassword='########'
@@ -463,7 +465,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'DBCUST', @optname=N'remote proc transaction promotion', @optvalue=N'true'
 GO
 
-/****** Object:  LinkedServer [DBDW]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [DBDW]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'DBDW', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'DBDW',@useself=N'False',@locallogin=NULL,@rmtuser=N'SqlLink',@rmtpassword='########'
@@ -509,7 +511,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'DBDW', @optname=N'remote proc transaction promotion', @optvalue=N'true'
 GO
 
-/****** Object:  LinkedServer [DBIP]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [DBIP]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'DBIP', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'DBIP',@useself=N'False',@locallogin=NULL,@rmtuser=N'SqlLink',@rmtpassword='########'
@@ -555,7 +557,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'DBIP', @optname=N'remote proc transaction promotion', @optvalue=N'true'
 GO
 
-/****** Object:  LinkedServer [DBLOG]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [DBLOG]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'DBLOG', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'DBLOG',@useself=N'False',@locallogin=NULL,@rmtuser=N'SqlLink',@rmtpassword='########'
@@ -603,7 +605,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'DBLOG', @optname=N'remote proc transaction promotion', @optvalue=N'true'
 GO
 
-/****** Object:  LinkedServer [DBMONDW]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [DBMONDW]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'DBMONDW', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'DBMONDW',@useself=N'False',@locallogin=NULL,@rmtuser=N'mondb_user',@rmtpassword='########'
@@ -648,7 +650,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'DBMONDW', @optname=N'remote proc transaction promotion', @optvalue=N'true'
 GO
 
-/****** Object:  LinkedServer [DBNOTI]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [DBNOTI]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'DBNOTI', @srvproduct=N'SQL_Server', @provider=N'SQLNCLI', @datasrc=N'SITDBDW'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'DBNOTI',@useself=N'False',@locallogin=NULL,@rmtuser=N'sqlLink',@rmtpassword='########'
@@ -693,7 +695,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'DBNOTI', @optname=N'remote proc transaction promotion', @optvalue=N'false'
 GO
 
-/****** Object:  LinkedServer [DBODDS163]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [DBODDS163]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'DBODDS163', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'DBODDS163',@useself=N'True',@locallogin=NULL,@rmtuser=NULL,@rmtpassword=NULL
@@ -738,7 +740,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'DBODDS163', @optname=N'remote proc transaction promotion', @optvalue=N'true'
 GO
 
-/****** Object:  LinkedServer [DBODDS21]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [DBODDS21]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'DBODDS21', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'DBODDS21',@useself=N'True',@locallogin=NULL,@rmtuser=NULL,@rmtpassword=NULL
@@ -783,7 +785,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'DBODDS21', @optname=N'remote proc transaction promotion', @optvalue=N'true'
 GO
 
-/****** Object:  LinkedServer [DBODDS22]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [DBODDS22]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'DBODDS22', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'DBODDS22',@useself=N'True',@locallogin=NULL,@rmtuser=NULL,@rmtpassword=NULL
@@ -828,7 +830,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'DBODDS22', @optname=N'remote proc transaction promotion', @optvalue=N'true'
 GO
 
-/****** Object:  LinkedServer [DBODDS23]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [DBODDS23]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'DBODDS23', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'DBODDS23',@useself=N'True',@locallogin=NULL,@rmtuser=NULL,@rmtpassword=NULL
@@ -873,7 +875,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'DBODDS23', @optname=N'remote proc transaction promotion', @optvalue=N'true'
 GO
 
-/****** Object:  LinkedServer [DBTRANS]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [DBTRANS]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'DBTRANS', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'DBTRANS',@useself=N'False',@locallogin=NULL,@rmtuser=N'SqlLink',@rmtpassword='########'
@@ -919,7 +921,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'DBTRANS', @optname=N'remote proc transaction promotion', @optvalue=N'true'
 GO
 
-/****** Object:  LinkedServer [DBTXN]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [DBTXN]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'DBTXN', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'DBTXN',@useself=N'False',@locallogin=NULL,@rmtuser=N'SqlLink',@rmtpassword='########'
@@ -965,52 +967,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'DBTXN', @optname=N'remote proc transaction promotion', @optvalue=N'true'
 GO
 
-/****** Object:  LinkedServer [repl_distributor]    Script Date: 4/15/2022 8:39:08 AM ******/
-EXEC master.dbo.sp_addlinkedserver @server = N'repl_distributor', @srvproduct=N'SQL Server'
- /* For security reasons the linked server remote logins password is changed with ######## */
-EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'repl_distributor',@useself=N'False',@locallogin=NULL,@rmtuser=N'distributor_admin',@rmtpassword='########'
-GO
-
-EXEC master.dbo.sp_serveroption @server=N'repl_distributor', @optname=N'collation compatible', @optvalue=N'false'
-GO
-
-EXEC master.dbo.sp_serveroption @server=N'repl_distributor', @optname=N'data access', @optvalue=N'false'
-GO
-
-EXEC master.dbo.sp_serveroption @server=N'repl_distributor', @optname=N'dist', @optvalue=N'true'
-GO
-
-EXEC master.dbo.sp_serveroption @server=N'repl_distributor', @optname=N'pub', @optvalue=N'false'
-GO
-
-EXEC master.dbo.sp_serveroption @server=N'repl_distributor', @optname=N'rpc', @optvalue=N'true'
-GO
-
-EXEC master.dbo.sp_serveroption @server=N'repl_distributor', @optname=N'rpc out', @optvalue=N'true'
-GO
-
-EXEC master.dbo.sp_serveroption @server=N'repl_distributor', @optname=N'sub', @optvalue=N'false'
-GO
-
-EXEC master.dbo.sp_serveroption @server=N'repl_distributor', @optname=N'connect timeout', @optvalue=N'0'
-GO
-
-EXEC master.dbo.sp_serveroption @server=N'repl_distributor', @optname=N'collation name', @optvalue=null
-GO
-
-EXEC master.dbo.sp_serveroption @server=N'repl_distributor', @optname=N'lazy schema validation', @optvalue=N'false'
-GO
-
-EXEC master.dbo.sp_serveroption @server=N'repl_distributor', @optname=N'query timeout', @optvalue=N'0'
-GO
-
-EXEC master.dbo.sp_serveroption @server=N'repl_distributor', @optname=N'use remote collation', @optvalue=N'true'
-GO
-
-EXEC master.dbo.sp_serveroption @server=N'repl_distributor', @optname=N'remote proc transaction promotion', @optvalue=N'false'
-GO
-
-/****** Object:  LinkedServer [SITDB02]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [SITDB02]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'SITDB02', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'SITDB02',@useself=N'True',@locallogin=NULL,@rmtuser=NULL,@rmtpassword=NULL
@@ -1055,7 +1012,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'SITDB02', @optname=N'remote proc transaction promotion', @optvalue=N'false'
 GO
 
-/****** Object:  LinkedServer [SITDB03]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [SITDB03]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'SITDB03', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'SITDB03',@useself=N'True',@locallogin=NULL,@rmtuser=NULL,@rmtpassword=NULL
@@ -1100,7 +1057,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'SITDB03', @optname=N'remote proc transaction promotion', @optvalue=N'false'
 GO
 
-/****** Object:  LinkedServer [SITDB04]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [SITDB04]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'SITDB04', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'SITDB04',@useself=N'True',@locallogin=NULL,@rmtuser=NULL,@rmtpassword=NULL
@@ -1145,7 +1102,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'SITDB04', @optname=N'remote proc transaction promotion', @optvalue=N'false'
 GO
 
-/****** Object:  LinkedServer [SITDB042]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [SITDB042]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'SITDB042', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'SITDB042',@useself=N'True',@locallogin=NULL,@rmtuser=NULL,@rmtpassword=NULL
@@ -1190,7 +1147,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'SITDB042', @optname=N'remote proc transaction promotion', @optvalue=N'false'
 GO
 
-/****** Object:  LinkedServer [SITDB044]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [SITDB044]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'SITDB044', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'SITDB044',@useself=N'True',@locallogin=NULL,@rmtuser=NULL,@rmtpassword=NULL
@@ -1235,7 +1192,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'SITDB044', @optname=N'remote proc transaction promotion', @optvalue=N'false'
 GO
 
-/****** Object:  LinkedServer [SITDB05]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [SITDB05]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'SITDB05', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'SITDB05',@useself=N'True',@locallogin=NULL,@rmtuser=NULL,@rmtpassword=NULL
@@ -1280,7 +1237,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'SITDB05', @optname=N'remote proc transaction promotion', @optvalue=N'false'
 GO
 
-/****** Object:  LinkedServer [SITDB052]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [SITDB052]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'SITDB052', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'SITDB052',@useself=N'True',@locallogin=NULL,@rmtuser=NULL,@rmtpassword=NULL
@@ -1325,7 +1282,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'SITDB052', @optname=N'remote proc transaction promotion', @optvalue=N'false'
 GO
 
-/****** Object:  LinkedServer [SITDB053]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [SITDB053]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'SITDB053', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'SITDB053',@useself=N'True',@locallogin=NULL,@rmtuser=NULL,@rmtpassword=NULL
@@ -1370,7 +1327,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'SITDB053', @optname=N'remote proc transaction promotion', @optvalue=N'false'
 GO
 
-/****** Object:  LinkedServer [SITDB055]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [SITDB055]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'SITDB055', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'SITDB055',@useself=N'True',@locallogin=NULL,@rmtuser=NULL,@rmtpassword=NULL
@@ -1415,7 +1372,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'SITDB055', @optname=N'remote proc transaction promotion', @optvalue=N'false'
 GO
 
-/****** Object:  LinkedServer [SITDB05BK1]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [SITDB05BK1]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'SITDB05BK1', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'SITDB05BK1',@useself=N'True',@locallogin=NULL,@rmtuser=NULL,@rmtpassword=NULL
@@ -1460,7 +1417,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'SITDB05BK1', @optname=N'remote proc transaction promotion', @optvalue=N'false'
 GO
 
-/****** Object:  LinkedServer [SITDB06]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [SITDB06]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'SITDB06', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'SITDB06',@useself=N'True',@locallogin=NULL,@rmtuser=NULL,@rmtpassword=NULL
@@ -1505,52 +1462,52 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'SITDB06', @optname=N'remote proc transaction promotion', @optvalue=N'false'
 GO
 
-/****** Object:  LinkedServer [SITDBDIST03]    Script Date: 4/15/2022 8:39:08 AM ******/
-EXEC master.dbo.sp_addlinkedserver @server = N'SITDBDIST03', @srvproduct=N'SQL Server'
+/****** Object:  LinkedServer [SITDBCUST]    Script Date: 4/15/2022 10:27:31 AM ******/
+EXEC master.dbo.sp_addlinkedserver @server = N'SITDBCUST', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
-EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'SITDBDIST03',@useself=N'True',@locallogin=NULL,@rmtuser=NULL,@rmtpassword=NULL
+EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'SITDBCUST',@useself=N'True',@locallogin=NULL,@rmtuser=NULL,@rmtpassword=NULL
 GO
 
-EXEC master.dbo.sp_serveroption @server=N'SITDBDIST03', @optname=N'collation compatible', @optvalue=N'false'
+EXEC master.dbo.sp_serveroption @server=N'SITDBCUST', @optname=N'collation compatible', @optvalue=N'false'
 GO
 
-EXEC master.dbo.sp_serveroption @server=N'SITDBDIST03', @optname=N'data access', @optvalue=N'false'
+EXEC master.dbo.sp_serveroption @server=N'SITDBCUST', @optname=N'data access', @optvalue=N'false'
 GO
 
-EXEC master.dbo.sp_serveroption @server=N'SITDBDIST03', @optname=N'dist', @optvalue=N'false'
+EXEC master.dbo.sp_serveroption @server=N'SITDBCUST', @optname=N'dist', @optvalue=N'false'
 GO
 
-EXEC master.dbo.sp_serveroption @server=N'SITDBDIST03', @optname=N'pub', @optvalue=N'false'
+EXEC master.dbo.sp_serveroption @server=N'SITDBCUST', @optname=N'pub', @optvalue=N'false'
 GO
 
-EXEC master.dbo.sp_serveroption @server=N'SITDBDIST03', @optname=N'rpc', @optvalue=N'true'
+EXEC master.dbo.sp_serveroption @server=N'SITDBCUST', @optname=N'rpc', @optvalue=N'true'
 GO
 
-EXEC master.dbo.sp_serveroption @server=N'SITDBDIST03', @optname=N'rpc out', @optvalue=N'true'
+EXEC master.dbo.sp_serveroption @server=N'SITDBCUST', @optname=N'rpc out', @optvalue=N'true'
 GO
 
-EXEC master.dbo.sp_serveroption @server=N'SITDBDIST03', @optname=N'sub', @optvalue=N'false'
+EXEC master.dbo.sp_serveroption @server=N'SITDBCUST', @optname=N'sub', @optvalue=N'false'
 GO
 
-EXEC master.dbo.sp_serveroption @server=N'SITDBDIST03', @optname=N'connect timeout', @optvalue=N'0'
+EXEC master.dbo.sp_serveroption @server=N'SITDBCUST', @optname=N'connect timeout', @optvalue=N'0'
 GO
 
-EXEC master.dbo.sp_serveroption @server=N'SITDBDIST03', @optname=N'collation name', @optvalue=null
+EXEC master.dbo.sp_serveroption @server=N'SITDBCUST', @optname=N'collation name', @optvalue=null
 GO
 
-EXEC master.dbo.sp_serveroption @server=N'SITDBDIST03', @optname=N'lazy schema validation', @optvalue=N'false'
+EXEC master.dbo.sp_serveroption @server=N'SITDBCUST', @optname=N'lazy schema validation', @optvalue=N'false'
 GO
 
-EXEC master.dbo.sp_serveroption @server=N'SITDBDIST03', @optname=N'query timeout', @optvalue=N'0'
+EXEC master.dbo.sp_serveroption @server=N'SITDBCUST', @optname=N'query timeout', @optvalue=N'0'
 GO
 
-EXEC master.dbo.sp_serveroption @server=N'SITDBDIST03', @optname=N'use remote collation', @optvalue=N'true'
+EXEC master.dbo.sp_serveroption @server=N'SITDBCUST', @optname=N'use remote collation', @optvalue=N'true'
 GO
 
-EXEC master.dbo.sp_serveroption @server=N'SITDBDIST03', @optname=N'remote proc transaction promotion', @optvalue=N'false'
+EXEC master.dbo.sp_serveroption @server=N'SITDBCUST', @optname=N'remote proc transaction promotion', @optvalue=N'false'
 GO
 
-/****** Object:  LinkedServer [SITDBLIC]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [SITDBLIC]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'SITDBLIC', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'SITDBLIC',@useself=N'True',@locallogin=NULL,@rmtuser=NULL,@rmtpassword=NULL
@@ -1595,7 +1552,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'SITDBLIC', @optname=N'remote proc transaction promotion', @optvalue=N'false'
 GO
 
-/****** Object:  LinkedServer [SITDBLICAPI]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [SITDBLICAPI]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'SITDBLICAPI', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'SITDBLICAPI',@useself=N'True',@locallogin=NULL,@rmtuser=NULL,@rmtpassword=NULL
@@ -1640,7 +1597,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'SITDBLICAPI', @optname=N'remote proc transaction promotion', @optvalue=N'false'
 GO
 
-/****** Object:  LinkedServer [SITDBODDS163]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [SITDBODDS163]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'SITDBODDS163', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'SITDBODDS163',@useself=N'True',@locallogin=NULL,@rmtuser=NULL,@rmtpassword=NULL
@@ -1685,7 +1642,7 @@ GO
 EXEC master.dbo.sp_serveroption @server=N'SITDBODDS163', @optname=N'remote proc transaction promotion', @optvalue=N'false'
 GO
 
-/****** Object:  LinkedServer [SITDBTRANS]    Script Date: 4/15/2022 8:39:08 AM ******/
+/****** Object:  LinkedServer [SITDBTRANS]    Script Date: 4/15/2022 10:27:31 AM ******/
 EXEC master.dbo.sp_addlinkedserver @server = N'SITDBTRANS', @srvproduct=N'SQL Server'
  /* For security reasons the linked server remote logins password is changed with ######## */
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'SITDBTRANS',@useself=N'True',@locallogin=NULL,@rmtuser=NULL,@rmtpassword=NULL
@@ -1729,5 +1686,8 @@ GO
 
 EXEC master.dbo.sp_serveroption @server=N'SITDBTRANS', @optname=N'remote proc transaction promotion', @optvalue=N'false'
 GO
+
+
+
 
 
