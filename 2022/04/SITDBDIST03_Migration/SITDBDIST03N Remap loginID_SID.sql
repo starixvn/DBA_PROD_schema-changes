@@ -1,6 +1,6 @@
 /*
 	Task: Remap loginID-SID
-	Run on SITDBCUSTN
+	Run on SITDBDIST03N
 */
 
 
