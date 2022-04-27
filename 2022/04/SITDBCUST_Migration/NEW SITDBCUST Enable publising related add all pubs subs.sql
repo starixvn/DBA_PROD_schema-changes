@@ -1,13 +1,13 @@
 /*
 	Task: Config distribution, register subs, enable DBs publising + add log readers, add all pubs, subs on new server
-		ATTENTION!!! Need change xxx, yyy to correct password of relevant servers
+		ATTENTION!!! Need change xxx, yyy, zzz to correct password of relevant accounts/servers
 
 	Run on SITDBCUST (New server after rename to main)
 */
 
 /****** Installing the server as a Distributor. Script Date: 4/14/2022 4:55:20 AM ******/
 use master
-exec sp_adddistributor @distributor = N'SITDBDIST03', @password = xxx
+exec sp_adddistributor @distributor = N'SITDBDIST03', @password = zzz
 GO
 
 exec sp_addsubscriber @subscriber = N'SITDB02', @type = 0, @description = N''
@@ -1331,26 +1331,6 @@ GO
 exec sp_addpublication_snapshot @publication = N'CustDB_DBTrans_CustInfo', @frequency_type = 1, @frequency_interval = 0, @frequency_relative_interval = 0, @frequency_recurrence_factor = 0, @frequency_subday = 0, @frequency_subday_interval = 0, @active_start_time_of_day = 0, @active_end_time_of_day = 235959, @active_start_date = 0, @active_end_date = 0, @job_login = null, @job_password = null, @publisher_security_mode = 1
 exec sp_grant_publication_access @publication = N'CustDB_DBTrans_CustInfo', @login = N'sa'
 GO
-exec sp_grant_publication_access @publication = N'CustDB_DBTrans_CustInfo', @login = N'NT AUTHORITY\SYSTEM'
-GO
-exec sp_grant_publication_access @publication = N'CustDB_DBTrans_CustInfo', @login = N'NT SERVICE\SQLSERVERAGENT'
-GO
-exec sp_grant_publication_access @publication = N'CustDB_DBTrans_CustInfo', @login = N'NT SERVICE\MSSQLSERVER'
-GO
-exec sp_grant_publication_access @publication = N'CustDB_DBTrans_CustInfo', @login = N'vnDaniel'
-GO
-exec sp_grant_publication_access @publication = N'CustDB_DBTrans_CustInfo', @login = N'RDLeon'
-GO
-exec sp_grant_publication_access @publication = N'CustDB_DBTrans_CustInfo', @login = N'RDVivi'
-GO
-exec sp_grant_publication_access @publication = N'CustDB_DBTrans_CustInfo', @login = N'RDCooper'
-GO
-exec sp_grant_publication_access @publication = N'CustDB_DBTrans_CustInfo', @login = N'RDVictor'
-GO
-exec sp_grant_publication_access @publication = N'CustDB_DBTrans_CustInfo', @login = N'vnLukas'
-GO
-exec sp_grant_publication_access @publication = N'CustDB_DBTrans_CustInfo', @login = N'RDBenLee'
-GO
 
 -- Adding the transactional articles
 use [CustDB]
@@ -1952,19 +1932,19 @@ GO
 -- Adding the transactional subscriptions
 use [CustDB]
 exec sp_addsubscription @publication = N'CustDB_ExecRepAcc_Cust', @subscriber = N'SITDB042', @destination_db = N'bodb02', @subscription_type = N'Push', @sync_type = N'replication support only', @article = N'all', @update_mode = N'read only', @subscriber_type = 0
-exec sp_addpushsubscription_agent @publication = N'CustDB_ExecRepAcc_Cust', @subscriber = N'SITDB042', @subscriber_db = N'bodb02', @job_login = null, @job_password = null, @subscriber_security_mode = 0, @subscriber_login = N'sa', @publisher_password = xxx, @frequency_type = 64, @frequency_interval = 1, @frequency_relative_interval = 1, @frequency_recurrence_factor = 0, @frequency_subday = 4, @frequency_subday_interval = 5, @active_start_time_of_day = 0, @active_end_time_of_day = 235959, @active_start_date = 0, @active_end_date = 0, @dts_package_location = N'Distributor'
+exec sp_addpushsubscription_agent @publication = N'CustDB_ExecRepAcc_Cust', @subscriber = N'SITDB042', @subscriber_db = N'bodb02', @job_login = null, @job_password = null, @subscriber_security_mode = 0, @subscriber_login = N'sa', @subscriber_password = xxx, @frequency_type = 64, @frequency_interval = 1, @frequency_relative_interval = 1, @frequency_recurrence_factor = 0, @frequency_subday = 4, @frequency_subday_interval = 5, @active_start_time_of_day = 0, @active_end_time_of_day = 235959, @active_start_date = 0, @active_end_date = 0, @dts_package_location = N'Distributor'
 GO
 use [CustDB]
 exec sp_addsubscription @publication = N'CustDB_ExecRepAcc_Cust', @subscriber = N'SITDB044', @destination_db = N'bodb02', @subscription_type = N'Push', @sync_type = N'replication support only', @article = N'all', @update_mode = N'read only', @subscriber_type = 0
-exec sp_addpushsubscription_agent @publication = N'CustDB_ExecRepAcc_Cust', @subscriber = N'SITDB044', @subscriber_db = N'bodb02', @job_login = null, @job_password = null, @subscriber_security_mode = 0, @subscriber_login = N'sa', @publisher_password = xxx, @frequency_type = 64, @frequency_interval = 1, @frequency_relative_interval = 1, @frequency_recurrence_factor = 0, @frequency_subday = 4, @frequency_subday_interval = 5, @active_start_time_of_day = 0, @active_end_time_of_day = 235959, @active_start_date = 0, @active_end_date = 0, @dts_package_location = N'Distributor'
+exec sp_addpushsubscription_agent @publication = N'CustDB_ExecRepAcc_Cust', @subscriber = N'SITDB044', @subscriber_db = N'bodb02', @job_login = null, @job_password = null, @subscriber_security_mode = 0, @subscriber_login = N'sa', @subscriber_password = xxx, @frequency_type = 64, @frequency_interval = 1, @frequency_relative_interval = 1, @frequency_recurrence_factor = 0, @frequency_subday = 4, @frequency_subday_interval = 5, @active_start_time_of_day = 0, @active_end_time_of_day = 235959, @active_start_date = 0, @active_end_date = 0, @dts_package_location = N'Distributor'
 GO
 use [CustDB]
 exec sp_addsubscription @publication = N'CustDB_ExecRepAcc_Cust', @subscriber = N'SITDB05', @destination_db = N'bodb02', @subscription_type = N'Push', @sync_type = N'replication support only', @article = N'all', @update_mode = N'read only', @subscriber_type = 0
-exec sp_addpushsubscription_agent @publication = N'CustDB_ExecRepAcc_Cust', @subscriber = N'SITDB05', @subscriber_db = N'bodb02', @job_login = null, @job_password = null, @subscriber_security_mode = 0, @subscriber_login = N'sa', @publisher_password = xxx, @frequency_type = 64, @frequency_interval = 1, @frequency_relative_interval = 1, @frequency_recurrence_factor = 0, @frequency_subday = 4, @frequency_subday_interval = 5, @active_start_time_of_day = 0, @active_end_time_of_day = 235959, @active_start_date = 0, @active_end_date = 0, @dts_package_location = N'Distributor'
+exec sp_addpushsubscription_agent @publication = N'CustDB_ExecRepAcc_Cust', @subscriber = N'SITDB05', @subscriber_db = N'bodb02', @job_login = null, @job_password = null, @subscriber_security_mode = 0, @subscriber_login = N'sa', @subscriber_password = xxx, @frequency_type = 64, @frequency_interval = 1, @frequency_relative_interval = 1, @frequency_recurrence_factor = 0, @frequency_subday = 4, @frequency_subday_interval = 5, @active_start_time_of_day = 0, @active_end_time_of_day = 235959, @active_start_date = 0, @active_end_date = 0, @dts_package_location = N'Distributor'
 GO
 use [CustDB]
 exec sp_addsubscription @publication = N'CustDB_ExecRepAcc_Cust', @subscriber = N'SITDB052', @destination_db = N'bodb02', @subscription_type = N'Push', @sync_type = N'replication support only', @article = N'all', @update_mode = N'read only', @subscriber_type = 0
-exec sp_addpushsubscription_agent @publication = N'CustDB_ExecRepAcc_Cust', @subscriber = N'SITDB052', @subscriber_db = N'bodb02', @job_login = null, @job_password = null, @subscriber_security_mode = 0, @subscriber_login = N'vnLukas', @publisher_password = xxx, @frequency_type = 64, @frequency_interval = 1, @frequency_relative_interval = 1, @frequency_recurrence_factor = 0, @frequency_subday = 4, @frequency_subday_interval = 5, @active_start_time_of_day = 0, @active_end_time_of_day = 235959, @active_start_date = 0, @active_end_date = 0, @dts_package_location = N'Distributor'
+exec sp_addpushsubscription_agent @publication = N'CustDB_ExecRepAcc_Cust', @subscriber = N'SITDB052', @subscriber_db = N'bodb02', @job_login = null, @job_password = null, @subscriber_security_mode = 0, @subscriber_login = N'sa', @publisher_password = xxx, @frequency_type = 64, @frequency_interval = 1, @frequency_relative_interval = 1, @frequency_recurrence_factor = 0, @frequency_subday = 4, @frequency_subday_interval = 5, @active_start_time_of_day = 0, @active_end_time_of_day = 235959, @active_start_date = 0, @active_end_date = 0, @dts_package_location = N'Distributor'
 GO
 use [CustDB]
 exec sp_addsubscription @publication = N'CustDB_ExecRepAcc_Cust', @subscriber = N'SITDB055', @destination_db = N'bodb02', @subscription_type = N'Push', @sync_type = N'replication support only', @article = N'all', @update_mode = N'read only', @subscriber_type = 0
@@ -1972,7 +1952,7 @@ exec sp_addpushsubscription_agent @publication = N'CustDB_ExecRepAcc_Cust', @sub
 GO
 use [CustDB]
 exec sp_addsubscription @publication = N'CustDB_ExecRepAcc_Cust', @subscriber = N'SITDB05BK1', @destination_db = N'bodb02', @subscription_type = N'Push', @sync_type = N'replication support only', @article = N'all', @update_mode = N'read only', @subscriber_type = 0
-exec sp_addpushsubscription_agent @publication = N'CustDB_ExecRepAcc_Cust', @subscriber = N'SITDB05BK1', @subscriber_db = N'bodb02', @job_login = null, @job_password = null, @subscriber_security_mode = 0, @subscriber_login = N'sa', @publisher_password = xxx, @frequency_type = 64, @frequency_interval = 1, @frequency_relative_interval = 1, @frequency_recurrence_factor = 0, @frequency_subday = 4, @frequency_subday_interval = 5, @active_start_time_of_day = 0, @active_end_time_of_day = 235959, @active_start_date = 0, @active_end_date = 0, @dts_package_location = N'Distributor'
+exec sp_addpushsubscription_agent @publication = N'CustDB_ExecRepAcc_Cust', @subscriber = N'SITDB05BK1', @subscriber_db = N'bodb02', @job_login = null, @job_password = null, @subscriber_security_mode = 0, @subscriber_login = N'sa', @subscriber_password = xxx, @frequency_type = 64, @frequency_interval = 1, @frequency_relative_interval = 1, @frequency_recurrence_factor = 0, @frequency_subday = 4, @frequency_subday_interval = 5, @active_start_time_of_day = 0, @active_end_time_of_day = 235959, @active_start_date = 0, @active_end_date = 0, @dts_package_location = N'Distributor'
 GO
 use [CustDB]
 exec sp_addsubscription @publication = N'CustDB_ExecRepAcc_Cust', @subscriber = N'SITDB06', @destination_db = N'bodb02', @subscription_type = N'Push', @sync_type = N'replication support only', @article = N'all', @update_mode = N'read only', @subscriber_type = 0
@@ -2006,23 +1986,23 @@ GO
 -- Adding the transactional subscriptions
 use [CustDB]
 exec sp_addsubscription @publication = N'CustDB_Login_Exchange', @subscriber = N'SITDB02', @destination_db = N'bodb02', @subscription_type = N'Push', @sync_type = N'replication support only', @article = N'all', @update_mode = N'read only', @subscriber_type = 0
-exec sp_addpushsubscription_agent @publication = N'CustDB_Login_Exchange', @subscriber = N'SITDB02', @subscriber_db = N'bodb02', @job_login = null, @job_password = null, @subscriber_security_mode = 0, @subscriber_login = N'sa', @publisher_password = xxx, @frequency_type = 64, @frequency_interval = 1, @frequency_relative_interval = 1, @frequency_recurrence_factor = 0, @frequency_subday = 4, @frequency_subday_interval = 5, @active_start_time_of_day = 0, @active_end_time_of_day = 235959, @active_start_date = 0, @active_end_date = 0, @dts_package_location = N'Distributor'
+exec sp_addpushsubscription_agent @publication = N'CustDB_Login_Exchange', @subscriber = N'SITDB02', @subscriber_db = N'bodb02', @job_login = null, @job_password = null, @subscriber_security_mode = 0, @subscriber_login = N'sa', @subscriber_password = xxx, @frequency_type = 64, @frequency_interval = 1, @frequency_relative_interval = 1, @frequency_recurrence_factor = 0, @frequency_subday = 4, @frequency_subday_interval = 5, @active_start_time_of_day = 0, @active_end_time_of_day = 235959, @active_start_date = 0, @active_end_date = 0, @dts_package_location = N'Distributor'
 GO
 use [CustDB]
 exec sp_addsubscription @publication = N'CustDB_Login_Exchange', @subscriber = N'SITDB042', @destination_db = N'bodb02', @subscription_type = N'Push', @sync_type = N'replication support only', @article = N'all', @update_mode = N'read only', @subscriber_type = 0
-exec sp_addpushsubscription_agent @publication = N'CustDB_Login_Exchange', @subscriber = N'SITDB042', @subscriber_db = N'bodb02', @job_login = null, @job_password = null, @subscriber_security_mode = 0, @subscriber_login = N'sa', @publisher_password = xxx, @frequency_type = 64, @frequency_interval = 1, @frequency_relative_interval = 1, @frequency_recurrence_factor = 0, @frequency_subday = 4, @frequency_subday_interval = 5, @active_start_time_of_day = 0, @active_end_time_of_day = 235959, @active_start_date = 0, @active_end_date = 0, @dts_package_location = N'Distributor'
+exec sp_addpushsubscription_agent @publication = N'CustDB_Login_Exchange', @subscriber = N'SITDB042', @subscriber_db = N'bodb02', @job_login = null, @job_password = null, @subscriber_security_mode = 0, @subscriber_login = N'sa', @subscriber_password = xxx, @frequency_type = 64, @frequency_interval = 1, @frequency_relative_interval = 1, @frequency_recurrence_factor = 0, @frequency_subday = 4, @frequency_subday_interval = 5, @active_start_time_of_day = 0, @active_end_time_of_day = 235959, @active_start_date = 0, @active_end_date = 0, @dts_package_location = N'Distributor'
 GO
 use [CustDB]
 exec sp_addsubscription @publication = N'CustDB_Login_Exchange', @subscriber = N'SITDB044', @destination_db = N'bodb02', @subscription_type = N'Push', @sync_type = N'replication support only', @article = N'all', @update_mode = N'read only', @subscriber_type = 0
-exec sp_addpushsubscription_agent @publication = N'CustDB_Login_Exchange', @subscriber = N'SITDB044', @subscriber_db = N'bodb02', @job_login = null, @job_password = null, @subscriber_security_mode = 0, @subscriber_login = N'sa', @publisher_password = xxx, @frequency_type = 64, @frequency_interval = 1, @frequency_relative_interval = 1, @frequency_recurrence_factor = 0, @frequency_subday = 4, @frequency_subday_interval = 5, @active_start_time_of_day = 0, @active_end_time_of_day = 235959, @active_start_date = 0, @active_end_date = 0, @dts_package_location = N'Distributor'
+exec sp_addpushsubscription_agent @publication = N'CustDB_Login_Exchange', @subscriber = N'SITDB044', @subscriber_db = N'bodb02', @job_login = null, @job_password = null, @subscriber_security_mode = 0, @subscriber_login = N'sa', @subscriber_password = xxx, @frequency_type = 64, @frequency_interval = 1, @frequency_relative_interval = 1, @frequency_recurrence_factor = 0, @frequency_subday = 4, @frequency_subday_interval = 5, @active_start_time_of_day = 0, @active_end_time_of_day = 235959, @active_start_date = 0, @active_end_date = 0, @dts_package_location = N'Distributor'
 GO
 use [CustDB]
 exec sp_addsubscription @publication = N'CustDB_Login_Exchange', @subscriber = N'SITDB05', @destination_db = N'bodb02', @subscription_type = N'Push', @sync_type = N'replication support only', @article = N'all', @update_mode = N'read only', @subscriber_type = 0
-exec sp_addpushsubscription_agent @publication = N'CustDB_Login_Exchange', @subscriber = N'SITDB05', @subscriber_db = N'bodb02', @job_login = null, @job_password = null, @subscriber_security_mode = 0, @subscriber_login = N'sa', @publisher_password = xxx, @frequency_type = 64, @frequency_interval = 1, @frequency_relative_interval = 1, @frequency_recurrence_factor = 0, @frequency_subday = 4, @frequency_subday_interval = 5, @active_start_time_of_day = 0, @active_end_time_of_day = 235959, @active_start_date = 0, @active_end_date = 0, @dts_package_location = N'Distributor'
+exec sp_addpushsubscription_agent @publication = N'CustDB_Login_Exchange', @subscriber = N'SITDB05', @subscriber_db = N'bodb02', @job_login = null, @job_password = null, @subscriber_security_mode = 0, @subscriber_login = N'sa', @subscriber_password = xxx, @frequency_type = 64, @frequency_interval = 1, @frequency_relative_interval = 1, @frequency_recurrence_factor = 0, @frequency_subday = 4, @frequency_subday_interval = 5, @active_start_time_of_day = 0, @active_end_time_of_day = 235959, @active_start_date = 0, @active_end_date = 0, @dts_package_location = N'Distributor'
 GO
 use [CustDB]
 exec sp_addsubscription @publication = N'CustDB_Login_Exchange', @subscriber = N'SITDB052', @destination_db = N'bodb02', @subscription_type = N'Push', @sync_type = N'replication support only', @article = N'all', @update_mode = N'read only', @subscriber_type = 0
-exec sp_addpushsubscription_agent @publication = N'CustDB_Login_Exchange', @subscriber = N'SITDB052', @subscriber_db = N'bodb02', @job_login = null, @job_password = null, @subscriber_security_mode = 0, @subscriber_login = N'vnLukas', @publisher_password = xxx, @frequency_type = 64, @frequency_interval = 1, @frequency_relative_interval = 1, @frequency_recurrence_factor = 0, @frequency_subday = 4, @frequency_subday_interval = 5, @active_start_time_of_day = 0, @active_end_time_of_day = 235959, @active_start_date = 0, @active_end_date = 0, @dts_package_location = N'Distributor'
+exec sp_addpushsubscription_agent @publication = N'CustDB_Login_Exchange', @subscriber = N'SITDB052', @subscriber_db = N'bodb02', @job_login = null, @job_password = null, @subscriber_security_mode = 0, @subscriber_login = N'sa', @publisher_password = xxx, @frequency_type = 64, @frequency_interval = 1, @frequency_relative_interval = 1, @frequency_recurrence_factor = 0, @frequency_subday = 4, @frequency_subday_interval = 5, @active_start_time_of_day = 0, @active_end_time_of_day = 235959, @active_start_date = 0, @active_end_date = 0, @dts_package_location = N'Distributor'
 GO
 use [CustDB]
 exec sp_addsubscription @publication = N'CustDB_Login_Exchange', @subscriber = N'SITDB055', @destination_db = N'bodb02', @subscription_type = N'Push', @sync_type = N'replication support only', @article = N'all', @update_mode = N'read only', @subscriber_type = 0
@@ -2030,7 +2010,7 @@ exec sp_addpushsubscription_agent @publication = N'CustDB_Login_Exchange', @subs
 GO
 use [CustDB]
 exec sp_addsubscription @publication = N'CustDB_Login_Exchange', @subscriber = N'SITDB05BK1', @destination_db = N'bodb02', @subscription_type = N'Push', @sync_type = N'replication support only', @article = N'all', @update_mode = N'read only', @subscriber_type = 0
-exec sp_addpushsubscription_agent @publication = N'CustDB_Login_Exchange', @subscriber = N'SITDB05BK1', @subscriber_db = N'bodb02', @job_login = null, @job_password = null, @subscriber_security_mode = 0, @subscriber_login = N'sa', @publisher_password = xxx, @frequency_type = 64, @frequency_interval = 1, @frequency_relative_interval = 1, @frequency_recurrence_factor = 0, @frequency_subday = 4, @frequency_subday_interval = 5, @active_start_time_of_day = 0, @active_end_time_of_day = 235959, @active_start_date = 0, @active_end_date = 0, @dts_package_location = N'Distributor'
+exec sp_addpushsubscription_agent @publication = N'CustDB_Login_Exchange', @subscriber = N'SITDB05BK1', @subscriber_db = N'bodb02', @job_login = null, @job_password = null, @subscriber_security_mode = 0, @subscriber_login = N'sa', @subscriber_password = xxx, @frequency_type = 64, @frequency_interval = 1, @frequency_relative_interval = 1, @frequency_recurrence_factor = 0, @frequency_subday = 4, @frequency_subday_interval = 5, @active_start_time_of_day = 0, @active_end_time_of_day = 235959, @active_start_date = 0, @active_end_date = 0, @dts_package_location = N'Distributor'
 GO
 use [CustDB]
 exec sp_addsubscription @publication = N'CustDB_Login_Exchange', @subscriber = N'SITDB06', @destination_db = N'bodb02', @subscription_type = N'Push', @sync_type = N'replication support only', @article = N'all', @update_mode = N'read only', @subscriber_type = 0
@@ -2038,7 +2018,7 @@ exec sp_addpushsubscription_agent @publication = N'CustDB_Login_Exchange', @subs
 GO
 use [CustDB]
 exec sp_addsubscription @publication = N'CustDB_Login_Exchange', @subscriber = N'SITDBODDS163', @destination_db = N'bodb_Odds', @subscription_type = N'Push', @sync_type = N'replication support only', @article = N'all', @update_mode = N'read only', @subscriber_type = 0
-exec sp_addpushsubscription_agent @publication = N'CustDB_Login_Exchange', @subscriber = N'SITDBODDS163', @subscriber_db = N'bodb_Odds', @job_login = null, @job_password = null, @subscriber_security_mode = 0, @subscriber_login = N'sa', @publisher_password = xxx, @frequency_type = 64, @frequency_interval = 1, @frequency_relative_interval = 1, @frequency_recurrence_factor = 0, @frequency_subday = 4, @frequency_subday_interval = 5, @active_start_time_of_day = 0, @active_end_time_of_day = 235959, @active_start_date = 0, @active_end_date = 0, @dts_package_location = N'Distributor'
+exec sp_addpushsubscription_agent @publication = N'CustDB_Login_Exchange', @subscriber = N'SITDBODDS163', @subscriber_db = N'bodb_Odds', @job_login = null, @job_password = null, @subscriber_security_mode = 0, @subscriber_login = N'sa', @subscriber_password = xxx, @frequency_type = 64, @frequency_interval = 1, @frequency_relative_interval = 1, @frequency_recurrence_factor = 0, @frequency_subday = 4, @frequency_subday_interval = 5, @active_start_time_of_day = 0, @active_end_time_of_day = 235959, @active_start_date = 0, @active_end_date = 0, @dts_package_location = N'Distributor'
 GO
 
 

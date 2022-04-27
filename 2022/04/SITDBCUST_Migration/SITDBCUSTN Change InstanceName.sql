@@ -17,7 +17,7 @@ SERVERPROPERTY('IsClustered') AS 'IsClustered'
 EXEC sp_DROPSERVER 'SITDBCUSTN'
 
 --Execute below to add a new server name. Make sure local is specified.
-EXEC sp_ADDSERVER 'SITDBCUSTN', 'local'
+EXEC sp_ADDSERVER 'SITDBCUST', 'local'
 
 --Change OS Servername then Reboot server.
 
