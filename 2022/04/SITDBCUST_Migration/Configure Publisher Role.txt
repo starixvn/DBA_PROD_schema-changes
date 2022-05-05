@@ -1,0 +1,31 @@
+/*
+-- 1.SITDBCUST_Remove Publication DB Check Box
+SSMS -> Replication -> Publisher Properties -> Publicastion Databases
+	-> Uncheck all
+
+-- 2.SITDBCUST_Disable Publishing and Distribution
+SSMS -> Replication -> Disable Publishing and Distribution Wizard
+	-> Yes, disbale publishing on this server
+	-> Disable publishing and distribution
+
+-- 3.SITDBDIST03_Distributor_Remove publisher DB
+SSMS -> Replication -> Distributor Properties -> Publishers
+	-> Uncheck all
+*/
+		
+-- 1.SITDBDIST03_Distributor_Config Publisher Setting
+SSMS -> Replication -> Distributor Properties -> Publishers
+	-> Add SQL Server Publisher -> Connect to SITDBCUST
+	-> Key-in Password Twice -> qwerpoiu#1
+	
+-- 2.SITDBCUST_Config Distributor Setting
+SSMS -> Replication -> Configure Distribution -> Use the following server as the Distributior
+	-> Add Distributor SITDBDIST03
+	-> Key-in Password -> qwerpoiu#1
+	
+-- 3.SITDBCUST_Add Publication DB Setting
+SSMS -> Replication -> Publisher Properties -> Publicastion Databases
+	-> Check DB item CustDB, bodb_Licensee
+	
+-- 4.SITDBCUST_Add Distributor Role
+SSMS -> Publisher Properties -> 
