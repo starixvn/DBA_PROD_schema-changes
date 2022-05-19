@@ -1,7 +1,7 @@
 /*
 	Task: In UM: Set distributor role for new DBDIST03N + Prepare agent profile settings & Config DBCUST as publisher
 	Run at distributor server @ DBDIST03N (NEW)
-	** ATTENTION!! Need replace xxx to sub sa's password
+	** ATTENTION!! Need replace xxx to sub sa's password **
 */  
 
 -- Installing the server as a Distributor
