@@ -28,32 +28,6 @@ GO
 exec sp_addpublication_snapshot @publication = N'Cusdb_bodb_licensee', @frequency_type = 1, @frequency_interval = 0, @frequency_relative_interval = 0, @frequency_recurrence_factor = 0, @frequency_subday = 0, @frequency_subday_interval = 0, @active_start_time_of_day = 0, @active_end_time_of_day = 235959, @active_start_date = 0, @active_end_date = 0, @job_login = null, @job_password = null, @publisher_security_mode = 1
 exec sp_grant_publication_access @publication = N'Cusdb_bodb_licensee', @login = N'sa'
 GO
-exec sp_grant_publication_access @publication = N'Cusdb_bodb_licensee', @login = N'NT AUTHORITY\SYSTEM'
-GO
-exec sp_grant_publication_access @publication = N'Cusdb_bodb_licensee', @login = N'ONEWORKS\RDVivi'
-GO
-exec sp_grant_publication_access @publication = N'Cusdb_bodb_licensee', @login = N'ONEWORKS\Viet'
-GO
-exec sp_grant_publication_access @publication = N'Cusdb_bodb_licensee', @login = N'ONEWORKS\sasrp'
-GO
-exec sp_grant_publication_access @publication = N'Cusdb_bodb_licensee', @login = N'ONEWORKS\RDCooper'
-GO
-exec sp_grant_publication_access @publication = N'Cusdb_bodb_licensee', @login = N'ONEWORKS\sqladmin'
-GO
-exec sp_grant_publication_access @publication = N'Cusdb_bodb_licensee', @login = N'NT SERVICE\SQLSERVERAGENT'
-GO
-exec sp_grant_publication_access @publication = N'Cusdb_bodb_licensee', @login = N'NT SERVICE\MSSQLSERVER'
-GO
-exec sp_grant_publication_access @publication = N'Cusdb_bodb_licensee', @login = N'vnLukas'
-GO
-exec sp_grant_publication_access @publication = N'Cusdb_bodb_licensee', @login = N'RDVivi'
-GO
-exec sp_grant_publication_access @publication = N'Cusdb_bodb_licensee', @login = N'RDCooper'
-GO
-exec sp_grant_publication_access @publication = N'Cusdb_bodb_licensee', @login = N'vnJoe'
-GO
-exec sp_grant_publication_access @publication = N'Cusdb_bodb_licensee', @login = N'Viet'
-GO
 
 -- Adding the transactional articles
 use [bodb_Licensee]
@@ -341,32 +315,6 @@ GO
 
 exec sp_addpublication_snapshot @publication = N'CustDB_bodb_Licensee_BA', @frequency_type = 1, @frequency_interval = 0, @frequency_relative_interval = 0, @frequency_recurrence_factor = 0, @frequency_subday = 0, @frequency_subday_interval = 0, @active_start_time_of_day = 0, @active_end_time_of_day = 235959, @active_start_date = 0, @active_end_date = 0, @job_login = null, @job_password = null, @publisher_security_mode = 1
 exec sp_grant_publication_access @publication = N'CustDB_bodb_Licensee_BA', @login = N'sa'
-GO
-exec sp_grant_publication_access @publication = N'CustDB_bodb_Licensee_BA', @login = N'NT AUTHORITY\SYSTEM'
-GO
-exec sp_grant_publication_access @publication = N'CustDB_bodb_Licensee_BA', @login = N'ONEWORKS\RDVivi'
-GO
-exec sp_grant_publication_access @publication = N'CustDB_bodb_Licensee_BA', @login = N'ONEWORKS\Viet'
-GO
-exec sp_grant_publication_access @publication = N'CustDB_bodb_Licensee_BA', @login = N'ONEWORKS\sasrp'
-GO
-exec sp_grant_publication_access @publication = N'CustDB_bodb_Licensee_BA', @login = N'ONEWORKS\RDCooper'
-GO
-exec sp_grant_publication_access @publication = N'CustDB_bodb_Licensee_BA', @login = N'ONEWORKS\sqladmin'
-GO
-exec sp_grant_publication_access @publication = N'CustDB_bodb_Licensee_BA', @login = N'NT SERVICE\SQLSERVERAGENT'
-GO
-exec sp_grant_publication_access @publication = N'CustDB_bodb_Licensee_BA', @login = N'NT SERVICE\MSSQLSERVER'
-GO
-exec sp_grant_publication_access @publication = N'CustDB_bodb_Licensee_BA', @login = N'vnLukas'
-GO
-exec sp_grant_publication_access @publication = N'CustDB_bodb_Licensee_BA', @login = N'RDVivi'
-GO
-exec sp_grant_publication_access @publication = N'CustDB_bodb_Licensee_BA', @login = N'RDCooper'
-GO
-exec sp_grant_publication_access @publication = N'CustDB_bodb_Licensee_BA', @login = N'vnJoe'
-GO
-exec sp_grant_publication_access @publication = N'CustDB_bodb_Licensee_BA', @login = N'Viet'
 GO
 
 -- Adding the transactional articles
