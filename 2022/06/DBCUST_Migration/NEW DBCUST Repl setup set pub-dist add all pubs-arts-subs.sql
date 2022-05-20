@@ -5,7 +5,7 @@
 */  
 
 
---- RUN AT PUBLISHER DBCUST and DISTRIBUTOR DBDWCSS (remote distributor)
+--- Config distributor
 use master
 exec sp_adddistributor @distributor = N'DBDIST03N', @password = xxx
 GO
