@@ -1,7 +1,7 @@
 /*
 	Task: In UM: Setting publisher DBCUST: Config DBDIST03N as distributor, enable publishing databases & add all publications-articles-subscribers
 	Run at publisher server @ DBCUST (NEW)
-	** ATTENTION!! Need replace xxx to sub sa's password
+	** ATTENTION!! Need replace xxx to sub sa's password; replace yyy to repl_sql's password (log reader agent use this acc to connect pub DBCUST)
 */  
 
 
@@ -15,7 +15,7 @@ use master
 exec sp_replicationdboption @dbname = N'bodb_Licensee', @optname = N'publish', @value = N'true'
 GO
 
-exec [bodb_Licensee].sys.sp_addlogreader_agent @job_login = null, @job_password = null, @publisher_security_mode = 0, @publisher_login = N'dbtwsa1', @publisher_password = xxx
+exec [bodb_Licensee].sys.sp_addlogreader_agent @job_login = null, @job_password = null, @publisher_security_mode = 0, @publisher_login = N'repl_sql', @publisher_password = yyy
 GO
 exec [bodb_Licensee].sys.sp_addqreader_agent @job_login = null, @job_password = null, @frompublisher = 1
 GO
@@ -499,7 +499,7 @@ use master
 exec sp_replicationdboption @dbname = N'CustDB', @optname = N'publish', @value = N'true'
 GO
 
-exec [CustDB].sys.sp_addlogreader_agent @job_login = null, @job_password = null, @publisher_security_mode = 0, @publisher_login = N'dbtwsa1', @publisher_password = xxx
+exec [CustDB].sys.sp_addlogreader_agent @job_login = null, @job_password = null, @publisher_security_mode = 0, @publisher_login = N'repl_sql', @publisher_password = yyy
 GO
 exec [CustDB].sys.sp_addqreader_agent @job_login = null, @job_password = null, @frompublisher = 1
 GO
