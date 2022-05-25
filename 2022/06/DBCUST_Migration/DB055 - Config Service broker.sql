@@ -12,7 +12,7 @@ DROP CERTIFICATE SSBS_CUST_Cert
 --2. Copy cer file "SSBS_DBCUST_Cert.cer" from DBCUST \\DBCUST\g$\SSBSQLCertificates to DB055 G:\SSBSQLCertificates\ 
 
 --3. Create certificate SSBS_CUST_Cert from the cert file copied
-CREATE CERTIFICATE SSBS_DBCust_Cert
+CREATE CERTIFICATE SSBS_CUST_Cert
    AUTHORIZATION dba_cert_User
    FROM FILE = N'G:\SSBSQLCertificates\SSBS_DBCUST_Cert.cer'
 GO
