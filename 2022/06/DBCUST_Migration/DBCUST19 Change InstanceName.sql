@@ -1,6 +1,6 @@
 /*
 	Task: Check and change Servername if mismatched with others
-	Run on SITDBCUSTN
+	Run on DBCUST19
 */
 
 --Check server properties 
