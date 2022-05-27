@@ -206,8 +206,8 @@ NOUNLOAD,  STATS = 10
 ALTER DATABASE MonDB SET SINGLE_USER WITH ROLLBACK IMMEDIATE
 RESTORE DATABASE [MonDB]
 FROM  DISK = N'G:\BACKUP_LOCAL\Daniel_migrate\DBCUST.MonDB_20220609.bak' WITH  FILE = 1, NORECOVERY,
-MOVE N'MonDB' TO N'G:\USER_DB\MonDB\MonDB.mdf',
-MOVE N'MonDB_log' TO N'G:\USER_DB\MonDB\MonDB_log.ldf',
+MOVE N'MonDB' TO N'H:\USER_DB\MonDB\MonDB.mdf',
+MOVE N'MonDB_log' TO N'H:\USER_DB\MonDB\MonDB_log.ldf',
 NOUNLOAD,  STATS = 10
 
 --------------------------------------------------------------------------------------------------------
