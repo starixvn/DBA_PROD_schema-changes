@@ -1,11 +1,11 @@
 ﻿USE [msdb]
 GO
 
-/****** Object:  Job [DBA : MonDB Get DB Info]    Script Date: 4/15/2022 11:10:18 AM ******/
+/****** Object:  Job [DBA : MonDB Get DB Info]    Script Date: 5/29/2022 11:33:53 PM ******/
 BEGIN TRANSACTION
 DECLARE @ReturnCode INT
 SELECT @ReturnCode = 0
-/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 4/15/2022 11:10:18 AM ******/
+/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 5/29/2022 11:33:53 PM ******/
 IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
 BEGIN
 EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
@@ -25,7 +25,7 @@ EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA : MonDB Get DB Info',
 		@category_name=N'[Uncategorized (Local)]', 
 		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [Set 1 Exec sp]    Script Date: 4/15/2022 11:10:18 AM ******/
+/****** Object:  Step [Set 1 Exec sp]    Script Date: 5/29/2022 11:33:53 PM ******/
 EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Set 1 Exec sp', 
 		@step_id=1, 
 		@cmdexec_success_code=0, 
@@ -41,7 +41,7 @@ Exec DBA_Mon_GetDB_Info',
 		@database_name=N'MONDB', 
 		@flags=0
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [waitfor10sec]    Script Date: 4/15/2022 11:10:18 AM ******/
+/****** Object:  Step [waitfor10sec]    Script Date: 5/29/2022 11:33:53 PM ******/
 EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'waitfor10sec', 
 		@step_id=2, 
 		@cmdexec_success_code=0, 
@@ -70,7 +70,7 @@ EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=N'1min',
 		@active_end_date=99991231, 
 		@active_start_time=0, 
 		@active_end_time=235959, 
-		@schedule_uid=N'f677a703-80c2-4c3d-9705-771f1a80425b'
+		@schedule_uid=N'557fc8a8-0fca-4b1b-b6ea-3bf33534cd39'
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
 EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = N'(local)'
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
@@ -81,11 +81,11 @@ QuitWithRollback:
 EndSave:
 GO
 
-/****** Object:  Job [DBA : Monitor Job Fail]    Script Date: 4/15/2022 11:10:18 AM ******/
+/****** Object:  Job [DBA : Monitor Job Fail]    Script Date: 5/29/2022 11:33:53 PM ******/
 BEGIN TRANSACTION
 DECLARE @ReturnCode INT
 SELECT @ReturnCode = 0
-/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 4/15/2022 11:10:18 AM ******/
+/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 5/29/2022 11:33:53 PM ******/
 IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
 BEGIN
 EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
@@ -97,15 +97,16 @@ DECLARE @jobId BINARY(16)
 EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA : Monitor Job Fail', 
 		@enabled=1, 
 		@notify_level_eventlog=0, 
-		@notify_level_email=0, 
+		@notify_level_email=2, 
 		@notify_level_netsend=0, 
 		@notify_level_page=0, 
 		@delete_level=0, 
-		@description=N'20161212@Cooper:merge [DBA_MonitorJobFail] and MonDB:[DBA_Mon_Get_JobStatus_Info]', 
+		@description=N'20170309@Cooper/Alfie:merge [DBA_MonitorJobFail] and MonDB:[DBA_Mon_Get_JobStatus_Info]', 
 		@category_name=N'[Uncategorized (Local)]', 
-		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
+		@owner_login_name=N'sa', 
+		@notify_email_operator_name=N'DBAAdmin', @job_id = @jobId OUTPUT
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [startSP:mondb.dbo.DBA_MonitorJobFail]    Script Date: 4/15/2022 11:10:18 AM ******/
+/****** Object:  Step [startSP:mondb.dbo.DBA_MonitorJobFail]    Script Date: 5/29/2022 11:33:53 PM ******/
 EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'startSP:mondb.dbo.DBA_MonitorJobFail', 
 		@step_id=1, 
 		@cmdexec_success_code=0, 
@@ -117,8 +118,8 @@ EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'startSP:
 		@retry_interval=0, 
 		@os_run_priority=0, @subsystem=N'TSQL', 
 		@command=N'--The Time already add 12h
-exec [DBA_MonitorJobFail] @MailStart = ''09:00:00'' , @MailEnd = ''19:00:00''', 
-		@database_name=N'MONDB', 
+exec [DBA_MonitorJobFail]', 
+		@database_name=N'MonDB', 
 		@flags=0
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
 EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1
@@ -128,14 +129,14 @@ EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=N'ExcuteTim
 		@freq_type=4, 
 		@freq_interval=1, 
 		@freq_subday_type=4, 
-		@freq_subday_interval=5, 
+		@freq_subday_interval=1, 
 		@freq_relative_interval=0, 
 		@freq_recurrence_factor=0, 
 		@active_start_date=20161212, 
 		@active_end_date=99991231, 
 		@active_start_time=0, 
 		@active_end_time=235959, 
-		@schedule_uid=N'039c53ca-3c4d-4141-b5b3-a6856a9433f3'
+		@schedule_uid=N'9fabb735-f1bd-44c2-a2dc-65c33c92353b'
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
 EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = N'(local)'
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
@@ -146,11 +147,11 @@ QuitWithRollback:
 EndSave:
 GO
 
-/****** Object:  Job [DBA : Monitor Replication Latency]    Script Date: 4/15/2022 11:10:18 AM ******/
+/****** Object:  Job [DBA : Repl_Check_Dist_Agent]    Script Date: 5/29/2022 11:33:53 PM ******/
 BEGIN TRANSACTION
 DECLARE @ReturnCode INT
 SELECT @ReturnCode = 0
-/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 4/15/2022 11:10:18 AM ******/
+/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 5/29/2022 11:33:53 PM ******/
 IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
 BEGIN
 EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
@@ -159,153 +160,7 @@ IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
 END
 
 DECLARE @jobId BINARY(16)
-EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA : Monitor Replication Latency', 
-		@enabled=0, 
-		@notify_level_eventlog=0, 
-		@notify_level_email=2, 
-		@notify_level_netsend=0, 
-		@notify_level_page=0, 
-		@delete_level=0, 
-		@description=N'No description available.', 
-		@category_name=N'[Uncategorized (Local)]', 
-		@owner_login_name=N'sa', 
-		@notify_email_operator_name=N'DBAAdmin', @job_id = @jobId OUTPUT
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [latency more then 20 seconds]    Script Date: 4/15/2022 11:10:18 AM ******/
-EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'latency more then 20 seconds', 
-		@step_id=1, 
-		@cmdexec_success_code=0, 
-		@on_success_action=1, 
-		@on_success_step_id=0, 
-		@on_fail_action=2, 
-		@on_fail_step_id=0, 
-		@retry_attempts=0, 
-		@retry_interval=0, 
-		@os_run_priority=0, @subsystem=N'TSQL', 
-		@command=N'--20150129@Vivi: latency more then 20 seconds sent out email to DBA
-exec DBA_MonitorLatency', 
-		@database_name=N'Monitor', 
-		@flags=0
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=N'1 min', 
-		@enabled=1, 
-		@freq_type=4, 
-		@freq_interval=1, 
-		@freq_subday_type=4, 
-		@freq_subday_interval=1, 
-		@freq_relative_interval=0, 
-		@freq_recurrence_factor=0, 
-		@active_start_date=20150202, 
-		@active_end_date=99991231, 
-		@active_start_time=200000, 
-		@active_end_time=115959, 
-		@schedule_uid=N'f3f1e8d6-5e90-4424-b68b-5cb0f6142a76'
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = N'(local)'
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-COMMIT TRANSACTION
-GOTO EndSave
-QuitWithRollback:
-    IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
-EndSave:
-GO
-
-/****** Object:  Job [DBA : Monitor Replication Latency NightScan]    Script Date: 4/15/2022 11:10:19 AM ******/
-BEGIN TRANSACTION
-DECLARE @ReturnCode INT
-SELECT @ReturnCode = 0
-/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 4/15/2022 11:10:19 AM ******/
-IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
-BEGIN
-EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-
-END
-
-DECLARE @jobId BINARY(16)
-EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA : Monitor Replication Latency NightScan', 
-		@enabled=0, 
-		@notify_level_eventlog=0, 
-		@notify_level_email=0, 
-		@notify_level_netsend=0, 
-		@notify_level_page=0, 
-		@delete_level=0, 
-		@description=N'--20161027@Steven
---20180221@Alfie (DBDist) : Modify SP for Check between 12:00 and 20:00 (ServerTime) everyday and remove filter pub:DBTrans_SunCity_ExecRepAcc
---20180313@Alfie (DBDist) : IF on Move Bet then latency > 200000 (200 sec)', 
-		@category_name=N'[Uncategorized (Local)]', 
-		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [latency more then 20 seconds]    Script Date: 4/15/2022 11:10:19 AM ******/
-EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'latency more then 20 seconds', 
-		@step_id=1, 
-		@cmdexec_success_code=0, 
-		@on_success_action=1, 
-		@on_success_step_id=0, 
-		@on_fail_action=2, 
-		@on_fail_step_id=0, 
-		@retry_attempts=0, 
-		@retry_interval=0, 
-		@os_run_priority=0, @subsystem=N'TSQL', 
-		@command=N'exec DBA_MonitorLatency_CheckOver3TimesAndNightScan', 
-		@database_name=N'Monitor', 
-		@flags=0
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=N'Daily', 
-		@enabled=1, 
-		@freq_type=4, 
-		@freq_interval=1, 
-		@freq_subday_type=1, 
-		@freq_subday_interval=1, 
-		@freq_relative_interval=0, 
-		@freq_recurrence_factor=0, 
-		@active_start_date=20150202, 
-		@active_end_date=99991231, 
-		@active_start_time=210000, 
-		@active_end_time=235959, 
-		@schedule_uid=N'285c221b-1b42-405d-a799-a9824d7563d0'
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=N'Every 1 min', 
-		@enabled=1, 
-		@freq_type=4, 
-		@freq_interval=1, 
-		@freq_subday_type=4, 
-		@freq_subday_interval=1, 
-		@freq_relative_interval=0, 
-		@freq_recurrence_factor=0, 
-		@active_start_date=20180313, 
-		@active_end_date=99991231, 
-		@active_start_time=120000, 
-		@active_end_time=200000, 
-		@schedule_uid=N'75efa6a6-df7b-402d-a2c4-1f2cc33cfc76'
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = N'(local)'
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-COMMIT TRANSACTION
-GOTO EndSave
-QuitWithRollback:
-    IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
-EndSave:
-GO
-
-/****** Object:  Job [DBA : Repl_Monitor [dist_dbcust]]    Script Date: 4/15/2022 11:10:19 AM ******/
-BEGIN TRANSACTION
-DECLARE @ReturnCode INT
-SELECT @ReturnCode = 0
-/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 4/15/2022 11:10:19 AM ******/
-IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
-BEGIN
-EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-
-END
-
-DECLARE @jobId BINARY(16)
-EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA : Repl_Monitor [dist_dbcust]', 
+EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA : Repl_Check_Dist_Agent', 
 		@enabled=1, 
 		@notify_level_eventlog=0, 
 		@notify_level_email=0, 
@@ -316,591 +171,7 @@ EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA : Repl_Monitor [dist_dbc
 		@category_name=N'[Uncategorized (Local)]', 
 		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [Get rep status data]    Script Date: 4/15/2022 11:10:19 AM ******/
-EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Get rep status data', 
-		@step_id=1, 
-		@cmdexec_success_code=0, 
-		@on_success_action=1, 
-		@on_success_step_id=0, 
-		@on_fail_action=2, 
-		@on_fail_step_id=0, 
-		@retry_attempts=0, 
-		@retry_interval=0, 
-		@os_run_priority=0, @subsystem=N'TSQL', 
-		@command=N'EXEC dbo.Task_ReplMonitor1 @ServerName=''SITDB02'';
-EXEC dbo.Task_ReplMonitor1 @ServerName=''SITDB042'';
-EXEC dbo.Task_ReplMonitor1 @ServerName=''SITDB044'';
-EXEC dbo.Task_ReplMonitor1 @ServerName=''SITDB05'';
-EXEC dbo.Task_ReplMonitor1 @ServerName=''SITDB052'';
-EXEC dbo.Task_ReplMonitor1 @ServerName=''SITDB055'';
-EXEC dbo.Task_ReplMonitor1 @ServerName=''SITDB05BK1'';
-EXEC dbo.Task_ReplMonitor1 @ServerName=''SITDB06'';
-EXEC dbo.Task_ReplMonitor1 @ServerName=''SITDBODDS163'';
-EXEC dbo.Task_ReplMonitor1 @ServerName=''SITDBTRANS'';
-', 
-		@database_name=N'Monitor', 
-		@flags=0
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=N'1 minute', 
-		@enabled=1, 
-		@freq_type=4, 
-		@freq_interval=1, 
-		@freq_subday_type=4, 
-		@freq_subday_interval=1, 
-		@freq_relative_interval=0, 
-		@freq_recurrence_factor=0, 
-		@active_start_date=20100715, 
-		@active_end_date=99991231, 
-		@active_start_time=0, 
-		@active_end_time=235959, 
-		@schedule_uid=N'26d94fb7-7466-4d63-8f3e-069d8e1c4f49'
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = N'(local)'
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-COMMIT TRANSACTION
-GOTO EndSave
-QuitWithRollback:
-    IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
-EndSave:
-GO
-
-/****** Object:  Job [DBA : RepMonitor monthly purge]    Script Date: 4/15/2022 11:10:19 AM ******/
-BEGIN TRANSACTION
-DECLARE @ReturnCode INT
-SELECT @ReturnCode = 0
-/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 4/15/2022 11:10:19 AM ******/
-IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
-BEGIN
-EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-
-END
-
-DECLARE @jobId BINARY(16)
-EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA : RepMonitor monthly purge', 
-		@enabled=1, 
-		@notify_level_eventlog=0, 
-		@notify_level_email=0, 
-		@notify_level_netsend=0, 
-		@notify_level_page=0, 
-		@delete_level=0, 
-		@description=N'No description available.', 
-		@category_name=N'[Uncategorized (Local)]', 
-		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [Purge data (Keep 1 month)]    Script Date: 4/15/2022 11:10:19 AM ******/
-EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Purge data (Keep 1 month)', 
-		@step_id=1, 
-		@cmdexec_success_code=0, 
-		@on_success_action=1, 
-		@on_success_step_id=0, 
-		@on_fail_action=2, 
-		@on_fail_step_id=0, 
-		@retry_attempts=0, 
-		@retry_interval=0, 
-		@os_run_priority=0, @subsystem=N'TSQL', 
-		@command=N'exec DBA_Purge1MonthData', 
-		@database_name=N'Monitor', 
-		@flags=0
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=N'daily purge data', 
-		@enabled=1, 
-		@freq_type=4, 
-		@freq_interval=1, 
-		@freq_subday_type=1, 
-		@freq_subday_interval=0, 
-		@freq_relative_interval=0, 
-		@freq_recurrence_factor=0, 
-		@active_start_date=20150127, 
-		@active_end_date=99991231, 
-		@active_start_time=230100, 
-		@active_end_time=235959, 
-		@schedule_uid=N'c825f4fb-5ffe-4968-91bb-67096bea0c52'
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = N'(local)'
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-COMMIT TRANSACTION
-GOTO EndSave
-QuitWithRollback:
-    IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
-EndSave:
-GO
-
-/****** Object:  Job [DBA : Send SQL Service Restart Alert Mail]    Script Date: 4/15/2022 11:10:19 AM ******/
-BEGIN TRANSACTION
-DECLARE @ReturnCode INT
-SELECT @ReturnCode = 0
-/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 4/15/2022 11:10:19 AM ******/
-IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
-BEGIN
-EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-
-END
-
-DECLARE @jobId BINARY(16)
-EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA : Send SQL Service Restart Alert Mail', 
-		@enabled=1, 
-		@notify_level_eventlog=0, 
-		@notify_level_email=0, 
-		@notify_level_netsend=0, 
-		@notify_level_page=0, 
-		@delete_level=0, 
-		@description=N'Alert for SQL Server Agent Started. In order to get alert mail for check if the SQL Server also been restarted.', 
-		@category_name=N'[Uncategorized (Local)]', 
-		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [Send_Email_Step]    Script Date: 4/15/2022 11:10:19 AM ******/
-EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Send_Email_Step', 
-		@step_id=1, 
-		@cmdexec_success_code=0, 
-		@on_success_action=1, 
-		@on_success_step_id=0, 
-		@on_fail_action=2, 
-		@on_fail_step_id=0, 
-		@retry_attempts=0, 
-		@retry_interval=0, 
-		@os_run_priority=0, @subsystem=N'TSQL', 
-		@command=N'EXEC msdb..sp_send_dbmail
-@recipients = ''dbatw@onelab.tw'',
-@subject=''POC SQL Services Restarted, Please Check!!'',
-@query = ''
-	Print ''''SQL Server:''''+ @@SERVERNAME;
-	Print ''''Event Server Time:'''' + convert(varchar,getdate(),120)'',
-@body=''This is an informational message only: SQL Server Services possibly restarted. Please check it!!  
-If happen on Monday morning please ignore this, because this Server will restart SQL service on Monday morning by OS Task''
-
-', 
-		@database_name=N'master', 
-		@flags=0
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=N'Service_Restart_Notification', 
-		@enabled=1, 
-		@freq_type=64, 
-		@freq_interval=0, 
-		@freq_subday_type=0, 
-		@freq_subday_interval=0, 
-		@freq_relative_interval=0, 
-		@freq_recurrence_factor=0, 
-		@active_start_date=20120926, 
-		@active_end_date=99991231, 
-		@active_start_time=0, 
-		@active_end_time=235959, 
-		@schedule_uid=N'9513db42-34d6-41c7-a161-e1facfbd0f86'
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = N'(local)'
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-COMMIT TRANSACTION
-GOTO EndSave
-QuitWithRollback:
-    IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
-EndSave:
-GO
-
-/****** Object:  Job [DBA:DBA_GrantDBPermissionDaily]    Script Date: 4/15/2022 11:10:19 AM ******/
-BEGIN TRANSACTION
-DECLARE @ReturnCode INT
-SELECT @ReturnCode = 0
-/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 4/15/2022 11:10:19 AM ******/
-IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
-BEGIN
-EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-
-END
-
-DECLARE @jobId BINARY(16)
-EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA:DBA_GrantDBPermissionDaily', 
-		@enabled=1, 
-		@notify_level_eventlog=0, 
-		@notify_level_email=0, 
-		@notify_level_netsend=0, 
-		@notify_level_page=0, 
-		@delete_level=0, 
-		@description=N'20160124@AlfieYen : EveryDay Automatic Grant the DB_datareader permission to PM Account
-	if today add a DB account for PM Team,The Account name like ''PM%'' or ''BA%'' ,
-	then the procedure will be automatic grant the DB_datareader permission at midnight
-	Agent Job:DBA_GrantDBPermissionDaily', 
-		@category_name=N'[Uncategorized (Local)]', 
-		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [DBA_GrantDBPermissionDaily]    Script Date: 4/15/2022 11:10:19 AM ******/
-EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'DBA_GrantDBPermissionDaily', 
-		@step_id=1, 
-		@cmdexec_success_code=0, 
-		@on_success_action=1, 
-		@on_success_step_id=0, 
-		@on_fail_action=2, 
-		@on_fail_step_id=0, 
-		@retry_attempts=0, 
-		@retry_interval=0, 
-		@os_run_priority=0, @subsystem=N'TSQL', 
-		@command=N'exec mondb.[dbo].[DBA_GrantDBPermissionDaily]', 
-		@database_name=N'MonDB', 
-		@flags=0
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=N'DBA_GrantDBPermissionDaily', 
-		@enabled=1, 
-		@freq_type=4, 
-		@freq_interval=1, 
-		@freq_subday_type=1, 
-		@freq_subday_interval=0, 
-		@freq_relative_interval=0, 
-		@freq_recurrence_factor=0, 
-		@active_start_date=20170124, 
-		@active_end_date=99991231, 
-		@active_start_time=0, 
-		@active_end_time=235959, 
-		@schedule_uid=N'd926db69-aa29-4e21-80a8-1acc380f9a12'
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = N'(local)'
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-COMMIT TRANSACTION
-GOTO EndSave
-QuitWithRollback:
-    IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
-EndSave:
-GO
-
-/****** Object:  Job [DBA_Deadlock_Monitor]    Script Date: 4/15/2022 11:10:19 AM ******/
-BEGIN TRANSACTION
-DECLARE @ReturnCode INT
-SELECT @ReturnCode = 0
-/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 4/15/2022 11:10:19 AM ******/
-IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
-BEGIN
-EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-
-END
-
-DECLARE @jobId BINARY(16)
-EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA_Deadlock_Monitor', 
-		@enabled=1, 
-		@notify_level_eventlog=0, 
-		@notify_level_email=0, 
-		@notify_level_netsend=0, 
-		@notify_level_page=0, 
-		@delete_level=0, 
-		@description=N'Creator: Leon.Hsu
-Job Name:DBA_Deadlock_Monitor  
-Funtionality:   1. Real time Deadlock detection using WMI.
-                2. Send email out when deadlock occurs along with Deadlock Graph attached.
-                3. Logs all the deadlocks in a central Table MONDB.dbo.DBA_Deadlock_Record.
-                4. Does not require trace flags 1204 and 1222 enabled.', 
-		@category_name=N'[Uncategorized (Local)]', 
-		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [Insert Deadlock info]    Script Date: 4/15/2022 11:10:19 AM ******/
-EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Insert Deadlock info', 
-		@step_id=1, 
-		@cmdexec_success_code=0, 
-		@on_success_action=3, 
-		@on_success_step_id=0, 
-		@on_fail_action=2, 
-		@on_fail_step_id=0, 
-		@retry_attempts=0, 
-		@retry_interval=0, 
-		@os_run_priority=0, @subsystem=N'TSQL', 
-		@command=N'INSERT INTO DBA_Deadlock_Record (AlertTime,DeadlockGraph)
-VALUES (GETDATE(),''$(ESCAPE_NONE(WMI(TextData)))'')', 
-		@database_name=N'MONDB', 
-		@flags=0
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [Send Email without Deadlock Graph]    Script Date: 4/15/2022 11:10:19 AM ******/
-EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Send Email without Deadlock Graph', 
-		@step_id=2, 
-		@cmdexec_success_code=0, 
-		@on_success_action=1, 
-		@on_success_step_id=0, 
-		@on_fail_action=2, 
-		@on_fail_step_id=0, 
-		@retry_attempts=0, 
-		@retry_interval=0, 
-		@os_run_priority=0, @subsystem=N'TSQL', 
-		@command=N'EXEC dbo.DBA_Deaklock_Monitor', 
-		@database_name=N'MONDB', 
-		@flags=0
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = N'(local)'
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-COMMIT TRANSACTION
-GOTO EndSave
-QuitWithRollback:
-    IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
-EndSave:
-GO
-
-/****** Object:  Job [DBA_Diff_Backup]    Script Date: 4/15/2022 11:10:19 AM ******/
-BEGIN TRANSACTION
-DECLARE @ReturnCode INT
-SELECT @ReturnCode = 0
-/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 4/15/2022 11:10:19 AM ******/
-IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
-BEGIN
-EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-
-END
-
-DECLARE @jobId BINARY(16)
-EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA_Diff_Backup', 
-		@enabled=0, 
-		@notify_level_eventlog=0, 
-		@notify_level_email=0, 
-		@notify_level_netsend=0, 
-		@notify_level_page=0, 
-		@delete_level=0, 
-		@description=N'No description available.', 
-		@category_name=N'[Uncategorized (Local)]', 
-		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [Step1_Move File]    Script Date: 4/15/2022 11:10:19 AM ******/
-EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Step1_Move File', 
-		@step_id=1, 
-		@cmdexec_success_code=0, 
-		@on_success_action=3, 
-		@on_success_step_id=0, 
-		@on_fail_action=2, 
-		@on_fail_step_id=0, 
-		@retry_attempts=0, 
-		@retry_interval=0, 
-		@os_run_priority=0, @subsystem=N'PowerShell', 
-		@command=N'$strFile="G:\Backup\*"
-If (Test-Path $strFile) {
-  Move-Item G:\Backup\*.* G:\Backup_Local -force} Else {EXIT}', 
-		@database_name=N'master', 
-		@flags=0
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [Step2_Diff Backup]    Script Date: 4/15/2022 11:10:19 AM ******/
-EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Step2_Diff Backup', 
-		@step_id=2, 
-		@cmdexec_success_code=0, 
-		@on_success_action=3, 
-		@on_success_step_id=0, 
-		@on_fail_action=2, 
-		@on_fail_step_id=0, 
-		@retry_attempts=0, 
-		@retry_interval=0, 
-		@os_run_priority=0, @subsystem=N'TSQL', 
-		@command=N'exec DBA_Diff_Backup', 
-		@database_name=N'MONDB', 
-		@flags=0
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [Step3_Del Hist File]    Script Date: 4/15/2022 11:10:19 AM ******/
-EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Step3_Del Hist File', 
-		@step_id=3, 
-		@cmdexec_success_code=0, 
-		@on_success_action=1, 
-		@on_success_step_id=0, 
-		@on_fail_action=2, 
-		@on_fail_step_id=0, 
-		@retry_attempts=0, 
-		@retry_interval=0, 
-		@os_run_priority=0, @subsystem=N'PowerShell', 
-		@command=N'$Now = Get-Date
-$Days = "8"
-$TargetFolder = "G:\Backup_Local\"
-$Extension = "*.dif"
-$LastWrite = $Now.AddDays(-$Days)
-$Files = Get-Childitem $TargetFolder -Include $Extension -Recurse | Where {$_.LastWriteTime -le "$LastWrite"}
-foreach ($File in $Files)
-{
-    if ($File -ne $NULL)
-    	{
-        Remove-Item $File.FullName | out-null
-    	}
-}
-', 
-		@database_name=N'master', 
-		@flags=0
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=N'sch1', 
-		@enabled=1, 
-		@freq_type=8, 
-		@freq_interval=126, 
-		@freq_subday_type=1, 
-		@freq_subday_interval=0, 
-		@freq_relative_interval=0, 
-		@freq_recurrence_factor=1, 
-		@active_start_date=20150910, 
-		@active_end_date=99991231, 
-		@active_start_time=220000, 
-		@active_end_time=235959, 
-		@schedule_uid=N'4347c509-f370-4593-80b1-4679580be7cf'
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = N'(local)'
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-COMMIT TRANSACTION
-GOTO EndSave
-QuitWithRollback:
-    IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
-EndSave:
-GO
-
-/****** Object:  Job [DBA_Full_Backup]    Script Date: 4/15/2022 11:10:19 AM ******/
-BEGIN TRANSACTION
-DECLARE @ReturnCode INT
-SELECT @ReturnCode = 0
-/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 4/15/2022 11:10:19 AM ******/
-IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
-BEGIN
-EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-
-END
-
-DECLARE @jobId BINARY(16)
-EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA_Full_Backup', 
-		@enabled=1, 
-		@notify_level_eventlog=0, 
-		@notify_level_email=0, 
-		@notify_level_netsend=0, 
-		@notify_level_page=0, 
-		@delete_level=0, 
-		@description=N'1.Delete file older than 1 day
-2.Schedule at 22:00 daily', 
-		@category_name=N'[Uncategorized (Local)]', 
-		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [Step1_Move File]    Script Date: 4/15/2022 11:10:19 AM ******/
-EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Step1_Move File', 
-		@step_id=1, 
-		@cmdexec_success_code=0, 
-		@on_success_action=3, 
-		@on_success_step_id=0, 
-		@on_fail_action=2, 
-		@on_fail_step_id=0, 
-		@retry_attempts=0, 
-		@retry_interval=0, 
-		@os_run_priority=0, @subsystem=N'PowerShell', 
-		@command=N'$strFile="G:\Backup\*"
-If (Test-Path $strFile) {
-  Move-Item G:\Backup\*.* G:\Backup_Local -force} Else {EXIT}
-', 
-		@flags=0
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [Step2_Full_Backup]    Script Date: 4/15/2022 11:10:19 AM ******/
-EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Step2_Full_Backup', 
-		@step_id=2, 
-		@cmdexec_success_code=0, 
-		@on_success_action=3, 
-		@on_success_step_id=0, 
-		@on_fail_action=2, 
-		@on_fail_step_id=0, 
-		@retry_attempts=0, 
-		@retry_interval=0, 
-		@os_run_priority=0, @subsystem=N'TSQL', 
-		@command=N'exec DBA_Full_Backup', 
-		@database_name=N'MONDB', 
-		@flags=0
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [Step3_Del Hist File]    Script Date: 4/15/2022 11:10:19 AM ******/
-EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Step3_Del Hist File', 
-		@step_id=3, 
-		@cmdexec_success_code=0, 
-		@on_success_action=3, 
-		@on_success_step_id=0, 
-		@on_fail_action=2, 
-		@on_fail_step_id=0, 
-		@retry_attempts=0, 
-		@retry_interval=0, 
-		@os_run_priority=0, @subsystem=N'PowerShell', 
-		@command=N'$Now = Get-Date
-$Days = "1"
-$TargetFolder = "G:\Backup_Local\"
-$Extension = "*.bak"
-$LastWrite = $Now.AddDays(-$Days)
-$Files = Get-Childitem $TargetFolder -Include $Extension -Recurse | Where {$_.LastWriteTime -le "$LastWrite"}
-foreach ($File in $Files)
-{
-    if ($File -ne $NULL)
-    	{
-        Remove-Item $File.FullName | out-null
-    	}
-}
-', 
-		@database_name=N'master', 
-		@flags=0
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [Step4_Delete Backup History]    Script Date: 4/15/2022 11:10:19 AM ******/
-EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Step4_Delete Backup History', 
-		@step_id=4, 
-		@cmdexec_success_code=0, 
-		@on_success_action=1, 
-		@on_success_step_id=0, 
-		@on_fail_action=2, 
-		@on_fail_step_id=0, 
-		@retry_attempts=0, 
-		@retry_interval=0, 
-		@os_run_priority=0, @subsystem=N'TSQL', 
-		@command=N'DECLARE @n1 smalldatetime = DATEADD(m,-2,DATEADD(mm, DATEDIFF(m,0,GETDATE()), 0))
-EXEC sp_delete_backuphistory  @n1', 
-		@database_name=N'msdb', 
-		@flags=0
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=N'sch1', 
-		@enabled=1, 
-		@freq_type=4, 
-		@freq_interval=1, 
-		@freq_subday_type=1, 
-		@freq_subday_interval=0, 
-		@freq_relative_interval=0, 
-		@freq_recurrence_factor=0, 
-		@active_start_date=20150910, 
-		@active_end_date=99991231, 
-		@active_start_time=220000, 
-		@active_end_time=235959, 
-		@schedule_uid=N'a419e5ce-0c01-4774-8fce-3a6c12b48824'
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = N'(local)'
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-COMMIT TRANSACTION
-GOTO EndSave
-QuitWithRollback:
-    IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
-EndSave:
-GO
-
-/****** Object:  Job [DBA_Repl_Check_Dist_Agent]    Script Date: 4/15/2022 11:10:19 AM ******/
-BEGIN TRANSACTION
-DECLARE @ReturnCode INT
-SELECT @ReturnCode = 0
-/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 4/15/2022 11:10:19 AM ******/
-IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
-BEGIN
-EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-
-END
-
-DECLARE @jobId BINARY(16)
-EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA_Repl_Check_Dist_Agent', 
-		@enabled=1, 
-		@notify_level_eventlog=0, 
-		@notify_level_email=0, 
-		@notify_level_netsend=0, 
-		@notify_level_page=0, 
-		@delete_level=0, 
-		@description=N'No description available.', 
-		@category_name=N'[Uncategorized (Local)]', 
-		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [step1]    Script Date: 4/15/2022 11:10:19 AM ******/
+/****** Object:  Step [step1]    Script Date: 5/29/2022 11:33:53 PM ******/
 EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'step1', 
 		@step_id=1, 
 		@cmdexec_success_code=0, 
@@ -954,11 +225,908 @@ QuitWithRollback:
 EndSave:
 GO
 
-/****** Object:  Job [DBA_Replication_Err_Monitor]    Script Date: 4/15/2022 11:10:19 AM ******/
+/****** Object:  Job [DBA : Send SQL Service Restart Alert Mail]    Script Date: 5/29/2022 11:33:53 PM ******/
 BEGIN TRANSACTION
 DECLARE @ReturnCode INT
 SELECT @ReturnCode = 0
-/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 4/15/2022 11:10:19 AM ******/
+/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 5/29/2022 11:33:53 PM ******/
+IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
+BEGIN
+EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+
+END
+
+DECLARE @jobId BINARY(16)
+EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA : Send SQL Service Restart Alert Mail', 
+		@enabled=1, 
+		@notify_level_eventlog=0, 
+		@notify_level_email=0, 
+		@notify_level_netsend=0, 
+		@notify_level_page=0, 
+		@delete_level=0, 
+		@description=N'Alert for SQL Server Agent Started. In order to get alert mail for check if the SQL Server also been restarted.', 
+		@category_name=N'[Uncategorized (Local)]', 
+		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+/****** Object:  Step [Send_Email_Step]    Script Date: 5/29/2022 11:33:53 PM ******/
+EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Send_Email_Step', 
+		@step_id=1, 
+		@cmdexec_success_code=0, 
+		@on_success_action=1, 
+		@on_success_step_id=0, 
+		@on_fail_action=2, 
+		@on_fail_step_id=0, 
+		@retry_attempts=0, 
+		@retry_interval=0, 
+		@os_run_priority=0, @subsystem=N'TSQL', 
+		@command=N'EXEC msdb..sp_send_dbmail
+@recipients = ''DBAAdmin@onelab.tw'',
+@subject=''SQL Services Restarted, Please Check!!'',
+@query = ''
+	Print ''''SQL Server:''''+ @@SERVERNAME;
+	Print ''''Event Server Time:'''' + convert(varchar,getdate(),120)'',
+@body=''This is an informational message only: SQL Server Services possibly restarted. Please check it!!''
+
+', 
+		@database_name=N'master', 
+		@flags=0
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=N'Service_Restart_Notification', 
+		@enabled=1, 
+		@freq_type=64, 
+		@freq_interval=0, 
+		@freq_subday_type=0, 
+		@freq_subday_interval=0, 
+		@freq_relative_interval=0, 
+		@freq_recurrence_factor=0, 
+		@active_start_date=20120926, 
+		@active_end_date=99991231, 
+		@active_start_time=0, 
+		@active_end_time=235959, 
+		@schedule_uid=N'9513db42-34d6-41c7-a161-e1facfbd0f86'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = N'(local)'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+COMMIT TRANSACTION
+GOTO EndSave
+QuitWithRollback:
+    IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
+EndSave:
+GO
+
+/****** Object:  Job [DBA_Deadlock_Monitor]    Script Date: 5/29/2022 11:33:53 PM ******/
+BEGIN TRANSACTION
+DECLARE @ReturnCode INT
+SELECT @ReturnCode = 0
+/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 5/29/2022 11:33:53 PM ******/
+IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
+BEGIN
+EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+
+END
+
+DECLARE @jobId BINARY(16)
+EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA_Deadlock_Monitor', 
+		@enabled=1, 
+		@notify_level_eventlog=0, 
+		@notify_level_email=0, 
+		@notify_level_netsend=0, 
+		@notify_level_page=0, 
+		@delete_level=0, 
+		@description=N'Creator: Leon.Hsu
+Job Name:DBA_Deadlock_Monitor  
+Funtionality:   1. Real time Deadlock detection using WMI.
+                2. Send email out when deadlock occurs along with Deadlock Graph attached.
+                3. Logs all the deadlocks in a central Table MONDB.dbo.DBA_Deadlock_Record.
+                4. Does not require trace flags 1204 and 1222 enabled.', 
+		@category_name=N'[Uncategorized (Local)]', 
+		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+/****** Object:  Step [Insert Deadlock info]    Script Date: 5/29/2022 11:33:53 PM ******/
+EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Insert Deadlock info', 
+		@step_id=1, 
+		@cmdexec_success_code=0, 
+		@on_success_action=3, 
+		@on_success_step_id=0, 
+		@on_fail_action=2, 
+		@on_fail_step_id=0, 
+		@retry_attempts=0, 
+		@retry_interval=0, 
+		@os_run_priority=0, @subsystem=N'TSQL', 
+		@command=N'INSERT INTO DBA_Deadlock_Record (AlertTime,DeadlockGraph)
+VALUES (GETDATE(),''$(ESCAPE_NONE(WMI(TextData)))'')', 
+		@database_name=N'MONDB', 
+		@flags=0
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+/****** Object:  Step [Send Email without Deadlock Graph]    Script Date: 5/29/2022 11:33:53 PM ******/
+EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Send Email without Deadlock Graph', 
+		@step_id=2, 
+		@cmdexec_success_code=0, 
+		@on_success_action=1, 
+		@on_success_step_id=0, 
+		@on_fail_action=2, 
+		@on_fail_step_id=0, 
+		@retry_attempts=0, 
+		@retry_interval=0, 
+		@os_run_priority=0, @subsystem=N'TSQL', 
+		@command=N'EXEC dbo.DBA_Deaklock_Monitor', 
+		@database_name=N'MONDB', 
+		@flags=0
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = N'(local)'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+COMMIT TRANSACTION
+GOTO EndSave
+QuitWithRollback:
+    IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
+EndSave:
+GO
+
+/****** Object:  Job [DBA_Diff_Backup]    Script Date: 5/29/2022 11:33:53 PM ******/
+BEGIN TRANSACTION
+DECLARE @ReturnCode INT
+SELECT @ReturnCode = 0
+/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 5/29/2022 11:33:53 PM ******/
+IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
+BEGIN
+EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+
+END
+
+DECLARE @jobId BINARY(16)
+EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA_Diff_Backup', 
+		@enabled=1, 
+		@notify_level_eventlog=0, 
+		@notify_level_email=0, 
+		@notify_level_netsend=0, 
+		@notify_level_page=0, 
+		@delete_level=0, 
+		@description=N'No description available.', 
+		@category_name=N'[Uncategorized (Local)]', 
+		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+/****** Object:  Step [Step1_Move File]    Script Date: 5/29/2022 11:33:53 PM ******/
+EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Step1_Move File', 
+		@step_id=1, 
+		@cmdexec_success_code=0, 
+		@on_success_action=3, 
+		@on_success_step_id=0, 
+		@on_fail_action=2, 
+		@on_fail_step_id=0, 
+		@retry_attempts=0, 
+		@retry_interval=0, 
+		@os_run_priority=0, @subsystem=N'PowerShell', 
+		@command=N'$strFile="G:\Backup\*"
+If (Test-Path $strFile) {
+  Move-Item G:\Backup\*.* G:\Backup_Local -force} Else {EXIT}', 
+		@database_name=N'master', 
+		@flags=0
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+/****** Object:  Step [Step2_Diff Backup]    Script Date: 5/29/2022 11:33:54 PM ******/
+EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Step2_Diff Backup', 
+		@step_id=2, 
+		@cmdexec_success_code=0, 
+		@on_success_action=3, 
+		@on_success_step_id=0, 
+		@on_fail_action=2, 
+		@on_fail_step_id=0, 
+		@retry_attempts=0, 
+		@retry_interval=0, 
+		@os_run_priority=0, @subsystem=N'TSQL', 
+		@command=N'exec DBA_Diff_Backup', 
+		@database_name=N'MONDB', 
+		@flags=0
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+/****** Object:  Step [Step3_Del Hist File]    Script Date: 5/29/2022 11:33:54 PM ******/
+EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Step3_Del Hist File', 
+		@step_id=3, 
+		@cmdexec_success_code=0, 
+		@on_success_action=1, 
+		@on_success_step_id=0, 
+		@on_fail_action=2, 
+		@on_fail_step_id=0, 
+		@retry_attempts=0, 
+		@retry_interval=0, 
+		@os_run_priority=0, @subsystem=N'PowerShell', 
+		@command=N'$Now = Get-Date
+$Days = "8"
+$TargetFolder = "G:\Backup_Local\"
+$Extension = "*.dif"
+$LastWrite = $Now.AddDays(-$Days)
+$Files = Get-Childitem $TargetFolder -Include $Extension -Recurse | Where {$_.LastWriteTime -le "$LastWrite"}
+foreach ($File in $Files)
+{
+    if ($File -ne $NULL)
+    	{
+        Remove-Item $File.FullName | out-null
+    	}
+}
+', 
+		@database_name=N'master', 
+		@flags=0
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=N'sch1', 
+		@enabled=1, 
+		@freq_type=8, 
+		@freq_interval=126, 
+		@freq_subday_type=1, 
+		@freq_subday_interval=0, 
+		@freq_relative_interval=0, 
+		@freq_recurrence_factor=1, 
+		@active_start_date=20150910, 
+		@active_end_date=99991231, 
+		@active_start_time=220000, 
+		@active_end_time=235959, 
+		@schedule_uid=N'b03b39bd-724b-4644-a9ea-36cbc2656b52'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = N'(local)'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+COMMIT TRANSACTION
+GOTO EndSave
+QuitWithRollback:
+    IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
+EndSave:
+GO
+
+/****** Object:  Job [DBA_Full_Backup]    Script Date: 5/29/2022 11:33:54 PM ******/
+BEGIN TRANSACTION
+DECLARE @ReturnCode INT
+SELECT @ReturnCode = 0
+/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 5/29/2022 11:33:54 PM ******/
+IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
+BEGIN
+EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+
+END
+
+DECLARE @jobId BINARY(16)
+EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA_Full_Backup', 
+		@enabled=1, 
+		@notify_level_eventlog=0, 
+		@notify_level_email=0, 
+		@notify_level_netsend=0, 
+		@notify_level_page=0, 
+		@delete_level=0, 
+		@description=N'No description available.', 
+		@category_name=N'[Uncategorized (Local)]', 
+		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+/****** Object:  Step [Step1_Move File]    Script Date: 5/29/2022 11:33:54 PM ******/
+EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Step1_Move File', 
+		@step_id=1, 
+		@cmdexec_success_code=0, 
+		@on_success_action=3, 
+		@on_success_step_id=0, 
+		@on_fail_action=2, 
+		@on_fail_step_id=0, 
+		@retry_attempts=0, 
+		@retry_interval=0, 
+		@os_run_priority=0, @subsystem=N'PowerShell', 
+		@command=N'$strFile="G:\Backup\*"
+If (Test-Path $strFile) {
+  Move-Item G:\Backup\*.* G:\Backup_Local -force} Else {EXIT}
+', 
+		@flags=0
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+/****** Object:  Step [Step2_Full_Backup]    Script Date: 5/29/2022 11:33:54 PM ******/
+EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Step2_Full_Backup', 
+		@step_id=2, 
+		@cmdexec_success_code=0, 
+		@on_success_action=3, 
+		@on_success_step_id=0, 
+		@on_fail_action=2, 
+		@on_fail_step_id=0, 
+		@retry_attempts=0, 
+		@retry_interval=0, 
+		@os_run_priority=0, @subsystem=N'TSQL', 
+		@command=N'exec DBA_Full_Backup', 
+		@database_name=N'MONDB', 
+		@flags=0
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+/****** Object:  Step [Step3_Del Hist File]    Script Date: 5/29/2022 11:33:54 PM ******/
+EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Step3_Del Hist File', 
+		@step_id=3, 
+		@cmdexec_success_code=0, 
+		@on_success_action=1, 
+		@on_success_step_id=0, 
+		@on_fail_action=2, 
+		@on_fail_step_id=0, 
+		@retry_attempts=0, 
+		@retry_interval=0, 
+		@os_run_priority=0, @subsystem=N'PowerShell', 
+		@command=N'$Now = Get-Date
+$Days = "8"
+$TargetFolder = "G:\Backup_Local\"
+$Extension = "*.bak"
+$LastWrite = $Now.AddDays(-$Days)
+$Files = Get-Childitem $TargetFolder -Include $Extension -Recurse | Where {$_.LastWriteTime -le "$LastWrite"}
+foreach ($File in $Files)
+{
+    if ($File -ne $NULL)
+    	{
+        Remove-Item $File.FullName | out-null
+    	}
+}
+', 
+		@database_name=N'master', 
+		@flags=0
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=N'sch1', 
+		@enabled=1, 
+		@freq_type=8, 
+		@freq_interval=1, 
+		@freq_subday_type=1, 
+		@freq_subday_interval=0, 
+		@freq_relative_interval=0, 
+		@freq_recurrence_factor=1, 
+		@active_start_date=20150910, 
+		@active_end_date=99991231, 
+		@active_start_time=220000, 
+		@active_end_time=235959, 
+		@schedule_uid=N'040d2340-a02b-45a5-b5d9-8e69aea99e7c'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = N'(local)'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+COMMIT TRANSACTION
+GOTO EndSave
+QuitWithRollback:
+    IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
+EndSave:
+GO
+
+/****** Object:  Job [DBA_Getlockinfo 5 Secs]    Script Date: 5/29/2022 11:33:54 PM ******/
+BEGIN TRANSACTION
+DECLARE @ReturnCode INT
+SELECT @ReturnCode = 0
+/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 5/29/2022 11:33:54 PM ******/
+IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
+BEGIN
+EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+
+END
+
+DECLARE @jobId BINARY(16)
+EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA_Getlockinfo 5 Secs', 
+		@enabled=0, 
+		@notify_level_eventlog=0, 
+		@notify_level_email=0, 
+		@notify_level_netsend=0, 
+		@notify_level_page=0, 
+		@delete_level=0, 
+		@description=N'No description available.', 
+		@category_name=N'[Uncategorized (Local)]', 
+		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+/****** Object:  Step [exec 5 secs a time]    Script Date: 5/29/2022 11:33:54 PM ******/
+EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'exec 5 secs a time', 
+		@step_id=1, 
+		@cmdexec_success_code=0, 
+		@on_success_action=1, 
+		@on_success_step_id=0, 
+		@on_fail_action=2, 
+		@on_fail_step_id=0, 
+		@retry_attempts=0, 
+		@retry_interval=0, 
+		@os_run_priority=0, @subsystem=N'TSQL', 
+		@command=N'WHILE 1=1
+BEGIN
+    EXEC dbo.DBA_Mon_Getlock_info; 
+    WAITFOR DELAY ''00:00:05.000'';
+END', 
+		@database_name=N'MonDB', 
+		@flags=0
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=N'5 Second a time', 
+		@enabled=1, 
+		@freq_type=4, 
+		@freq_interval=1, 
+		@freq_subday_type=4, 
+		@freq_subday_interval=1, 
+		@freq_relative_interval=0, 
+		@freq_recurrence_factor=0, 
+		@active_start_date=20190520, 
+		@active_end_date=99991231, 
+		@active_start_time=0, 
+		@active_end_time=235959, 
+		@schedule_uid=N'193567a2-4a51-4177-ac73-3c365d9be88a'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = N'(local)'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+COMMIT TRANSACTION
+GOTO EndSave
+QuitWithRollback:
+    IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
+EndSave:
+GO
+
+/****** Object:  Job [DBA_Getwaitinfo 5 Secs]    Script Date: 5/29/2022 11:33:54 PM ******/
+BEGIN TRANSACTION
+DECLARE @ReturnCode INT
+SELECT @ReturnCode = 0
+/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 5/29/2022 11:33:54 PM ******/
+IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
+BEGIN
+EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+
+END
+
+DECLARE @jobId BINARY(16)
+EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA_Getwaitinfo 5 Secs', 
+		@enabled=0, 
+		@notify_level_eventlog=0, 
+		@notify_level_email=0, 
+		@notify_level_netsend=0, 
+		@notify_level_page=0, 
+		@delete_level=0, 
+		@description=N'No description available.', 
+		@category_name=N'[Uncategorized (Local)]', 
+		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+/****** Object:  Step [Exec 5 Secs a time]    Script Date: 5/29/2022 11:33:54 PM ******/
+EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Exec 5 Secs a time', 
+		@step_id=1, 
+		@cmdexec_success_code=0, 
+		@on_success_action=1, 
+		@on_success_step_id=0, 
+		@on_fail_action=2, 
+		@on_fail_step_id=0, 
+		@retry_attempts=0, 
+		@retry_interval=0, 
+		@os_run_priority=0, @subsystem=N'TSQL', 
+		@command=N'WHILE 1=1
+BEGIN
+    EXEC DBA_Mon_Get_Wait_Info; 
+    WAITFOR DELAY ''00:00:05.000'';
+END', 
+		@database_name=N'MonDB', 
+		@flags=0
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=N'exec 5 sec a time', 
+		@enabled=1, 
+		@freq_type=4, 
+		@freq_interval=1, 
+		@freq_subday_type=4, 
+		@freq_subday_interval=1, 
+		@freq_relative_interval=0, 
+		@freq_recurrence_factor=0, 
+		@active_start_date=20190520, 
+		@active_end_date=99991231, 
+		@active_start_time=0, 
+		@active_end_time=235959, 
+		@schedule_uid=N'0c73f2e3-4915-401a-bb6e-ef5fcbec3af2'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = N'(local)'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+COMMIT TRANSACTION
+GOTO EndSave
+QuitWithRollback:
+    IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
+EndSave:
+GO
+
+/****** Object:  Job [DBA_MonDB_Reorg]    Script Date: 5/29/2022 11:33:54 PM ******/
+BEGIN TRANSACTION
+DECLARE @ReturnCode INT
+SELECT @ReturnCode = 0
+/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 5/29/2022 11:33:54 PM ******/
+IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
+BEGIN
+EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+
+END
+
+DECLARE @jobId BINARY(16)
+EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA_MonDB_Reorg', 
+		@enabled=1, 
+		@notify_level_eventlog=0, 
+		@notify_level_email=2, 
+		@notify_level_netsend=0, 
+		@notify_level_page=0, 
+		@delete_level=0, 
+		@description=N'No description available.', 
+		@category_name=N'[Uncategorized (Local)]', 
+		@owner_login_name=N'sa', 
+		@notify_email_operator_name=N'DBAAdmin', @job_id = @jobId OUTPUT
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+/****** Object:  Step [DBA_ReIndex]    Script Date: 5/29/2022 11:33:54 PM ******/
+EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'DBA_ReIndex', 
+		@step_id=1, 
+		@cmdexec_success_code=0, 
+		@on_success_action=1, 
+		@on_success_step_id=0, 
+		@on_fail_action=2, 
+		@on_fail_step_id=0, 
+		@retry_attempts=0, 
+		@retry_interval=0, 
+		@os_run_priority=0, @subsystem=N'TSQL', 
+		@command=N'EXEC DBA_ReIndex', 
+		@database_name=N'MonDB', 
+		@flags=0
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=N'2:00am', 
+		@enabled=1, 
+		@freq_type=4, 
+		@freq_interval=1, 
+		@freq_subday_type=1, 
+		@freq_subday_interval=0, 
+		@freq_relative_interval=0, 
+		@freq_recurrence_factor=0, 
+		@active_start_date=20111015, 
+		@active_end_date=99991231, 
+		@active_start_time=20000, 
+		@active_end_time=235959, 
+		@schedule_uid=N'307769d7-45f1-4407-b720-7237b4d4c761'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = N'(local)'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+COMMIT TRANSACTION
+GOTO EndSave
+QuitWithRollback:
+    IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
+EndSave:
+GO
+
+/****** Object:  Job [DBA_Monitor Replication Latency]    Script Date: 5/29/2022 11:33:54 PM ******/
+BEGIN TRANSACTION
+DECLARE @ReturnCode INT
+SELECT @ReturnCode = 0
+/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 5/29/2022 11:33:54 PM ******/
+IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
+BEGIN
+EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+
+END
+
+DECLARE @jobId BINARY(16)
+EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA_Monitor Replication Latency', 
+		@enabled=1, 
+		@notify_level_eventlog=0, 
+		@notify_level_email=2, 
+		@notify_level_netsend=0, 
+		@notify_level_page=0, 
+		@delete_level=0, 
+		@description=N'No description available.', 
+		@category_name=N'[Uncategorized (Local)]', 
+		@owner_login_name=N'sa', 
+		@notify_email_operator_name=N'DBAAdmin', @job_id = @jobId OUTPUT
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+/****** Object:  Step [latency more then 20 seconds]    Script Date: 5/29/2022 11:33:54 PM ******/
+EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'latency more then 20 seconds', 
+		@step_id=1, 
+		@cmdexec_success_code=0, 
+		@on_success_action=1, 
+		@on_success_step_id=0, 
+		@on_fail_action=2, 
+		@on_fail_step_id=0, 
+		@retry_attempts=0, 
+		@retry_interval=0, 
+		@os_run_priority=0, @subsystem=N'TSQL', 
+		@command=N'--20150129@Vivi: latency more then 20 seconds sent out email to DBA
+exec DBA_MonitorLatency', 
+		@database_name=N'Monitor', 
+		@flags=0
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+/****** Object:  Step [latency more then 60 seconds]    Script Date: 5/29/2022 11:33:54 PM ******/
+EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'latency more then 60 seconds', 
+		@step_id=2, 
+		@cmdexec_success_code=0, 
+		@on_success_action=1, 
+		@on_success_step_id=0, 
+		@on_fail_action=2, 
+		@on_fail_step_id=0, 
+		@retry_attempts=0, 
+		@retry_interval=0, 
+		@os_run_priority=0, @subsystem=N'TSQL', 
+		@command=N'--20180203@Alfie(DBDist): Adjust Latency from 20000 to 60000 and Send alert mail to LetsTalk (For VN)
+--exec DBA_MonitorLatency_AlertToLetsTalk', 
+		@database_name=N'Monitor', 
+		@flags=0
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=N'1 min', 
+		@enabled=1, 
+		@freq_type=8, 
+		@freq_interval=127, 
+		@freq_subday_type=4, 
+		@freq_subday_interval=1, 
+		@freq_relative_interval=0, 
+		@freq_recurrence_factor=1, 
+		@active_start_date=20150202, 
+		@active_end_date=99991231, 
+		@active_start_time=200000, 
+		@active_end_time=115959, 
+		@schedule_uid=N'6a16c290-0104-4113-bf20-77a937e342a3'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=N'forweeken', 
+		@enabled=1, 
+		@freq_type=8, 
+		@freq_interval=97, 
+		@freq_subday_type=4, 
+		@freq_subday_interval=1, 
+		@freq_relative_interval=0, 
+		@freq_recurrence_factor=1, 
+		@active_start_date=20180223, 
+		@active_end_date=99991231, 
+		@active_start_time=120000, 
+		@active_end_time=140000, 
+		@schedule_uid=N'0ac61036-724a-429c-a157-8850f4ea7bff'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = N'(local)'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+COMMIT TRANSACTION
+GOTO EndSave
+QuitWithRollback:
+    IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
+EndSave:
+GO
+
+/****** Object:  Job [DBA_Monitor Replication Latency NightScan]    Script Date: 5/29/2022 11:33:54 PM ******/
+BEGIN TRANSACTION
+DECLARE @ReturnCode INT
+SELECT @ReturnCode = 0
+/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 5/29/2022 11:33:54 PM ******/
+IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
+BEGIN
+EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+
+END
+
+DECLARE @jobId BINARY(16)
+EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA_Monitor Replication Latency NightScan', 
+		@enabled=1, 
+		@notify_level_eventlog=0, 
+		@notify_level_email=2, 
+		@notify_level_netsend=0, 
+		@notify_level_page=0, 
+		@delete_level=0, 
+		@description=N'--20161027@Steven
+--20180221@Alfie (DBDist) : Modify SP for Check between 12:00 and 20:00 (ServerTime) everyday and remove filter pub:DBTrans_SunCity_ExecRepAcc
+--20180313@Alfie (DBDist) : IF on Move Bet then latency > 200000 (200 sec)', 
+		@category_name=N'[Uncategorized (Local)]', 
+		@owner_login_name=N'sa', 
+		@notify_email_operator_name=N'DBAAdmin', @job_id = @jobId OUTPUT
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+/****** Object:  Step [latency more then 20 seconds]    Script Date: 5/29/2022 11:33:54 PM ******/
+EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'latency more then 20 seconds', 
+		@step_id=1, 
+		@cmdexec_success_code=0, 
+		@on_success_action=1, 
+		@on_success_step_id=0, 
+		@on_fail_action=2, 
+		@on_fail_step_id=0, 
+		@retry_attempts=0, 
+		@retry_interval=0, 
+		@os_run_priority=0, @subsystem=N'TSQL', 
+		@command=N'exec DBA_MonitorLatency_CheckOver3TimesAndNightScan', 
+		@database_name=N'Monitor', 
+		@flags=0
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=N'Daily', 
+		@enabled=1, 
+		@freq_type=4, 
+		@freq_interval=1, 
+		@freq_subday_type=1, 
+		@freq_subday_interval=1, 
+		@freq_relative_interval=0, 
+		@freq_recurrence_factor=0, 
+		@active_start_date=20150202, 
+		@active_end_date=99991231, 
+		@active_start_time=210000, 
+		@active_end_time=235959, 
+		@schedule_uid=N'e8d0a8c1-fc0a-4ee3-aca1-f4e1ff16bcd9'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=N'Every 1 min', 
+		@enabled=1, 
+		@freq_type=4, 
+		@freq_interval=1, 
+		@freq_subday_type=4, 
+		@freq_subday_interval=1, 
+		@freq_relative_interval=0, 
+		@freq_recurrence_factor=0, 
+		@active_start_date=20180313, 
+		@active_end_date=99991231, 
+		@active_start_time=120000, 
+		@active_end_time=200000, 
+		@schedule_uid=N'1322f842-2bdf-4d91-b0ac-38322fbd4f28'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = N'(local)'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+COMMIT TRANSACTION
+GOTO EndSave
+QuitWithRollback:
+    IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
+EndSave:
+GO
+
+/****** Object:  Job [DBA_MonitorLatency_CheckOver3TimesAndNightScan_Test]    Script Date: 5/29/2022 11:33:54 PM ******/
+BEGIN TRANSACTION
+DECLARE @ReturnCode INT
+SELECT @ReturnCode = 0
+/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 5/29/2022 11:33:54 PM ******/
+IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
+BEGIN
+EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+
+END
+
+DECLARE @jobId BINARY(16)
+EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA_MonitorLatency_CheckOver3TimesAndNightScan_Test', 
+		@enabled=0, 
+		@notify_level_eventlog=0, 
+		@notify_level_email=0, 
+		@notify_level_netsend=0, 
+		@notify_level_page=0, 
+		@delete_level=0, 
+		@description=N'--Alfie test', 
+		@category_name=N'[Uncategorized (Local)]', 
+		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+/****** Object:  Step [alfietest]    Script Date: 5/29/2022 11:33:54 PM ******/
+EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'alfietest', 
+		@step_id=1, 
+		@cmdexec_success_code=0, 
+		@on_success_action=1, 
+		@on_success_step_id=0, 
+		@on_fail_action=2, 
+		@on_fail_step_id=0, 
+		@retry_attempts=0, 
+		@retry_interval=0, 
+		@os_run_priority=0, @subsystem=N'TSQL', 
+		@command=N'exec DBA_MonitorLatency_CheckOver3TimesAndNightScan_Test', 
+		@database_name=N'Monitor', 
+		@flags=0
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=N'alfietest', 
+		@enabled=1, 
+		@freq_type=4, 
+		@freq_interval=1, 
+		@freq_subday_type=4, 
+		@freq_subday_interval=1, 
+		@freq_relative_interval=0, 
+		@freq_recurrence_factor=0, 
+		@active_start_date=20180223, 
+		@active_end_date=99991231, 
+		@active_start_time=120000, 
+		@active_end_time=200000, 
+		@schedule_uid=N'67a207db-8e67-41e7-ac1f-473046e10873'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=N'alfietest1', 
+		@enabled=1, 
+		@freq_type=4, 
+		@freq_interval=1, 
+		@freq_subday_type=1, 
+		@freq_subday_interval=0, 
+		@freq_relative_interval=0, 
+		@freq_recurrence_factor=0, 
+		@active_start_date=20180223, 
+		@active_end_date=99991231, 
+		@active_start_time=210000, 
+		@active_end_time=235959, 
+		@schedule_uid=N'2a2e87bd-62d5-48b8-8650-b2f29a55d110'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = N'(local)'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+COMMIT TRANSACTION
+GOTO EndSave
+QuitWithRollback:
+    IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
+EndSave:
+GO
+
+/****** Object:  Job [DBA_Repl_Monitor]    Script Date: 5/29/2022 11:33:54 PM ******/
+BEGIN TRANSACTION
+DECLARE @ReturnCode INT
+SELECT @ReturnCode = 0
+/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 5/29/2022 11:33:54 PM ******/
+IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
+BEGIN
+EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+
+END
+
+DECLARE @jobId BINARY(16)
+EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA_Repl_Monitor', 
+		@enabled=1, 
+		@notify_level_eventlog=0, 
+		@notify_level_email=0, 
+		@notify_level_netsend=0, 
+		@notify_level_page=0, 
+		@delete_level=0, 
+		@description=N'No description available.', 
+		@category_name=N'[Uncategorized (Local)]', 
+		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+/****** Object:  Step [Get rep status data]    Script Date: 5/29/2022 11:33:54 PM ******/
+EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Get rep status data', 
+		@step_id=1, 
+		@cmdexec_success_code=0, 
+		@on_success_action=1, 
+		@on_success_step_id=0, 
+		@on_fail_action=2, 
+		@on_fail_step_id=0, 
+		@retry_attempts=0, 
+		@retry_interval=0, 
+		@os_run_priority=0, @subsystem=N'TSQL', 
+		@command=N'EXEC dbo.Task_ReplMonitor1 @ServerName = ''DBTrans''
+EXEC dbo.Task_ReplMonitor1 @ServerName = ''DB02''
+EXEC dbo.Task_ReplMonitor1 @ServerName = ''DB05''
+EXEC dbo.Task_ReplMonitor1 @ServerName = ''DB05BK1''
+EXEC dbo.Task_ReplMonitor1 @ServerName = ''DB052''
+EXEC dbo.Task_ReplMonitor1 @ServerName = ''DB053''
+EXEC dbo.Task_ReplMonitor1 @ServerName = ''DB054''
+EXEC dbo.Task_ReplMonitor1 @ServerName = ''DB055''
+EXEC dbo.Task_ReplMonitor1 @ServerName = ''DB061''
+EXEC dbo.Task_ReplMonitor1 @ServerName = ''DB062''
+EXEC dbo.Task_ReplMonitor1 @ServerName = ''DBTP10C''
+EXEC dbo.Task_ReplMonitor1 @ServerName = ''DB04Admin1''
+EXEC dbo.Task_ReplMonitor1 @ServerName = ''DB04Admin2''
+EXEC dbo.Task_ReplMonitor1 @ServerName = ''DBODDSN1''
+EXEC dbo.Task_ReplMonitor1 @ServerName = ''DBODDSN2''
+EXEC dbo.Task_ReplMonitor1 @ServerName = ''DBM2STAGE''
+EXEC dbo.Task_ReplMonitor1 @ServerName = ''DBBAK2''', 
+		@database_name=N'Monitor', 
+		@flags=0
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=N'every 1 min', 
+		@enabled=1, 
+		@freq_type=4, 
+		@freq_interval=1, 
+		@freq_subday_type=4, 
+		@freq_subday_interval=1, 
+		@freq_relative_interval=0, 
+		@freq_recurrence_factor=0, 
+		@active_start_date=20120809, 
+		@active_end_date=99991231, 
+		@active_start_time=0, 
+		@active_end_time=235959, 
+		@schedule_uid=N'3c9d1be6-a94c-46af-8f92-d8e383f3251b'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = N'(local)'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+COMMIT TRANSACTION
+GOTO EndSave
+QuitWithRollback:
+    IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
+EndSave:
+GO
+
+/****** Object:  Job [DBA_Replication_Err_Monitor]    Script Date: 5/29/2022 11:33:54 PM ******/
+BEGIN TRANSACTION
+DECLARE @ReturnCode INT
+SELECT @ReturnCode = 0
+/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 5/29/2022 11:33:54 PM ******/
 IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
 BEGIN
 EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
@@ -978,7 +1146,7 @@ EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA_Replication_Err_Monitor'
 		@category_name=N'[Uncategorized (Local)]', 
 		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [DBA_Replication_Err_Monitor]    Script Date: 4/15/2022 11:10:19 AM ******/
+/****** Object:  Step [DBA_Replication_Err_Monitor]    Script Date: 5/29/2022 11:33:54 PM ******/
 EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'DBA_Replication_Err_Monitor', 
 		@step_id=1, 
 		@cmdexec_success_code=0, 
@@ -990,7 +1158,7 @@ EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'DBA_Repl
 		@retry_interval=0, 
 		@os_run_priority=0, @subsystem=N'TSQL', 
 		@command=N'exec dbo.DBA_Replication_Err_Monitor', 
-		@database_name=N'dist_dbcust', 
+		@database_name=N'distribution', 
 		@flags=0
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
 EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1
@@ -1007,7 +1175,7 @@ EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=N'DBA_Repli
 		@active_end_date=99991231, 
 		@active_start_time=0, 
 		@active_end_time=235959, 
-		@schedule_uid=N'9bd8a020-4dd5-460e-a315-3923c93295d9'
+		@schedule_uid=N'77cec321-1e80-4143-b070-c26233d787e2'
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
 EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = N'(local)'
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
@@ -1018,11 +1186,75 @@ QuitWithRollback:
 EndSave:
 GO
 
-/****** Object:  Job [DBA_Script_Instance_Object]    Script Date: 4/15/2022 11:10:19 AM ******/
+/****** Object:  Job [DBA_RepMonitor Monthly Purge]    Script Date: 5/29/2022 11:33:54 PM ******/
 BEGIN TRANSACTION
 DECLARE @ReturnCode INT
 SELECT @ReturnCode = 0
-/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 4/15/2022 11:10:19 AM ******/
+/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 5/29/2022 11:33:54 PM ******/
+IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
+BEGIN
+EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+
+END
+
+DECLARE @jobId BINARY(16)
+EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA_RepMonitor Monthly Purge', 
+		@enabled=1, 
+		@notify_level_eventlog=0, 
+		@notify_level_email=0, 
+		@notify_level_netsend=0, 
+		@notify_level_page=0, 
+		@delete_level=0, 
+		@description=N'No description available.', 
+		@category_name=N'[Uncategorized (Local)]', 
+		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+/****** Object:  Step [Purge data (Keep 1 month)]    Script Date: 5/29/2022 11:33:54 PM ******/
+EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Purge data (Keep 1 month)', 
+		@step_id=1, 
+		@cmdexec_success_code=0, 
+		@on_success_action=1, 
+		@on_success_step_id=0, 
+		@on_fail_action=2, 
+		@on_fail_step_id=0, 
+		@retry_attempts=0, 
+		@retry_interval=0, 
+		@os_run_priority=0, @subsystem=N'TSQL', 
+		@command=N'exec DBA_Purge1MonthData', 
+		@database_name=N'Monitor', 
+		@flags=0
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=N'daily purge data', 
+		@enabled=1, 
+		@freq_type=4, 
+		@freq_interval=1, 
+		@freq_subday_type=1, 
+		@freq_subday_interval=0, 
+		@freq_relative_interval=0, 
+		@freq_recurrence_factor=0, 
+		@active_start_date=20150127, 
+		@active_end_date=99991231, 
+		@active_start_time=200000, 
+		@active_end_time=235959, 
+		@schedule_uid=N'5cc68cea-8f8c-4e13-9a50-1c107ee48819'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = N'(local)'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+COMMIT TRANSACTION
+GOTO EndSave
+QuitWithRollback:
+    IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
+EndSave:
+GO
+
+/****** Object:  Job [DBA_Script_Instance_Object]    Script Date: 5/29/2022 11:33:54 PM ******/
+BEGIN TRANSACTION
+DECLARE @ReturnCode INT
+SELECT @ReturnCode = 0
+/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 5/29/2022 11:33:54 PM ******/
 IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
 BEGIN
 EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
@@ -1049,7 +1281,7 @@ EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA_Script_Instance_Object',
 		@category_name=N'[Uncategorized (Local)]', 
 		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [S1.Create-Folder]    Script Date: 4/15/2022 11:10:19 AM ******/
+/****** Object:  Step [S1.Create-Folder]    Script Date: 5/29/2022 11:33:54 PM ******/
 EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'S1.Create-Folder', 
 		@step_id=1, 
 		@cmdexec_success_code=0, 
@@ -1072,7 +1304,7 @@ New-Item -ItemType Directory -Force -Path G:\ConfigFile\Backup
 		@database_name=N'master', 
 		@flags=0
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [S2.LoginID]    Script Date: 4/15/2022 11:10:19 AM ******/
+/****** Object:  Step [S2.LoginID]    Script Date: 5/29/2022 11:33:54 PM ******/
 EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'S2.LoginID', 
 		@step_id=2, 
 		@cmdexec_success_code=0, 
@@ -1088,7 +1320,7 @@ EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'S2.Login
 		@output_file_name=N'G:\ConfigFile\LoginID\Create-LoginID_$(ESCAPE_SQUOTE(DATE)).sql', 
 		@flags=0
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [S3.AgentJob]    Script Date: 4/15/2022 11:10:19 AM ******/
+/****** Object:  Step [S3.AgentJob]    Script Date: 5/29/2022 11:33:54 PM ******/
 EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'S3.AgentJob', 
 		@step_id=3, 
 		@cmdexec_success_code=0, 
@@ -1129,7 +1361,7 @@ ForEach ( $job in $jobs )
 		@database_name=N'master', 
 		@flags=0
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [S4.Alias]    Script Date: 4/15/2022 11:10:19 AM ******/
+/****** Object:  Step [S4.Alias]    Script Date: 5/29/2022 11:33:54 PM ******/
 EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'S4.Alias', 
 		@step_id=4, 
 		@cmdexec_success_code=0, 
@@ -1159,7 +1391,7 @@ reg export HKLM\SOFTWARE\Wow6432Node\Microsoft\MSSQLServer\Client\ConnectTo Alia
 		@database_name=N'master', 
 		@flags=0
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [S5.LinkedServer]    Script Date: 4/15/2022 11:10:19 AM ******/
+/****** Object:  Step [S5.LinkedServer]    Script Date: 5/29/2022 11:33:54 PM ******/
 EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'S5.LinkedServer', 
 		@step_id=5, 
 		@cmdexec_success_code=0, 
@@ -1187,7 +1419,7 @@ $server.LinkedServers | foreach {$_.Script()+ "GO`n"} | Out-File $FileName
 		@database_name=N'master', 
 		@flags=0
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [S6.Others]    Script Date: 4/15/2022 11:10:19 AM ******/
+/****** Object:  Step [S6.Others]    Script Date: 5/29/2022 11:33:54 PM ******/
 EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'S6.Others', 
 		@step_id=6, 
 		@cmdexec_success_code=0, 
@@ -1233,7 +1465,7 @@ $server.BackupDevices | foreach {$_.Script()+ "GO`n"} | Out-File -Append $FileNa
 		@database_name=N'master', 
 		@flags=0
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [S7.Replication]    Script Date: 4/15/2022 11:10:19 AM ******/
+/****** Object:  Step [S7.Replication]    Script Date: 5/29/2022 11:33:54 PM ******/
 EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'S7.Replication', 
 		@step_id=7, 
 		@cmdexec_success_code=0, 
@@ -1408,7 +1640,7 @@ Set-Content $filename
 		@database_name=N'master', 
 		@flags=0
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [S8.Delete_Hist_File]    Script Date: 4/15/2022 11:10:20 AM ******/
+/****** Object:  Step [S8.Delete_Hist_File]    Script Date: 5/29/2022 11:33:54 PM ******/
 EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'S8.Delete_Hist_File', 
 		@step_id=8, 
 		@cmdexec_success_code=0, 
@@ -1432,7 +1664,7 @@ Get-ChildItem -Path $path -Recurse -Force | Where-Object { $_.PSIsContainer -and
 		@database_name=N'master', 
 		@flags=0
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [S9.Get-ServerInfo]    Script Date: 4/15/2022 11:10:20 AM ******/
+/****** Object:  Step [S9.Get-ServerInfo]    Script Date: 5/29/2022 11:33:54 PM ******/
 EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'S9.Get-ServerInfo', 
 		@step_id=9, 
 		@cmdexec_success_code=0, 
@@ -1526,11 +1758,11 @@ QuitWithRollback:
 EndSave:
 GO
 
-/****** Object:  Job [DBA_Txn_Backup]    Script Date: 4/15/2022 11:10:20 AM ******/
+/****** Object:  Job [DBA_Txn_Backup]    Script Date: 5/29/2022 11:33:54 PM ******/
 BEGIN TRANSACTION
 DECLARE @ReturnCode INT
 SELECT @ReturnCode = 0
-/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 4/15/2022 11:10:20 AM ******/
+/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 5/29/2022 11:33:54 PM ******/
 IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
 BEGIN
 EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
@@ -1540,7 +1772,7 @@ END
 
 DECLARE @jobId BINARY(16)
 EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA_Txn_Backup', 
-		@enabled=1, 
+		@enabled=0, 
 		@notify_level_eventlog=0, 
 		@notify_level_email=0, 
 		@notify_level_netsend=0, 
@@ -1550,7 +1782,7 @@ EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA_Txn_Backup',
 		@category_name=N'[Uncategorized (Local)]', 
 		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [Step1_Txn_Log_Backup]    Script Date: 4/15/2022 11:10:20 AM ******/
+/****** Object:  Step [Step1_Txn_Log_Backup]    Script Date: 5/29/2022 11:33:54 PM ******/
 EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Step1_Txn_Log_Backup', 
 		@step_id=1, 
 		@cmdexec_success_code=0, 
@@ -1565,7 +1797,7 @@ EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Step1_Tx
 		@database_name=N'MONDB', 
 		@flags=0
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
-/****** Object:  Step [Step2_Del Hist File]    Script Date: 4/15/2022 11:10:20 AM ******/
+/****** Object:  Step [Step2_Del Hist File]    Script Date: 5/29/2022 11:33:54 PM ******/
 EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Step2_Del Hist File', 
 		@step_id=2, 
 		@cmdexec_success_code=0, 
@@ -1607,7 +1839,136 @@ EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=N'sch1',
 		@active_end_date=99991231, 
 		@active_start_time=0, 
 		@active_end_time=235959, 
-		@schedule_uid=N'33b053f7-381c-473c-9fe5-89fd2866ddb4'
+		@schedule_uid=N'08ba8974-71c6-4607-9235-e268d62efca7'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = N'(local)'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+COMMIT TRANSACTION
+GOTO EndSave
+QuitWithRollback:
+    IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
+EndSave:
+GO
+
+/****** Object:  Job [DBA_UM_REINDEX_EXEC]    Script Date: 5/29/2022 11:33:55 PM ******/
+BEGIN TRANSACTION
+DECLARE @ReturnCode INT
+SELECT @ReturnCode = 0
+/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 5/29/2022 11:33:55 PM ******/
+IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
+BEGIN
+EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+
+END
+
+DECLARE @jobId BINARY(16)
+EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA_UM_REINDEX_EXEC', 
+		@enabled=1, 
+		@notify_level_eventlog=0, 
+		@notify_level_email=0, 
+		@notify_level_netsend=0, 
+		@notify_level_page=0, 
+		@delete_level=0, 
+		@description=N'No description available.', 
+		@category_name=N'[Uncategorized (Local)]', 
+		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+/****** Object:  Step [Step1_Run Reindex]    Script Date: 5/29/2022 11:33:55 PM ******/
+EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Step1_Run Reindex', 
+		@step_id=1, 
+		@cmdexec_success_code=0, 
+		@on_success_action=3, 
+		@on_success_step_id=0, 
+		@on_fail_action=2, 
+		@on_fail_step_id=0, 
+		@retry_attempts=0, 
+		@retry_interval=0, 
+		@os_run_priority=0, @subsystem=N'TSQL', 
+		@command=N'exec dbo.DBA_UM_REINDEX_EXEC', 
+		@database_name=N'MONDB', 
+		@flags=0
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+/****** Object:  Step [Step2_UpdateStats]    Script Date: 5/29/2022 11:33:55 PM ******/
+EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Step2_UpdateStats', 
+		@step_id=2, 
+		@cmdexec_success_code=0, 
+		@on_success_action=1, 
+		@on_success_step_id=0, 
+		@on_fail_action=2, 
+		@on_fail_step_id=0, 
+		@retry_attempts=0, 
+		@retry_interval=0, 
+		@os_run_priority=0, @subsystem=N'TSQL', 
+		@command=N'EXEC master..sp_MSForeachDB ''USE [?];exec sp_updatestats;''', 
+		@database_name=N'master', 
+		@flags=0
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = N'(local)'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+COMMIT TRANSACTION
+GOTO EndSave
+QuitWithRollback:
+    IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
+EndSave:
+GO
+
+/****** Object:  Job [DBA_UM_REINDEX_GEN]    Script Date: 5/29/2022 11:33:55 PM ******/
+BEGIN TRANSACTION
+DECLARE @ReturnCode INT
+SELECT @ReturnCode = 0
+/****** Object:  JobCategory [[Uncategorized (Local)]]    Script Date: 5/29/2022 11:33:55 PM ******/
+IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
+BEGIN
+EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+
+END
+
+DECLARE @jobId BINARY(16)
+EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'DBA_UM_REINDEX_GEN', 
+		@enabled=1, 
+		@notify_level_eventlog=0, 
+		@notify_level_email=0, 
+		@notify_level_netsend=0, 
+		@notify_level_page=0, 
+		@delete_level=0, 
+		@description=N'No description available.', 
+		@category_name=N'[Uncategorized (Local)]', 
+		@owner_login_name=N'sa', @job_id = @jobId OUTPUT
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+/****** Object:  Step [Step1_Gather Fragmentation Info]    Script Date: 5/29/2022 11:33:55 PM ******/
+EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Step1_Gather Fragmentation Info', 
+		@step_id=1, 
+		@cmdexec_success_code=0, 
+		@on_success_action=1, 
+		@on_success_step_id=0, 
+		@on_fail_action=2, 
+		@on_fail_step_id=0, 
+		@retry_attempts=0, 
+		@retry_interval=0, 
+		@os_run_priority=0, @subsystem=N'TSQL', 
+		@command=N'exec dbo.DBA_UM_REINDEX_GEN', 
+		@database_name=N'MONDB', 
+		@flags=0
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=N'sch1', 
+		@enabled=1, 
+		@freq_type=8, 
+		@freq_interval=8, 
+		@freq_subday_type=1, 
+		@freq_subday_interval=0, 
+		@freq_relative_interval=0, 
+		@freq_recurrence_factor=1, 
+		@active_start_date=20151010, 
+		@active_end_date=99991231, 
+		@active_start_time=230000, 
+		@active_end_time=235959, 
+		@schedule_uid=N'425f0c14-5c57-4c74-9bd0-3709645ea7b4'
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
 EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = N'(local)'
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
