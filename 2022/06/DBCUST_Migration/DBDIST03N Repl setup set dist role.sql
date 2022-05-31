@@ -6,7 +6,7 @@
 
 -- Installing the server as a Distributor
 use master
-exec sp_adddistributor @distributor = N'DBDIST03N', @password = xxx
+exec sp_adddistributor @distributor = N'DBDIST03N', @password = xxx --specify password of account distributor_admin (sub sa's password)
 GO
 
 
