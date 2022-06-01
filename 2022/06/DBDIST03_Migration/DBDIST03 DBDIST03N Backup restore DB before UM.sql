@@ -20,7 +20,7 @@ WITH NOFORMAT, NOINIT, NAME =
 GO
 
 
--- 2. Copy the full backup files on step 1 to DBDIST03N (before UM)
+-- 2. Copy the full backup files on step 1 from DBIST032 G:\BACKUP_LOCAL\Daniel_migrate\ to DBDISTN3 G:\BACKUP_LOCAL\Daniel_migrate\ (before UM)
 
 
 -- 3. Run on DBDIST03N: Restore full DB with NORECOVERY from the files copied in step 2 (before UM)
@@ -33,7 +33,7 @@ RESTORE DATABASE [MonDB]
 FROM  DISK = N'G:\BACKUP_LOCAL\Daniel_migrate\DBDIST03.MonDB_20220609.bak' WITH  FILE = 1, NORECOVERY,
 MOVE N'MonDB' TO N'H:\USER_DB\MonDB\MonDB.mdf',
 MOVE N'MonDB_log' TO N'H:\USER_DB\MonDB\MonDB_log.ldf',
-NOUNLOAD,  STATS = 10
+NOUNLOAD, REPLACE, STATS = 10
 
 
 --------------------------------------------------------------------------------------------------------
@@ -43,5 +43,5 @@ RESTORE DATABASE [Monitor]
 FROM  DISK = N'G:\BACKUP_LOCAL\Daniel_migrate\DBDIST03.Monitor_20220609.bak' WITH  FILE = 1, NORECOVERY,
 MOVE N'Monitor' TO N'H:\USER_DB\Monitor\Monitor.mdf',
 MOVE N'Monitor_log' TO N'H:\USER_DB\Monitor\Monitor_log.ldf',
-NOUNLOAD,  STATS = 10
+NOUNLOAD, REPLACE, STATS = 10
 

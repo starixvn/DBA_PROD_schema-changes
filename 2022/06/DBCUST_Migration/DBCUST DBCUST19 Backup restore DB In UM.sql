@@ -62,7 +62,7 @@ WITH DIFFERENTIAL, NOFORMAT, NOINIT, NAME =
 GO
 
 
--- 2. Copy the diff backup files on step 4 to DBCUST19 (In UM)
+-- 2. Copy the diff backup files on step 1 from DBCUST2 G:\BACKUP_LOCAL\Daniel_migrate\ to DBCUSTN1 G:\BACKUP_LOCAL\Daniel_migrate\ (In UM)
 
 
 -- 3. Run on DBCUST19: Restore diff DB from the files copied in step 5 (In UM)

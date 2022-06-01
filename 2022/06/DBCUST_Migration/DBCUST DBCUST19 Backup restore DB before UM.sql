@@ -61,7 +61,7 @@ WITH NOFORMAT, NOINIT, NAME =
 GO
 
 
--- 2. Copy the full backup files on step 1 to DBCUST19 (before UM)
+-- 2. Copy the full backup files on step 1 from DBCUST2 G:\BACKUP_LOCAL\Daniel_migrate\ to DBCUSTN1 G:\BACKUP_LOCAL\Daniel_migrate\ (before UM)
 
 
 -- 3. Run on DBCUST19: Restore full DB with NORECOVERY from the files copied in step 2 (before UM)
@@ -78,7 +78,7 @@ MOVE N'DATA' TO N'H:\User_DB\AUTHDB\DATA.ndf',
 MOVE N'DATA_INDEX' TO N'H:\User_DB\AUTHDB\DATA_INDEX.ndf',
 MOVE N'Nonce' TO N'H:\User_DB\AUTHDB\Nonce.ndf',
 MOVE N'Nonce_INDEX' TO N'H:\User_DB\AUTHDB\Nonce_INDEX.ndf',
-NOUNLOAD,  STATS = 10
+NOUNLOAD, REPLACE,  STATS = 10
 
 --------------------------------------------------------------------------------------------------------
 ALTER DATABASE bodb_CustomerLog SET SINGLE_USER WITH ROLLBACK IMMEDIATE
@@ -93,7 +93,7 @@ MOVE N'serviceBroker_01' TO N'H:\USER_DB\bodb_CustomerLog\serviceBroker_01.ndf',
 MOVE N'eaLogLogin-01' TO N'H:\USER_DB\bodb_CustomerLog\eaLogLogin-01.ndf',
 MOVE N'eaLogUserCtrl-01' TO N'H:\USER_DB\bodb_CustomerLog\eaLogUserCtrl-01.ndf',
 MOVE N'OWA_DATA' TO N'H:\USER_DB\bodb_CustomerLog\OWN_DATA.ndf',
-NOUNLOAD,  STATS = 10
+NOUNLOAD, REPLACE,  STATS = 10
 
 --------------------------------------------------------------------------------------------------------
 ALTER DATABASE bodb_Licensee SET SINGLE_USER WITH ROLLBACK IMMEDIATE
@@ -113,7 +113,7 @@ MOVE N'user_table_02' TO N'H:\USER_DB\bodb_Licensee\user_table_02.ndf',
 MOVE N'OWA_DATA' TO N'H:\USER_DB\bodb_licensee\OWN_DATA.ndf',
 MOVE N'OWA_INDEX' TO N'H:\USER_DB\bodb_licensee\OWA_INDEX.ndf',
 MOVE N'LicenseeCustComm_History_table_01' TO N'H:\USER_DB\bodb_Licensee\LicenseeCustComm_History_table_01.ndf',
-NOUNLOAD,  STATS = 10
+NOUNLOAD, REPLACE,  STATS = 10
 
 --------------------------------------------------------------------------------------------------------
 ALTER DATABASE CustDB SET SINGLE_USER WITH ROLLBACK IMMEDIATE
@@ -192,7 +192,7 @@ MOVE N'CS_CustDiscount_Member_table_01' TO N'H:\USER_DB\CustDB\CS_CustDiscount_M
 MOVE N'CS_CustGroupDiscount_Member_table_01' TO N'H:\USER_DB\CustDB\CS_CustGroupDiscount_Member_table_01.ndf',
 MOVE N'BetRestriction_01' TO N'H:\USER_DB\CustDB\BetRestriction_01.ndf',
 MOVE N'Loyalty' TO N'H:\USER_DB\CustDB\Loyalty.ndf',
-NOUNLOAD,  STATS = 10
+NOUNLOAD, REPLACE,  STATS = 10
 
 --------------------------------------------------------------------------------------------------------
 ALTER DATABASE IPDB SET SINGLE_USER WITH ROLLBACK IMMEDIATE
@@ -200,7 +200,7 @@ RESTORE DATABASE [IPDB]
 FROM  DISK = N'G:\BACKUP_LOCAL\Daniel_migrate\DBCUST.IPDB_20220609.bak' WITH  FILE = 1, NORECOVERY,
 MOVE N'ipdb_Data' TO N'H:\USER_DB\IPDB\IPDB_Primary.MDF',
 MOVE N'ipdb_Log' TO N'H:\USER_DB\IPDB\IPDB_Log.LDF',
-NOUNLOAD,  STATS = 10
+NOUNLOAD, REPLACE,  STATS = 10
 
 --------------------------------------------------------------------------------------------------------
 ALTER DATABASE MonDB SET SINGLE_USER WITH ROLLBACK IMMEDIATE
@@ -208,7 +208,7 @@ RESTORE DATABASE [MonDB]
 FROM  DISK = N'G:\BACKUP_LOCAL\Daniel_migrate\DBCUST.MonDB_20220609.bak' WITH  FILE = 1, NORECOVERY,
 MOVE N'MonDB' TO N'H:\USER_DB\MonDB\MonDB.mdf',
 MOVE N'MonDB_log' TO N'H:\USER_DB\MonDB\MonDB_log.ldf',
-NOUNLOAD,  STATS = 10
+NOUNLOAD, REPLACE,  STATS = 10
 
 --------------------------------------------------------------------------------------------------------
 ALTER DATABASE N88_UserControl SET SINGLE_USER WITH ROLLBACK IMMEDIATE
@@ -217,7 +217,7 @@ FROM  DISK = N'G:\BACKUP_LOCAL\Daniel_migrate\DBCUST.N88_UserControl_20220609.ba
 MOVE N'N88_UserControl_Primary' TO N'H:\USER_DB\N88_UserControl\Primary.MDF',
 MOVE N'N88_UserControl_log' TO N'H:\USER_DB\N88_UserControl\NAP_UserControl_log.LDF',
 MOVE N'N88_UserControl_table_01' TO N'H:\USER_DB\N88_UserControl\N88_UserControl_table_01.NDF',
-NOUNLOAD,  STATS = 10
+NOUNLOAD, REPLACE,  STATS = 10
 
 --------------------------------------------------------------------------------------------------------
 ALTER DATABASE NAP_UserControl SET SINGLE_USER WITH ROLLBACK IMMEDIATE
@@ -226,7 +226,7 @@ FROM  DISK = N'G:\BACKUP_LOCAL\Daniel_migrate\DBCUST.NAP_UserControl_20220609.ba
 MOVE N'NAP_UserControl_Primary' TO N'H:\USER_DB\NAP_UserControl\Primary.MDF',
 MOVE N'NAP_UserControl_log' TO N'H:\USER_DB\NAP_UserControl\NAP_UserControl_log.LDF',
 MOVE N'NAP_UserControl_table_01' TO N'H:\USER_DB\NAP_UserControl\NAP_UserControl_table_01.NDF',
-NOUNLOAD,  STATS = 10
+NOUNLOAD, REPLACE,  STATS = 10
 
 --------------------------------------------------------------------------------------------------------
 ALTER DATABASE SiteConfig SET SINGLE_USER WITH ROLLBACK IMMEDIATE
@@ -240,4 +240,4 @@ MOVE N'LIC_Data' TO N'H:\USER_DB\Siteconfig\LIC_Data.NDF',
 MOVE N'LIC_index' TO N'H:\USER_DB\Siteconfig\LIC_index.NDF',
 MOVE N'DomainLists_data' TO N'H:\USER_DB\SiteConfig\DomainLists_data.ndf',
 MOVE N'DomainLists_index' TO N'H:\USER_DB\SiteConfig\DomainLists_index.ndf',
-NOUNLOAD,  STATS = 10
+NOUNLOAD, REPLACE,  STATS = 10
