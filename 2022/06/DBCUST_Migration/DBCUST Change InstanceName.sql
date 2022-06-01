@@ -1,6 +1,6 @@
 /*
 	Task: Check and change Servername if mismatched with others
-	Run on SITDBCUST
+	Run on old DBCUST
 */
 
 --Check server properties 
@@ -17,7 +17,7 @@ SERVERPROPERTY('IsClustered') AS 'IsClustered'
 EXEC sp_DROPSERVER 'DBCUST'
 
 --Execute below to add a new server name. Make sure local is specified.
-EXEC sp_ADDSERVER 'DBCUSTOLD', 'local'
+EXEC sp_ADDSERVER 'DBCUSTOLD08', 'local'
 
 --Change OS Servername then Reboot server.
 

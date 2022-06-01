@@ -1,6 +1,6 @@
 /*
 	Task: Check and change Servername if mismatched with others
-	Run on DBCUST19
+	Run on new DBCUST19
 */
 
 --Check server properties 

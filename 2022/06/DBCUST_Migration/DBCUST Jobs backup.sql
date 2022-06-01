@@ -641,7 +641,7 @@ EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Clear cr
 		@retry_attempts=0, 
 		@retry_interval=0, 
 		@os_run_priority=0, @subsystem=N'TSQL', 
-		@command=N'EXEC DBACC.bodb02.dbo.DBA_ArchiveAccount_UpdateAcception
+		@command=N'EXEC DBACC.bodb02.dbo.DBA_ArchiveAccount_UpdateException
 GO
 EXEC dbo.Task_ClearCredit_CustomerClearCredit', 
 		@database_name=N'CustDB', 
@@ -673,7 +673,7 @@ EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Clear cr
 		@retry_attempts=0, 
 		@retry_interval=0, 
 		@os_run_priority=0, @subsystem=N'TSQL', 
-		@command=N'EXEC DBACC.bodb02.dbo.DBA_ArchiveAccount_UpdateAcception
+		@command=N'EXEC DBACC.bodb02.dbo.DBA_ArchiveAccount_UpdateException
 GO
 EXEC dbo.Task_ClearCredit_CustomerClearCredit_Member', 
 		@database_name=N'CustDB', 
