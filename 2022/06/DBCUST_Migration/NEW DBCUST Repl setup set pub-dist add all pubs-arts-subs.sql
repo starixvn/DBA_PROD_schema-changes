@@ -1943,20 +1943,6 @@ GO
 use [CustDB]
 exec sp_addarticle @publication = N'CustDB_DR_sync', @article = N'WinLimit_ProductSettingDetail', @source_owner = N'dbo', @source_object = N'WinLimit_ProductSettingDetail', @type = N'logbased', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x000000000847589F, @identityrangemanagementoption = N'none', @destination_table = N'WinLimit_ProductSettingDetail', @destination_owner = N'dbo', @status = 24, @vertical_partition = N'false', @ins_cmd = N'CALL [sp_MSins_dboWinLimit_ProductSettingDetail]', @del_cmd = N'CALL [sp_MSdel_dboWinLimit_ProductSettingDetail]', @upd_cmd = N'SCALL [sp_MSupd_dboWinLimit_ProductSettingDetail]'
 GO
------- request add new tables
-use [CustDB]
-exec sp_addarticle @publication = N'CustDB_DR_sync', @article = N'Dep_WLMonitored_Player', @source_owner = N'dbo', @source_object = N'Dep_WLMonitored_Player', @type = N'logbased', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x000000000847589F, @identityrangemanagementoption = N'none', @destination_table = N'Dep_WLMonitored_Player', @destination_owner = N'dbo', @status = 24, @vertical_partition = N'false', @ins_cmd = N'CALL [sp_MSins_dboDep_WLMonitored_Player]', @del_cmd = N'CALL [sp_MSdel_dboDep_WLMonitored_Player]', @upd_cmd = N'SCALL [sp_MSupd_dboDep_WLMonitored_Player]'
-GO
-use [CustDB]
-exec sp_addarticle @publication = N'CustDB_DR_sync', @article = N'WLMonitored_Player', @source_owner = N'dbo', @source_object = N'WLMonitored_Player', @type = N'logbased', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x000000000847589F, @identityrangemanagementoption = N'none', @destination_table = N'WLMonitored_Player', @destination_owner = N'dbo', @status = 24, @vertical_partition = N'false', @ins_cmd = N'CALL [sp_MSins_dboWLMonitored_Player]', @del_cmd = N'CALL [sp_MSdel_dboWLMonitored_Player]', @upd_cmd = N'SCALL [sp_MSupd_dboWLMonitored_Player]'
-GO
-use [CustDB]
-exec sp_addarticle @publication = N'CustDB_DR_sync', @article = N'WLMonitored_PersonalPreset', @source_owner = N'dbo', @source_object = N'WLMonitored_PersonalPreset', @type = N'logbased', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x000000000847589F, @identityrangemanagementoption = N'none', @destination_table = N'WLMonitored_PersonalPreset', @destination_owner = N'dbo', @status = 24, @vertical_partition = N'false', @ins_cmd = N'CALL [sp_MSins_dboWLMonitored_PersonalPreset]', @del_cmd = N'CALL [sp_MSdel_dboWLMonitored_PersonalPreset]', @upd_cmd = N'SCALL [sp_MSupd_dboWLMonitored_PersonalPreset]'
-GO
-use [CustDB]
-exec sp_addarticle @publication = N'CustDB_DR_sync', @article = N'WLMonitored_Global', @source_owner = N'dbo', @source_object = N'WLMonitored_Global', @type = N'logbased', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x000000000847589F, @identityrangemanagementoption = N'none', @destination_table = N'WLMonitored_Global', @destination_owner = N'dbo', @status = 24, @vertical_partition = N'false', @ins_cmd = N'CALL [sp_MSins_dboWLMonitored_Global]', @del_cmd = N'CALL [sp_MSdel_dboWLMonitored_Global]', @upd_cmd = N'SCALL [sp_MSupd_dboWLMonitored_Global]'
-GO
----------
 
 
 -- Adding the transactional subscriptions

@@ -43,7 +43,7 @@ GO
 
 
 --================================================================================================================
---2. Create certificate SSBS_DB055_Cert to connect DBLOG (DB05, DB055)
+--2. Create certificate to connect DBLOG (DB054, DB055)
 
 --2.1. Copy cer file "SSBS_DB054_Cert.cer" from DB054 \\db054\g$\SSBSQLCertificates to DBCUST G:\SSBSQLCertificates\
 
