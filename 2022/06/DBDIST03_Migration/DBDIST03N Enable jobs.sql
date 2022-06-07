@@ -1,6 +1,6 @@
 /*
 	Task: Enable Jobs
-	Run on DBDIST03 (New)
+	Run on DBDIST03N
 */
 
 EXEC msdb.dbo.sp_update_job @job_name='DBA : MonDB Get DB Info',@enabled = 1

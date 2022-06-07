@@ -5,8 +5,8 @@
 
 USE MonDB
 GO
---ALTER USER [DBDist031\DBA_Scheduler] WITH LOGIN = [DBDist031\DBA_Scheduler];
---ALTER USER [DBDist032\DBA_Scheduler] WITH LOGIN = [DBDist032\DBA_Scheduler];
+ALTER USER [DBDistN3\DBA_Scheduler] WITH LOGIN = [DBDistN3\DBA_Scheduler];
+ALTER USER [DBDistN4\DBA_Scheduler] WITH LOGIN = [DBDistN4\DBA_Scheduler];
 ALTER USER [vnBilly] WITH LOGIN = [vnBilly];
 ALTER USER [sqlLink] WITH LOGIN = [sqlLink];
 ALTER USER [rdsvntrack] WITH LOGIN = [rdsvntrack];
