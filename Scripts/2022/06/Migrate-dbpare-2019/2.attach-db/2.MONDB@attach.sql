@@ -1,0 +1,3 @@
+CREATE DATABASE [MONDB] ON ( FILENAME = N'G:\USER_DB\MonDB\MONDB.mdf'),( FILENAME = N'G:\USER_DB\MonDB\MONDB_log.ldf'),( FILENAME = N'G:\USER_DB\UserLog_index.ndf'),( FILENAME = N'G:\USER_DB\MonDB\MonDB_Data.ndf')
+FOR
+ATTACH

@@ -1,0 +1,3 @@
+CREATE DATABASE [RB_Joe] ON ( FILENAME = N'G:\USER_DB\RB_Joe.mdf'),( FILENAME = N'G:\USER_DB\RB_Joe_log.ldf')
+FOR
+ATTACH

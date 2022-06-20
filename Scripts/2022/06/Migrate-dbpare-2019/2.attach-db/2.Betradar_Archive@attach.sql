@@ -1,0 +1,3 @@
+CREATE DATABASE [Betradar_Archive] ON ( FILENAME = N'G:\USER_DB\BetradarArchive\Betradar.mdf'),( FILENAME = N'G:\USER_DB\BetradarArchive\Betradar_log.ldf'),( FILENAME = N'G:\USER_DB\BetradarArchive\Betradar_Data.ndf'),( FILENAME = N'G:\USER_DB\BetradarArchive\Betradar_Index.ndf'),( FILENAME = N'G:\USER_DB\BetradarArchive\Betradar_SportsTickerEvent_data.ndf'),( FILENAME = N'G:\USER_DB\BetradarArchive\Betradar_SportsTickerEvent_index.ndf'),( FILENAME = N'G:\USER_DB\BetradarArchive\BetRadarOsEvent_data.ndf'),( FILENAME = N'G:\USER_DB\BetradarArchive\BetRadarOsEvent_index.ndf')
+FOR
+ATTACH

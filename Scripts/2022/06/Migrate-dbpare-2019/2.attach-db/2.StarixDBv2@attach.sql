@@ -1,0 +1,3 @@
+CREATE DATABASE [StarixDBv2] ON ( FILENAME = N'E:\USER_DB\StarixDBv2.mdf'),( FILENAME = N'E:\USER_DB\StarixDBv2_log.ldf')
+FOR
+ATTACH
