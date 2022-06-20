@@ -1,0 +1,8 @@
+rem copy files
+
+xcopy "\\dbspare\g$\USER_DB\NotificationDB\NotificationDB.mdf" "G:\USER_DB\NotificationDB\"
+xcopy "\\dbspare\g$\USER_DB\NotificationDB\NotificationDB_log.ldf" "G:\USER_DB\NotificationDB\"
+xcopy "\\dbspare\g$\USER_DB\NotificationDB\NotificationDB_DATA.ndf" "G:\USER_DB\NotificationDB\"
+xcopy "\\dbspare\g$\USER_DB\NotificationDB\NotificationDB_IDX.ndf" "G:\USER_DB\NotificationDB\"
+
+pause
