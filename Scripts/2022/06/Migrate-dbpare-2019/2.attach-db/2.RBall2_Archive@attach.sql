@@ -1,0 +1,3 @@
+CREATE DATABASE [RBall2_Archive] ON ( FILENAME = N'G:\USER_DB\RBall2_Archive\RBall2.mdf'),( FILENAME = N'G:\USER_DB\RBall2_Archive\RBall2_log.ldf'),( FILENAME = N'G:\USER_DB\RBall2_Archive\RBall2_Data.ndf'),( FILENAME = N'G:\USER_DB\RBall2_Archive\RBall2_Index.ndf'),( FILENAME = N'G:\USER_DB\RBall2_Archive\RBall2_SportsTickerEvent_data.ndf'),( FILENAME = N'G:\USER_DB\RBall2_Archive\RBall2_SportsTickerEvent_index.ndf'),( FILENAME = N'G:\USER_DB\RBall2_Archive\Int_SportsTickerEvent_Data.ndf')
+FOR
+ATTACH

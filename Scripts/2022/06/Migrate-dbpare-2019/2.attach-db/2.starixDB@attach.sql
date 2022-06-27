@@ -1,0 +1,3 @@
+CREATE DATABASE [starixDB] ON ( FILENAME = N'E:\USER_DB\starixDB\StarixDB.mdf'),( FILENAME = N'E:\USER_DB\starixDB\StarixDB_log.ldf'),( FILENAME = N'E:\USER_DB\starixDB\StarixDB_data.ndf'),( FILENAME = N'E:\USER_DB\starixDB\PerfMon_01.ndf'),( FILENAME = N'E:\USER_DB\starixDB\WaitStat_01.ndf'),( FILENAME = N'E:\USER_DB\starixDB\Monitor_01.ndf'),( FILENAME = N'E:\USER_DB\starixDB\TicketLatency_01.ndf'),( FILENAME = N'E:\USER_DB\starixDB\TicketLatency_IDX_01.ndf'),( FILENAME = N'E:\USER_DB\starixDB\Ploutos_DATA.ndf')
+FOR
+ATTACH
