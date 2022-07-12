@@ -1,3 +1,5 @@
+/*<info serverAlias="DBLOG-bodb_CustomerLog_Archive"></info>*/
+
 -------------------------
 --table: UserLog_Dep_CustSetting
 --start: 2023-01-31

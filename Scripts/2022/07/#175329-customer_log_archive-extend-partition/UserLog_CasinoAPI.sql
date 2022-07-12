@@ -1,3 +1,5 @@
+/*<info serverAlias="DBLOG-bodb_CustomerLog_Archive"></info>*/
+
 -------------------------
 --table: UserLog_CasinoAPI
 --start: 2023-01-31

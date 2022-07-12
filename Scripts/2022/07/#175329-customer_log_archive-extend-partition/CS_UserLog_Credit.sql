@@ -1,3 +1,4 @@
+/*<info serverAlias="DBLOG-bodb_CustomerLog_Archive"></info>*/
 -------------------------
 --table: CS_UserLog_Credit
 --start: 2023-01-31

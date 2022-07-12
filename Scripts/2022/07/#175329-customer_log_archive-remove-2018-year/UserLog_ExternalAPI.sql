@@ -1,3 +1,5 @@
+/*<info serverAlias="DBLOG-bodb_CustomerLog_Archive"></info>*/
+
 set nocount on
 declare @__message varchar(200)
 while 1 = 1

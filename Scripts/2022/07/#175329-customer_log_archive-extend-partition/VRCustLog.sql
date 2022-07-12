@@ -1,3 +1,5 @@
+/*<info serverAlias="DBLOG-bodb_CustomerLog_Archive"></info>*/
+
 -------------------------
 --table: VRCustLog
 --start: 2025-01-31
