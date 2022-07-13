@@ -13,7 +13,7 @@ exec [dbo].[DBA_CloneTableStructure]
 		@DestinationSchema = 'dbo',
 		@DestinationTable = '__switch_partition_temp',
 		@RecreateIfExists = 1,
-		@FileGroup = '[ps_TRANSACTION_monthly]([winlostdate])'
+		@FileGroup = '[ps_TRANSACTION_monthly]([logdate])'
 
 
 go
