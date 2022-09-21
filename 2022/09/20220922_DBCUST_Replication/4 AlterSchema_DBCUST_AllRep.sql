@@ -1,11 +1,11 @@
 /*
 	Task: Alter Schema: Renaming + change data type
-	Run scripts in correct SERVER/GROUPS in comments below
+	Run scripts in correct KBT SERVER/GROUPS in comments below
 */
 
 
 --=======================================================
--- Rename objects on CustDB_CustSetting Publication - Run on DBCUST.custdb, DB06x/DTP10C/DBTKO.bodb02 (Group 4. All CS + DBTKO)
+-- Rename objects on CustDB_CustSetting Publication - Run on DBCUST.custdb, DB06x/DTP10C (Group 4. All CS)
 --  Tables
 EXEC sp_rename 'CustWinLimit','DEL_CustWinLimit'
 EXEC sp_rename 'Dep_CustSetting','DEL_Dep_CustSetting'
@@ -22,7 +22,7 @@ EXEC sp_rename 'custsetting3rd.maxbet','DEL_maxbet', 'COLUMN'
 
 --=======================================================
 -- Change data type of articles on CustDB_CustSetting pub
--- * Run on DBCUST.custdb, DB06x/DTP10C/DBTKO.bodb02 (Group 4. All CS + DBTKO)
+-- * Run on DBCUST.custdb, DB06x/DTP10C (Group 4. All CS)
 ----------------------------------------------------------------------
 --ProductBetSetting
 ALTER TABLE [dbo].[ProductBetSetting] DROP CONSTRAINT [PK_ProductBetSetting]
@@ -120,7 +120,7 @@ GO
 
 --=======================================================
 -- Change data type of articles on CustDB_CustSetting pub
--- * Run on DBCUST/DBTRANS/DBGRPXXX.CustDB, DB04x,DB05x,DB06x/DTP10C/DBDWx/DBTKO.bodb02 (Group 5. All CI + DBTKO)
+-- * Run on DBCUST/DBTRANS/DBGRPXXX.CustDB, DB04x,DB05x,DB06x/DTP10C/DBDWx (Group 5. All CI)
 ----------------------------------------------------------------------
 --ProductStatusSiteCurrency
 ALTER TABLE [dbo].[ProductStatusSiteCurrency] DROP CONSTRAINT [PK_ProductStatusSiteCurrency]

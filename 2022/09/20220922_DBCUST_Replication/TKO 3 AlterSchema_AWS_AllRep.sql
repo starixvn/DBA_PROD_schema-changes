@@ -22,7 +22,7 @@ EXEC sp_rename 'custsetting3rd.maxbet','DEL_maxbet', 'COLUMN'
 
 --=======================================================
 -- Change data type of articles on CustDB_CustSetting pub
--- * Run on AWS DBCUST.custdb, DB061.bodb02
+-- * Run on AWS DBTKO.bodb02, DBCUST.custdb, DB061.bodb02
 ----------------------------------------------------------------------
 --ProductBetSetting
 ALTER TABLE [dbo].[ProductBetSetting] DROP CONSTRAINT [PK_ProductBetSetting]
@@ -120,7 +120,7 @@ GO
 
 --=======================================================
 -- Change data type of articles on CustDB_CustSetting pub
--- * Run on AWS DBCUST/DBTRANS.CustDB, DB04x,DB05x,DB061/DBDW.bodb02
+-- * Run on AWS DBTKO.bodb02, DBCUST/DBTRANS.CustDB, DB04x,DB05x,DB061/DBDW.bodb02
 ----------------------------------------------------------------------
 --ProductStatusSiteCurrency
 ALTER TABLE [dbo].[ProductStatusSiteCurrency] DROP CONSTRAINT [PK_ProductStatusSiteCurrency]
