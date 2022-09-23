@@ -65,10 +65,10 @@ exec sp_droparticle @publication = N'CustDB_CustSetting', @article = N'CustWinLo
 GO
 
 use [CustDB]
-exec sp_dropsubscription @publication = N'CustDB_CustSetting', @article = N'Dep_ProductBetSetting', @subscriber = N'all', @destination_db = N'all'
+exec sp_dropsubscription @publication = N'CustDB_CustSetting', @article = N'ProductBetSetting', @subscriber = N'all', @destination_db = N'all'
 GO
 use [CustDB]
-exec sp_droparticle @publication = N'CustDB_CustSetting', @article = N'Dep_ProductBetSetting', @force_invalidate_snapshot = 1
+exec sp_droparticle @publication = N'CustDB_CustSetting', @article = N'ProductBetSetting', @force_invalidate_snapshot = 1
 GO
 
 use [CustDB]
