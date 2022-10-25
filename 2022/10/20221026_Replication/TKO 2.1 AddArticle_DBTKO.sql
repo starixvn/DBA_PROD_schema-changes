@@ -3,6 +3,38 @@
 	Run script below @ DBTKO
 */
 
+-- Adding the transactional articles (TW)
+use [bodb02]
+exec sp_addarticle @publication = N'DBTKO_Bet_n_ExecRep_T', @article = N'Bet_ExecRep_20', @source_owner = N'dbo', @source_object = N'Bet_ExecRep_20', @type = N'proc exec', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_table = N'Bet_ExecRep_20', @destination_owner = N'dbo', @status = 0
+GO
+use [bodb02]
+exec sp_addarticle @publication = N'DBTKO_Bet_n_ExecRep_T', @article = N'Bet_ExecRep_21', @source_owner = N'dbo', @source_object = N'Bet_ExecRep_21', @type = N'proc exec', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_table = N'Bet_ExecRep_21', @destination_owner = N'dbo', @status = 0
+GO
+use [bodb02]
+exec sp_addarticle @publication = N'DBTKO_Bet_n_ExecRep_T', @article = N'Bet_ExecRep_22', @source_owner = N'dbo', @source_object = N'Bet_ExecRep_22', @type = N'proc exec', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_table = N'Bet_ExecRep_22', @destination_owner = N'dbo', @status = 0
+GO
+use [bodb02]
+exec sp_addarticle @publication = N'DBTKO_Bet_n_ExecRep_T', @article = N'Bet_ExecRep_23', @source_owner = N'dbo', @source_object = N'Bet_ExecRep_23', @type = N'proc exec', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_table = N'Bet_ExecRep_23', @destination_owner = N'dbo', @status = 0
+GO
+use [bodb02]
+exec sp_addarticle @publication = N'DBTKO_Bet_n_ExecRep_T', @article = N'Bet_ExecRep_24', @source_owner = N'dbo', @source_object = N'Bet_ExecRep_24', @type = N'proc exec', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_table = N'Bet_ExecRep_24', @destination_owner = N'dbo', @status = 0
+GO
+use [bodb02]
+exec sp_addarticle @publication = N'DBTKO_Bet_n_ExecRep_T', @article = N'Bet_ExecRep_25', @source_owner = N'dbo', @source_object = N'Bet_ExecRep_25', @type = N'proc exec', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_table = N'Bet_ExecRep_25', @destination_owner = N'dbo', @status = 0
+GO
+use [bodb02]
+exec sp_addarticle @publication = N'DBTKO_Bet_n_ExecRep_T', @article = N'Bet_ExecRep_26', @source_owner = N'dbo', @source_object = N'Bet_ExecRep_26', @type = N'proc exec', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_table = N'Bet_ExecRep_26', @destination_owner = N'dbo', @status = 0
+GO
+use [bodb02]
+exec sp_addarticle @publication = N'DBTKO_Bet_n_ExecRep_T', @article = N'Bet_ExecRep_27', @source_owner = N'dbo', @source_object = N'Bet_ExecRep_27', @type = N'proc exec', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_table = N'Bet_ExecRep_27', @destination_owner = N'dbo', @status = 0
+GO
+use [bodb02]
+exec sp_addarticle @publication = N'DBTKO_Bet_n_ExecRep_T', @article = N'Bet_ExecRep_28', @source_owner = N'dbo', @source_object = N'Bet_ExecRep_28', @type = N'proc exec', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_table = N'Bet_ExecRep_28', @destination_owner = N'dbo', @status = 0
+GO
+use [bodb02]
+exec sp_addarticle @publication = N'DBTKO_Bet_n_ExecRep_T', @article = N'Bet_ExecRep_29', @source_owner = N'dbo', @source_object = N'Bet_ExecRep_29', @type = N'proc exec', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_table = N'Bet_ExecRep_29', @destination_owner = N'dbo', @status = 0
+GO
+
 -- Adding the transactional articles
 use [bodb02]
 exec sp_addarticle @publication = N'DBTKO_Bet_n_ExecRep_T', @article = N'Bet_ExecRep_NAP_Admin_01_UAT4', @source_owner = N'dbo', @source_object = N'Bet_ExecRep_NAP_Admin_01_UAT4', @type = N'proc exec', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_table = N'Bet_ExecRep_NAP_Admin_01_UAT4', @destination_owner = N'dbo', @status = 0
