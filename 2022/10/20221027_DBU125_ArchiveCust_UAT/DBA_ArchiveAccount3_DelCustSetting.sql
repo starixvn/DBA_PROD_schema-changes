@@ -44,7 +44,7 @@ print  @AccName +':'+ 'START:' + convert(varchar(50), getdate(), 113)
 --===============================
 --Pre-check: Make sure cust setting data already backed-up in DBRACCUST
 IF NOT EXISTS(
-	SELECT 1 FROM DBARCCUST.bodb_Customer.dbo.custsetting_old WITH(NOLOCK) 
+	SELECT 1 FROM bodb_Customer.dbo.custsetting_old WITH(NOLOCK) 
 	WHERE custid IN(select custid from custinfo with (nolock) WHERE recommend = @AgentID)
 	)
 BEGIN
