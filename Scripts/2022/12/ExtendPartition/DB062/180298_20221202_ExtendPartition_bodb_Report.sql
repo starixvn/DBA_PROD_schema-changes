@@ -1,8 +1,8 @@
-/*<info serverAlias="DB053-bodb_Report"></info>*/
+/*<info serverAlias="DB062-bodb_Report"></info>*/
 /*
 	Created: 20221202@Sol
 	Task: Extend partition
-	DB: DB053-bodb_Report
+	DB: DB062-bodb_Report
 */
 
 USE bodb_Report;

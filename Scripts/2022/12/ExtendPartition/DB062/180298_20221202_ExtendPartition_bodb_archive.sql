@@ -1,8 +1,8 @@
-/*<info serverAlias="DB053-bodb_archive"></info>*/
+/*<info serverAlias="DB062-bodb_archive"></info>*/
 /*
 	Created: 20221202@Sol
 	Task: Extend partition
-	DB: DB053-bodb_archive
+	DB: DB062-bodb_archive
 */
 
 USE bodb_archive;
