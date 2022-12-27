@@ -45,6 +45,10 @@ exec sp_articlecolumn @publication = N'CustDB_CustInfo', @article = N'custInfo',
 
 GO
 
+-- Adding the article synchronization object
+exec sp_articleview @publication = N'CustDB_CustInfo', @article = N'custInfo', @view_name = N'SYNC_custInfo_1__64', @filter_clause = N'', @force_invalidate_snapshot = 1, @force_reinit_subscription = 1
+GO
+
 -- ### PUBLICATION = CUSTDB_CUSTOMER_INFO ###
 ---#####################################
 
