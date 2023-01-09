@@ -2,7 +2,7 @@
 /*
 	Created: 20230103@Daniel
 	Task: Prepare schema for objects added to replication
-	DB: SITDBCUST-CustDB, SITDB05x.bodb02, SITDB05x/SITDB05x/SITD06.bodb02
+	DB: SITDBCUST/SITDBTRANS/SITDBGRP01L/SITDBGRP02L.CustDB, SITDB04x/SITDB05x/SITD06.bodb02
 */
 
 
