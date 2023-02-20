@@ -14,6 +14,10 @@ WHERE db_name(database_id) like 'bodb_OWP'
 
 GO
 
+USE master;
+
+GO
+
 ---run script to alter location
 ALTER DATABASE bodb_OWP  MODIFY FILE ( NAME = bodb_OWP, FILENAME = 'F:\USER_DB\bodb_OWP\bodb_OWP.mdf ');
 ALTER DATABASE bodb_OWP  MODIFY FILE ( NAME = bodb_OWP_log, FILENAME = 'F:\USER_DB\bodb_OWP\bodb_OWP_log.ldf ');

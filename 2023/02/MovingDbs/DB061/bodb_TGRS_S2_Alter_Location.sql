@@ -14,6 +14,10 @@ WHERE db_name(database_id) like 'bodb_TGRS'
 
 GO
 
+USE master;
+
+GO
+
 ---run script to alter location
 ALTER DATABASE bodb_TGRS  MODIFY FILE ( NAME = bodb_TGRS, FILENAME = 'F:\USER_DB\bodb_TGRS\bodb_TGRS.mdf ');
 ALTER DATABASE bodb_TGRS  MODIFY FILE ( NAME = bodb_TGRS_log, FILENAME = 'F:\USER_DB\bodb_TGRS\bodb_TGRS_log.ldf ');

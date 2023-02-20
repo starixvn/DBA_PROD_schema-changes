@@ -7,6 +7,10 @@
 
 GO
 
+USE master;
+
+GO
+
 ALTER DATABASE bodb_OWP SET ONLINE;
 
 GO
