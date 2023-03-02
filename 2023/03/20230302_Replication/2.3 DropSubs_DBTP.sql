@@ -6,15 +6,13 @@
 
 -- Dropping the transactional subscriptions
 use [bodb02]
-exec sp_dropsubscription @publication = N'DBTP_Bet_n_ExecRep', @subscriber = N'DBTKO', @destination_db = N'bodb02', @article = N'all'
+exec sp_dropsubscription @publication = N'DBTP_Customer_Info', @subscriber = N'DBDW', @destination_db = N'bodb02', @article = N'all'
+GO
+use [bodb02]
+exec sp_dropsubscription @publication = N'DBTP_Customer_Info', @subscriber = N'DBDW2', @destination_db = N'bodb02', @article = N'all'
 GO
 
 -- Dropping the transactional subscriptions
 use [bodb02]
-exec sp_dropsubscription @publication = N'DBTP_Bet_n_ExecRep_AWS', @subscriber = N'DBBAL', @destination_db = N'bodb02', @article = N'all'
-GO
-
--- Dropping the transactional subscriptions
-use [bodb02]
-exec sp_dropsubscription @publication = N'DBTP_DR_sync', @subscriber = N'DBTKO', @destination_db = N'bodb02', @article = N'all'
+exec sp_dropsubscription @publication = N'DBTP_Customer_n_Setting', @subscriber = N'DBTKO', @destination_db = N'bodb02', @article = N'all'
 GO
