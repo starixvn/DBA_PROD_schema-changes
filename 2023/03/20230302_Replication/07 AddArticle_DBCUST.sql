@@ -9,9 +9,9 @@ exec sp_addarticle @publication = N'CustDB_Customer_Info', @article = N'ProductS
 GO
 
 -- Adding the transactional articles
-use [CustDB]
-exec sp_addarticle @publication = N'CustDB_Customer_Info', @article = N'f_CustSetting_ProductSettingDetailSel', @source_owner = N'dbo', @source_object = N'f_CustSetting_ProductSettingDetailSel', @type = N'func schema only', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_table = N'f_CustSetting_ProductSettingDetailSel', @destination_owner = N'dbo', @status = 16
-GO
+-- use [CustDB]
+-- exec sp_addarticle @publication = N'CustDB_Customer_Info', @article = N'f_CustSetting_ProductSettingDetailSel', @source_owner = N'dbo', @source_object = N'f_CustSetting_ProductSettingDetailSel', @type = N'func schema only', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_table = N'f_CustSetting_ProductSettingDetailSel', @destination_owner = N'dbo', @status = 16
+-- GO
 use [CustDB]
 exec sp_addarticle @publication = N'CustDB_Customer_Info', @article = N'f_CustSetting_ProductSettingDetailSel_xtest', @source_owner = N'dbo', @source_object = N'f_CustSetting_ProductSettingDetailSel_xtest', @type = N'func schema only', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x0000000008000001, @destination_table = N'f_CustSetting_ProductSettingDetailSel_xtest', @destination_owner = N'dbo', @status = 16
 GO
