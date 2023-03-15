@@ -1,0 +1,44 @@
+version: '3.7'
+networks:
+  app_network:
+    name: ${MSSQL_NETWORK}
+    driver: ${DRIVER_NETWORK}
+
+services:
+  createdir:
+    #build:
+      #context: .
+      #dockerfile: Dockerfile1
+    image: busybox
+    volumes:
+      - ${MSSQL_CONF}:/var
+    command: sh -c "echo -en '[EULA]\naccepteula = Y' > /var/mssql.conf"
+
+  mssql:
+    #build:
+     # context: .
+      #dockerfile: Dockerfile
+    image: mcr.microsoft.com/mssql/server:${MSSQL_TAG}
+    user: root #got error ERROR: Setup FAILED copying system data file 'C:\templatedata\model_replicatedmaster.mdf' to '/var/opt/..., should using this line
+    container_name: ${MSSQL_HOST}
+
+    hostname: ${MSSQL_HOST}
+
+    env_file:
+      - ${MSSQL_DIR}/mssql.env
+
+    ports:
+      - '${MSSQL_PORT}:1433'
+
+    networks:
+      app_network:
+        aliases:
+          - ${MSSQL_HOST}
+
+    volumes:
+        - ${MSSQL_DATA}/system:/var/opt/mssql/data:rw
+        - ${MSSQL_LOG}:/var/opt/mssql/log
+        - ${MSSQL_DATA}/backup:/var/opt/mssql/backup
+        - ${MSSQL_DATA}/replData:/var/opt/mssql/ReplData
+        - ${MSSQL_DATA}/user_db:/var/mssql/user_db
+        - ${MSSQL_CONF}/mssql.conf:/var/opt/mssql/mssql.conf        
