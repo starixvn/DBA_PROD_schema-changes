@@ -1,0 +1,56 @@
+/*<info serverAlias="10.2.27.125-FPS_DeviceFingerprint"></info>*/
+/*
+	Created: 20230217@Sol
+	Task: restore db FPS_DeviceFingerprint
+	DB: 10.2.27.125-FPS_DeviceFingerprint
+*/
+
+USE master;
+
+GO
+
+--restore db in norecovery state
+RESTORE DATABASE [FPS_DeviceFingerprint] 
+	FROM 
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Differential_20230300_000000_1.bak'
+	WITH 	
+		MOVE N'FPS_DeviceFingerprint'	 TO N'H:\Data\FPS_DeviceFingerprint\FPS_DeviceFingerprint.mdf',
+		MOVE N'DEVICEFP_TBL_01'	 TO N'I:\Data\FPS_DB02\FPS_DeviceFingerprint\DEVICEFP_TBL_01.ndf',
+		MOVE N'DEVICEFP_TBL_02'	 TO N'I:\Data\FPS_DB02\FPS_DeviceFingerprint\DEVICEFP_TBL_02.ndf',
+		MOVE N'DEVICEFP_TBL_03'	 TO N'I:\Data\FPS_DB02\FPS_DeviceFingerprint\DEVICEFP_TBL_03.ndf',
+		MOVE N'DEVICEFP_TBL_04'	 TO N'I:\Data\FPS_DB02\FPS_DeviceFingerprint\DEVICEFP_TBL_04.ndf',
+		MOVE N'DF_INDEX_01'	 TO N'H:\Data\FPS_DeviceFingerprint\DF_INDEX_01.ndf',
+		MOVE N'DF_INDEX_02'	 TO N'H:\Data\FPS_DeviceFingerprint\DF_INDEX_02.ndf',
+		MOVE N'DEVICE_TABLE_01'	 TO N'H:\Data\FPS_DeviceFingerprint\DEVICE_TABLE_01.ndf',
+		MOVE N'DEVICE_TABLE_02'	 TO N'H:\Data\FPS_DeviceFingerprint\DEVICE_TABLE_02.ndf',
+		MOVE N'DEVICE_TABLE_03'	 TO N'H:\Data\FPS_DeviceFingerprint\DEVICE_TABLE_03.ndf',
+		MOVE N'DEVICE_INDEX_01'	 TO N'H:\Data\FPS_DeviceFingerprint\DEVICE_INDEX_01.ndf',
+		MOVE N'DEVICE_INDEX_02'	 TO N'H:\Data\FPS_DeviceFingerprint\DEVICE_INDEX_02.ndf',
+		MOVE N'DEVICE_INDEX_03'	 TO N'D:\Data\FPS_DeviceFingerprint\DEVICE_INDEX_03.ndf',
+		MOVE N'DEVICEIPLOG_INDEX_01'	 TO N'I:\Data\FPS_DB02\FPS_DeviceFingerprint\DEVICEIPLOG_INDEX_01.ndf',
+		MOVE N'DEVICEIPLOG_TABLE_01'	 TO N'I:\Data\FPS_DB02\FPS_DeviceFingerprint\DEVICEIPLOG_TABLE_01.ndf',
+		MOVE N'DI_ACCESS_TABLE_01'	 TO N'G:\Data\FPS_DB02\FPS_DeviceFingerprint\DI_ACCESS_TABLE_01.ndf',
+		MOVE N'DEVICEDETAIL_Code_TBL_01'	 TO N'G:\Data\FPS_DeviceFingerprint\DEVICEDETAIL_Code_TBL_01.ndf',
+		MOVE N'DI_DRAFT_01_T'	 TO N'T:\DATA\FPS_DeviceFingerprint\DI_DRAFT_01_T.ndf',
+		MOVE N'DI_DRAFT_IDX01'	 TO N'D:\Data\FPS_DeviceFingerprint\DI_DRAFT_IDX01.ndf',
+		MOVE N'DEVICEDOMAINLOG_INDEX_01'	 TO N'D:\Data\FPS_DeviceFingerprint\DEVICEDOMAINLOG_INDEX_01.ndf',
+		MOVE N'DEVICEDOMAINLOG_INDEX_02'	 TO N'D:\Data\FPS_DeviceFingerprint\DEVICEDOMAINLOG_INDEX_02.ndf',
+		MOVE N'DEVICEDOMAINLOG_TABLE_01'	 TO N'D:\Data\FPS_DeviceFingerprint\DEVICEDOMAINLOG_TABLE_01.ndf',
+		MOVE N'DEVICEDOMAINLOG_TABLE_02'	 TO N'D:\Data\FPS_DeviceFingerprint\DEVICEDOMAINLOG_TABLE_02.ndf',
+		MOVE N'DEVICEDETAIL_IDX_01'	 TO N'D:\Data\FPS_DeviceFingerprint\DEVICEDETAIL_IDX_01.ndf',
+		MOVE N'DEVICEDETAIL_IDX_02'	 TO N'D:\Data\FPS_DeviceFingerprint\DEVICEDETAIL_IDX_02.ndf',
+		MOVE N'DEVICEDETAIL_TBL_01'	 TO N'G:\Data\FPS_DeviceFingerprint\DEVICEDETAIL_TBL_01.ndf',
+		MOVE N'DEVICEDETAIL_TBL_02'	 TO N'G:\Data\FPS_DeviceFingerprint\DEVICEDETAIL_TBL_02.ndf',
+		MOVE N'DEVICEDETAIL_TBL_03'	 TO N'G:\Data\FPS_DeviceFingerprint\DEVICEDETAIL_TBL_03.ndf',
+		MOVE N'DEVICEDETAIL_TBL_04'	 TO N'G:\Data\FPS_DeviceFingerprint\DEVICEDETAIL_TBL_04.ndf',
+		MOVE N'DEVICEDETAIL_LOB_03'	 TO N'G:\Data\FPS_DeviceFingerprint\DEVICEDETAIL_LOB_03.ndf',
+		MOVE N'DEVICEDETAIL_LOB_04'	 TO N'G:\Data\FPS_DeviceFingerprint\DEVICEDETAIL_LOB_04.ndf',
+		MOVE N'DEVICEDETAIL_LOB_01'	 TO N'G:\Data\FPS_DeviceFingerprint\DEVICEDETAIL_LOB_01.ndf',
+		MOVE N'DEVICEDETAIL_LOB_02'	 TO N'G:\Data\FPS_DeviceFingerprint\DEVICEDETAIL_LOB_02.ndf',
+		MOVE N'FPS_DeviceFingerprint_DATA'	 TO N'D:\Data\FPS_DeviceFingerprint\FPS_DeviceFingerprint_DATA.ndf',
+		MOVE N'DEVICEFP_IDX_01'	 TO N'I:\Data\FPS_DB02\FPS_DeviceFingerprint\DEVICEFP_IDX_01.ndf',
+		MOVE N'DEVICEFP_IDX_02'	 TO N'I:\Data\FPS_DB02\FPS_DeviceFingerprint\DEVICEFP_IDX_02.ndf',
+		MOVE N'FPS_DeviceFingerprint_log'	 TO N'H:\Data\FPS_DeviceFingerprint\FPS_DeviceFingerprint_log.ldf',
+	NOUNLOAD, RECOVERY, STATS = 5	
+
+GO
