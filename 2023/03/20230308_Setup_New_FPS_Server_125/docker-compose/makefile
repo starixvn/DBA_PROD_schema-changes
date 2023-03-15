@@ -9,7 +9,7 @@ status:
 
 start:
 	docker-compose run --rm createdir
-	docker-compose up -d mssql
+	docker-compose up --compatibility -d mssql
 
 restart:
 	docker-compose down

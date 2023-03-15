@@ -19,6 +19,16 @@ services:
      # context: .
       #dockerfile: Dockerfile
     image: mcr.microsoft.com/mssql/server:${MSSQL_TAG}
+
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 4G
+        reservations:
+          cpus: "1"
+          memory: 2G
+
     user: root #got error ERROR: Setup FAILED copying system data file 'C:\templatedata\model_replicatedmaster.mdf' to '/var/opt/..., should using this line
     container_name: ${MSSQL_HOST}
 
@@ -35,6 +45,7 @@ services:
         aliases:
           - ${MSSQL_HOST}
 
+    restart: always
     volumes:
         - ${MSSQL_DATA}/system:/var/opt/mssql/data:rw
         - ${MSSQL_LOG}:/var/opt/mssql/log
