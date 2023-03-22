@@ -29,7 +29,8 @@ services:
           cpus: "1"
           memory: 2G
 
-    user: root #got error ERROR: Setup FAILED copying system data file 'C:\templatedata\model_replicatedmaster.mdf' to '/var/opt/..., should using this line
+    #user: root #got error ERROR: Setup FAILED copying system data file 'C:\templatedata\model_replicatedmaster.mdf' to '/var/opt/..., should using this line
+    privileged: true
     container_name: ${MSSQL_HOST}
 
     hostname: ${MSSQL_HOST}
