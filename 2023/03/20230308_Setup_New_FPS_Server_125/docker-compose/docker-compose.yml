@@ -1,5 +1,9 @@
 version: '3.7'
 networks:
+  default:
+    external: ${EXTERNAL_NETWORK}
+    name: none
+    
   app_network:
     name: ${MSSQL_NETWORK}
     driver: ${DRIVER_NETWORK}
@@ -14,7 +18,7 @@ services:
       - ${MSSQL_CONF}:/var
     command: sh -c "echo -en '[EULA]\naccepteula = Y' > /var/mssql.conf"
 
-  mssql:
+  mssql_fps:
     #build:
      # context: .
       #dockerfile: Dockerfile
@@ -23,14 +27,18 @@ services:
     deploy:
       resources:
         limits:
-          cpus: "2"
-          memory: 4G
+          cpus: "16"
+          memory: 32G
         reservations:
-          cpus: "1"
-          memory: 2G
+          cpus: "8"
+          memory: 16G
 
-    #user: root #got error ERROR: Setup FAILED copying system data file 'C:\templatedata\model_replicatedmaster.mdf' to '/var/opt/..., should using this line
-    privileged: true
+    user: root #got error ERROR: Setup FAILED copying system data file 'C:\templatedata\model_replicatedmaster.mdf' to '/var/opt/..., should using this line
+    #privileged: true
+    cap_add:
+      - SYS_ADMIN
+      - DAC_READ_SEARCH
+
     container_name: ${MSSQL_HOST}
 
     hostname: ${MSSQL_HOST}
@@ -53,4 +61,6 @@ services:
         - ${MSSQL_DATA}/backup:/var/opt/mssql/backup
         - ${MSSQL_DATA}/replData:/var/opt/mssql/ReplData
         - ${MSSQL_DATA}/user_db:/var/mssql/user_db
+        - /mnt/mounted_ls_bk_location/:/var/mssql/logshipping/ls_primary_bk_from
+        - ${MSSQL_DATA}/logshipping/ls_replica_copy_to:/var/mssql/logshipping/ls_replica_copy_to
         - ${MSSQL_CONF}/mssql.conf:/var/opt/mssql/mssql.conf        

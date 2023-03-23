@@ -1,5 +1,5 @@
 help:
-	echo "make [config | status | start | restart | stop | runit | logs] options."
+	echo "make [config | status | start | restart | stop | logs] options."
 
 config:
 	docker-compose config
@@ -9,14 +9,11 @@ status:
 
 start:
 	docker-compose run --rm createdir
-	docker-compose up --compatibility -d mssql
+	docker-compose --compatibility up -d mssql_fps
 
 restart:
 	docker-compose down
-	docker-compose up -d
-
-runit:
-	docker-compose up
+	docker-compose --compatibility up -d mssql_fps
 
 stop:
 	docker-compose down
