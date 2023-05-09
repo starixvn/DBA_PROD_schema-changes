@@ -10,8 +10,6 @@
 --  * AWS: DBTKO.bodb02
 
 /*<info serverAlias="DBCUST-CustDB"></info>*/
-USE CustDB
-GO
 /*
 	Created: 20221209@Winfred
 	DB: DBCUST/CustDB, DBACC-bodb02 and add pub CustDB_CustSetting
