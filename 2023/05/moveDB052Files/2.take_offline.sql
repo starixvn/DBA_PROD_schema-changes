@@ -1,36 +1,36 @@
---alter database Affiliate_12BET SET OFFLINE;
+--alter database Affiliate_12BET  SET OFFLINE WITH ROLLBACK IMMEDIATE;
 GO
-alter database Affiliate_9Bet SET OFFLINE;
+alter database Affiliate_9Bet  SET OFFLINE WITH ROLLBACK IMMEDIATE;
 GO
-alter database Affiliate_Aoncash SET OFFLINE;
+alter database Affiliate_Aoncash  SET OFFLINE WITH ROLLBACK IMMEDIATE;
 GO
-alter database Affiliate_Athena000 SET OFFLINE;
+alter database Affiliate_Athena000  SET OFFLINE WITH ROLLBACK IMMEDIATE;
 GO
-alter database Affiliate_itcbet SET OFFLINE;
+alter database Affiliate_itcbet  SET OFFLINE WITH ROLLBACK IMMEDIATE;
 GO
-alter database Affiliate_MacauBet SET OFFLINE;
+alter database Affiliate_MacauBet  SET OFFLINE WITH ROLLBACK IMMEDIATE;
 GO
-alter database Affiliate_N88 SET OFFLINE;
+alter database Affiliate_N88  SET OFFLINE WITH ROLLBACK IMMEDIATE;
 GO
-alter database Affiliate_N8B SET OFFLINE;
+alter database Affiliate_N8B  SET OFFLINE WITH ROLLBACK IMMEDIATE;
 GO
-alter database Affiliate_N8G SET OFFLINE;
+alter database Affiliate_N8G  SET OFFLINE WITH ROLLBACK IMMEDIATE;
 GO
-alter database Affiliate_Spondemo SET OFFLINE;
+alter database Affiliate_Spondemo  SET OFFLINE WITH ROLLBACK IMMEDIATE;
 GO
-alter database bodb_ChatBot SET OFFLINE;
+alter database bodb_ChatBot  SET OFFLINE WITH ROLLBACK IMMEDIATE;
 GO
-alter database bodb_CRM SET OFFLINE;
+alter database bodb_CRM  SET OFFLINE WITH ROLLBACK IMMEDIATE;
 GO
---alter database bodb_FraudSensor SET OFFLINE;
+--alter database bodb_FraudSensor  SET OFFLINE WITH ROLLBACK IMMEDIATE;
 GO
-alter database bodb_Maintenance SET OFFLINE;
+alter database bodb_Maintenance  SET OFFLINE WITH ROLLBACK IMMEDIATE;
 GO
-alter database bodb_MMS SET OFFLINE;
+alter database bodb_MMS  SET OFFLINE WITH ROLLBACK IMMEDIATE;
 GO
-alter database bodb_Oddsfeed SET OFFLINE;
+alter database bodb_Oddsfeed  SET OFFLINE WITH ROLLBACK IMMEDIATE;
 GO
-alter database bodb_OIC SET OFFLINE;
+alter database bodb_OIC  SET OFFLINE WITH ROLLBACK IMMEDIATE;
 GO
---alter database bodb_RMS SET OFFLINE;
+--alter database bodb_RMS  SET OFFLINE WITH ROLLBACK IMMEDIATE;
 GO
