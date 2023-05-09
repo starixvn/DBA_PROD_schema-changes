@@ -1,0 +1,15 @@
+Robocopy.exe F:\USER_DB\Affiliate_9Bet I:\USER_DB\Affiliate_9Bet *.* /mt:16 /e /R:1 /W:5
+Robocopy.exe F:\USER_DB\Affiliate_Aoncash I:\USER_DB\Affiliate_Aoncash *.* /mt:16 /e /R:1 /W:5
+Robocopy.exe F:\USER_DB\Affiliate_Athena000 I:\USER_DB\Affiliate_Athena000 *.* /mt:16 /e /R:1 /W:5
+Robocopy.exe F:\USER_DB\Affiliate_itcbet I:\USER_DB\Affiliate_itcbet *.* /mt:16 /e /R:1 /W:5
+Robocopy.exe F:\USER_DB\Affiliate_MacauBet I:\USER_DB\Affiliate_MacauBet *.* /mt:16 /e /R:1 /W:5
+Robocopy.exe F:\USER_DB\Affiliate_N88 I:\USER_DB\Affiliate_N88 *.* /mt:16 /e /R:1 /W:5
+Robocopy.exe F:\USER_DB\Affiliate_N8B I:\USER_DB\Affiliate_N8B *.* /mt:16 /e /R:1 /W:5
+Robocopy.exe F:\USER_DB\Affiliate_N8G I:\USER_DB\Affiliate_N8G *.* /mt:16 /e /R:1 /W:5
+Robocopy.exe F:\USER_DB\Affiliate_Spondemo I:\USER_DB\Affiliate_Spondemo *.* /mt:16 /e /R:1 /W:5
+Robocopy.exe F:\USER_DB\bodb_ChatBot I:\USER_DB\bodb_ChatBot *.* /mt:16 /e /R:1 /W:5
+Robocopy.exe F:\USER_DB\bodb_CRM_New I:\USER_DB\bodb_CRM_New *.* /mt:16 /e /R:1 /W:5
+Robocopy.exe F:\USER_DB\bodb_Maintenance I:\USER_DB\bodb_Maintenance *.* /mt:16 /e /R:1 /W:5
+Robocopy.exe F:\USER_DB\bodb_MMS I:\USER_DB\bodb_MMS *.* /mt:16 /e /R:1 /W:5
+Robocopy.exe F:\USER_DB\bodb_Oddsfeed I:\USER_DB\bodb_Oddsfeed *.* /mt:16 /e /R:1 /W:5
+Robocopy.exe F:\USER_DB\bodb_OIC I:\USER_DB\bodb_OIC *.* /mt:16 /e /R:1 /W:5
