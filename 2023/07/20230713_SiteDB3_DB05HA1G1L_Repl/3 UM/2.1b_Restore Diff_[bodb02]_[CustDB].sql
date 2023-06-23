@@ -1,0 +1,9 @@
+/* 
+	Task: Restore diff bodb02, custdb in UM
+	Run on primary node DBGRP03N1
+ */
+
+RESTORE DATABASE [bodb02] FROM disk = 'G:\BACKUP_LOCAL\UM0713\DBTrans.bodb02_20220713_UM.dif' WITH  FILE = 1, NOUNLOAD, RECOVERY, STATS = 5
+
+RESTORE DATABASE [CustDB] FROM disk = 'G:\BACKUP_LOCAL\UM0713\DBTrans.CustDB_20220713_UM.dif' WITH  FILE = 1, NOUNLOAD, RECOVERY, STATS = 5
+

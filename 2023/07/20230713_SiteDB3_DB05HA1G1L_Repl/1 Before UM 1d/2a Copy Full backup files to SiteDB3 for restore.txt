@@ -2,14 +2,15 @@
 
 	Task: Copy Full backup files to SiteDB - IntgTransDB, IPDB, bodb_customerLog
 		\\DBTransN1\G$\BACKUP_LOCAL\UM0713\ -> DBGRP03N01 G:\BACKUP_LOCAL\UM0713\
+	RDP to DBGRP03N01 and copy using GUI or commands below
 */
 
-#/*bodb_CustomerLog*/
-Robocopy \\DBTransN1\G$\BACKUP_LOCAL\UM0713 G:\BACKUP_LOCAL\UM0713\DBTrans.bodb_CustomerLog_20230713.bak /maxage:10 /IS /W:10
 
-#/*IntgTransDB*/
-Robocopy \\DBTransN1\G$\BACKUP_LOCAL\UM0713 G:\BACKUP_LOCAL\UM0713\DBTrans.IntgTransDB_20230713.bak /maxage:10 /IS /W:10
+Robocopy \\DBTransN1\G$\BACKUP_LOCAL\UM0713 G:\BACKUP_LOCAL\UM0713 DBTrans.bodb_CustomerLog_20230713.bak /maxage:10 /IS /W:10
 
-#/*IPDB*/
-Robocopy \\DBTransN1\G$\BACKUP_LOCAL\UM0713 G:\BACKUP_LOCAL\UM0713\DBTrans.IPDB_20230713.bak /maxage:10 /IS /W:10
+
+Robocopy \\DBTransN1\G$\BACKUP_LOCAL\UM0713 G:\BACKUP_LOCAL\UM0713 DBTrans.IntgTransDB_20230713.bak /maxage:10 /IS /W:10
+
+
+Robocopy \\DBTransN1\G$\BACKUP_LOCAL\UM0713 G:\BACKUP_LOCAL\UM0713 DBTrans.IPDB_20230713.bak /maxage:10 /IS /W:10
 

@@ -1,0 +1,13 @@
+/* 
+
+	Task: Copy diff backup files to SiteDB3 - bodb02, custDB
+		\\DBTransN1\G$\BACKUP_LOCAL\UM0713\ -> DBGRP03N01 G:\BACKUP_LOCAL\UM0713\
+	RDP to DBGRP03N01 and copy using GUI or commands below
+
+*/
+#
+Robocopy \\DBTransN1\G$\BACKUP_LOCAL\UM0713 G:\BACKUP_LOCAL\UM0713 DBTrans.bodb02_20220713.dif /maxage:10 /IS /W:10
+#
+#
+Robocopy \\DBTransN1\G$\BACKUP_LOCAL\UM0713 G:\BACKUP_LOCAL\UM0713 DBTrans.CustDB_20220713.dif /maxage:10 /IS /W:10
+
