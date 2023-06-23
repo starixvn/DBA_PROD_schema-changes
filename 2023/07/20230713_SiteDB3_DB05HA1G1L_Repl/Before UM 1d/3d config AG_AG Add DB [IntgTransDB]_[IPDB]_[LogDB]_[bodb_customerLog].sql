@@ -1,0 +1,29 @@
+/* 
+	Task: Restore dbs to AG
+	Run on primary node DBGRP03N1
+
+ */
+
+USE [master]
+GO
+ALTER AVAILABILITY GROUP [DBGRP03L]
+ADD DATABASE [bodb_CustomerLog];
+GO
+
+USE [master]
+GO
+ALTER AVAILABILITY GROUP [DBGRP03L]
+ADD DATABASE [IntgTransDB];
+GO
+
+USE [master]
+GO
+ALTER AVAILABILITY GROUP [DBGRP03L]
+ADD DATABASE [IPDB];
+GO
+
+-- USE [master]
+-- GO
+-- ALTER AVAILABILITY GROUP [DBGRP03L]
+-- ADD DATABASE [LogDB];
+-- GO
