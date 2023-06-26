@@ -1,0 +1,71 @@
+/*<info serverAlias="FPS_DB02-FPS_DeviceFingerprint"></info>*/
+/*
+	Created: 20230217@Sol
+	Task: backup db FPS_DeviceFingerprint
+	DB: FPS_DB02-FPS_DeviceFingerprint
+*/
+
+--Script gen from job: DBA - Full Backup with add one more param: BUFFERCOUNT = 100
+
+USE master;
+
+GO
+
+BACKUP DATABASE [FPS_DeviceFingerprint] 
+	TO 
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_50.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_49.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_48.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_47.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_46.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_45.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_44.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_43.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_42.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_41.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_40.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_39.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_38.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_37.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_36.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_35.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_34.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_33.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_32.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_31.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_30.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_29.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_28.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_27.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_26.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_25.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_24.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_23.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_22.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_21.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_20.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_19.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_18.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_17.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_16.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_15.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_14.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_13.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_12.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_11.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_10.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_9.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_8.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_7.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_6.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_5.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_4.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_3.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_2.bak',
+		DISK = N'F:\Backup\FPS_DeviceFingerprint\FPS_DeviceFingerprint_Full_20230300_000000_1.bak'
+	WITH  
+		NOFORMAT, INIT
+	,  NAME = N'FPS_DeviceFingerprint-FullDatabase Backup'
+	, SKIP, NOREWIND, NOUNLOAD, BUFFERCOUNT = 100, STATS = 5
+
+GO

@@ -1,0 +1,66 @@
+version: '3.7'
+networks:
+  default:
+    external: ${EXTERNAL_NETWORK}
+    name: none
+    
+  app_network:
+    name: ${MSSQL_NETWORK}
+    driver: ${DRIVER_NETWORK}
+
+services:
+  createdir:
+    #build:
+      #context: .
+      #dockerfile: Dockerfile1
+    image: busybox
+    volumes:
+      - ${MSSQL_CONF}:/var
+    command: sh -c "echo -en '[EULA]\naccepteula = Y' > /var/mssql.conf"
+
+  mssql_fps:
+    #build:
+     # context: .
+      #dockerfile: Dockerfile
+    image: mcr.microsoft.com/mssql/server:${MSSQL_TAG}
+
+    deploy:
+      resources:
+        limits:
+          cpus: "16"
+          memory: 32G
+        reservations:
+          cpus: "8"
+          memory: 16G
+
+    user: root #got error ERROR: Setup FAILED copying system data file 'C:\templatedata\model_replicatedmaster.mdf' to '/var/opt/..., should using this line
+    #privileged: true
+    cap_add:
+      - SYS_ADMIN
+      - DAC_READ_SEARCH
+
+    container_name: ${MSSQL_HOST}
+
+    hostname: ${MSSQL_HOST}
+
+    env_file:
+      - ${MSSQL_DIR}/mssql.env
+
+    ports:
+      - '${MSSQL_PORT}:1433'
+
+    networks:
+      app_network:
+        aliases:
+          - ${MSSQL_HOST}
+
+    restart: always
+    volumes:
+        - ${MSSQL_DATA}/system:/var/opt/mssql/data:rw
+        - ${MSSQL_LOG}:/var/opt/mssql/log
+        - ${MSSQL_DATA}/backup:/var/opt/mssql/backup
+        - ${MSSQL_DATA}/replData:/var/opt/mssql/ReplData
+        - ${MSSQL_DATA}/user_db:/var/mssql/user_db
+        - /mnt/mounted_ls_bk_location/:/var/mssql/logshipping/ls_primary_bk_from
+        - ${MSSQL_DATA}/logshipping/ls_replica_copy_to:/var/mssql/logshipping/ls_replica_copy_to
+        - ${MSSQL_CONF}/mssql.conf:/var/opt/mssql/mssql.conf        
