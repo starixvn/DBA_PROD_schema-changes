@@ -1,5 +1,5 @@
 /* 
-	Task: Restore dbs to AG
+	Task: Join database bodb_CustomerLog, IntgTransDB, IPDB custDB to AG
 	Run on SECONDARY node DBGRP03N2
 
  */

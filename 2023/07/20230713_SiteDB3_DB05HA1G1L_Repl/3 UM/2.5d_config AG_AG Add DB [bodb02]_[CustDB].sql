@@ -1,0 +1,18 @@
+/* 
+	Task: Add custDB, bodb02 to AG
+	Run on primary node DBGRP03N1
+
+ */
+USE [master]
+GO
+
+ALTER AVAILABILITY GROUP [DBGRP03L]
+ADD DATABASE [bodb02];
+GO
+
+USE [master]
+GO
+
+ALTER AVAILABILITY GROUP [DBGRP03L]
+ADD DATABASE [CustDB];
+GO

@@ -1,5 +1,5 @@
 /* 
-	Task: Restore dbs to AG
+	Task: Add bodb_CustomerLog, IntgTransDB, IPDB to AG
 	Run on primary node DBGRP03N1
 
  */
