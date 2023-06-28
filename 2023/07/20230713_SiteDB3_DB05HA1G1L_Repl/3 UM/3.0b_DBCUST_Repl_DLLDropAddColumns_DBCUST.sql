@@ -1,5 +1,5 @@
 /*
-	Task: Drop columns (DDL) table custinfo from main DBCUST
+	Task: Drop & add columns (DDL) for various tables from main DBCUST
 	Run on DBCUST
 */
 
@@ -11,3 +11,9 @@ GO
 
 --Drop unused Columns
 ALTER TABLE dbo.custinfo DROP COLUMN DisableNumber, HideKeno
+
+
+------------------------------------------------------------------------------------------
+
+--Add column
+ALTER TABLE dbo.BetRestriction_Customer ADD AccumulateBalance BIT NULL
