@@ -5,7 +5,7 @@
 
 RESTORE DATABASE [bodb02] FROM  DISK = N'G:\BACKUP_LOCAL\UM0713\DBGRP03N1.bodb02_20230713.bak' WITH  FILE = 1, REPLACE, NORECOVERY,
 MOVE N'bodb02_Primary' TO N'G:\USER_DB\bodb02\bodb02_Primary.MDF',
-MOVE N'bodb02_Log' TO N'I:\USER_DB\bodb02\bodb02_Log.LDF',
+MOVE N'bodb02_Log' TO N'G:\USER_DB\bodb02\bodb02_Log.LDF',
 MOVE N'Balance(1)' TO N'G:\USER_DB\bodb02\Balance(1).ndf',
 MOVE N'Balance(2)' TO N'G:\USER_DB\bodb02\Balance(2).ndf',
 MOVE N'DATA(1)' TO N'G:\USER_DB\bodb02\bodb02_Data.NDF',

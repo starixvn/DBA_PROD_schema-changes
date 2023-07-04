@@ -20,7 +20,7 @@ RESTORE DATABASE [bodb_CustomerLog] FROM disk = 'G:\BACKUP_LOCAL\UM0713\DBGRP03N
 --------------------------------------------------------------------------------------------------------------
 RESTORE DATABASE [IntgTransDB] FROM  DISK = N'G:\BACKUP_LOCAL\UM0713\DBGRP03N1.IntgTransDB_20230713.bak' WITH  FILE = 1, REPLACE, NORECOVERY,
 MOVE N'IntgTransDB' TO N'G:\USER_DB\IntgTransDB\IntgTransDB.mdf',
-MOVE N'IntgTransDB_log' TO N'K:\USER_DB\IntgTransDB\IntgTransDB_log.ldf',
+MOVE N'IntgTransDB_log' TO N'G:\USER_DB\IntgTransDB\IntgTransDB_log.ldf',
 MOVE N'BetTrans_index' TO N'G:\USER_DB\IntgTransDB\BetTrans_index.ndf',
 MOVE N'BetTrans_table' TO N'G:\USER_DB\IntgTransDB\BetTrans_table.ndf',
 NOUNLOAD,  STATS = 5

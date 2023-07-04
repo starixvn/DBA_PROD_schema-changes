@@ -1,5 +1,5 @@
 /* 
-	Task: Join database bodb02, custDB to AG
+	Task: Join database bodb02, custDB to AG on secondary node
 	Run on SECONDARY node DBGRP03N2
 
  */
