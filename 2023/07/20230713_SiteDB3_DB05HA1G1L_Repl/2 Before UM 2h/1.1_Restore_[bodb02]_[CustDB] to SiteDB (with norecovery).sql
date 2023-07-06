@@ -3,7 +3,7 @@
 	Run on primary node DBGRP03N1
  */
 
-
+--est 5min
 RESTORE DATABASE [bodb02] FROM  DISK = N'G:\BACKUP_LOCAL\UM0713\DBTRANS.bodb02_20230713.bak' WITH  FILE = 1, REPLACE, NORECOVERY,
 MOVE N'bodb02_Primary' TO N'G:\USER_DB\bodb02\bodb02_Primary.MDF',
 MOVE N'bodb02_Log' TO N'G:\USER_DB\bodb02\bodb02_Log.LDF',
@@ -201,7 +201,7 @@ MOVE N'Odds_odds_index_08' TO N'G:\USER_DB\bodb02\Odds_odds_index_08.ndf',
 NOUNLOAD,  STATS = 5
 
 
-
+--est 2min
 RESTORE DATABASE [CustDB] FROM  DISK = N'G:\BACKUP_LOCAL\UM0713\DBTRANS.CustDB_20230713.bak' WITH  FILE = 1, REPLACE, NORECOVERY,
 MOVE N'bodb02_Primary' TO N'G:\USER_DB\CustDB\bodb02_Primary.MDF',
 MOVE N'bodb02_Log' TO N'G:\USER_DB\CustDB\bodb02_Log.LDF',

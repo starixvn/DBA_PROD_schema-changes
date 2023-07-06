@@ -5,8 +5,8 @@
 	RDP to DBGRP03N01 and copy using GUI or commands below
 */
 
-
+--est 1min
 Robocopy \\DBTransN2\G$\BACKUP_LOCAL\UM0713 G:\BACKUP_LOCAL\UM0713 DBTrans.bodb02_20230713.bak /maxage:10 /IS /W:10
 
-
+--est 20s
 Robocopy \\DBTransN2\G$\BACKUP_LOCAL\UM0713 G:\BACKUP_LOCAL\UM0713 DBTrans.CustDB_20230713.bak /maxage:10 /IS /W:10

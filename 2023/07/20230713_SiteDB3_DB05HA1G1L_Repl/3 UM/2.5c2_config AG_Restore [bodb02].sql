@@ -2,6 +2,8 @@
 	Task: Restore bodb02 (norecovery) on secondary node AG
 	Run on primary node DBGRP03N2
  */
+ 
+ --est 6min
 
 RESTORE DATABASE [bodb02] FROM  DISK = N'G:\BACKUP_LOCAL\UM0713\DBGRP03N1.bodb02_20230713.bak' WITH  FILE = 1, REPLACE, NORECOVERY,
 MOVE N'bodb02_Primary' TO N'G:\USER_DB\bodb02\bodb02_Primary.MDF',
@@ -199,8 +201,6 @@ MOVE N'Odds_odds_index_07' TO N'G:\USER_DB\bodb02\Odds_odds_index_07.ndf',
 MOVE N'Odds_odds_index_08' TO N'G:\USER_DB\bodb02\Odds_odds_index_08.ndf',
 NOUNLOAD,  STATS = 5
 
-
--- 0.008 seconds (53.710 MB/sec). 00:00:01
-RESTORE DATABASE [bodb02] FROM disk = 'G:\BACKUP_LOCAL\UM0713\DBGRP03N1.bodb02_20220713_Log.trn' WITH  FILE = 1, NOUNLOAD, REPLACE, NORECOVERY, STATS = 5
+RESTORE DATABASE [bodb02] FROM disk = 'G:\BACKUP_LOCAL\UM0713\DBGRP03N1.bodb02_20230713_Log.trn' WITH  FILE = 1, NOUNLOAD, REPLACE, NORECOVERY, STATS = 5
 
 
