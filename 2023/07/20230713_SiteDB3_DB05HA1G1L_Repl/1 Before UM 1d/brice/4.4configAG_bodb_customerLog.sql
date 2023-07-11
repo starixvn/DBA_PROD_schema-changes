@@ -1,7 +1,7 @@
 /*<info serverAlias="DBSIC-master"></info>*/
 /*
 	Task - scale out dbtrans - create DBGRP03N2/DBGRP03N2
-		+ Setup SSB ( certificate, endpoint)
+		+ add bodb_customerlog to AG
 	Run on DBGRP03N1/DBGRP03N2
 */
 
