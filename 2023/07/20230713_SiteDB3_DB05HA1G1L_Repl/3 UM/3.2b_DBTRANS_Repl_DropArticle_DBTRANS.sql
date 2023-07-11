@@ -1,5 +1,5 @@
 /*
-	Task: Add article to related publication
+	Task: Drop article to related publication
 	Run on DBTRANS
 */
 
