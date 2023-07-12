@@ -31,6 +31,19 @@ select 'ALTER SERVER ROLE ',serverRole,' ADD MEMBER ',[name] from #tmp where ser
 
 select replace(serverPermission,';',[name] collate Latin1_General_CI_AS_KS_WS + ';') from #tmp
 
+--script check schema
+use bodb_CustomerLog
+
+go
+
+select * from sys.schemas s (nolock)
+--join sys.objects o (nolock) on s.schema_id = o.schema_id
+where s.principal_id = DATABASE_PRINCIPAL_ID('bodbExtAccNet')
+
+select * from sys.schemas s (nolock)
+join sys.objects o (nolock) on s.schema_id = o.schema_id
+where s.principal_id = DATABASE_PRINCIPAL_ID('bodbExtAccNet')
+
 --------------------------------------------//script generate commands------------------------------------------------
 
 --drop login
@@ -101,31 +114,31 @@ ALTER SERVER ROLE 	sysadmin	 ADD MEMBER 	vnBilly
 ALTER SERVER ROLE 	sysadmin	 ADD MEMBER 	vnSol
 
 
-GRANT CONNECT SQL bodbAdminNet;
-GRANT CONNECT SQL bodbLicenseeNet;
-GRANT CONNECT SQL TO SqlLink; GRANT VIEW ANY DEFINITION TO SqlLink; GRANT VIEW SERVER STATE SqlLink;
-GRANT CONNECT SQL Dot_Admin;
-GRANT CONNECT SQL Dot_Member;
-GRANT CONNECT SQL Dot_Casino;
-GRANT CONNECT SQL ibcrep;
-GRANT CONNECT SQL vnteam;
-GRANT CONNECT SQL bodbExtAccNet;
-GRANT CONNECT SQL thien;
-GRANT CONNECT SQL rdvivi;
+GRANT CONNECT SQL TO bodbAdminNet;
+GRANT CONNECT SQL TO bodbLicenseeNet;
+GRANT CONNECT SQL TO SqlLink; GRANT VIEW ANY DEFINITION TO SqlLink; GRANT VIEW SERVER STATE TO SqlLink;
+GRANT CONNECT SQL TO Dot_Admin;
+GRANT CONNECT SQL TO Dot_Member;
+GRANT CONNECT SQL TO Dot_Casino;
+GRANT CONNECT SQL TO ibcrep;
+GRANT CONNECT SQL TO vnteam;
+GRANT CONNECT SQL TO bodbExtAccNet;
+GRANT CONNECT SQL TO thien;
+GRANT CONNECT SQL TO rdvivi;
 GRANT CONNECT SQL ServerMonitor;
-GRANT CONNECT SQL vnLukas;
-GRANT CONNECT SQL vnDaniel;
-GRANT CONNECT SQL Viet;
-GRANT CONNECT SQL RDSylvia;
-GRANT CONNECT SQL vnPatrick;
-GRANT CONNECT SQL vnBilly;
-GRANT CONNECT SQL bodbDownlineNet;
-GRANT CONNECT SQL bodbDownlineNetView;
-GRANT CONNECT SQL vnHelen;
-GRANT CONNECT SQL repl_ap;
-GRANT CONNECT SQL vnBobby;
-GRANT CONNECT SQL bodbRMSNet;
-GRANT CONNECT SQL TO vnSol; GRANT VIEW SERVER STATE vnSol;
+GRANT CONNECT SQL TO vnLukas;
+GRANT CONNECT SQL TO vnDaniel;
+GRANT CONNECT SQL TO Viet;
+GRANT CONNECT SQL TO RDSylvia;
+GRANT CONNECT SQL TO vnPatrick;
+GRANT CONNECT SQL TO vnBilly;
+GRANT CONNECT SQL TO bodbDownlineNet;
+GRANT CONNECT SQL TO bodbDownlineNetView;
+GRANT CONNECT SQL TO vnHelen;
+GRANT CONNECT SQL TO repl_ap;
+GRANT CONNECT SQL TO vnBobby;
+GRANT CONNECT SQL TO bodbRMSNet;
+GRANT CONNECT SQL TO vnSol; GRANT VIEW SERVER STATE TO vnSol;
 --//grant server roles and server permission
 
 --mapping user
