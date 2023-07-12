@@ -6,9 +6,9 @@
 
 USE [master]
 GO
-ALTER AVAILABILITY GROUP [DBGRP03L]
-ADD DATABASE [bodb_CustomerLog];
-GO
+-- ALTER AVAILABILITY GROUP [DBGRP03L]
+-- ADD DATABASE [bodb_CustomerLog];
+-- GO
 
 USE [master]
 GO
