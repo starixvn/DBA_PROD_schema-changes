@@ -7,17 +7,22 @@
 
 --Run on DBGRP03N1
 
-BACKUP DATABASE [bodb_CustomerLog] TO  DISK = N'\\dbbackup\MidTerm\tmp_bodb_customerLog\DBGRP03N1.bodb_CustomerLog_20230712.bak' WITH NOFORMAT, NOINIT,  NAME = N'bodb_CustomerLog-Full Database Backup', SKIP, NOREWIND, NOUNLOAD, COMPRESSION,  STATS = 10
+BACKUP DATABASE [bodb_CustomerLog] TO  DISK = N'\\dbbackup\MidTerm\tmp_bodb_customerLog\DBGRP03N1.bodb_CustomerLog_20230712_3.bak' WITH NOFORMAT, NOINIT,  NAME = N'bodb_CustomerLog-Full Database Backup 3', SKIP, NOREWIND, NOUNLOAD, COMPRESSION,  STATS = 10
 go
+BACKUP LOG [bodb_CustomerLog] TO  DISK = N'\\dbbackup\MidTerm\tmp_bodb_customerLog\DBGRP03N1.bodb_CustomerLog_20230712_3.trn' WITH NOFORMAT, NOINIT,  NAME = N'bodb_CustomerLog-Full Database Backup 3', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+GO
 
+
+use master
 ALTER AVAILABILITY GROUP [DBGRP03L]
 ADD DATABASE [bodb_CustomerLog];
 GO
 --//Run on DBGRP03N1
 
+
 --Run on DBGRP03N2
 USE [master]
-RESTORE DATABASE [bodb_CustomerLog] FROM  DISK = N'\\dbbackup\MidTerm\tmp_bodb_customerLog\DBGRP03N1.bodb_CustomerLog_20230712.bak' 
+RESTORE DATABASE [bodb_CustomerLog] FROM  DISK = N'\\dbbackup\MidTerm\tmp_bodb_customerLog\DBGRP03N1.bodb_CustomerLog_20230712_3.bak' 
 WITH  FILE = 1,  
 MOVE N'bodb_CustomerLog' TO N'G:\USER_DB\bodb_CustomerLog\bodb_CustomerLog.mdf',  
 MOVE N'bodb_DATA-01' TO N'G:\USER_DB\bodb_CustomerLog\bodb_DATA-01.ndf',  
@@ -30,6 +35,14 @@ replace,NORECOVERY,  NOUNLOAD,  STATS = 5
 
 GO
 
+RESTORE LOG [bodb_CustomerLog] FROM  DISK = N'\\dbbackup\MidTerm\tmp_bodb_customerLog\DBGRP03N1.bodb_CustomerLog_20230712_3.trn' WITH  FILE = 1,  NORECOVERY,  NOUNLOAD,  STATS = 10
+GO
+
+
+use master
+
 ALTER DATABASE [bodb_CustomerLog] SET HADR AVAILABILITY GROUP = [DBGRP03L];
 --//Run on DBGRP03N2
+
+
 
