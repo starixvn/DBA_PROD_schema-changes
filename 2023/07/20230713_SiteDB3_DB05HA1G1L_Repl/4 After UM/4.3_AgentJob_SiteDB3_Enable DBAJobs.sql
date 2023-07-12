@@ -6,13 +6,9 @@
 -- Gen script to disable all jobs then copy & run commands
 use msdb
 go
-select 'EXEC msdb.dbo.sp_update_job @job_name=''' + name + ''',@enabled = 1' from sysjobs where name like 'DBA%'
-
+select 'EXEC msdb.dbo.sp_update_job @job_name=''' + name + ''',@enabled = 1' from sysjobs where name like 'DBA[_]%'
 
 -- commands generated:
-EXEC msdb.dbo.sp_update_job @job_name='DBA : MonDB Get DB Info',@enabled = 1
-EXEC msdb.dbo.sp_update_job @job_name='DBA : Monitor Job Fail',@enabled = 1
-EXEC msdb.dbo.sp_update_job @job_name='DBA : Send SQL Service Restart Alert Mail',@enabled = 1
 EXEC msdb.dbo.sp_update_job @job_name='DBA_AG_Switch_Jobs',@enabled = 1
 EXEC msdb.dbo.sp_update_job @job_name='DBA_AG_Switch_Jobs_Monitor',@enabled = 1
 EXEC msdb.dbo.sp_update_job @job_name='DBA_Deadlock_Monitor',@enabled = 1
