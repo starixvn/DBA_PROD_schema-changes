@@ -1,0 +1,20 @@
+/*
+	Task: Alter DB properties - set recovery full & change owner sa
+	Run on primary node DBGRP03N1
+*/
+
+
+USE [master]
+GO
+ALTER DATABASE [bodb02] SET RECOVERY FULL WITH ROLLBACK IMMEDIATE
+GO
+ALTER DATABASE [CustDB] SET RECOVERY FULL WITH ROLLBACK IMMEDIATE
+GO
+
+
+USE [master]
+GO
+ALTER AUTHORIZATION ON DATABASE::[bodb02] TO [sa];
+ALTER AUTHORIZATION ON DATABASE::[CustDB] TO [sa];
+GO
+

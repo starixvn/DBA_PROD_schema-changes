@@ -1,0 +1,10 @@
+/* 
+
+	Task:  Copy DB backup files of IntgTransDB, IPDB, bodb_customerLog from DBGRP03N1 -> DBGRP03N2
+		\\DBGRP03N01\G$\BACKUP_LOCAL\UM0713\ -> DBGRP03N02 G:\BACKUP_LOCAL\UM0713\
+	RDP to DBGRP03N02 and copy using GUI or commands below
+*/
+
+
+-- Robocopy \\DBGRP03N1\G$\BACKUP_LOCAL\UM0713 G:\BACKUP_LOCAL\UM0713 DBGRP03N1.*_20230712*.* /maxage:10 /IS /W:10
+

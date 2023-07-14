@@ -1,0 +1,14 @@
+/* 
+
+	Task: Copy DB backup files of bodb02, custDB from DBGRP03N1 -> DBGRP03N2
+		\\DBGRP03N1\G$\BACKUP_LOCAL\UM0713\ -> DBGRP03N2 G:\BACKUP_LOCAL\UM0713\
+	RDP to DBGRP03N02 and copy using GUI or commands below
+
+*/
+
+--est 20s
+Robocopy \\DBGRP03N1\G$\BACKUP_LOCAL\UM0713 G:\BACKUP_LOCAL\UM0713 DBGRP03N1.CustDB_20230713*.* /maxage:10 /IS /W:10
+
+--est 1.5min
+Robocopy \\DBGRP03N1\G$\BACKUP_LOCAL\UM0713 G:\BACKUP_LOCAL\UM0713 DBGRP03N1.bodb02_20230713*.* /maxage:10 /IS /W:10
+

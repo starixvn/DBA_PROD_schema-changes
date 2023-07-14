@@ -1,0 +1,14 @@
+/* 
+	Task: Join database bodb02, custDB to AG on secondary node
+	Run on SECONDARY node DBGRP03N2
+
+ */
+
+USE [master]
+GO
+
+ALTER DATABASE [bodb02] SET HADR AVAILABILITY GROUP = [DBGRP03L];
+
+ALTER DATABASE [CustDB] SET HADR AVAILABILITY GROUP = [DBGRP03L];
+
+GO

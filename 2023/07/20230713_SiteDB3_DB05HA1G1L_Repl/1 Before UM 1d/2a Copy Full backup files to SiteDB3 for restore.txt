@@ -1,0 +1,16 @@
+/* 
+
+	Task: Copy Full backup files to SiteDB - IntgTransDB, IPDB, bodb_customerLog. The files should be available on every Wed 2:15AM GMT-4, from routine backup job
+		\\DBTransN2\G$\BACKUP_LOCAL\UM0713\ -> DBGRP03N01 G:\BACKUP_LOCAL\UM0713\
+	RDP to DBGRP03N01 and copy using GUI or commands below
+*/
+
+
+Robocopy \\DBTransN2\G$\BACKUP_LOCAL\UM0713 G:\BACKUP_LOCAL\UM0713 DBTrans.bodb_CustomerLog_20230712.bak /maxage:10 /IS /W:10
+
+
+Robocopy \\DBTransN2\G$\BACKUP_LOCAL\UM0713 G:\BACKUP_LOCAL\UM0713 DBTrans.IntgTransDB_20230712.bak /maxage:10 /IS /W:10
+
+
+Robocopy \\DBTransN2\G$\BACKUP_LOCAL\UM0713 G:\BACKUP_LOCAL\UM0713 DBTrans.IPDB_20230712.bak /maxage:10 /IS /W:10
+
