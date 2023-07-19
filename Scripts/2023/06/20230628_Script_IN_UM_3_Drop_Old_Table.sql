@@ -1,0 +1,74 @@
+
+---33333333
+
+USE [FPS_DeviceFingerprint]
+
+GO
+
+DROP TABLE Device
+
+USE [FPS_DeviceFingerprint]
+GO
+ALTER DATABASE [FPS_DeviceFingerprint]  REMOVE FILE [DEVICE_INDEX_01]
+GO
+ALTER DATABASE [FPS_DeviceFingerprint] REMOVE FILEGROUP [DEVICE_INDEX_01]
+GO
+USE [FPS_DeviceFingerprint]
+GO
+ALTER DATABASE [FPS_DeviceFingerprint]  REMOVE FILE [DEVICE_INDEX_02]
+GO
+ALTER DATABASE [FPS_DeviceFingerprint] REMOVE FILEGROUP [DEVICE_INDEX_02]
+GO
+USE [FPS_DeviceFingerprint]
+GO
+ALTER DATABASE [FPS_DeviceFingerprint]  REMOVE FILE [DEVICE_INDEX_03]
+GO
+ALTER DATABASE [FPS_DeviceFingerprint] REMOVE FILEGROUP [DEVICE_INDEX_03]
+GO
+USE [FPS_DeviceFingerprint]
+GO
+ALTER DATABASE [FPS_DeviceFingerprint]  REMOVE FILE [DEVICE_TABLE_01]
+GO
+ALTER DATABASE [FPS_DeviceFingerprint]  REMOVE FILE [DEVICE_TABLE_02]
+GO
+ALTER DATABASE [FPS_DeviceFingerprint]  REMOVE FILE [DEVICE_TABLE_03]
+GO
+ALTER DATABASE [FPS_DeviceFingerprint] REMOVE FILEGROUP [DEVICE_TABLE]
+GO
+
+
+GO
+--file list to delete
+I:\Data\FPS_DB02\FPS_DeviceFingerprint\DEVICE_INDEX_01.ndf
+I:\Data\FPS_DB02\FPS_DeviceFingerprint\DEVICE_INDEX_02.ndf
+D:\Data\FPS_DeviceFingerprint\DEVICE_INDEX_03.ndf
+I:\Data\FPS_DB02\FPS_DeviceFingerprint\DEVICE_TABLE_01.ndf
+I:\Data\FPS_DB02\FPS_DeviceFingerprint\DEVICE_TABLE_02.ndf
+--I:\Data\FPS_DB02\FPS_DeviceFingerprint\DEVICE_TABLE_03.ndf
+
+
+
+
+-----shrink files releted to Device table
+--SELECT name
+--    , size / 128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS INT) / 128.0 AS AvailableSpaceInMB
+--FROM sys.database_files;
+
+--SELECT name
+--    , size / 128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS INT) / 128.0 AS AvailableSpaceInMB
+--	, concat('DBCC SHRINKFILE (N''',name,''', 3);  RAISERROR(''Done SHRINK file ', name,''', 0, 0) WITH NOWAIT;')
+--FROM sys.database_files;
+
+--go
+
+--DBCC SHRINKFILE (N'DEVICE_INDEX_01', 64);  RAISERROR('Done SHRINK file DEVICE_INDEX_01', 0, 0) WITH NOWAIT;
+--DBCC SHRINKFILE (N'DEVICE_INDEX_02', 64);  RAISERROR('Done SHRINK file DEVICE_INDEX_02', 0, 0) WITH NOWAIT;
+--DBCC SHRINKFILE (N'DEVICE_INDEX_03', 32);  RAISERROR('Done SHRINK file DEVICE_INDEX_03', 0, 0) WITH NOWAIT;
+--DBCC SHRINKFILE (N'DEVICE_TABLE_01', 32);  RAISERROR('Done SHRINK file DEVICE_TABLE_01', 0, 0) WITH NOWAIT;
+--DBCC SHRINKFILE (N'DEVICE_TABLE_02', 32);  RAISERROR('Done SHRINK file DEVICE_TABLE_02', 0, 0) WITH NOWAIT;
+--DBCC SHRINKFILE (N'DEVICE_TABLE_03', 32);  RAISERROR('Done SHRINK file DEVICE_TABLE_03', 0, 0) WITH NOWAIT;
+
+
+--DBCC SHRINKFILE (N'FPS_DeviceFingerprint_log', 3);  RAISERROR('Done SHRINK file FPS_DeviceFingerprint_log', 0, 0) WITH NOWAIT;
+
+sp_spaceused 'device'
