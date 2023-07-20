@@ -1,0 +1,19 @@
+
+---create index again: [IX_Device_Code], [IX_Device_Id]
+USE [FPS_DeviceFingerprint]
+GO
+
+/****** Object:  Index [IX_Device_Code]    Script Date: 6/28/2023 12:26:06 AM ******/
+CREATE NONCLUSTERED INDEX [IX_Device_Code] ON [dbo].Device_BigINT
+(
+	[Code] ASC
+)
+INCLUDE([Id],[CreatedDate]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 90) ON DEVICE_INDEX_01_BigINT
+GO
+
+/****** Object:  Index [IX_Device_Id]    Script Date: 6/28/2023 12:26:06 AM ******/
+CREATE NONCLUSTERED INDEX [IX_Device_Id] ON [dbo].Device_BigINT
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 90) ON DEVICE_INDEX_02_BigINT
+GO
