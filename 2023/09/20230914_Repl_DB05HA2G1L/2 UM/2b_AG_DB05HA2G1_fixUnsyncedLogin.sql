@@ -31,18 +31,7 @@ select 'ALTER SERVER ROLE ',serverRole,' ADD MEMBER ',[name] from #tmp where ser
 
 select replace(serverPermission,';',[name] collate Latin1_General_CI_AS_KS_WS + ';') from #tmp
 
---script check schema
-use bodb_CustomerLog
 
-go
-
-select * from sys.schemas s (nolock)
---join sys.objects o (nolock) on s.schema_id = o.schema_id
-where s.principal_id = DATABASE_PRINCIPAL_ID('bodbExtAccNet')
-
-select * from sys.schemas s (nolock)
-join sys.objects o (nolock) on s.schema_id = o.schema_id
-where s.principal_id = DATABASE_PRINCIPAL_ID('bodbExtAccNet')
 
 --------------------------------------------//script generate commands------------------------------------------------
 
