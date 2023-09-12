@@ -1,6 +1,5 @@
 /*
 	set up AG on DB052/DB053
-	Add bodb_N88Log & bodb_NAPLog to AG
 	20230908@Daniel: setup AG and add DB to AG 
 	run on DB052/DB053
 */
@@ -75,7 +74,7 @@ GO
 
 
 ----------------------------------------------------------------------------step3: create AG and Listener on DB052----------------------------------------------------------------
---create DB brice_AGsetup_UAT to trigger AG creating
+--create DB Daniel_AGsetup_UAT to trigger AG creating
 USE [master]
 
 GO
@@ -85,7 +84,7 @@ WITH (AUTOMATED_BACKUP_PREFERENCE = PRIMARY,
 DB_FAILOVER = ON,
 DTC_SUPPORT = NONE,
 REQUIRED_SYNCHRONIZED_SECONDARIES_TO_COMMIT = 0)
-FOR DATABASE [brice_AGsetup_UAT]
+FOR DATABASE [Daniel_AGsetup_UAT]
 REPLICA ON N'DB052' WITH (ENDPOINT_URL = N'TCP://DB052.oneworks.farms.com:5022', FAILOVER_MODE = MANUAL, AVAILABILITY_MODE = SYNCHRONOUS_COMMIT, BACKUP_PRIORITY = 50, SEEDING_MODE = MANUAL, PRIMARY_ROLE(READ_ONLY_ROUTING_LIST = (N'DB053',N'DB052')), SECONDARY_ROLE(READ_ONLY_ROUTING_URL = N'TCP://10.40.40.95:1433', ALLOW_CONNECTIONS = ALL)),
 	N'DB053' WITH (ENDPOINT_URL = N'TCP://DB053.oneworks.farms.com:5022', FAILOVER_MODE = MANUAL, AVAILABILITY_MODE = SYNCHRONOUS_COMMIT, BACKUP_PRIORITY = 50, SEEDING_MODE = MANUAL, PRIMARY_ROLE(READ_ONLY_ROUTING_LIST = (N'DB052',N'DB053')), SECONDARY_ROLE(READ_ONLY_ROUTING_URL = N'TCP://10.40.40.82:1433', ALLOW_CONNECTIONS = ALL));
 
@@ -170,13 +169,10 @@ begin catch
 	print( 'loop fails, do not stop execution of the alter database statement')
 end catch
 
-ALTER DATABASE [brice_AGsetup_UAT] SET HADR AVAILABILITY GROUP = [DB05HA2G1];
+ALTER DATABASE [Daniel_AGsetup_UAT] SET HADR AVAILABILITY GROUP = [DB05HA2G1];
 go
 
---ALTER DATABASE [bodb_N88Log] SET HADR AVAILABILITY GROUP = [DB05HA2G1];
---go
 
---ALTER DATABASE [bodb_NAPLog] SET HADR AVAILABILITY GROUP = [DB05HA2G1];
 
 --GO
 
