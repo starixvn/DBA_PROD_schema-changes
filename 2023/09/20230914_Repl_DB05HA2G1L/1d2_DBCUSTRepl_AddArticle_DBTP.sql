@@ -7,6 +7,9 @@
 use [bodb_Licensee]
 exec sp_addarticle @publication = N'DBTP_bodb_licensee', @article = N'LicenseeCustComm', @source_owner = N'dbo', @source_object = N'LicenseeCustComm', @type = N'logbased', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x000000000847589F, @identityrangemanagementoption = N'none', @destination_table = N'LicenseeCustComm', @destination_owner = N'dbo', @status = 24, @vertical_partition = N'false', @ins_cmd = N'CALL [sp_MSins_dboLicenseeCustComm]', @del_cmd = N'CALL [sp_MSdel_dboLicenseeCustComm]', @upd_cmd = N'SCALL [sp_MSupd_dboLicenseeCustComm]'
 GO
+use [bodb_Licensee]
+exec sp_addarticle @publication = N'DBTP_bodb_licensee', @article = N'LicenseeGroupComm', @source_owner = N'dbo', @source_object = N'LicenseeGroupComm', @type = N'logbased', @description = N'', @creation_script = N'', @pre_creation_cmd = N'drop', @schema_option = 0x000000000847589F, @identityrangemanagementoption = N'manual', @destination_table = N'LicenseeGroupComm', @destination_owner = N'dbo', @status = 24, @vertical_partition = N'false', @ins_cmd = N'CALL [sp_MSins_dboLicenseeGroupComm]', @del_cmd = N'CALL [sp_MSdel_dboLicenseeGroupComm]', @upd_cmd = N'SCALL [sp_MSupd_dboLicenseeGroupComm]'
+GO
 
 
 -- Adding the transactional articles
