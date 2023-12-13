@@ -5,6 +5,11 @@
 
 */
 
+-- cleanup phantom push sub if any
+use [bodb02]
+go
+exec sp_subscription_cleanup @publisher = N'DBTP10C', @publisher_db = N'bodb02', @publication = N'DBTP_Bet14'
+go
 
 /****** Begin: Script to be run at Subscriber ******/
 use [bodb02]
