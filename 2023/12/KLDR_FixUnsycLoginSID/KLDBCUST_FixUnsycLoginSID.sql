@@ -281,3 +281,9 @@ GRANT CONNECT SQL TO vnPatrick; GRANT VIEW SERVER STATE TO vnPatrick;
 GRANT CONNECT SQL TO vnSol; GRANT VIEW SERVER STATE TO vnSol;
 GRANT CONNECT SQL TO vnteam; GRANT VIEW ANY DEFINITION TO vnteam; GRANT VIEW ANY DATABASE TO vnteam; GRANT VIEW SERVER STATE TO vnteam;
 GRANT CONNECT SQL TO vntraceteam; GRANT VIEW ANY DEFINITION TO vntraceteam; GRANT VIEW ANY DATABASE TO vntraceteam; GRANT VIEW SERVER STATE TO vntraceteam;
+
+
+--======================================================
+ -- >Remap orphan users in DB
+EXEC [MONDB].[dbo].[DBA_Sync_Orphan_USER]
+go
