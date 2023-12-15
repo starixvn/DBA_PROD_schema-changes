@@ -25,8 +25,8 @@ SELECT sp.[name], sp.[sid] [SID_KLDBCUST], sp2.[sid] [SID_DBCUST], CONVERT(NVARC
 ,(select string_agg(px.name,',') from DBCUSTKL.master.sys.server_role_members rm join DBCUSTKL.master.sys.server_principals px on rm.role_principal_id = px.principal_id where rm.member_principal_id=sp.principal_id) as 'serverRole'
 into #tmp
 FROM DBCUSTKL.master.sys.server_principals AS sp
+	LEFT JOIN DBCUSTKL.master.sys.sql_logins AS SL ON sp.principal_id = SL.principal_id
 	inner join DBCUST.master.sys.server_principals AS sp2 on sp.name = sp2.name
-	LEFT JOIN DBCUST.master.sys.sql_logins AS SL ON sp2.principal_id = SL.principal_id
 where sp.[sid] <> sp2.[sid]
 and sp.[name] not like '%#%'
 and sp.[name] not like '%cert_user%'
@@ -38,10 +38,16 @@ select 'drop login ['+ [name] + ']' [-- 1. Run script drop logins] from #tmp ord
 select 'CREATE LOGIN ['+[name]+'] WITH PASSWORD = ' [-- 2. Run script create logins]
 	,[hashed_pwd], ' HASHED, SID = ',[SID_DBCUST],', DEFAULT_DATABASE = [' + default_database_name + '], CHECK_POLICY = OFF, CHECK_EXPIRATION = OFF ' from #tmp order by [name]
 
-select 'ALTER SERVER ROLE ' [-- 3. Run script assign role for logins],serverRole,' ADD MEMBER ',[name] from #tmp where serverRole is not null  order by [name]
+--select 'ALTER SERVER ROLE ' [-- 3. Run script assign role for logins],serverRole,' ADD MEMBER ',[name] from #tmp where serverRole is not null  order by [name]
+SELECT 
+'EXEC master..sp_addsrvrolemember @loginame = N''' + SL.name + ''', @rolename = N''' + SR.name + '''
+' AS [-- 3. Run script assign role for logins]
+FROM DBCUSTKL.master.sys.server_role_members SRM
+ JOIN DBCUSTKL.master.sys.server_principals SR ON SR.principal_id = SRM.role_principal_id
+ JOIN DBCUSTKL.master.sys.server_principals SL ON SL.principal_id = SRM.member_principal_id
+WHERE SL.type IN ('S','G','U') AND SL.name IN(select [name] from #tmp) order by SL.name
 
 select replace(serverPermission,';',[name] collate Latin1_General_CI_AS_KS_WS + ';') [-- 4. Run script grant addidtional permission] from #tmp  order by [name]
-
 
 
 
@@ -117,7 +123,7 @@ drop login [vnteam]
 drop login [vntraceteam]
 
 
--- 2. Run script create logins	hashed_pwd	(No column name)	SID_DBCUST	(No column name)
+-- 2. Run script create logins
 CREATE LOGIN [API_Vender] WITH PASSWORD = 	0x01000AAAEF65DC3F2C9BE53696647AE51CF364424A3E53555F74	 HASHED, SID = 	0xE2DF3A93564360489A5D9883C58F0FC8	, DEFAULT_DATABASE = [master], CHECK_POLICY = OFF, CHECK_EXPIRATION = OFF 
 CREATE LOGIN [Auth_user] WITH PASSWORD = 	0x02002D70ACB73CBB4D374D6A2B9C6B25868DCFBE425DD1607BC621DD8239A7A8A3284BB116E872F143392885E585A941BBAAF1499D32CDC06BB6A67EE97AF912FEA1FA6ABB27	 HASHED, SID = 	0x971D122B0B24DD4C8D750F55E7F2EADB	, DEFAULT_DATABASE = [AUTHDB], CHECK_POLICY = OFF, CHECK_EXPIRATION = OFF 
 CREATE LOGIN [bodbAdmin] WITH PASSWORD = 	0x01000983A17C01F9357218A3E54425A6CA4A2DDF53FC8D91A375	 HASHED, SID = 	0x90D8FCBB9C2E254D8054DE9ABE3514DC	, DEFAULT_DATABASE = [master], CHECK_POLICY = OFF, CHECK_EXPIRATION = OFF 
@@ -175,7 +181,7 @@ CREATE LOGIN [Viet] WITH PASSWORD = 	0x020079548E89D9CDD15BDF30DA5C8366BEC12A17C
 CREATE LOGIN [vnBilly] WITH PASSWORD = 	0x01006C3873A6A34D90645196B99528E186705ECFD11376FDF6C6	 HASHED, SID = 	0x50F1ABA1FA4B044FB6403EF455E511E4	, DEFAULT_DATABASE = [master], CHECK_POLICY = OFF, CHECK_EXPIRATION = OFF 
 CREATE LOGIN [vnBobby] WITH PASSWORD = 	0x0200F66F6BDF606862414C005C56A27199895B7515803640FDF1B47698A9A5CFFC079B849EF656342F2A269EA9AA68DE4CA5E0D4256830B53266F860BE7CAA2DE5CAA057E50F	 HASHED, SID = 	0x7CFC2D928C788F42B24C92FB783C06BE	, DEFAULT_DATABASE = [master], CHECK_POLICY = OFF, CHECK_EXPIRATION = OFF 
 CREATE LOGIN [vnBrice] WITH PASSWORD = 	0x0200F830BD37C50E47B4456588D9D0D9B1B9C36433F12B8655175CCE16ECBBBAB340B21C1673F551004F9805D23126BEB3E65882C22A9AC59BA236E588F1F8799B3E93971D6E	 HASHED, SID = 	0x3549FE96475318489DD6BFE88065EC40	, DEFAULT_DATABASE = [master], CHECK_POLICY = OFF, CHECK_EXPIRATION = OFF 
-CREATE LOGIN [vndaniel] WITH PASSWORD = 	0x02005363950059B961041F50F4A13A8CE8E14C6B2DA2F47BD374FB6A1766E6082B3F1A95BC42568C6F5A14CF64EFBF3A57A0F9F273B1AA49368A50FB7A3C6B2F4B351A62B42D	 HASHED, SID = 	0x5193C164158070489F99326B48A9A4FD	, DEFAULT_DATABASE = [master], CHECK_POLICY = OFF, CHECK_EXPIRATION = OFF 
+CREATE LOGIN [vndaniel] WITH PASSWORD = 	0x02000FF474872E1DDBA767A8A6F0125B4BDA3C52B7D6098D4A40B125D54A89E710344699D24854A174B37CBE51A9D2337A497755238FE6175452580251450CE8E2D442CDF178	 HASHED, SID = 	0x5193C164158070489F99326B48A9A4FD	, DEFAULT_DATABASE = [master], CHECK_POLICY = OFF, CHECK_EXPIRATION = OFF 
 CREATE LOGIN [vnDBA] WITH PASSWORD = 	0x020024A22850B2C04CCF0668D6498698EE10C946ACE3C07691F3CC163813CF8315553A8A128D7B9EA8439A1BAA155AF5F3695844E95370353B2728088B856BE77DFE7D3BC615	 HASHED, SID = 	0x6C843C6BF74D214A9C63D5BDE12B8105	, DEFAULT_DATABASE = [CustDB], CHECK_POLICY = OFF, CHECK_EXPIRATION = OFF 
 CREATE LOGIN [vnHelen] WITH PASSWORD = 	0x0200A4FF1B811CC6B593C49BA1194130648003A278DA2CC34EE05F5D40AB8FD5A3FCEA37B0C8437CC63FE0070517C5DD6CD9E92935B2FF0477FCCDA02D5CF28C6151443B75BD	 HASHED, SID = 	0xA4B73C2BBC51FF49A5A293CAC2CF0411	, DEFAULT_DATABASE = [master], CHECK_POLICY = OFF, CHECK_EXPIRATION = OFF 
 CREATE LOGIN [vnJoe] WITH PASSWORD = 	0x02008C0B36B9C663F34AA05B5AEB5653E3EEF1D30D00BA6D72A87CB9B8D75D91178CB9E003925DF39528092D3D40C496EC7670FB9FCCE74AB868287974FC5727CE6FD853523D	 HASHED, SID = 	0xCFBD2DE8F66673489C6465661F50A398	, DEFAULT_DATABASE = [master], CHECK_POLICY = OFF, CHECK_EXPIRATION = OFF 
@@ -186,32 +192,59 @@ CREATE LOGIN [vnteam] WITH PASSWORD = 	0x0200DE0810FE97D6F8EB53F10FC9FBFA09FBFA1
 CREATE LOGIN [vntraceteam] WITH PASSWORD = 	0x0100F14A127C62A21468DC793DE04F5F3262508F06EFEC0C9840	 HASHED, SID = 	0x1E9DC9ABE638AE4BA9DB2312CF29E1EC	, DEFAULT_DATABASE = [master], CHECK_POLICY = OFF, CHECK_EXPIRATION = OFF 
 
 
--- 3. Run script assign role for logins	serverRole	(No column name)	name
-ALTER SERVER ROLE 	bulkadmin	 ADD MEMBER 	DataSync
-ALTER SERVER ROLE 	sysadmin	 ADD MEMBER 	dbtwsa1
-ALTER SERVER ROLE 	sysadmin	 ADD MEMBER 	dbtwsa2
-ALTER SERVER ROLE 	sysadmin	 ADD MEMBER 	dbvnsa1
-ALTER SERVER ROLE 	sysadmin,securityadmin,serveradmin,processadmin	 ADD MEMBER 	RDAlex
-ALTER SERVER ROLE 	sysadmin,securityadmin,serveradmin,processadmin	 ADD MEMBER 	RDAlvin
-ALTER SERVER ROLE 	sysadmin	 ADD MEMBER 	RDBenLee
-ALTER SERVER ROLE 	sysadmin	 ADD MEMBER 	RDColin
-ALTER SERVER ROLE 	sysadmin,securityadmin,serveradmin,processadmin	 ADD MEMBER 	RDCooper
-ALTER SERVER ROLE 	sysadmin	 ADD MEMBER 	RDMei
-ALTER SERVER ROLE 	sysadmin,securityadmin,serveradmin,processadmin	 ADD MEMBER 	RDSylvia
-ALTER SERVER ROLE 	sysadmin,securityadmin,serveradmin,processadmin	 ADD MEMBER 	RDTim
-ALTER SERVER ROLE 	sysadmin,securityadmin,serveradmin,processadmin	 ADD MEMBER 	RDVictor
-ALTER SERVER ROLE 	sysadmin,securityadmin,serveradmin,processadmin	 ADD MEMBER 	RDVivi
-ALTER SERVER ROLE 	sysadmin	 ADD MEMBER 	repl_sql
-ALTER SERVER ROLE 	sysadmin	 ADD MEMBER 	SqlLink
-ALTER SERVER ROLE 	securityadmin,serveradmin,processadmin	 ADD MEMBER 	thien
-ALTER SERVER ROLE 	securityadmin,serveradmin,processadmin	 ADD MEMBER 	twteam
-ALTER SERVER ROLE 	sysadmin	 ADD MEMBER 	Viet
-ALTER SERVER ROLE 	sysadmin	 ADD MEMBER 	vnBrice
-ALTER SERVER ROLE 	sysadmin	 ADD MEMBER 	vndaniel
-ALTER SERVER ROLE 	sysadmin	 ADD MEMBER 	vnJoe
-ALTER SERVER ROLE 	sysadmin	 ADD MEMBER 	vnLukas
-ALTER SERVER ROLE 	sysadmin	 ADD MEMBER 	vnPatrick
-ALTER SERVER ROLE 	securityadmin,serveradmin,processadmin	 ADD MEMBER 	vntraceteam
+-- 3. Run script assign role for logins
+EXEC master..sp_addsrvrolemember @loginame = N'DataSync', @rolename = N'bulkadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'dbtwsa1', @rolename = N'sysadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'dbtwsa2', @rolename = N'sysadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'dbvnsa1', @rolename = N'sysadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDAlex', @rolename = N'sysadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDAlex', @rolename = N'securityadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDAlex', @rolename = N'serveradmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDAlex', @rolename = N'processadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDAlvin', @rolename = N'sysadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDAlvin', @rolename = N'securityadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDAlvin', @rolename = N'serveradmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDAlvin', @rolename = N'processadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDBenLee', @rolename = N'sysadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDColin', @rolename = N'sysadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDCooper', @rolename = N'sysadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDCooper', @rolename = N'securityadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDCooper', @rolename = N'serveradmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDCooper', @rolename = N'processadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDMei', @rolename = N'sysadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDSylvia', @rolename = N'sysadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDSylvia', @rolename = N'securityadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDSylvia', @rolename = N'serveradmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDSylvia', @rolename = N'processadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDTim', @rolename = N'sysadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDTim', @rolename = N'securityadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDTim', @rolename = N'serveradmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDTim', @rolename = N'processadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDVictor', @rolename = N'sysadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDVictor', @rolename = N'securityadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDVictor', @rolename = N'serveradmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDVictor', @rolename = N'processadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDVivi', @rolename = N'sysadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDVivi', @rolename = N'securityadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDVivi', @rolename = N'serveradmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'RDVivi', @rolename = N'processadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'repl_sql', @rolename = N'sysadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'SqlLink', @rolename = N'sysadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'thien', @rolename = N'securityadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'thien', @rolename = N'serveradmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'thien', @rolename = N'processadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'twteam', @rolename = N'securityadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'twteam', @rolename = N'serveradmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'twteam', @rolename = N'processadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'Viet', @rolename = N'sysadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'vnBrice', @rolename = N'sysadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'vndaniel', @rolename = N'sysadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'vnJoe', @rolename = N'sysadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'vnLukas', @rolename = N'sysadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'vnPatrick', @rolename = N'sysadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'vntraceteam', @rolename = N'securityadmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'vntraceteam', @rolename = N'serveradmin'  
+EXEC master..sp_addsrvrolemember @loginame = N'vntraceteam', @rolename = N'processadmin'  
 
 
 -- 4. Run script grant addidtional permission

@@ -78,6 +78,8 @@ BEGIN
 
  CLOSE sessionsToKill
  DEALLOCATE sessionsToKill
+ 
+END
 
 
 
