@@ -41,7 +41,8 @@ CREATE TABLE [dbo].[SettlementSpecialBettypeProfile](
 	[DeterminedType] [tinyint] NULL,
 	[SpecialType] [tinyint] NULL,
 	[SDTRefund] [tinyint] NULL,
-	[SDTInstant] [tinyint] NULL
+	[SDTInstant] [tinyint] NULL,
+	[HasAwayValue] [bit] NULL
  CONSTRAINT [PK_SettlementSpecialBettypeProfile] PRIMARY KEY NONCLUSTERED ( [rId] ASC ) ON [DATA]
 ) ON [DATA]
 GO
@@ -66,6 +67,7 @@ CREATE NONCLUSTERED INDEX [IX_SettlementSpecialBettypeProfile_SportType] ON [dbo
 )
 INCLUDE([BetType],[BetID]) ON [DATA]
 GO
+
 
 
 
