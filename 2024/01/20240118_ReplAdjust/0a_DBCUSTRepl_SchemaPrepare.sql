@@ -3,14 +3,14 @@
 	Check and run to create table on DBCust/CustDB and all replicated servers in related pubs
 	Summary:
 		DBCUST - Add tables to repl for DR sync (CustDB_DR_Sync - DB06x, DBTP10C):
-		   CustDangerWinlossInfo (no PK yet!)
-		   CustCategoryHistory (identity)
+		   CustDangerWinlossInfo (no PK yet!) - skip
+		   CustCategoryHistory (identity) err - skip
 		   CustomerClassPolicy (identity)
 		   WinLimit_CustWinlostGame
-		DBCUST - Add in-house repl tables to pub DBTP_DR_sync for DR sync (DB06x, DBTP10C):
+		DBCUST - Add in-house repl tables to pub DBTP_DR_sync for DR sync (DBTP10C, KL DBLKLC1):
 		   CustomerClassUtilityOffer (identity)
-		   CustomerClassUtilityOffer_UAT
-		   CustomerClassUtilityOfferDetail (identity)
+		   CustomerClassUtilityOffer_UAT (identity)
+		   CustomerClassUtilityOfferDetail
 		   CustomerClassUtilityOfferDetail_UAT
 		   Dep_CustBonusSharing
 		   Dep_ProductStakeLevelGroup
@@ -21,39 +21,60 @@
 		   CustomerClassNonSportsDetail
 		   CustomerClassNonSports_UAT (identity)
 		   CustomerClassNonSportsDetail_UAT
+		   
+		Fix not for replication:
+			ALTER TABLE dbo.CustomerClassNonSports 
+			ALTER COLUMN PolicyID ADD NOT FOR REPLICATION;
+
+			ALTER TABLE dbo.CustomerClassNonSports_UAT
+			ALTER COLUMN PolicyID ADD NOT FOR REPLICATION;
+
+			ALTER TABLE dbo.CustomerClassUtilityOffer
+			ALTER COLUMN PolicyID ADD NOT FOR REPLICATION;
+
+			ALTER TABLE dbo.CustomerClassUtilityOffer_UAT
+			ALTER COLUMN PolicyID ADD NOT FOR REPLICATION;
+
+			ALTER TABLE dbo.CustCategoryHistory
+			ALTER COLUMN LogID ADD NOT FOR REPLICATION;
+
+			ALTER TABLE dbo.CustomerClassPolicy
+			ALTER COLUMN PolicyID ADD NOT FOR REPLICATION;	
 */
 
 
 --================ Non-repl tables ===================================================
 --===================================================================================
- CREATE TABLE [dbo].[CustDangerWinlossInfo](
-	[CustID] [int] NOT NULL,
-	[SportType] [smallint] NOT NULL,
-	[IsParlay] [bit] NULL,
-	[Winloss] [money] NULL,
-	[CreatedDate] [datetime] NULL,
-	[BatchNo] [int] NULL
-) ON [DATA]
-GO
 
-CREATE CLUSTERED INDEX [CIX_CustDangerWinlossInfo] ON [dbo].[CustDangerWinlossInfo]
-(
-	[CustID] ASC,
-	[BatchNo] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [DATA]
-GO
 
-CREATE NONCLUSTERED INDEX [IX_CreatedDate] ON [dbo].[CustDangerWinlossInfo]
-(
-	[CreatedDate] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [DATA]
-GO
+ -- CREATE TABLE [dbo].[CustDangerWinlossInfo](
+	-- [CustID] [int] NOT NULL,
+	-- [SportType] [smallint] NOT NULL,
+	-- [IsParlay] [bit] NULL,
+	-- [Winloss] [money] NULL,
+	-- [CreatedDate] [datetime] NULL,
+	-- [BatchNo] [int] NULL
+-- ) ON [DATA]
+-- GO
 
-CREATE NONCLUSTERED INDEX [IX_CustDangerWinlossInfo_BatchNo] ON [dbo].[CustDangerWinlossInfo]
-(
-	[BatchNo] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [DATA]
-GO 
+-- CREATE CLUSTERED INDEX [CIX_CustDangerWinlossInfo] ON [dbo].[CustDangerWinlossInfo]
+-- (
+	-- [CustID] ASC,
+	-- [BatchNo] ASC
+-- )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [DATA]
+-- GO
+
+-- CREATE NONCLUSTERED INDEX [IX_CreatedDate] ON [dbo].[CustDangerWinlossInfo]
+-- (
+	-- [CreatedDate] ASC
+-- )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [DATA]
+-- GO
+
+-- CREATE NONCLUSTERED INDEX [IX_CustDangerWinlossInfo_BatchNo] ON [dbo].[CustDangerWinlossInfo]
+-- (
+	-- [BatchNo] ASC
+-- )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [DATA]
+-- GO 
 
 ------------------------------
 
@@ -165,7 +186,7 @@ GO
 --================ In-house repl tables ===================================================
 --===================================================================================
 CREATE TABLE [dbo].[CustomerClassUtilityOffer](
-	[PolicyID] [smallint] IDENTITY(1,1) NOT NULL,
+	[PolicyID] [smallint] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[PolicyTitle] [varchar](500) NOT NULL,
 	[UtilityOffering] [smallint] NULL,
 	[IsTest] [tinyint] NOT NULL,
@@ -199,7 +220,7 @@ GO
 --------------------
 
 CREATE TABLE [dbo].[CustomerClassUtilityOffer_UAT](
-	[PolicyID] [smallint] IDENTITY(1,1) NOT NULL,
+	[PolicyID] [smallint] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[PolicyTitle] [varchar](500) NOT NULL,
 	[UtilityOffering] [smallint] NULL,
 	[IsTest] [tinyint] NOT NULL,
@@ -525,7 +546,7 @@ GO
 --------CC new tables----------------------
 --------------------------------------------------------
 CREATE TABLE [dbo].[CustomerClassNonSports](
-	[PolicyID] [int] IDENTITY(1,1) NOT NULL,
+	[PolicyID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[PolicyTitle] [varchar](500)  NOT NULL,
 	[MaxBet] [int] NULL,
 	[Products] [binary](32) NULL,
@@ -587,7 +608,7 @@ GO
 --================================= UAT
 
 CREATE TABLE [dbo].[CustomerClassNonSports_UAT](
-	[PolicyID] [int] IDENTITY(1,1) NOT NULL,
+	[PolicyID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[PolicyTitle] [varchar](500)  NOT NULL,
 	[MaxBet] [int] NULL,
 	[Products] [binary](32) NULL,
