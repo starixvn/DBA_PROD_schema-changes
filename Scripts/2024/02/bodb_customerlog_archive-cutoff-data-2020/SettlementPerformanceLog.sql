@@ -1,3 +1,5 @@
+/*<info serverAlias="DBLOG-bodb_CustomerLog_Archive" executers="" viewers="" isFunction="0" isNested="0"></info>*/
+
 exec [dbo].[DBA_CloneTableStructure]
 		@SourceSchema = 'dbo',
 		@SourceTable = 'SettlementPerformanceLog',
